@@ -4,24 +4,67 @@
  */
 package views;
 
-
+import DomainModel.SanPham_BanhangModel;
+import ITFService.BanHangITF;
+import Service.BanHangIML;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author DELL
  */
-public class Menu2 extends javax.swing.JInternalFrame {
+public class BanHang extends javax.swing.JInternalFrame {
+
+    private BanHangITF banHangITF = new BanHangIML();
 
     /**
      * Creates new form Menu1
      */
-    public Menu2() {
+    public BanHang() {
         initComponents();
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
-        
+        LoadTableSanPham();
+    }
+
+    private void LoadTableSanPham() {
+        DefaultTableModel bang = (DefaultTableModel) tableSanPham.getModel();
+        bang.setRowCount(0);
+        int stt = 1;
+        for (SanPham_BanhangModel sp : banHangITF.getall()) {
+            bang.addRow(new Object[]{stt++,
+                sp.getTenSP(),
+                sp.getLoaiSP(),
+                sp.getHang(),
+                sp.getChatLieu(),
+                sp.getKichCo(),
+                sp.getMauSac(),
+                sp.getDe(),
+                sp.getSoLuong(),
+                sp.getGiaBan(),
+                sp.getBarcode()});
+        }
+    }
+    
+        private void Findten(String ten) {
+        DefaultTableModel bang = (DefaultTableModel) tableSanPham.getModel();
+        bang.setRowCount(0);
+        int stt = 1;
+        for (SanPham_BanhangModel sp : banHangITF.FindTen(ten)) {
+            bang.addRow(new Object[]{stt++,
+                sp.getTenSP(),
+                sp.getLoaiSP(),
+                sp.getHang(),
+                sp.getChatLieu(),
+                sp.getKichCo(),
+                sp.getMauSac(),
+                sp.getDe(),
+                sp.getSoLuong(),
+                sp.getGiaBan(),
+                sp.getBarcode()});
+        }
     }
 
     /**
@@ -45,8 +88,8 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        tableSanPham = new javax.swing.JTable();
+        txttimkiem = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -83,6 +126,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Đang chờ", "Hoàn thành" }));
 
+        jTable3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -119,8 +163,10 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Giỏ hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
         jPanel5.setForeground(new java.awt.Color(255, 255, 255));
 
+        jButton2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jButton2.setText("Xóa");
 
+        jTable1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -138,7 +184,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -154,11 +200,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 710, -1));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
         jPanel6.setForeground(new java.awt.Color(255, 255, 255));
 
+        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jButton1.setText("Thêm sản phẩm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,19 +213,25 @@ public class Menu2 extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tableSanPham.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        tableSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã SP", "Tên SP", "Loại SP", "Hãng", "Chất liệu", "Kích cỡ", "Màu sắc", "Đế", "Số lượng", "Giá bán", "BarCode"
+                "STT", "Tên SP", "Loại SP", "Hãng", "Chất liệu", "Kích cỡ", "Màu sắc", "Đế", "Số lượng", "Giá bán", "BarCode"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tableSanPham);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txttimkiem.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txttimkiemCaretUpdate(evt);
+            }
+        });
+        txttimkiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txttimkiemActionPerformed(evt);
             }
         });
 
@@ -187,15 +240,14 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(33, 33, 33)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(27, 27, 27)
+                        .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 573, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -205,7 +257,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13))
         );
@@ -270,20 +322,20 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 240, 160, -1));
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton3.setText("jButton3");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 280, 117, 28));
+        jButton3.setText("Tạo Hóa Đơn");
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 300, 117, 30));
 
         jButton4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton4.setText("jButton3");
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 280, 117, 34));
+        jButton4.setText("Chờ Thanh Toán");
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 300, 117, 34));
 
         jButton5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton5.setText("jButton3");
-        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 320, 117, 34));
+        jButton5.setText("Thanh Toán");
+        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 340, 117, 34));
 
         jButton6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton6.setText("jButton3");
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 320, 117, 34));
+        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 340, 117, 34));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -301,13 +353,18 @@ public class Menu2 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txttimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimkiemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txttimkiemActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txttimkiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txttimkiemCaretUpdate
+        // TODO add your handling code here:
+        Findten(txttimkiem.getText());
+    }//GEN-LAST:event_txttimkiemCaretUpdate
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -335,9 +392,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -345,5 +400,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTable tableSanPham;
+    private javax.swing.JTextField txttimkiem;
     // End of variables declaration//GEN-END:variables
 }
