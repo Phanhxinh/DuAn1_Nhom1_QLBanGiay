@@ -495,7 +495,7 @@ public class QuanLy extends javax.swing.JFrame {
 
     private void menu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu2MouseClicked
         // TODO add your handling code here:
-        BanHang mn2 = new BanHang();
+        Menu2 mn2 = new Menu2();
         jDesktopPanel.removeAll();
         jDesktopPanel.add(mn2).setVisible(true);
     }//GEN-LAST:event_menu2MouseClicked
