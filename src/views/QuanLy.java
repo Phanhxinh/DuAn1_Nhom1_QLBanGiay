@@ -21,8 +21,8 @@ public class QuanLy extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
 
-        DefaultColor = new Color(113, 89, 61);
-        ClickeColor = new Color(94, 94, 101);
+        DefaultColor = new Color(246, 168, 193);
+        ClickeColor = new Color(200,187,240);
 
         menu1.setBackground(DefaultColor);
         menu2.setBackground(DefaultColor);
@@ -32,7 +32,8 @@ public class QuanLy extends javax.swing.JFrame {
         menu6.setBackground(DefaultColor);
         menu7.setBackground(DefaultColor);
         menu8.setBackground(DefaultColor);
-        
+        menu9.setBackground(DefaultColor);
+
         Menu1 mn1 = new Menu1();
         jDesktopPanel.removeAll();
         jDesktopPanel.add(mn1).setVisible(true);
@@ -48,8 +49,8 @@ public class QuanLy extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         menu1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -68,6 +69,9 @@ public class QuanLy extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         menu8 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        menu9 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -75,21 +79,23 @@ public class QuanLy extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/close (1).png"))); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Mai Hoàng Phương Anh - Quản lý");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, -1, -1));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/close (2).png"))); // NOI18N
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 20, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/QLGiay (1).jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1080, 150));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logo-giay(32) (1).jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 150));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 180));
 
-        menu1.setBackground(new java.awt.Color(113, 89, 61));
+        menu1.setBackground(new java.awt.Color(246, 168, 193));
         menu1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
         menu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -119,7 +125,7 @@ public class QuanLy extends javax.swing.JFrame {
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
         );
 
-        jPanel1.add(menu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 190, 60));
+        jPanel1.add(menu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 190, 60));
 
         jDesktopPanel.setBackground(new java.awt.Color(255, 255, 255));
         jDesktopPanel.setPreferredSize(new java.awt.Dimension(1100, 690));
@@ -135,9 +141,9 @@ public class QuanLy extends javax.swing.JFrame {
             .addGap(0, 630, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jDesktopPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 1080, 630));
+        jPanel1.add(jDesktopPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 1080, 630));
 
-        menu2.setBackground(new java.awt.Color(113, 89, 61));
+        menu2.setBackground(new java.awt.Color(246, 168, 193));
         menu2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
         menu2.setPreferredSize(new java.awt.Dimension(190, 60));
         menu2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,9 +174,9 @@ public class QuanLy extends javax.swing.JFrame {
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
         );
 
-        jPanel1.add(menu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
+        jPanel1.add(menu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, -1, -1));
 
-        menu3.setBackground(new java.awt.Color(113, 89, 61));
+        menu3.setBackground(new java.awt.Color(246, 168, 193));
         menu3.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
         menu3.setPreferredSize(new java.awt.Dimension(190, 60));
         menu3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,9 +207,9 @@ public class QuanLy extends javax.swing.JFrame {
             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
         );
 
-        jPanel1.add(menu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, -1, -1));
+        jPanel1.add(menu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
 
-        menu4.setBackground(new java.awt.Color(113, 89, 61));
+        menu4.setBackground(new java.awt.Color(246, 168, 193));
         menu4.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
         menu4.setPreferredSize(new java.awt.Dimension(190, 60));
         menu4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -234,9 +240,9 @@ public class QuanLy extends javax.swing.JFrame {
             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
         );
 
-        jPanel1.add(menu4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, -1, -1));
+        jPanel1.add(menu4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, -1, -1));
 
-        menu5.setBackground(new java.awt.Color(113, 89, 61));
+        menu5.setBackground(new java.awt.Color(246, 168, 193));
         menu5.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
         menu5.setPreferredSize(new java.awt.Dimension(190, 60));
         menu5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -270,9 +276,9 @@ public class QuanLy extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(menu5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, -1, -1));
+        jPanel1.add(menu5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, -1, -1));
 
-        menu6.setBackground(new java.awt.Color(113, 89, 61));
+        menu6.setBackground(new java.awt.Color(246, 168, 193));
         menu6.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
         menu6.setPreferredSize(new java.awt.Dimension(190, 60));
         menu6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -306,9 +312,9 @@ public class QuanLy extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(menu6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, -1, -1));
+        jPanel1.add(menu6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, -1, -1));
 
-        menu7.setBackground(new java.awt.Color(113, 89, 61));
+        menu7.setBackground(new java.awt.Color(246, 168, 193));
         menu7.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
         menu7.setForeground(new java.awt.Color(255, 255, 255));
         menu7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -339,9 +345,9 @@ public class QuanLy extends javax.swing.JFrame {
             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel1.add(menu7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 190, -1));
+        jPanel1.add(menu7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 190, -1));
 
-        menu8.setBackground(new java.awt.Color(113, 89, 61));
+        menu8.setBackground(new java.awt.Color(246, 168, 193));
         menu8.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
         menu8.setForeground(new java.awt.Color(255, 255, 255));
         menu8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -355,24 +361,60 @@ public class QuanLy extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logout.png"))); // NOI18N
-        jLabel11.setText(" Đăng Xuất");
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/customer.png"))); // NOI18N
+        jLabel11.setText(" Khách hàng");
 
         javax.swing.GroupLayout menu8Layout = new javax.swing.GroupLayout(menu8);
         menu8.setLayout(menu8Layout);
         menu8Layout.setHorizontalGroup(
             menu8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu8Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         menu8Layout.setVerticalGroup(
             menu8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel1.add(menu8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 660, 190, -1));
+        jPanel1.add(menu8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 190, -1));
+
+        menu9.setBackground(new java.awt.Color(246, 168, 193));
+        menu9.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
+        menu9.setForeground(new java.awt.Color(255, 255, 255));
+        menu9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu9MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menu9MousePressed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logout.png"))); // NOI18N
+        jLabel12.setText(" Đăng Xuất");
+
+        javax.swing.GroupLayout menu9Layout = new javax.swing.GroupLayout(menu9);
+        menu9.setLayout(menu9Layout);
+        menu9Layout.setHorizontalGroup(
+            menu9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menu9Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel12)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        menu9Layout.setVerticalGroup(
+            menu9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(menu9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, -1, -1));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Screenshot 2022-11-14 192103 (1).png"))); // NOI18N
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, -30, -1, 210));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -400,6 +442,7 @@ public class QuanLy extends javax.swing.JFrame {
         menu6.setBackground(DefaultColor);
         menu7.setBackground(DefaultColor);
         menu8.setBackground(DefaultColor);
+        menu9.setBackground(DefaultColor);
 
     }//GEN-LAST:event_menu1MousePressed
 
@@ -413,6 +456,7 @@ public class QuanLy extends javax.swing.JFrame {
         menu6.setBackground(DefaultColor);
         menu7.setBackground(DefaultColor);
         menu8.setBackground(DefaultColor);
+        menu9.setBackground(DefaultColor);
 
     }//GEN-LAST:event_menu2MousePressed
 
@@ -426,6 +470,7 @@ public class QuanLy extends javax.swing.JFrame {
         menu6.setBackground(DefaultColor);
         menu7.setBackground(DefaultColor);
         menu8.setBackground(DefaultColor);
+        menu9.setBackground(DefaultColor);
 
     }//GEN-LAST:event_menu3MousePressed
 
@@ -439,6 +484,7 @@ public class QuanLy extends javax.swing.JFrame {
         menu6.setBackground(DefaultColor);
         menu7.setBackground(DefaultColor);
         menu8.setBackground(DefaultColor);
+        menu9.setBackground(DefaultColor);
 
     }//GEN-LAST:event_menu4MousePressed
 
@@ -452,6 +498,7 @@ public class QuanLy extends javax.swing.JFrame {
         menu6.setBackground(DefaultColor);
         menu7.setBackground(DefaultColor);
         menu8.setBackground(DefaultColor);
+        menu9.setBackground(DefaultColor);
 
     }//GEN-LAST:event_menu5MousePressed
 
@@ -465,6 +512,7 @@ public class QuanLy extends javax.swing.JFrame {
         menu6.setBackground(ClickeColor);
         menu7.setBackground(DefaultColor);
         menu8.setBackground(DefaultColor);
+        menu9.setBackground(DefaultColor);
 
     }//GEN-LAST:event_menu6MousePressed
 
@@ -478,6 +526,7 @@ public class QuanLy extends javax.swing.JFrame {
         menu6.setBackground(DefaultColor);
         menu7.setBackground(ClickeColor);
         menu8.setBackground(DefaultColor);
+        menu9.setBackground(DefaultColor);
 
     }//GEN-LAST:event_menu7MousePressed
 
@@ -537,7 +586,9 @@ public class QuanLy extends javax.swing.JFrame {
 
     private void menu8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu8MouseClicked
         // TODO add your handling code here:
-
+        Menu8 mn8 = new Menu8();
+        jDesktopPanel.removeAll();
+        jDesktopPanel.add(mn8).setVisible(true);
     }//GEN-LAST:event_menu8MouseClicked
 
     private void menu8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu8MousePressed
@@ -550,8 +601,29 @@ public class QuanLy extends javax.swing.JFrame {
         menu6.setBackground(DefaultColor);
         menu7.setBackground(DefaultColor);
         menu8.setBackground(ClickeColor);
+        menu9.setBackground(DefaultColor);
 
     }//GEN-LAST:event_menu8MousePressed
+
+    private void menu9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu9MouseClicked
+        // TODO add your handling code here:
+        Menu9 mn9 = new Menu9();
+        jDesktopPanel.removeAll();
+        jDesktopPanel.add(mn9).setVisible(true);
+    }//GEN-LAST:event_menu9MouseClicked
+
+    private void menu9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu9MousePressed
+        menu1.setBackground(DefaultColor);
+        menu2.setBackground(DefaultColor);
+        menu3.setBackground(DefaultColor);
+        menu4.setBackground(DefaultColor);
+        menu5.setBackground(DefaultColor);
+        menu6.setBackground(DefaultColor);
+        menu7.setBackground(DefaultColor);
+        menu8.setBackground(DefaultColor);
+        menu9.setBackground(ClickeColor);
+
+    }//GEN-LAST:event_menu9MousePressed
 
     /**
      * @param args the command line arguments
@@ -593,6 +665,8 @@ public class QuanLy extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -610,5 +684,6 @@ public class QuanLy extends javax.swing.JFrame {
     private javax.swing.JPanel menu6;
     private javax.swing.JPanel menu7;
     private javax.swing.JPanel menu8;
+    private javax.swing.JPanel menu9;
     // End of variables declaration//GEN-END:variables
 }
