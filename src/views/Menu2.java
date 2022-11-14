@@ -4,8 +4,13 @@
  */
 package views;
 
-
+import DomainModel.GioHang_BanHangModel;
+import DomainModel.SanPham_BanhangModel;
+import ITFService.BanHangITF;
+import ServiceIML.BanHangIML;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,15 +18,65 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  */
 public class Menu2 extends javax.swing.JInternalFrame {
 
+    public BanHangITF banHangITF = new BanHangIML();
+    public DefaultTableModel bang;
+
     /**
      * Creates new form Menu1
      */
     public Menu2() {
         initComponents();
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
-        
+        LoadTableSanPham();
+    }
+
+    private void LoadTableSanPham() {
+        DefaultTableModel bang = (DefaultTableModel) tableSanPham.getModel();
+        bang.setRowCount(0);
+        int stt = 1;
+        for (SanPham_BanhangModel sp : banHangITF.getall()) {
+            bang.addRow(new Object[]{stt++,
+                sp.getTenSP(),
+                sp.getLoaiSP(),
+                sp.getHang(),
+                sp.getChatLieu(),
+                sp.getKichCo(),
+                sp.getMauSac(),
+                sp.getDe(),
+                sp.getSoLuong(),
+                sp.getGiaBan(),
+                sp.getBarcode()});
+        }
+    }
+
+    private void Findten(String ten) {
+        DefaultTableModel bang = (DefaultTableModel) tableSanPham.getModel();
+        bang.setRowCount(0);
+        int stt = 1;
+        for (SanPham_BanhangModel sp : banHangITF.FindTen(ten)) {
+            bang.addRow(new Object[]{stt++,
+                sp.getTenSP(),
+                sp.getLoaiSP(),
+                sp.getHang(),
+                sp.getChatLieu(),
+                sp.getKichCo(),
+                sp.getMauSac(),
+                sp.getDe(),
+                sp.getSoLuong(),
+                sp.getGiaBan(),
+                sp.getBarcode()});
+        }
+    }
+
+    private void LoadTableGioHang(int soLuong) {
+        bang = (DefaultTableModel) tableGioHang.getModel();
+        int row = tableSanPham.getSelectedRow();
+        String tenSP = tableSanPham.getValueAt(row, 1).toString();
+        for (GioHang_BanHangModel gh : banHangITF.getAllGioHang(tenSP, null)) {
+            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getLoaiSP(), soLuong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soLuong});
+        }
     }
 
     /**
@@ -41,12 +96,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableGioHang = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnthemsanpham = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        tableSanPham = new javax.swing.JTable();
+        txttimkiem = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -121,7 +176,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
         jButton2.setText("Xóa");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableGioHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -129,7 +184,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 "STT", "Mã SP", "Tên SP", "Số  lượng", "Đơn giá", "Thành tiền"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableGioHang);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -159,14 +214,14 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
         jPanel6.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setText("Thêm sản phẩm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnthemsanpham.setText("Thêm sản phẩm");
+        btnthemsanpham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnthemsanphamActionPerformed(evt);
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tableSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -174,11 +229,16 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 "Mã SP", "Tên SP", "Loại SP", "Hãng", "Chất liệu", "Kích cỡ", "Màu sắc", "Đế", "Số lượng", "Giá bán", "BarCode"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tableSanPham);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txttimkiem.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txttimkiemCaretUpdate(evt);
+            }
+        });
+        txttimkiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txttimkiemActionPerformed(evt);
             }
         });
 
@@ -192,9 +252,9 @@ public class Menu2 extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane2))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnthemsanpham)
                         .addGap(33, 33, 33)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -205,8 +265,8 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnthemsanpham, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13))
         );
 
@@ -301,17 +361,38 @@ public class Menu2 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txttimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimkiemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txttimkiemActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnthemsanphamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemsanphamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        int Line = tableGioHang.getRowCount();
+        int row = tableSanPham.getSelectedRow();
+        String tenSP = tableSanPham.getValueAt(row, 1).toString();
+        String soluong = JOptionPane.showInputDialog(this, "Mời bạn nhập số lượng sản phẩm");
+        int sl = Integer.parseInt(soluong);
+        for (int i = 0; i < Line; i++) {
+            if (tableGioHang.getValueAt(i, 1).equals(tenSP)) {
+                int quanCu = (int) tableGioHang.getValueAt(i, 3);
+                int quanMoi = sl;
+                int quanCuVaMoi = quanCu + quanMoi;
+                sl = quanCuVaMoi;
+                bang.removeRow(i);
+                break;
+            }
+        }
+        LoadTableGioHang(sl);
+    }//GEN-LAST:event_btnthemsanphamActionPerformed
+
+    private void txttimkiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txttimkiemCaretUpdate
+        // TODO add your handling code here:
+        Findten(txttimkiem.getText());
+    }//GEN-LAST:event_txttimkiemCaretUpdate
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnthemsanpham;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -334,10 +415,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -345,5 +423,8 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTable tableGioHang;
+    private javax.swing.JTable tableSanPham;
+    private javax.swing.JTextField txttimkiem;
     // End of variables declaration//GEN-END:variables
 }
