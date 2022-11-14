@@ -8,6 +8,20 @@ import DomainModel.GioHang_BanHangModel;
 import DomainModel.SanPham_BanhangModel;
 import ITFService.BanHangITF;
 import ServiceIML.BanHangIML;
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamPanel;
+import com.github.sarxos.webcam.WebcamResolution;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
@@ -16,11 +30,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author DELL
  */
-public class Menu2 extends javax.swing.JInternalFrame {
+public class Menu2 extends javax.swing.JInternalFrame implements Runnable, ThreadFactory{
 
     public BanHangITF banHangITF = new BanHangIML();
     public DefaultTableModel bang;
-
+    private Executor executor = Executors.newSingleThreadExecutor(this);
+    private WebcamPanel pannel = null;
+    public static Webcam webcam = null;
     /**
      * Creates new form Menu1
      */
@@ -30,6 +46,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         LoadTableSanPham();
+        initWebcam();
     }
 
     private void LoadTableSanPham() {
@@ -79,6 +96,85 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
     }
 
+    
+        private void initWebcam() {
+        Dimension size = WebcamResolution.QVGA.getSize();
+        webcam = Webcam.getWebcams().get(0); //0 is default webcam
+        webcam.setViewSize(size);
+
+        pannel = new WebcamPanel(webcam);
+        pannel.setPreferredSize(size);
+        pannel.setFPSDisplayed(true);
+
+        cam.add(pannel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 150));
+        executor.execute(this);
+    }
+
+    @Override
+    public void run() {
+        try {
+            do {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                Result result = null;
+                BufferedImage image = null;
+
+                if (webcam.isOpen()) {
+                    if ((image = webcam.getImage()) == null) {
+                        continue;
+                    }
+                }
+
+                LuminanceSource source = new BufferedImageLuminanceSource(image);
+                BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+
+                try {
+                    result = new MultiFormatReader().decode(bitmap);
+                } catch (Exception e) {
+
+                }
+
+                if (result != null) {
+                    String ketqua = result.getText();
+                    String soluong = JOptionPane.showInputDialog(this, "Mời bạn nhập số lượng sản phẩm");
+                    int khosoluong = Integer.parseInt(soluong);
+//                    int Line = tableGioHang.getRowCount();
+//                    int row =tableSanPham.getSelectedRow();
+//                    String tenSP = tableSanPham.getValueAt(row, 1).toString();
+//                    for (int i = 0; i < Line; i++) {
+//                        if (tableGioHang.getValueAt(i, 1).equals(tenSP)) {
+//                            int quanCu = (int) tableGioHang.getValueAt(i, 3);
+//                            int quanMoi = khosoluong;
+//                            int quanCuVaMoi = quanCu + quanMoi;
+//                            khosoluong = quanCuVaMoi;
+////                soLuong.setValue(quanCuVaMoi);
+//                            bang.removeRow(i);
+//                            break;
+//                        }
+//                    }
+                    int soluongcuoi = khosoluong;
+                    bang = (DefaultTableModel) tableGioHang.getModel();
+                    banHangITF.getAllGioHang(null, ketqua).forEach(gh -> {
+                        bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getLoaiSP(), soluongcuoi, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soluongcuoi});
+                    });
+
+                }
+            } while (true);
+        } catch (Exception e) {
+
+        }
+    }
+
+    @Override
+    public Thread newThread(Runnable r) {
+        Thread t = new Thread(r, "My Thread");
+        t.setDaemon(true);
+        return t;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -122,6 +218,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        cam = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(0, 0));
@@ -345,6 +442,9 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jButton6.setText("jButton3");
         jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 320, 117, 34));
 
+        cam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(cam, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 230, 170));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -393,6 +493,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnthemsanpham;
+    private javax.swing.JPanel cam;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
