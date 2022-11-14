@@ -4,12 +4,10 @@
  */
 package Service;
 
+import DomainModel.GioHang_BanHangModel;
 import DomainModel.SanPham_BanhangModel;
 import ITFService.BanHangITF;
 import Repositories.BanHangRepo;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Connection;
 import java.util.ArrayList;
 
 /**
@@ -28,6 +26,12 @@ public class BanHangIML implements BanHangITF {
     @Override
     public ArrayList<SanPham_BanhangModel> FindTen(String ten) {
         return banHangRepo.FindTen(ten);
+    }
+
+    @Override
+    public ArrayList<GioHang_BanHangModel> getAllGioHang(String ten,String barcode) {
+        return banHangRepo.getAllGioHang(ten,barcode);
+        
     }
 
 }

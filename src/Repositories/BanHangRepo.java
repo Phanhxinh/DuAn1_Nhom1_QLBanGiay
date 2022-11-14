@@ -5,6 +5,7 @@
 package Repositories;
 
 import DomainModel.SanPham_BanhangModel;
+import DomainModel.GioHang_BanHangModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
  */
 public class BanHangRepo {
 
+//    đẩy dữ liệu lên view sản phẩm
     public ArrayList<SanPham_BanhangModel> getall() {
         ArrayList list = new ArrayList<SanPham_BanhangModel>();
         try {
@@ -51,6 +53,7 @@ public class BanHangRepo {
         return list;
     }
 
+//     tìm kiếm sản phẩm 
     public ArrayList<SanPham_BanhangModel> FindTen(String ten) {
         ArrayList list = new ArrayList<SanPham_BanhangModel>();
         try {
@@ -86,4 +89,29 @@ public class BanHangRepo {
         }
         return list;
     }
+
+    public ArrayList<GioHang_BanHangModel> getAllGioHang(String ten, String barcode) {
+        ArrayList list = new ArrayList<SanPham_BanhangModel>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select b.TenSP,c.TenTL,a.GiaBan from ChiTietSP a "
+                    + "join SanPham b on a.IdSanPham=b.Id "
+                    + "join TheLoai c on a.IdLoaiSP=c.Id where TenSP=? or a.BarCode=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, ten);
+            ps.setString(2, barcode);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String tenSp = rs.getString("TenSP");
+                String tenTL = rs.getString("TenTL");
+                String giaBan = rs.getString("GiaBan");
+                GioHang_BanHangModel ghbhm = new GioHang_BanHangModel(tenSp, tenTL, 0, giaBan, null);
+                list.add(ghbhm);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 }
