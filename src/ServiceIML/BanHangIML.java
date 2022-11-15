@@ -5,6 +5,7 @@
 package ServiceIML;
 
 import DomainModel.GioHang_BanHangModel;
+import DomainModel.HoaDonModel;
 import DomainModel.HoaDon_BanHangModel;
 import DomainModel.SanPham_BanhangModel;
 import ITFService.BanHangITF;
@@ -48,5 +49,40 @@ public class BanHangIML implements BanHangITF {
     public ArrayList<HoaDon_BanHangModel> getHoaDonDangCho() {
         return banHangRepo.getHoaDonDangCho();
     }
+
+    public void insertHoaDon(String IdKH, String IdNV, String IdKM, String MaHD, int TrangThai) {
+        banHangRepo.insertHoaDon(IdKH, IdNV, IdKM, MaHD, TrangThai);
+    }
+
+    @Override
+    public ArrayList<HoaDon_BanHangModel> getHoaDonDangChoThanhToan() {
+        return banHangRepo.getHoaDonDangChoThanhToan();
+    }
+
+    @Override
+    public void insertHoaDonChiTiet(String IdHoaDon, String IdChiTietSP, String IdKM, int SoLuong, String DoGia) {
+        banHangRepo.insertHoaDonChiTiet(IdHoaDon, IdChiTietSP, IdKM, SoLuong, DoGia);
+    }
+
+    @Override
+    public ArrayList<SanPham_BanhangModel> TenSPToId(String TenSP) {
+        return banHangRepo.TenSPToId(TenSP);
+    }
+
+    @Override
+    public ArrayList<HoaDonModel> MaHDToIdHD(String MaHD) {
+        return banHangRepo.MaHDToIdHD(MaHD);
+    }
+
+    @Override
+    public void updateSoLuongSanPham(int soluong, String id) {
+        banHangRepo.updateSoLuongSanPham(soluong, id);
+    }
+
+    @Override
+    public void updateTrangThaiHoaDon(int TrangThai, String MaHD) {
+        banHangRepo.updateTrangThaiHoaDon(TrangThai, MaHD);
+    }
+    
 
 }

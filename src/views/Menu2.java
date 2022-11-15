@@ -5,6 +5,7 @@
 package views;
 
 import DomainModel.GioHang_BanHangModel;
+import DomainModel.HoaDonModel;
 import DomainModel.HoaDon_BanHangModel;
 import DomainModel.SanPham_BanhangModel;
 import ITFService.BanHangITF;
@@ -107,7 +108,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         bang = (DefaultTableModel) tableHoaDon.getModel();
         bang.setRowCount(0);
         for (HoaDon_BanHangModel hd : banHangITF.getAllHoaDon()) {
-            bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.getTrangThai() == 0 ? "Đã thanh toán" : "Đang chờ", hd.getNgayTao()});
+            bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
         }
     }
 
@@ -115,7 +116,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         bang = (DefaultTableModel) tableHoaDon.getModel();
         bang.setRowCount(0);
         for (HoaDon_BanHangModel hd : banHangITF.getHoaDonThanhToan()) {
-            bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.getTrangThai() == 0 ? "Đã thanh toán" : "Đang chờ", hd.getNgayTao()});
+            bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
         }
     }
 
@@ -123,7 +124,15 @@ public class Menu2 extends javax.swing.JInternalFrame {
         bang = (DefaultTableModel) tableHoaDon.getModel();
         bang.setRowCount(0);
         for (HoaDon_BanHangModel hd : banHangITF.getHoaDonDangCho()) {
-            bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.getTrangThai() == 0 ? "Đã thanh toán" : "Đang chờ", hd.getNgayTao()});
+            bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
+        }
+    }
+
+    private void LoadTableHoaDonDangChoThanhToan() {
+        bang = (DefaultTableModel) tableHoaDon.getModel();
+        bang.setRowCount(0);
+        for (HoaDon_BanHangModel hd : banHangITF.getHoaDonDangChoThanhToan()) {
+            bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
         }
     }
 
@@ -135,6 +144,27 @@ public class Menu2 extends javax.swing.JInternalFrame {
             tongtien += tien;
         }
         txttongtien.setText(formatter.format(tongtien));
+    }
+
+    private void InsertHoaDonChiTiet() {
+        int row = tableGioHang.getRowCount();
+        for (int i = 0; i < row; i++) {
+            String TenSP = tableGioHang.getValueAt(i, 1).toString();
+            String MaHD = txtmaHoaDon.getText();
+            String idChiTietSP = "";
+            String idHoaDon = "";
+            for (SanPham_BanhangModel sanPham_BanhangModel : banHangITF.TenSPToId(TenSP)) {
+                idChiTietSP += sanPham_BanhangModel;
+            }
+            for (HoaDonModel hoaDonModel : banHangITF.MaHDToIdHD(MaHD)) {
+                idHoaDon += hoaDonModel;
+            }
+
+            String soLuong = tableGioHang.getValueAt(i, 3).toString();
+            String donGia = tableGioHang.getValueAt(i, 5).toString();
+            banHangITF.insertHoaDonChiTiet(idHoaDon, idChiTietSP, null, Integer.parseInt(soLuong), donGia);
+            banHangITF.updateSoLuongSanPham(Integer.parseInt(soLuong), idChiTietSP);
+        }
     }
 
 //        private void initWebcam() {
@@ -182,20 +212,20 @@ public class Menu2 extends javax.swing.JInternalFrame {
 //                    String ketqua = result.getText();
 //                    String soluong = JOptionPane.showInputDialog(this, "Mời bạn nhập số lượng sản phẩm");
 //                    int khosoluong = Integer.parseInt(soluong);
-//                    int Line = tableGioHang.getRowCount();
-//                    int row =tableSanPham.getSelectedRow();
-//                    String tenSP = tableSanPham.getValueAt(row, 1).toString();
-//                    for (int i = 0; i < Line; i++) {
-//                        if (tableGioHang.getValueAt(i, 1).equals(tenSP)) {
-//                            int quanCu = (int) tableGioHang.getValueAt(i, 3);
-//                            int quanMoi = khosoluong;
-//                            int quanCuVaMoi = quanCu + quanMoi;
-//                            khosoluong = quanCuVaMoi;
-////                soLuong.setValue(quanCuVaMoi);
-//                            bang.removeRow(i);
-//                            break;
-//                        }
-//                    }
+////                    int Line = tableGioHang.getRowCount();
+////                    int row =tableSanPham.getSelectedRow();
+////                    String tenSP = tableSanPham.getValueAt(row, 1).toString();
+////                    for (int i = 0; i < Line; i++) {
+////                        if (tableGioHang.getValueAt(i, 1).equals(tenSP)) {
+////                            int quanCu = (int) tableGioHang.getValueAt(i, 3);
+////                            int quanMoi = khosoluong;
+////                            int quanCuVaMoi = quanCu + quanMoi;
+////                            khosoluong = quanCuVaMoi;
+//////                soLuong.setValue(quanCuVaMoi);
+////                            bang.removeRow(i);
+////                            break;
+////                        }
+////                    }
 //                    int soluongcuoi = khosoluong;
 //                    bang = (DefaultTableModel) tableGioHang.getModel();
 //                    banHangITF.getAllGioHang(null, ketqua).forEach(gh -> {
@@ -255,10 +285,13 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txttienkhachdua = new javax.swing.JTextField();
         txttienthua = new javax.swing.JTextField();
         btnthanhtoan = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnTaoHoaDon = new javax.swing.JButton();
+        btnChoThanhToan = new javax.swing.JButton();
         cam = new javax.swing.JPanel();
         lblthongbao = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(0, 0));
@@ -273,7 +306,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
 
-        CbbHoaDon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Hoàn thành", "Đang chờ" }));
+        CbbHoaDon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Đã thanh toán", "Đang chờ", "Chờ thanh toán" }));
         CbbHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CbbHoaDonActionPerformed(evt);
@@ -288,6 +321,11 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 "STT", "Mã HD", "Tên NV", "Trạng thái", "Ngày tạo"
             }
         ));
+        tableHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableHoaDonMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tableHoaDon);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -323,7 +361,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "STT", "Mã SP", "Tên SP", "Số  lượng", "Đơn giá", "Thành tiền"
+                "STT", "Tên SP", "Loại SP", "Số  lượng", "Đơn giá", "Thành tiền"
             }
         ));
         jScrollPane1.setViewportView(tableGioHang);
@@ -389,15 +427,14 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(btnthemsanpham)
-                        .addGap(33, 33, 33)
+                        .addGap(27, 27, 27)
                         .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 564, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -483,20 +520,25 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
         btnthanhtoan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnthanhtoan.setText("Thanh Toán");
-        jPanel2.add(btnthanhtoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 300, 140, 60));
-
-        jButton4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton4.setText("Tạo hóa đơn");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnthanhtoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnthanhtoanActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 284, 130, 40));
+        jPanel2.add(btnthanhtoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 310, 140, 60));
 
-        jButton6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton6.setText("Chờ thanh toán");
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 330, 130, 40));
+        btnTaoHoaDon.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnTaoHoaDon.setText("Tạo hóa đơn");
+        btnTaoHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaoHoaDonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnTaoHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 130, 30));
+
+        btnChoThanhToan.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnChoThanhToan.setText("Chờ thanh toán");
+        jPanel2.add(btnChoThanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 130, 30));
 
         cam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel2.add(cam, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 230, 170));
@@ -504,6 +546,14 @@ public class Menu2 extends javax.swing.JInternalFrame {
         lblthongbao.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblthongbao.setForeground(new java.awt.Color(255, 0, 51));
         jPanel2.add(lblthongbao, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 210, 240, 30));
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel9.setText("Khách hàng: ");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, -1, -1));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 280, 120, -1));
+
+        jButton1.setText("+");
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 280, 40, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -551,7 +601,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         Findten(txttimkiem.getText());
     }//GEN-LAST:event_txttimkiemCaretUpdate
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
         // TODO add your handling code here:
         int count = 0;
         count = tableHoaDon.getRowCount();
@@ -569,7 +619,11 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
 
         String MaHD = txtmaHoaDon.getText();
-    }//GEN-LAST:event_jButton4ActionPerformed
+        int TrangThai = 1;
+        banHangITF.insertHoaDon("e058575d-33a1-409a-802f-898adc64141a", "57e6a715-9460-4f03-95cd-d66fd7fa5ae9", null, MaHD, TrangThai);
+        this.LoadTableHoaDon();
+        JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công.");
+    }//GEN-LAST:event_btnTaoHoaDonActionPerformed
 
     private void CbbHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbbHoaDonActionPerformed
         // TODO add your handling code here:
@@ -579,6 +633,8 @@ public class Menu2 extends javax.swing.JInternalFrame {
             LoadTableHoaDonThanhToan();
         } else if (CbbHoaDon.getSelectedIndex() == 2) {
             LoadTableHoaDonDangCho();
+        } else if (CbbHoaDon.getSelectedIndex() == 3) {
+            LoadTableHoaDonDangChoThanhToan();
         }
     }//GEN-LAST:event_CbbHoaDonActionPerformed
 
@@ -617,15 +673,33 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txttienkhachduaCaretUpdate
 
+    private void btnthanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthanhtoanActionPerformed
+        // TODO add your handling code here:
+        String maHd = txtmaHoaDon.getText();
+        int TrangThai = 0;
+        banHangITF.updateTrangThaiHoaDon(TrangThai, maHd);
+        InsertHoaDonChiTiet();
+        LoadTableHoaDon();
+        LoadTableSanPham();
+        JOptionPane.showMessageDialog(this, "Thanh toán thành công.");
+    }//GEN-LAST:event_btnthanhtoanActionPerformed
+
+    private void tableHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHoaDonMouseClicked
+        // TODO add your handling code here:
+        int row=tableHoaDon.getSelectedRow();
+        txtmaHoaDon.setText(tableHoaDon.getValueAt(row, 1).toString());
+    }//GEN-LAST:event_tableHoaDonMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CbbHoaDon;
+    private javax.swing.JButton btnChoThanhToan;
+    private javax.swing.JButton btnTaoHoaDon;
     private javax.swing.JButton btnthanhtoan;
     private javax.swing.JButton btnthemsanpham;
     private javax.swing.JPanel cam;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -635,6 +709,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -642,6 +717,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel lblthongbao;
