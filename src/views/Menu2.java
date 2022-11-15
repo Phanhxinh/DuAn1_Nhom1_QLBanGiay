@@ -57,6 +57,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     }
 
     //Đã sửa menu2
+    //Sửa tiếp
     private void LoadTableSanPham() {
         DefaultTableModel bang = (DefaultTableModel) tableSanPham.getModel();
         bang.setRowCount(0);
