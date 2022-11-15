@@ -6,6 +6,7 @@ package Repositories;
 
 import DomainModel.SanPham_BanhangModel;
 import DomainModel.GioHang_BanHangModel;
+import DomainModel.HoaDon_BanHangModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -89,6 +90,7 @@ public class BanHangRepo {
         }
         return list;
     }
+//Thêm sản phẩm vào giỏ hàng
 
     public ArrayList<GioHang_BanHangModel> getAllGioHang(String ten, String barcode) {
         ArrayList list = new ArrayList<SanPham_BanhangModel>();
@@ -114,4 +116,66 @@ public class BanHangRepo {
         return list;
     }
 
+    public ArrayList<HoaDon_BanHangModel> getAllHoaDon() {
+        ArrayList list = new ArrayList<HoaDon_BanHangModel>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select a.MaHD,b.TenNV,a.TrangThai,a.NgayTao from HoaDon a join NhanVien b on a.IdNV=b.Id order by a.MaHD asc";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String mahd = rs.getString("MaHD");
+                String tennv = rs.getString("TenNV");
+                int trangthai = rs.getInt("TrangThai");
+                String ngaytao = rs.getString("NgayTao");
+                HoaDon_BanHangModel hdbhm = new HoaDon_BanHangModel(mahd, tennv, trangthai, ngaytao);
+                list.add(hdbhm);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public ArrayList<HoaDon_BanHangModel> getHoaDonThanhToan() {
+        ArrayList list = new ArrayList<HoaDon_BanHangModel>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select a.MaHD,b.TenNV,a.TrangThai,a.NgayTao from HoaDon a join NhanVien b on a.IdNV=b.Id where a.TrangThai=0 order by a.MaHD asc ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String mahd = rs.getString("MaHD");
+                String tennv = rs.getString("TenNV");
+                int trangthai = rs.getInt("TrangThai");
+                String ngaytao = rs.getString("NgayTao");
+                HoaDon_BanHangModel hdbhm = new HoaDon_BanHangModel(mahd, tennv, trangthai, ngaytao);
+                list.add(hdbhm);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public ArrayList<HoaDon_BanHangModel> getHoaDonDangCho() {
+        ArrayList list = new ArrayList<HoaDon_BanHangModel>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select a.MaHD,b.TenNV,a.TrangThai,a.NgayTao from HoaDon a join NhanVien b on a.IdNV=b.Id where a.TrangThai=1 order by a.MaHD asc ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String mahd = rs.getString("MaHD");
+                String tennv = rs.getString("TenNV");
+                int trangthai = rs.getInt("TrangThai");
+                String ngaytao = rs.getString("NgayTao");
+                HoaDon_BanHangModel hdbhm = new HoaDon_BanHangModel(mahd, tennv, trangthai, ngaytao);
+                list.add(hdbhm);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
