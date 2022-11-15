@@ -90,7 +90,6 @@ public class BanHangRepo {
         }
         return list;
     }
-//Thêm sản phẩm vào giỏ hàng
 
     public ArrayList<GioHang_BanHangModel> getAllGioHang(String ten, String barcode) {
         ArrayList list = new ArrayList<SanPham_BanhangModel>();
@@ -115,7 +114,8 @@ public class BanHangRepo {
         }
         return list;
     }
-
+    
+    //Thêm sản phẩm vào hóa đơn
     public ArrayList<HoaDon_BanHangModel> getAllHoaDon() {
         ArrayList list = new ArrayList<HoaDon_BanHangModel>();
         try {
@@ -137,6 +137,7 @@ public class BanHangRepo {
         return list;
     }
 
+    //Lọc hóa đơn thanh toán
     public ArrayList<HoaDon_BanHangModel> getHoaDonThanhToan() {
         ArrayList list = new ArrayList<HoaDon_BanHangModel>();
         try {
@@ -157,7 +158,7 @@ public class BanHangRepo {
         }
         return list;
     }
-
+// Lọc hóa đơn đang chờ
     public ArrayList<HoaDon_BanHangModel> getHoaDonDangCho() {
         ArrayList list = new ArrayList<HoaDon_BanHangModel>();
         try {
