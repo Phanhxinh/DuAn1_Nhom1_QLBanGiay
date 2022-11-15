@@ -5,6 +5,7 @@
 package ServiceIML;
 
 import DomainModel.GioHang_BanHangModel;
+import DomainModel.HoaDon_BanHangModel;
 import DomainModel.SanPham_BanhangModel;
 import ITFService.BanHangITF;
 import Repositories.BanHangRepo;
@@ -31,6 +32,21 @@ public class BanHangIML implements BanHangITF {
     @Override
     public ArrayList<GioHang_BanHangModel> getAllGioHang(String ten, String barcode) {
         return banHangRepo.getAllGioHang(ten, barcode);
+    }
+
+    @Override
+    public ArrayList<HoaDon_BanHangModel> getAllHoaDon() {
+        return banHangRepo.getAllHoaDon();
+    }
+
+    @Override
+    public ArrayList<HoaDon_BanHangModel> getHoaDonThanhToan() {
+        return banHangRepo.getHoaDonThanhToan();
+    }
+
+    @Override
+    public ArrayList<HoaDon_BanHangModel> getHoaDonDangCho() {
+        return banHangRepo.getHoaDonDangCho();
     }
 
 }

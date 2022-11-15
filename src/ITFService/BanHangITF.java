@@ -5,6 +5,7 @@
 package ITFService;
 
 import DomainModel.GioHang_BanHangModel;
+import DomainModel.HoaDon_BanHangModel;
 import DomainModel.SanPham_BanhangModel;
 import java.util.ArrayList;
 
@@ -17,6 +18,12 @@ public interface BanHangITF {
     ArrayList<SanPham_BanhangModel> getall();
 
     ArrayList<SanPham_BanhangModel> FindTen(String ten);
-    
-    ArrayList<GioHang_BanHangModel>getAllGioHang(String ten,String barcode);
+
+    ArrayList<GioHang_BanHangModel> getAllGioHang(String ten, String barcode);
+
+    ArrayList<HoaDon_BanHangModel> getAllHoaDon();
+
+    ArrayList<HoaDon_BanHangModel> getHoaDonThanhToan();
+
+    ArrayList<HoaDon_BanHangModel> getHoaDonDangCho();
 }
