@@ -56,6 +56,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
 //        initWebcam();
     }
 
+    //Đã sửa menu2
     private void LoadTableSanPham() {
         DefaultTableModel bang = (DefaultTableModel) tableSanPham.getModel();
         bang.setRowCount(0);
