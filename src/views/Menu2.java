@@ -38,14 +38,15 @@ import javax.swing.table.DefaultTableModel;
  * @author DELL
  */
 public class Menu2 extends javax.swing.JInternalFrame {
-
+    
     public BanHangITF banHangITF = new BanHangIML();
     public DefaultTableModel bang;
 //    private Executor executor = Executors.newSingleThreadExecutor(this);
     private WebcamPanel pannel = null;
     public static Webcam webcam = null;
     private NumberFormat formatter = new DecimalFormat("#,###");
-SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
+    SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
+
     /**
      * Creates new form Menu1
      */
@@ -58,9 +59,16 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
         LoadTableHoaDon();
         btnthanhtoan.setEnabled(false);
         cbbKhuyenMai();
+        txtmaHoaDon.setEnabled(false);
+        txttongtien.setEnabled(false);
+        txtthanhtien.setEnabled(false);
+        txttienthua.setEnabled(false);
+        txtsokhuyenmai.setEnabled(false);
+        txttienkhuyenmai.setEnabled(false);
+        
 //        initWebcam();
     }
-
+    
     private void LoadTableSanPham() {
         DefaultTableModel bang = (DefaultTableModel) tableSanPham.getModel();
         bang.setRowCount(0);
@@ -79,7 +87,7 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
                 sp.getBarcode()});
         }
     }
-
+    
     private void Findten(String ten) {
         DefaultTableModel bang = (DefaultTableModel) tableSanPham.getModel();
         bang.setRowCount(0);
@@ -98,7 +106,7 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
                 sp.getBarcode()});
         }
     }
-
+    
     private void LoadTableGioHang(int soLuong) {
         bang = (DefaultTableModel) tableGioHang.getModel();
         int row = tableSanPham.getSelectedRow();
@@ -107,7 +115,7 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
             bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getLoaiSP(), soLuong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soLuong});
         }
     }
-
+    
     private void LoadTableHoaDon() {
         bang = (DefaultTableModel) tableHoaDon.getModel();
         bang.setRowCount(0);
@@ -115,7 +123,7 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
             bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
         }
     }
-
+    
     private void LoadTableHoaDonThanhToan() {
         bang = (DefaultTableModel) tableHoaDon.getModel();
         bang.setRowCount(0);
@@ -123,7 +131,7 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
             bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
         }
     }
-
+    
     private void LoadTableHoaDonDangCho() {
         bang = (DefaultTableModel) tableHoaDon.getModel();
         bang.setRowCount(0);
@@ -131,7 +139,7 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
             bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
         }
     }
-
+    
     private void LoadTableHoaDonDangChoThanhToan() {
         bang = (DefaultTableModel) tableHoaDon.getModel();
         bang.setRowCount(0);
@@ -139,7 +147,7 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
             bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
         }
     }
-
+    
     private void TinhTongTien() {
         int tien, tongtien = 0;
         int row = tableGioHang.getRowCount();
@@ -149,12 +157,12 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
         }
         txttongtien.setText(formatter.format(tongtien));
     }
-
+    
     private void InsertHoaDonChiTiet() {
         int row = tableGioHang.getRowCount();
         for (int i = 0; i < row; i++) {
             String TenSP = tableGioHang.getValueAt(i, 1).toString();
-            String MaHD = txtmaHoaDon.getText();
+            String MaHD = lblhankm.getText();
             String idChiTietSP = "";
             String idHoaDon = "";
             for (SanPham_BanhangModel sanPham_BanhangModel : banHangITF.TenSPToId(TenSP)) {
@@ -163,7 +171,7 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
             for (HoaDonModel hoaDonModel : banHangITF.MaHDToIdHD(MaHD)) {
                 idHoaDon += hoaDonModel;
             }
-
+            
             String soLuong = tableGioHang.getValueAt(i, 3).toString();
             String donGia = tableGioHang.getValueAt(i, 5).toString();
             banHangITF.insertHoaDonChiTiet(idHoaDon, idChiTietSP, null, Integer.parseInt(soLuong), donGia);
@@ -171,12 +179,22 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
         }
     }
     
-    private void cbbKhuyenMai(){
-        cbbkhuyenmai.removeAllItems();
-        Date now=new Date();
-        for(KhuyenMai_BanHangModel khuyenMai_BanHangModel:banHangITF.getCbbTenKM(ftnow.format(now), ftnow.format(now))){
+    private void cbbKhuyenMai() {
+        Date now = new Date();
+        for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.getCbbTenKM(ftnow.format(now), ftnow.format(now))) {
             cbbkhuyenmai.addItem(khuyenMai_BanHangModel.getTenKM());
         }
+    }
+    
+    private void updatetienKM() {
+        int Dis;
+        NumberFormat formatter = new DecimalFormat("#,###");
+        //tính Discount
+        String Order = txttongtien.getText().replaceAll(",", "");
+        Dis = (Integer.parseInt(txtsokhuyenmai.getText()) * Integer.parseInt(Order)) / 100;
+        txttienkhuyenmai.setText(formatter.format(Dis));
+        int tienkhuyenmai = Integer.parseInt(Order) - Dis;
+        txtthanhtien.setText(formatter.format(tienkhuyenmai));
     }
 
 //        private void initWebcam() {
@@ -287,9 +305,9 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
         jLabel1 = new javax.swing.JLabel();
         txttongtien = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtsokhuyenmai = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txttienkhuyenmai = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtthanhtien = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -304,6 +322,7 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
         jLabel9 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        lblhankm = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(0, 0));
@@ -468,6 +487,9 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 52, -1));
 
         txtmaHoaDon.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        txtmaHoaDon.setForeground(new java.awt.Color(255, 0, 51));
+        txtmaHoaDon.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtmaHoaDon.setDisabledTextColor(new java.awt.Color(255, 0, 51));
         jPanel2.add(txtmaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 160, -1));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -475,37 +497,49 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, -1, -1));
 
         cbbkhuyenmai.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        cbbkhuyenmai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbkhuyenmai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn Khuyến mại" }));
+        cbbkhuyenmai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbkhuyenmaiActionPerformed(evt);
+            }
+        });
         jPanel2.add(cbbkhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, 160, -1));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Tổng cộng: ");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, 76, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, 76, -1));
 
         txttongtien.setBackground(new java.awt.Color(255, 255, 255));
         txttongtien.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txttongtien.setForeground(new java.awt.Color(255, 0, 51));
-        jPanel2.add(txttongtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 80, 160, -1));
+        txttongtien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txttongtien.setDisabledTextColor(new java.awt.Color(255, 0, 51));
+        jPanel2.add(txttongtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 90, 160, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("Chiết khấu:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 110, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 120, -1, -1));
 
-        jTextField4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 110, 35, -1));
+        txtsokhuyenmai.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        txtsokhuyenmai.setDisabledTextColor(new java.awt.Color(255, 0, 51));
+        jPanel2.add(txtsokhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 120, 35, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("%");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 110, 18, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 120, 18, -1));
 
-        jTextField5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 110, 90, -1));
+        txttienkhuyenmai.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        txttienkhuyenmai.setDisabledTextColor(new java.awt.Color(255, 0, 51));
+        jPanel2.add(txttienkhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 120, 90, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel6.setText("Thành tiền:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 150, 73, -1));
 
         txtthanhtien.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        txtthanhtien.setForeground(new java.awt.Color(255, 0, 51));
+        txtthanhtien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtthanhtien.setDisabledTextColor(new java.awt.Color(255, 0, 51));
         jPanel2.add(txtthanhtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 150, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -518,6 +552,7 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
 
         txttienkhachdua.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txttienkhachdua.setForeground(new java.awt.Color(51, 51, 255));
+        txttienkhachdua.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txttienkhachdua.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txttienkhachduaCaretUpdate(evt);
@@ -528,6 +563,8 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
         txttienthua.setBackground(new java.awt.Color(255, 255, 255));
         txttienthua.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txttienthua.setForeground(new java.awt.Color(255, 0, 51));
+        txttienthua.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txttienthua.setDisabledTextColor(new java.awt.Color(255, 0, 51));
         jPanel2.add(txttienthua, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 250, 160, -1));
 
         btnthanhtoan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -566,6 +603,7 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
 
         jButton1.setText("+");
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 280, 40, 40));
+        jPanel2.add(lblhankm, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 70, 160, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -611,6 +649,7 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
     private void txttimkiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txttimkiemCaretUpdate
         // TODO add your handling code here:
         Findten(txttimkiem.getText());
+        updatetienKM();
     }//GEN-LAST:event_txttimkiemCaretUpdate
 
     private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
@@ -621,16 +660,16 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
         int chuoi2 = 0;
         chuoi1 = tableHoaDon.getValueAt(count - 1, 1).toString();
         chuoi2 = Integer.parseInt(chuoi1.substring(3).toString());
-
+        
         if (chuoi2 + 1 < 10) {
-            txtmaHoaDon.setText("HD000" + (chuoi2 + 1));
+            lblhankm.setText("HD000" + (chuoi2 + 1));
         } else if (chuoi2 + 1 < 100) {
-            txtmaHoaDon.setText("HD00" + (chuoi2 + 1));
+            lblhankm.setText("HD00" + (chuoi2 + 1));
         } else if (chuoi2 + 1 < 1000) {
-            txtmaHoaDon.setText("HD" + (chuoi2 + 1));
+            lblhankm.setText("HD" + (chuoi2 + 1));
         }
-
-        String MaHD = txtmaHoaDon.getText();
+        
+        String MaHD = lblhankm.getText();
         int TrangThai = 1;
         banHangITF.insertHoaDon("e058575d-33a1-409a-802f-898adc64141a", "57e6a715-9460-4f03-95cd-d66fd7fa5ae9", null, MaHD, TrangThai);
         this.LoadTableHoaDon();
@@ -668,10 +707,10 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
                 break;
             }
         }
-        String tongtien = txttongtien.getText().replaceAll(",", "");
+        String tongtien = txtthanhtien.getText().replaceAll(",", "");
         tienthua = Integer.parseInt(txttienkhachdua.getText()) - Integer.parseInt(tongtien);
         txttienthua.setText(formatter.format(tienthua));
-
+        
         if (tienthua < 0) {
             lblthongbao.setText("Khách hàng chưa đưa đủ tiền.");
             btnthanhtoan.setEnabled(false);
@@ -687,7 +726,7 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
 
     private void btnthanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthanhtoanActionPerformed
         // TODO add your handling code here:
-        String maHd = txtmaHoaDon.getText();
+        String maHd = lblhankm.getText();
         int TrangThai = 0;
         banHangITF.updateTrangThaiHoaDon(TrangThai, maHd);
         InsertHoaDonChiTiet();
@@ -698,9 +737,18 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
 
     private void tableHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHoaDonMouseClicked
         // TODO add your handling code here:
-        int row=tableHoaDon.getSelectedRow();
-        txtmaHoaDon.setText(tableHoaDon.getValueAt(row, 1).toString());
+        int row = tableHoaDon.getSelectedRow();
+        lblhankm.setText(tableHoaDon.getValueAt(row, 1).toString());
     }//GEN-LAST:event_tableHoaDonMouseClicked
+
+    private void cbbkhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbkhuyenmaiActionPerformed
+        // TODO add your handling code here:
+        for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.getKhuyenMai(cbbkhuyenmai.getSelectedItem().toString())) {
+            txtsokhuyenmai.setText(khuyenMai_BanHangModel.getGiamGia());
+            lblhankm.setText(khuyenMai_BanHangModel.getNgayBD() + " - " + khuyenMai_BanHangModel.getNgayKT());
+            updatetienKM();
+        }
+    }//GEN-LAST:event_cbbkhuyenmaiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -730,15 +778,16 @@ SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JLabel lblhankm;
     private javax.swing.JLabel lblthongbao;
     private javax.swing.JTable tableGioHang;
     private javax.swing.JTable tableHoaDon;
     private javax.swing.JTable tableSanPham;
     private javax.swing.JTextField txtmaHoaDon;
+    private javax.swing.JTextField txtsokhuyenmai;
     private javax.swing.JTextField txtthanhtien;
     private javax.swing.JTextField txttienkhachdua;
+    private javax.swing.JTextField txttienkhuyenmai;
     private javax.swing.JTextField txttienthua;
     private javax.swing.JTextField txttimkiem;
     private javax.swing.JTextField txttongtien;

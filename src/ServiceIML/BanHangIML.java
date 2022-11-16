@@ -95,4 +95,9 @@ public class BanHangIML implements BanHangITF {
         return banHangRepo.TenKMtoIdKM(TenKM);
     }
 
+    @Override
+    public ArrayList<KhuyenMai_BanHangModel> getKhuyenMai(String TenKM) {
+        return banHangRepo.getKhuyenMai(TenKM);
+    }
+
 }

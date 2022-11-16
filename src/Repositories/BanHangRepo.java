@@ -309,8 +309,8 @@ public class BanHangRepo {
             e.printStackTrace();
         }
     }
-    
-      public ArrayList<KhuyenMai_BanHangModel> getCbbTenKM(String NgayBD, String NgayKT) {
+
+    public ArrayList<KhuyenMai_BanHangModel> getCbbTenKM(String NgayBD, String NgayKT) {
         ArrayList list = new ArrayList<HoaDonModel>();
         try {
             Connection conn = Connections.jdbcUtils.getConnection();
@@ -322,7 +322,7 @@ public class BanHangRepo {
             while (rs.next()) {
                 String idKM = rs.getString("Id");
                 String tenKM = rs.getString("TenKM");
-                KhuyenMai_BanHangModel khuyenMai_BanHangModel = new KhuyenMai_BanHangModel(idKM, tenKM, null, null);
+                KhuyenMai_BanHangModel khuyenMai_BanHangModel = new KhuyenMai_BanHangModel(idKM, tenKM, null, null, null);
                 list.add(khuyenMai_BanHangModel);
             }
         } catch (Exception e) {
@@ -343,7 +343,29 @@ public class BanHangRepo {
             while (rs.next()) {
                 String idKM = rs.getString("IdKM");
                 String tenKM = rs.getString("TenKM");
-                KhuyenMai_BanHangModel khuyenMai_BanHangModel = new KhuyenMai_BanHangModel(idKM, tenKM, null, null);
+                KhuyenMai_BanHangModel khuyenMai_BanHangModel = new KhuyenMai_BanHangModel(idKM, tenKM, null, null, null);
+                list.add(khuyenMai_BanHangModel);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    // Lấy % khuyến mại
+    public ArrayList<KhuyenMai_BanHangModel> getKhuyenMai(String TenKM) {
+        ArrayList list = new ArrayList<HoaDonModel>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select * from KhuyenMai where TenKM=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, TenKM);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String ngayBD = rs.getString("NgayBD");
+                String ngayKT = rs.getString("NgayKT");
+                String giamGia = rs.getString("GiamGia");
+                KhuyenMai_BanHangModel khuyenMai_BanHangModel = new KhuyenMai_BanHangModel(null, null, ngayBD, ngayKT, giamGia);
                 list.add(khuyenMai_BanHangModel);
             }
         } catch (Exception e) {
