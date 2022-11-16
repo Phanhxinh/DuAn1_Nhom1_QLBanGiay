@@ -100,4 +100,9 @@ public class BanHangIML implements BanHangITF {
         return banHangRepo.getKhuyenMai(TenKM);
     }
 
+    @Override
+    public ArrayList<GioHang_BanHangModel> MouesClickTableHoaDon(String MaHD) {
+        return banHangRepo.MouesClickTableHoaDon(MaHD);
+    }
+
 }

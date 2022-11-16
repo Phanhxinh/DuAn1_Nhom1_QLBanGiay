@@ -38,7 +38,7 @@ import javax.swing.table.DefaultTableModel;
  * @author DELL
  */
 public class Menu2 extends javax.swing.JInternalFrame {
-    
+
     public BanHangITF banHangITF = new BanHangIML();
     public DefaultTableModel bang;
 //    private Executor executor = Executors.newSingleThreadExecutor(this);
@@ -65,10 +65,10 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txttienthua.setEnabled(false);
         txtsokhuyenmai.setEnabled(false);
         txttienkhuyenmai.setEnabled(false);
-        
+
 //        initWebcam();
     }
-    
+
     private void LoadTableSanPham() {
         DefaultTableModel bang = (DefaultTableModel) tableSanPham.getModel();
         bang.setRowCount(0);
@@ -87,7 +87,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 sp.getBarcode()});
         }
     }
-    
+
     private void Findten(String ten) {
         DefaultTableModel bang = (DefaultTableModel) tableSanPham.getModel();
         bang.setRowCount(0);
@@ -106,7 +106,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 sp.getBarcode()});
         }
     }
-    
+
     private void LoadTableGioHang(int soLuong) {
         bang = (DefaultTableModel) tableGioHang.getModel();
         int row = tableSanPham.getSelectedRow();
@@ -115,7 +115,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getLoaiSP(), soLuong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soLuong});
         }
     }
-    
+
     private void LoadTableHoaDon() {
         bang = (DefaultTableModel) tableHoaDon.getModel();
         bang.setRowCount(0);
@@ -123,7 +123,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
         }
     }
-    
+
     private void LoadTableHoaDonThanhToan() {
         bang = (DefaultTableModel) tableHoaDon.getModel();
         bang.setRowCount(0);
@@ -131,7 +131,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
         }
     }
-    
+
     private void LoadTableHoaDonDangCho() {
         bang = (DefaultTableModel) tableHoaDon.getModel();
         bang.setRowCount(0);
@@ -139,7 +139,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
         }
     }
-    
+
     private void LoadTableHoaDonDangChoThanhToan() {
         bang = (DefaultTableModel) tableHoaDon.getModel();
         bang.setRowCount(0);
@@ -147,7 +147,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
         }
     }
-    
+
     private void TinhTongTien() {
         int tien, tongtien = 0;
         int row = tableGioHang.getRowCount();
@@ -157,7 +157,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
         txttongtien.setText(formatter.format(tongtien));
     }
-    
+
     private void InsertHoaDonChiTiet() {
         int row = tableGioHang.getRowCount();
         for (int i = 0; i < row; i++) {
@@ -165,27 +165,31 @@ public class Menu2 extends javax.swing.JInternalFrame {
             String MaHD = lblhankm.getText();
             String idChiTietSP = "";
             String idHoaDon = "";
+            String idKM = "";
             for (SanPham_BanhangModel sanPham_BanhangModel : banHangITF.TenSPToId(TenSP)) {
                 idChiTietSP += sanPham_BanhangModel;
             }
             for (HoaDonModel hoaDonModel : banHangITF.MaHDToIdHD(MaHD)) {
                 idHoaDon += hoaDonModel;
             }
-            
+            for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.TenKMtoIdKM(cbbkhuyenmai.getSelectedItem().toString())) {
+                idKM += khuyenMai_BanHangModel;
+            }
+
             String soLuong = tableGioHang.getValueAt(i, 3).toString();
             String donGia = tableGioHang.getValueAt(i, 5).toString();
-            banHangITF.insertHoaDonChiTiet(idHoaDon, idChiTietSP, null, Integer.parseInt(soLuong), donGia);
+            banHangITF.insertHoaDonChiTiet(idHoaDon, idChiTietSP, idKM, Integer.parseInt(soLuong), donGia);
             banHangITF.updateSoLuongSanPham(Integer.parseInt(soLuong), idChiTietSP);
         }
     }
-    
+
     private void cbbKhuyenMai() {
         Date now = new Date();
         for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.getCbbTenKM(ftnow.format(now), ftnow.format(now))) {
             cbbkhuyenmai.addItem(khuyenMai_BanHangModel.getTenKM());
         }
     }
-    
+
     private void updatetienKM() {
         int Dis;
         NumberFormat formatter = new DecimalFormat("#,###");
@@ -195,6 +199,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txttienkhuyenmai.setText(formatter.format(Dis));
         int tienkhuyenmai = Integer.parseInt(Order) - Dis;
         txtthanhtien.setText(formatter.format(tienkhuyenmai));
+    }
+
+    public void ClearAlltableGioHang() {
+        bang = (DefaultTableModel) tableGioHang.getModel();
+        bang.getDataVector().removeAllElements();
+        revalidate();
     }
 
 //        private void initWebcam() {
@@ -603,6 +613,8 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
         jButton1.setText("+");
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 280, 40, 40));
+
+        lblhankm.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(lblhankm, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 70, 160, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -642,6 +654,11 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 break;
             }
         }
+        String soLuongTon = tableSanPham.getValueAt(row, 8).toString();
+        if (Integer.parseInt(soLuongTon) < sl) {
+            JOptionPane.showMessageDialog(this, "Sản phẩm chỉ còn số lượng là " + soLuongTon + " .");
+            return;
+        }
         LoadTableGioHang(sl);
         TinhTongTien();
     }//GEN-LAST:event_btnthemsanphamActionPerformed
@@ -660,7 +677,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         int chuoi2 = 0;
         chuoi1 = tableHoaDon.getValueAt(count - 1, 1).toString();
         chuoi2 = Integer.parseInt(chuoi1.substring(3).toString());
-        
+
         if (chuoi2 + 1 < 10) {
             lblhankm.setText("HD000" + (chuoi2 + 1));
         } else if (chuoi2 + 1 < 100) {
@@ -668,7 +685,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         } else if (chuoi2 + 1 < 1000) {
             lblhankm.setText("HD" + (chuoi2 + 1));
         }
-        
+
         String MaHD = lblhankm.getText();
         int TrangThai = 1;
         banHangITF.insertHoaDon("e058575d-33a1-409a-802f-898adc64141a", "57e6a715-9460-4f03-95cd-d66fd7fa5ae9", null, MaHD, TrangThai);
@@ -710,7 +727,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         String tongtien = txtthanhtien.getText().replaceAll(",", "");
         tienthua = Integer.parseInt(txttienkhachdua.getText()) - Integer.parseInt(tongtien);
         txttienthua.setText(formatter.format(tienthua));
-        
+
         if (tienthua < 0) {
             lblthongbao.setText("Khách hàng chưa đưa đủ tiền.");
             btnthanhtoan.setEnabled(false);
@@ -737,8 +754,19 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
     private void tableHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHoaDonMouseClicked
         // TODO add your handling code here:
+        ClearAlltableGioHang();
         int row = tableHoaDon.getSelectedRow();
-        lblhankm.setText(tableHoaDon.getValueAt(row, 1).toString());
+        txtmaHoaDon.setText(tableHoaDon.getValueAt(row, 1).toString());
+        String maHD = tableHoaDon.getValueAt(row, 1).toString();
+        String idHd = "";
+        for (HoaDonModel hdm : banHangITF.MaHDToIdHD(maHD)) {
+            idHd += hdm;
+        }
+        bang = (DefaultTableModel) tableGioHang.getModel();
+        for (GioHang_BanHangModel ghbhm : banHangITF.MouesClickTableHoaDon(idHd)) {
+            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getLoaiSP(), ghbhm.getSoLuong(),ghbhm.getDonGia(), ghbhm.getThanhTien()});
+        }
+        TinhTongTien();
     }//GEN-LAST:event_tableHoaDonMouseClicked
 
     private void cbbkhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbkhuyenmaiActionPerformed

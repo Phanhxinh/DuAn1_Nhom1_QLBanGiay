@@ -336,7 +336,7 @@ public class BanHangRepo {
         ArrayList list = new ArrayList<HoaDonModel>();
         try {
             Connection conn = Connections.jdbcUtils.getConnection();
-            String sql = "select * from KhuyenMai where NgayBD<=? and NgayKT>=?";
+            String sql = "select * from KhuyenMai where TenKM=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, TenKM);
             ResultSet rs = ps.executeQuery();
@@ -367,6 +367,34 @@ public class BanHangRepo {
                 String giamGia = rs.getString("GiamGia");
                 KhuyenMai_BanHangModel khuyenMai_BanHangModel = new KhuyenMai_BanHangModel(null, null, ngayBD, ngayKT, giamGia);
                 list.add(khuyenMai_BanHangModel);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    //Mouclick tableHoaDon
+    public ArrayList<GioHang_BanHangModel> MouesClickTableHoaDon(String MaHD) {
+        ArrayList list = new ArrayList<SanPham_BanhangModel>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select b.TenSP,c.TenTL,a.GiaBan,c.TenTL,d.SoLuong,a.GiaBan,d.DonGia from ChiTietSP a "
+                    + "join SanPham b on a.IdSanPham=b.Id"
+                    + " join TheLoai c on a.IdLoaiSP=c.Id "
+                    + "join HoaDonChiTiet d on a.Id=d.IdChiTietSP "
+                    + "where d.IdHoaDon=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, MaHD);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String tenSp = rs.getString("TenSP");
+                String tenTL = rs.getString("TenTL");
+                String giaBan = rs.getString("GiaBan");
+                int soLuong = rs.getInt("SoLuong");
+                String donGia = rs.getString("DonGia");
+                GioHang_BanHangModel ghbhm = new GioHang_BanHangModel(tenSp, tenTL, soLuong, giaBan, donGia);
+                list.add(ghbhm);
             }
         } catch (Exception e) {
             e.printStackTrace();

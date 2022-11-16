@@ -48,4 +48,6 @@ public interface BanHangITF {
     ArrayList<KhuyenMai_BanHangModel> TenKMtoIdKM(String TenKM);
 
     ArrayList<KhuyenMai_BanHangModel> getKhuyenMai(String TenKM);
+    
+    ArrayList<GioHang_BanHangModel> MouesClickTableHoaDon(String MaHD);
 }
