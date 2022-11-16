@@ -72,4 +72,7 @@ public class KhuyenMai_BanHangModel {
         this.GiamGia = GiamGia;
     }
 
+    public String toString() {
+        return IdKM;
+    }
 }

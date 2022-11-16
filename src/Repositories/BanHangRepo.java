@@ -341,7 +341,7 @@ public class BanHangRepo {
             ps.setString(1, TenKM);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                String idKM = rs.getString("IdKM");
+                String idKM = rs.getString("Id");
                 String tenKM = rs.getString("TenKM");
                 KhuyenMai_BanHangModel khuyenMai_BanHangModel = new KhuyenMai_BanHangModel(idKM, tenKM, null, null, null);
                 list.add(khuyenMai_BanHangModel);
@@ -401,4 +401,39 @@ public class BanHangRepo {
         }
         return list;
     }
+
+    //MouesClickKM
+    public ArrayList<HoaDonModel> MouseClickKM() {
+        ArrayList list = new ArrayList<HoaDonModel>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select b.MaHD,a.TenKM from KhuyenMai a join HoaDon b on a.Id=b.IdKM";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String mahd = rs.getString("MaHD");
+                String idkm = rs.getString("TenKM");
+                HoaDonModel hdm = new HoaDonModel(null, null, null, idkm, mahd, null);
+                list.add(hdm);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    //cập nhật id khuyến mại vào hóa đơn
+    public void updateIdKm(String Idkm, String mahd) {
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "update HoaDon set IdKM=? where MaHD=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, Idkm);
+            ps.setString(2, mahd);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

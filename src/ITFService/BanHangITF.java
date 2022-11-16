@@ -50,4 +50,8 @@ public interface BanHangITF {
     ArrayList<KhuyenMai_BanHangModel> getKhuyenMai(String TenKM);
     
     ArrayList<GioHang_BanHangModel> MouesClickTableHoaDon(String MaHD);
+    
+    ArrayList<HoaDonModel> MouseClickKM() ;
+    
+    void updateIdKm(String Idkm, String mahd);
 }
