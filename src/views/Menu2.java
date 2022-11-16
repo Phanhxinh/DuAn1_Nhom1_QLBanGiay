@@ -7,6 +7,7 @@ package views;
 import DomainModel.GioHang_BanHangModel;
 import DomainModel.HoaDonModel;
 import DomainModel.HoaDon_BanHangModel;
+import DomainModel.KhuyenMai_BanHangModel;
 import DomainModel.SanPham_BanhangModel;
 import ITFService.BanHangITF;
 import ServiceIML.BanHangIML;
@@ -23,6 +24,8 @@ import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
@@ -42,7 +45,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private WebcamPanel pannel = null;
     public static Webcam webcam = null;
     private NumberFormat formatter = new DecimalFormat("#,###");
-
+SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
     /**
      * Creates new form Menu1
      */
@@ -54,6 +57,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         LoadTableSanPham();
         LoadTableHoaDon();
         btnthanhtoan.setEnabled(false);
+        cbbKhuyenMai();
 //        initWebcam();
     }
 
@@ -166,6 +170,14 @@ public class Menu2 extends javax.swing.JInternalFrame {
             banHangITF.updateSoLuongSanPham(Integer.parseInt(soLuong), idChiTietSP);
         }
     }
+    
+    private void cbbKhuyenMai(){
+        cbbkhuyenmai.removeAllItems();
+        Date now=new Date();
+        for(KhuyenMai_BanHangModel khuyenMai_BanHangModel:banHangITF.getCbbTenKM(ftnow.format(now), ftnow.format(now))){
+            cbbkhuyenmai.addItem(khuyenMai_BanHangModel.getTenKM());
+        }
+    }
 
 //        private void initWebcam() {
 //        Dimension size = WebcamResolution.QVGA.getSize();
@@ -271,7 +283,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         txtmaHoaDon = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbbkhuyenmai = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         txttongtien = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -462,9 +474,9 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jLabel5.setText("Chương trình GG:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, -1, -1));
 
-        jComboBox2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, 160, -1));
+        cbbkhuyenmai.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        cbbkhuyenmai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(cbbkhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, 160, -1));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Tổng cộng: ");
@@ -698,9 +710,9 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnthanhtoan;
     private javax.swing.JButton btnthemsanpham;
     private javax.swing.JPanel cam;
+    private javax.swing.JComboBox<String> cbbkhuyenmai;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

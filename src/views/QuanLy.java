@@ -11,7 +11,7 @@ import java.awt.Color;
  * @author DELL
  */
 public class QuanLy extends javax.swing.JFrame {
-
+//d
     /**
      * Creates new form QuanLy
      */

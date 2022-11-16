@@ -7,6 +7,7 @@ package ServiceIML;
 import DomainModel.GioHang_BanHangModel;
 import DomainModel.HoaDonModel;
 import DomainModel.HoaDon_BanHangModel;
+import DomainModel.KhuyenMai_BanHangModel;
 import DomainModel.SanPham_BanhangModel;
 import ITFService.BanHangITF;
 import Repositories.BanHangRepo;
@@ -83,6 +84,15 @@ public class BanHangIML implements BanHangITF {
     public void updateTrangThaiHoaDon(int TrangThai, String MaHD) {
         banHangRepo.updateTrangThaiHoaDon(TrangThai, MaHD);
     }
-    
+
+    @Override
+    public ArrayList<KhuyenMai_BanHangModel> getCbbTenKM(String NgayBD, String NgayKT) {
+        return banHangRepo.getCbbTenKM(NgayBD, NgayKT);
+    }
+
+    @Override
+    public ArrayList<KhuyenMai_BanHangModel> TenKMtoIdKM(String TenKM) {
+        return banHangRepo.TenKMtoIdKM(TenKM);
+    }
 
 }

@@ -8,6 +8,7 @@ import DomainModel.SanPham_BanhangModel;
 import DomainModel.GioHang_BanHangModel;
 import DomainModel.HoaDonModel;
 import DomainModel.HoaDon_BanHangModel;
+import DomainModel.KhuyenMai_BanHangModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -307,5 +308,47 @@ public class BanHangRepo {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+      public ArrayList<KhuyenMai_BanHangModel> getCbbTenKM(String NgayBD, String NgayKT) {
+        ArrayList list = new ArrayList<HoaDonModel>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select * from KhuyenMai where NgayBD<=? and NgayKT>=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, NgayBD);
+            ps.setString(2, NgayKT);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String idKM = rs.getString("Id");
+                String tenKM = rs.getString("TenKM");
+                KhuyenMai_BanHangModel khuyenMai_BanHangModel = new KhuyenMai_BanHangModel(idKM, tenKM, null, null);
+                list.add(khuyenMai_BanHangModel);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    //Chuyển TenKM thành IdKM
+    public ArrayList<KhuyenMai_BanHangModel> TenKMtoIdKM(String TenKM) {
+        ArrayList list = new ArrayList<HoaDonModel>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select * from KhuyenMai where NgayBD<=? and NgayKT>=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, TenKM);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String idKM = rs.getString("IdKM");
+                String tenKM = rs.getString("TenKM");
+                KhuyenMai_BanHangModel khuyenMai_BanHangModel = new KhuyenMai_BanHangModel(idKM, tenKM, null, null);
+                list.add(khuyenMai_BanHangModel);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }
