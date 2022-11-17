@@ -75,17 +75,19 @@ public class Menu2 extends javax.swing.JInternalFrame {
         bang.setRowCount(0);
         int stt = 1;
         for (SanPham_BanhangModel sp : banHangITF.getall()) {
-            bang.addRow(new Object[]{stt++,
-                sp.getTenSP(),
-                sp.getLoaiSP(),
-                sp.getHang(),
-                sp.getChatLieu(),
-                sp.getKichCo(),
-                sp.getMauSac(),
-                sp.getDe(),
-                sp.getSoLuong(),
-                sp.getGiaBan(),
-                sp.getBarcode()});
+            if (Integer.parseInt(sp.getSoLuong()) > 0) {
+                bang.addRow(new Object[]{stt++,
+                    sp.getTenSP(),
+                    sp.getLoaiSP(),
+                    sp.getHang(),
+                    sp.getChatLieu(),
+                    sp.getKichCo(),
+                    sp.getMauSac(),
+                    sp.getDe(),
+                    sp.getSoLuong(),
+                    sp.getGiaBan(),
+                    sp.getBarcode()});
+            }
         }
     }
 
@@ -186,7 +188,11 @@ public class Menu2 extends javax.swing.JInternalFrame {
             }
             String soLuong = tableGioHang.getValueAt(i, 3).toString();
             String donGia = tableGioHang.getValueAt(i, 5).toString();
-            banHangITF.insertHoaDonChiTiet(idHoaDon, idChiTietSP, idKM, Integer.parseInt(soLuong), donGia);
+            if (cbbkhuyenmai.getSelectedIndex() != 0) {
+                banHangITF.insertHoaDonChiTiet(idHoaDon, idChiTietSP, idKM, Integer.parseInt(soLuong), donGia);
+            } else {
+                banHangITF.insertHoaDonChiTiet(idHoaDon, idChiTietSP, null, Integer.parseInt(soLuong), donGia);
+            }
             banHangITF.updateSoLuongSanPham(Integer.parseInt(soLuong), idChiTietSP);
         }
     }
@@ -194,9 +200,13 @@ public class Menu2 extends javax.swing.JInternalFrame {
     // Thêm item vào cbb khuyến mại
     private void cbbKhuyenMai() {
         Date now = new Date();
+        if (cbbkhuyenmai.getSelectedIndex() == 0) {
+            txtthanhtien.setText(txttongtien.getText());
+        }
         for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.getCbbTenKM(ftnow.format(now), ftnow.format(now))) {
             cbbkhuyenmai.addItem(khuyenMai_BanHangModel.getTenKM());
         }
+
     }
 
     // cập nhật tiền đc khuyến mại
@@ -209,6 +219,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txttienkhuyenmai.setText(formatter.format(Dis));
         int tienkhuyenmai = Integer.parseInt(Order) - Dis;
         txtthanhtien.setText(formatter.format(tienkhuyenmai));
+
     }
 // Xóa dữ liệu trên bảng giỏ hàng.
 
@@ -236,6 +247,9 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txtthanhtien.setText("0");
         txttienthua.setText("0");
         txttienkhuyenmai.setText("0");
+        lblthongbao.setText("");
+        lblhankm.setText("");
+        cbbkhuyenmai.setSelectedIndex(0);
         bang = (DefaultTableModel) tableGioHang.getModel();
         bang.setNumRows(0);
     }
@@ -637,6 +651,11 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
         btnChoThanhToan.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnChoThanhToan.setText("Chờ thanh toán");
+        btnChoThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChoThanhToanActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnChoThanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 130, 30));
 
         cam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -701,6 +720,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
         LoadTableGioHang(sl);
         TinhTongTien();
+        txtthanhtien.setText(txttongtien.getText());
     }//GEN-LAST:event_btnthemsanphamActionPerformed
 
     private void txttimkiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txttimkiemCaretUpdate
@@ -717,7 +737,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         int chuoi2 = 0;
         chuoi1 = tableHoaDon.getValueAt(count - 1, 1).toString();
         chuoi2 = Integer.parseInt(chuoi1.substring(3).toString());
-
+        this.Clearform();
         if (chuoi2 + 1 < 10) {
             txtmaHoaDon.setText("HD000" + (chuoi2 + 1));
         } else if (chuoi2 + 1 < 100) {
@@ -725,13 +745,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
         } else if (chuoi2 + 1 < 1000) {
             txtmaHoaDon.setText("HD" + (chuoi2 + 1));
         }
-
         String MaHD = txtmaHoaDon.getText();
         int TrangThai = 1;
         banHangITF.insertHoaDon("e058575d-33a1-409a-802f-898adc64141a", "57e6a715-9460-4f03-95cd-d66fd7fa5ae9", null, MaHD, TrangThai);
         this.LoadTableHoaDon();
         btnthemsanpham.setEnabled(true);
-        this.Clearform();
+
         JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công.");
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
 
@@ -785,20 +804,34 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
     private void btnthanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthanhtoanActionPerformed
         // TODO add your handling code here:
-        String maHd = txtmaHoaDon.getText();
-        int TrangThai = 0;
-        banHangITF.updateTrangThaiHoaDon(TrangThai, maHd);
-        InsertHoaDonChiTiet();
-        String idKM = "";
-        for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.TenKMtoIdKM(cbbkhuyenmai.getSelectedItem().toString())) {
-            idKM += khuyenMai_BanHangModel;
+        int row = tableHoaDon.getSelectedRow();
+        String trangThai = tableHoaDon.getValueAt(row, 3).toString();
+        if (trangThai == "Đang chờ") {
+            String maHd = txtmaHoaDon.getText();
+            int TrangThai = 0;
+            banHangITF.updateTrangThaiHoaDon(TrangThai, maHd);
+            InsertHoaDonChiTiet();
+            String idKM = "";
+            for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.TenKMtoIdKM(cbbkhuyenmai.getSelectedItem().toString())) {
+                idKM += khuyenMai_BanHangModel;
+            }
+            if (cbbkhuyenmai.getSelectedIndex() != 0) {
+                banHangITF.updateIdKm(idKM, maHd);
+            }
+            btnthemsanpham.setEnabled(false);
+            LoadTableHoaDon();
+            LoadTableSanPham();
+            Clearform();
+            JOptionPane.showMessageDialog(this, "Thanh toán thành công.");
+        } else if (trangThai == "Chờ thanh toán") {
+            String maHd = txtmaHoaDon.getText();
+            int TrangThai = 0;
+            banHangITF.updateTrangThaiHoaDon(TrangThai, maHd);
+            LoadTableHoaDon();
+            LoadTableSanPham();
+            Clearform();
+            JOptionPane.showMessageDialog(this, "Thanh toán thành công.");
         }
-        banHangITF.updateIdKm(idKM, maHd);
-        btnthemsanpham.setEnabled(false);
-        LoadTableHoaDon();
-        LoadTableSanPham();
-        Clearform();
-        JOptionPane.showMessageDialog(this, "Thanh toán thành công.");
     }//GEN-LAST:event_btnthanhtoanActionPerformed
 
     private void tableHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHoaDonMouseClicked
@@ -822,16 +855,43 @@ public class Menu2 extends javax.swing.JInternalFrame {
             }
         }
         TinhTongTien();
+        btnthemsanpham.setEnabled(true);
+        btnthanhtoan.setEnabled(true);
     }//GEN-LAST:event_tableHoaDonMouseClicked
 
     private void cbbkhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbkhuyenmaiActionPerformed
         // TODO add your handling code here:
+        if (cbbkhuyenmai.getSelectedIndex() == 0) {
+            txtthanhtien.setText(txttongtien.getText());
+            txtsokhuyenmai.setText("0");
+            txttienkhuyenmai.setText("0");
+        }
         for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.getKhuyenMai(cbbkhuyenmai.getSelectedItem().toString())) {
             txtsokhuyenmai.setText(khuyenMai_BanHangModel.getGiamGia());
             lblhankm.setText(khuyenMai_BanHangModel.getNgayBD() + " - " + khuyenMai_BanHangModel.getNgayKT());
             updatetienKM();
         }
     }//GEN-LAST:event_cbbkhuyenmaiActionPerformed
+
+    private void btnChoThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoThanhToanActionPerformed
+        // TODO add your handling code here:
+        String maHd = txtmaHoaDon.getText();
+        int TrangThai = 2;
+        banHangITF.updateTrangThaiHoaDon(TrangThai, maHd);
+        InsertHoaDonChiTiet();
+        String idKM = "";
+        for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.TenKMtoIdKM(cbbkhuyenmai.getSelectedItem().toString())) {
+            idKM += khuyenMai_BanHangModel;
+        }
+        if (cbbkhuyenmai.getSelectedIndex() != 0) {
+            banHangITF.updateIdKm(idKM, maHd);
+        }
+        btnthemsanpham.setEnabled(false);
+        LoadTableHoaDon();
+        LoadTableSanPham();
+        Clearform();
+        JOptionPane.showMessageDialog(this, "Chờ thanh toán thành công.");
+    }//GEN-LAST:event_btnChoThanhToanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
