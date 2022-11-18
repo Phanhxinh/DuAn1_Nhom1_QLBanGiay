@@ -238,7 +238,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-
+///test
     private void Clearform() {
         txtmaHoaDon.setText("");
         txtsokhuyenmai.setText("0");
