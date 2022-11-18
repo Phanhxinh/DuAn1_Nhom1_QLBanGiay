@@ -15,7 +15,7 @@ public class KhuyenMaiModel {
     private String ngaybd;
     private String ngaykt;
     private String mota;
-
+//
     public KhuyenMaiModel() {
     }
 
