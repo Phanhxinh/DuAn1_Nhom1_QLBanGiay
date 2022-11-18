@@ -9,6 +9,8 @@ package DomainModel;
  * @author Admin
  */
 public class SanPham_BanhangModel {
+
+    private String IdChiTietSP;
     private String TenSP;
     private String LoaiSP;
     private String Hang;
@@ -23,7 +25,8 @@ public class SanPham_BanhangModel {
     public SanPham_BanhangModel() {
     }
 
-    public SanPham_BanhangModel(String TenSP, String LoaiSP, String Hang, String ChatLieu, String KichCo, String MauSac, String De, String SoLuong, String GiaBan, String Barcode) {
+    public SanPham_BanhangModel(String IdChiTietSP, String TenSP, String LoaiSP, String Hang, String ChatLieu, String KichCo, String MauSac, String De, String SoLuong, String GiaBan, String Barcode) {
+        this.IdChiTietSP = IdChiTietSP;
         this.TenSP = TenSP;
         this.LoaiSP = LoaiSP;
         this.Hang = Hang;
@@ -34,6 +37,14 @@ public class SanPham_BanhangModel {
         this.SoLuong = SoLuong;
         this.GiaBan = GiaBan;
         this.Barcode = Barcode;
+    }
+
+    public String getIdChiTietSP() {
+        return IdChiTietSP;
+    }
+
+    public void setIdChiTietSP(String IdChiTietSP) {
+        this.IdChiTietSP = IdChiTietSP;
     }
 
     public String getTenSP() {
@@ -115,5 +126,8 @@ public class SanPham_BanhangModel {
     public void setBarcode(String Barcode) {
         this.Barcode = Barcode;
     }
-    
+
+    public String toString(){
+        return IdChiTietSP;
+    }
 }

@@ -57,4 +57,14 @@ public class HoaDon_BanHangModel {
         this.NgayTao = NgayTao;
     }
 
+    public String trangThai() {
+        if (TrangThai == 1) {
+            return "Đang chờ";
+        } else if (TrangThai == 0) {
+            return "Đã thanh toán";
+        } else if (TrangThai == 2) {
+            return "Chờ thanh toán";
+        }
+        return null;
+    }
 }
