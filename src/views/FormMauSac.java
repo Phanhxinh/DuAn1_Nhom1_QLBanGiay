@@ -7,7 +7,7 @@ package views;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import DomainModel.MauSac_SanphamModel;
-import views.MauSacIML;
+import ServiceIML.MauSacIML;
 
 /**
  *

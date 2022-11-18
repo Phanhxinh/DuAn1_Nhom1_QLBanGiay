@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import DomainModel.KichCo_SanPhamModel;
 import ServiceIML.KichCoIML;
-import views.MauSacIML;
+import ServiceIML.MauSacIML;
 
 /**
  *

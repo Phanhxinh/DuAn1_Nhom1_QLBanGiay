@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import DomainModel.ChatLieu_SanPhamModel;
 import ServiceIML.ChatLieuIML;
 import ServiceIML.KichCoIML;
-import views.MauSacIML;
+import ServiceIML.MauSacIML;
 
 /**
  *
