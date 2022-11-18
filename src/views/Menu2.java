@@ -347,7 +347,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tableHoaDon = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnxoaSanPham = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableGioHang = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
@@ -442,7 +442,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Giỏ hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
         jPanel5.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setText("Xóa");
+        btnxoaSanPham.setText("Xóa");
+        btnxoaSanPham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnxoaSanPhamActionPerformed(evt);
+            }
+        });
 
         tableGioHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -463,7 +468,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnxoaSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -473,7 +478,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnxoaSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -840,6 +845,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         int row = tableHoaDon.getSelectedRow();
         txtmaHoaDon.setText(tableHoaDon.getValueAt(row, 1).toString());
         String maHD = tableHoaDon.getValueAt(row, 1).toString();
+        String TrangThaiGH = tableHoaDon.getValueAt(row, 3).toString();
         String idHd = "";
         for (HoaDonModel hdm : banHangITF.MaHDToIdHD(maHD)) {
             idHd += hdm;
@@ -855,8 +861,14 @@ public class Menu2 extends javax.swing.JInternalFrame {
             }
         }
         TinhTongTien();
-        btnthemsanpham.setEnabled(true);
-        btnthanhtoan.setEnabled(true);
+        if (TrangThaiGH == "Chờ thanh toán" || TrangThaiGH == "Đang chờ") {
+            btnthemsanpham.setEnabled(true);
+            btnthanhtoan.setEnabled(true);
+        } else if (TrangThaiGH == "Đã thanh toán") {
+            btnthemsanpham.setEnabled(false);
+            btnthanhtoan.setEnabled(false);
+        }
+
     }//GEN-LAST:event_tableHoaDonMouseClicked
 
     private void cbbkhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbkhuyenmaiActionPerformed
@@ -893,6 +905,14 @@ public class Menu2 extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "Chờ thanh toán thành công.");
     }//GEN-LAST:event_btnChoThanhToanActionPerformed
 
+    private void btnxoaSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaSanPhamActionPerformed
+        // TODO add your handling code here:
+        int row = tableGioHang.getSelectedRow();
+        bang.removeRow(row);
+        TinhTongTien();
+        txtthanhtien.setText(txttongtien.getText());
+    }//GEN-LAST:event_btnxoaSanPhamActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CbbHoaDon;
@@ -900,10 +920,10 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnTaoHoaDon;
     private javax.swing.JButton btnthanhtoan;
     private javax.swing.JButton btnthemsanpham;
+    private javax.swing.JButton btnxoaSanPham;
     private javax.swing.JPanel cam;
     private javax.swing.JComboBox<String> cbbkhuyenmai;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
