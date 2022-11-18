@@ -288,6 +288,11 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 "STT", "Mã HD", "Tên NV", "Trạng thái", "Ngày tạo"
             }
         ));
+        tableHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableHoaDonMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tableHoaDon);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -326,6 +331,11 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 "STT", "Mã SP", "Tên SP", "Số  lượng", "Đơn giá", "Thành tiền"
             }
         ));
+        tableGioHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableGioHangMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableGioHang);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -371,6 +381,11 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 "Mã SP", "Tên SP", "Loại SP", "Hãng", "Chất liệu", "Kích cỡ", "Màu sắc", "Đế", "Số lượng", "Giá bán", "BarCode"
             }
         ));
+        tableSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableSanPhamMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tableSanPham);
 
         txttimkiem.addCaretListener(new javax.swing.event.CaretListener() {
@@ -616,6 +631,18 @@ public class Menu2 extends javax.swing.JInternalFrame {
             btnthanhtoan.setEnabled(true);
         }
     }//GEN-LAST:event_txttienkhachduaCaretUpdate
+
+    private void tableHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHoaDonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableHoaDonMouseClicked
+
+    private void tableGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableGioHangMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableGioHangMouseClicked
+
+    private void tableSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSanPhamMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableSanPhamMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
