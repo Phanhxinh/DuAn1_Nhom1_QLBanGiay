@@ -837,6 +837,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             Clearform();
             JOptionPane.showMessageDialog(this, "Thanh toán thành công.");
         }
+        //
     }//GEN-LAST:event_btnthanhtoanActionPerformed
 
     private void tableHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHoaDonMouseClicked
