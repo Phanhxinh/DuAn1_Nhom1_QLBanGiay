@@ -21,6 +21,7 @@ import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -66,6 +67,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txtsokhuyenmai.setEnabled(false);
         txttienkhuyenmai.setEnabled(false);
         btnthemsanpham.setEnabled(false);
+        txtbarcoe.requestFocus();
 //        initWebcam();
     }
 // Hiện thị sản phẩm lên bảng sản phẩm
@@ -375,12 +377,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
         btnthanhtoan = new javax.swing.JButton();
         btnTaoHoaDon = new javax.swing.JButton();
         btnChoThanhToan = new javax.swing.JButton();
-        cam = new javax.swing.JPanel();
         lblthongbao = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         lblhankm = new javax.swing.JLabel();
+        txtbarcoe = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(0, 0));
@@ -664,9 +666,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
         });
         jPanel2.add(btnChoThanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 130, 30));
 
-        cam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(cam, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 230, 170));
-
         lblthongbao.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblthongbao.setForeground(new java.awt.Color(255, 0, 51));
         jPanel2.add(lblthongbao, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 210, 240, 30));
@@ -681,6 +680,16 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
         lblhankm.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(lblhankm, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 70, 160, 20));
+
+        txtbarcoe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtbarcoeKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtbarcoeKeyTyped(evt);
+            }
+        });
+        jPanel2.add(txtbarcoe, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -913,6 +922,39 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txtthanhtien.setText(txttongtien.getText());
     }//GEN-LAST:event_btnxoaSanPhamActionPerformed
 
+    private void txtbarcoeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbarcoeKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String soluong = JOptionPane.showInputDialog(this, "Mời bạn nhập số lượng sản phẩm");
+            int khosoluong = Integer.parseInt(soluong);
+//                    int Line = tableGioHang.getRowCount();
+//                    int row =tableSanPham.getSelectedRow();
+//                    String tenSP = tableSanPham.getValueAt(row, 1).toString();
+//                    for (int i = 0; i < Line; i++) {
+//                        if (tableGioHang.getValueAt(i, 1).equals(tenSP)) {
+//                            int quanCu = (int) tableGioHang.getValueAt(i, 3);
+//                            int quanMoi = khosoluong;
+//                            int quanCuVaMoi = quanCu + quanMoi;
+//                            khosoluong = quanCuVaMoi;
+////                soLuong.setValue(quanCuVaMoi);
+//                            bang.removeRow(i);
+//                            break;
+//                        }
+//                    }
+            bang = (DefaultTableModel) tableGioHang.getModel();
+            banHangITF.getAllGioHang(null, txtbarcoe.getText()).forEach(gh -> {
+                bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getLoaiSP(), khosoluong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * khosoluong});
+            });
+        }
+    }//GEN-LAST:event_txtbarcoeKeyPressed
+
+    private void txtbarcoeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbarcoeKeyTyped
+        // TODO add your handling code here:
+        if("".equals(txtbarcoe.getText())){
+            
+        }
+    }//GEN-LAST:event_txtbarcoeKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CbbHoaDon;
@@ -921,7 +963,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnthanhtoan;
     private javax.swing.JButton btnthemsanpham;
     private javax.swing.JButton btnxoaSanPham;
-    private javax.swing.JPanel cam;
     private javax.swing.JComboBox<String> cbbkhuyenmai;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -946,6 +987,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JTable tableGioHang;
     private javax.swing.JTable tableHoaDon;
     private javax.swing.JTable tableSanPham;
+    private javax.swing.JTextField txtbarcoe;
     private javax.swing.JTextField txtmaHoaDon;
     private javax.swing.JTextField txtsokhuyenmai;
     private javax.swing.JTextField txtthanhtien;
