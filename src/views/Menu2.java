@@ -13,23 +13,11 @@ import ITFService.BanHangITF;
 import ServiceIML.BanHangIML;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
-import com.github.sarxos.webcam.WebcamResolution;
-import com.google.zxing.BinaryBitmap;
-import com.google.zxing.LuminanceSource;
-import com.google.zxing.MultiFormatReader;
-import com.google.zxing.Result;
-import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
-import com.google.zxing.common.HybridBinarizer;
-import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
@@ -257,84 +245,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
         bang.setNumRows(0);
     }
 
-//        private void initWebcam() {
-//        Dimension size = WebcamResolution.QVGA.getSize();
-//        webcam = Webcam.getWebcams().get(0); //0 is default webcam
-//        webcam.setViewSize(size);
-//
-//        pannel = new WebcamPanel(webcam);
-//        pannel.setPreferredSize(size);
-//        pannel.setFPSDisplayed(true);
-//
-//        cam.add(pannel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 150));
-//        executor.execute(this);
-//    }
-//
-//    @Override
-//    public void run() {
-//        try {
-//            do {
-//                try {
-//                    Thread.sleep(100);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//
-//                Result result = null;
-//                BufferedImage image = null;
-//
-//                if (webcam.isOpen()) {
-//                    if ((image = webcam.getImage()) == null) {
-//                        continue;
-//                    }
-//                }
-//
-//                LuminanceSource source = new BufferedImageLuminanceSource(image);
-//                BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-//
-//                try {
-//                    result = new MultiFormatReader().decode(bitmap);
-//                } catch (Exception e) {
-//
-//                }
-//
-//                if (result != null) {
-//                    String ketqua = result.getText();
-//                    String soluong = JOptionPane.showInputDialog(this, "Mời bạn nhập số lượng sản phẩm");
-//                    int khosoluong = Integer.parseInt(soluong);
-////                    int Line = tableGioHang.getRowCount();
-////                    int row =tableSanPham.getSelectedRow();
-////                    String tenSP = tableSanPham.getValueAt(row, 1).toString();
-////                    for (int i = 0; i < Line; i++) {
-////                        if (tableGioHang.getValueAt(i, 1).equals(tenSP)) {
-////                            int quanCu = (int) tableGioHang.getValueAt(i, 3);
-////                            int quanMoi = khosoluong;
-////                            int quanCuVaMoi = quanCu + quanMoi;
-////                            khosoluong = quanCuVaMoi;
-//////                soLuong.setValue(quanCuVaMoi);
-////                            bang.removeRow(i);
-////                            break;
-////                        }
-////                    }
-//                    int soluongcuoi = khosoluong;
-//                    bang = (DefaultTableModel) tableGioHang.getModel();
-//                    banHangITF.getAllGioHang(null, ketqua).forEach(gh -> {
-//                        bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getLoaiSP(), soluongcuoi, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soluongcuoi});
-//                    });
-//
-//                }
-//            } while (true);
-//        } catch (Exception e) {
-//
-//        }
-//    }
-//
-//    @Override
-//    public Thread newThread(Runnable r) {
-//        Thread t = new Thread(r, "My Thread");
-//        t.setDaemon(true);
-//        return t;
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -404,6 +314,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             }
         });
 
+        tableHoaDon.setBackground(new java.awt.Color(255, 255, 255));
         tableHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -412,6 +323,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 "STT", "Mã HD", "Tên NV", "Trạng thái", "Ngày tạo"
             }
         ));
+        tableHoaDon.setGridColor(new java.awt.Color(255, 255, 255));
         tableHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableHoaDonMouseClicked(evt);
@@ -460,6 +372,11 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 "STT", "Tên SP", "Loại SP", "Số  lượng", "Đơn giá", "Thành tiền"
             }
         ));
+        tableGioHang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tableGioHangKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableGioHang);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -689,7 +606,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 txtbarcoeKeyTyped(evt);
             }
         });
-        jPanel2.add(txtbarcoe, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 150, -1));
+        jPanel2.add(txtbarcoe, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -924,36 +841,58 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
     private void txtbarcoeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbarcoeKeyPressed
         // TODO add your handling code here:
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            String soluong = JOptionPane.showInputDialog(this, "Mời bạn nhập số lượng sản phẩm");
-            int khosoluong = Integer.parseInt(soluong);
-//                    int Line = tableGioHang.getRowCount();
-//                    int row =tableSanPham.getSelectedRow();
-//                    String tenSP = tableSanPham.getValueAt(row, 1).toString();
-//                    for (int i = 0; i < Line; i++) {
-//                        if (tableGioHang.getValueAt(i, 1).equals(tenSP)) {
-//                            int quanCu = (int) tableGioHang.getValueAt(i, 3);
-//                            int quanMoi = khosoluong;
-//                            int quanCuVaMoi = quanCu + quanMoi;
-//                            khosoluong = quanCuVaMoi;
-////                soLuong.setValue(quanCuVaMoi);
-//                            bang.removeRow(i);
-//                            break;
-//                        }
-//                    }
-            bang = (DefaultTableModel) tableGioHang.getModel();
-            banHangITF.getAllGioHang(null, txtbarcoe.getText()).forEach(gh -> {
-                bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getLoaiSP(), khosoluong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * khosoluong});
-            });
+//            int row = tableSanPham.getSelectedRow();
+//            String tensp = tableGioHang.getValueAt(row, 1).toString();
+            int khosoluong = 1;
+//            int Line = tableGioHang.getRowCount();
+//            for (int i = 0; i < Line; i++) {
+//                if (tableGioHang.getValueAt(i, 1).equals(tensp)) {
+//                    bang.removeRow(i);
+//                    int soLuong = khosoluong;
+//                    khosoluong = soLuong+1;
+//                    break;
+//                }
+//            }
+            Barcode(khosoluong);
+            txtbarcoe.setText("");
         }
     }//GEN-LAST:event_txtbarcoeKeyPressed
-
+    private void Barcode(int soluong) {
+        bang = (DefaultTableModel) tableGioHang.getModel();
+        banHangITF.getAllGioHang(null, txtbarcoe.getText()).forEach(gh -> {
+            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getLoaiSP(), soluong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soluong});
+        });
+    }
     private void txtbarcoeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbarcoeKeyTyped
         // TODO add your handling code here:
-        if("".equals(txtbarcoe.getText())){
-            
+        if ("".equals(txtbarcoe.getText())) {
+            return;
         }
     }//GEN-LAST:event_txtbarcoeKeyTyped
+
+    private void tableGioHangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableGioHangKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            int row = tableGioHang.getSelectedRow();
+            int Line = tableGioHang.getRowCount();
+            String soluong = tableGioHang.getValueAt(row, 3).toString();
+            String tensp = tableGioHang.getValueAt(row, 1).toString();
+            int sl = Integer.parseInt(soluong);
+            for (int i = 0; i < Line; i++) {
+                if (tableGioHang.getValueAt(i, 1).equals(tensp)) {
+                    bang.removeRow(i);
+                    int soLuong = sl;
+                    sl = soLuong;
+                    break;
+                }
+            }
+            LoadTableGioHang(sl);
+            TinhTongTien();
+            txtthanhtien.setText(txttongtien.getText());
+        }
+    }//GEN-LAST:event_tableGioHangKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
