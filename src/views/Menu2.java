@@ -239,6 +239,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         return null;
     }
 ///test
+
     private void Clearform() {
         txtmaHoaDon.setText("");
         txtsokhuyenmai.setText("0");
@@ -752,10 +753,8 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
         String MaHD = txtmaHoaDon.getText();
         int TrangThai = 1;
-        banHangITF.insertHoaDon("e058575d-33a1-409a-802f-898adc64141a", "57e6a715-9460-4f03-95cd-d66fd7fa5ae9", null, MaHD, TrangThai);
+        banHangITF.insertHoaDon("0cae54b6-951d-4b56-a767-66dded7bd4c3", "e0112873-f33e-48c4-bee0-5afb5f2b9fb2", null, MaHD, TrangThai);
         this.LoadTableHoaDon();
-        btnthemsanpham.setEnabled(true);
-
         JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công.");
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
 
@@ -842,6 +841,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
     private void tableHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHoaDonMouseClicked
         // TODO add your handling code here:
+        Clearform();
         ClearAlltableGioHang();
         int row = tableHoaDon.getSelectedRow();
         txtmaHoaDon.setText(tableHoaDon.getValueAt(row, 1).toString());
@@ -862,14 +862,13 @@ public class Menu2 extends javax.swing.JInternalFrame {
             }
         }
         TinhTongTien();
+        updatetienKM();
         if (TrangThaiGH == "Chờ thanh toán" || TrangThaiGH == "Đang chờ") {
             btnthemsanpham.setEnabled(true);
-            btnthanhtoan.setEnabled(true);
         } else if (TrangThaiGH == "Đã thanh toán") {
             btnthemsanpham.setEnabled(false);
             btnthanhtoan.setEnabled(false);
         }
-
     }//GEN-LAST:event_tableHoaDonMouseClicked
 
     private void cbbkhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbkhuyenmaiActionPerformed
