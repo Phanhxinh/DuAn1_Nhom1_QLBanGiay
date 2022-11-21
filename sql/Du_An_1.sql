@@ -1,6 +1,6 @@
-﻿CREATE DATABASE DU_AN_1
+﻿CREATE DATABASE DU_AN1
 GO
-USE DU_AN_1
+USE DU_AN1
 GO
 -- ChucVu
 CREATE TABLE ChucVu(
@@ -16,7 +16,7 @@ IdCV UNIQUEIDENTIFIER,
 MaNV VARCHAR(20) NOT NULL,
 TenNV NVARCHAR(50) NOT NULL,
 GioiTinh NVARCHAR(5) NOT NULL,
-NgaySinh DATE NOT NULL,
+NgaySinh VARCHAR(20) NOT NULL,
 DiaChi NVARCHAR(100) NOT NULL,
 SDT VARCHAR(30) NOT NULL,
 Email VARCHAR(50) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE KhachHang(
 Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 MaKH VARCHAR(20) NOT NULL,
 TenKH NVARCHAR(50) NOT NULL,
-NgaySinh DATE NOT NULL,
+NgaySinh VARCHAR(20) NOT NULL,
 SDT VARCHAR(30) NOT NULL,
 Email VARCHAR(50),
 DiaChi NVARCHAR(50)
@@ -54,8 +54,8 @@ Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
 MaKM VARCHAR(20) NOT NULL,
 TenKM NVARCHAR(50) NOT NULL,
 GiamGia VARCHAR(20) NOT NULL,
-NgayBD DATE NOT NULL,
-NgayKT DATE NOT NULL,
+NgayBD VARCHAR(20) NOT NULL,
+NgayKT VARCHAR(20) NOT NULL,
 MoTa NVARCHAR(100)
 )
 GO
@@ -165,3 +165,27 @@ ALTER TABLE ChiTietSP ADD FOREIGN KEY(IdChatLieu) REFERENCES ChatLieu(Id)
 ALTER TABLE ChiTietSP ADD FOREIGN KEY(IdHang) REFERENCES Hang(Id)
 --ChiTietSP - De
 ALTER TABLE ChiTietSP ADD FOREIGN KEY(IdDe) REFERENCES De(Id)
+
+
+-- insert fake data
+insert into ChucVu values (NEWID(),'CV01',N'Trưởng phòng') ,
+                          (Newid(),'CV02',N'Nhân viên') 
+
+update ChucVu set Id = '6EBF4ABB-D0CB-425A-8CC7-21E33B6BAB9F' where Ma = 'CV01'
+update ChucVu set Id = '7A8E006A-C604-4699-B8B8-7AD39B49A8C4' where Ma = 'CV02'
+
+insert into NhanVien values(NEWID(),'6EBF4ABB-D0CB-425A-8CC7-21E33B6BAB9F','NV01',N'Bùi Thanh Tâm',N'Nam','5/3/2002',N'Mai Dịch','0586321583','tambui@gmail.com','','123456789',0),
+                           (NEWID(),'7A8E006A-C604-4699-B8B8-7AD39B49A8C4','NV02',N'Bùi Phương Thanh',N'Nữ','7/3/2002',N'Mai Dịch','0586356583','thanhbui@gmail.com','','123456789',0)
+
+						 
+
+-- Tạo View cho login
+Create view [login]
+as 
+ Select NhanVien.TenNV, NhanVien.GioiTinh,NhanVien.Email,NhanVien.MatKhau, ChucVu.Ma,ChucVu.Ten from NhanVien left join ChucVu on NhanVien.IdCV = ChucVu.Id
+
+ select*from [login]
+
+
+
+
