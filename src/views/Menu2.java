@@ -33,7 +33,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
  * @author DELL
  */
 public class Menu2 extends javax.swing.JInternalFrame {
-
+    
     public BanHangITF banHangITF = new BanHangIML();
     public DefaultTableModel bang;
     private NumberFormat formatter = new DecimalFormat("#,###");
@@ -59,6 +59,9 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txttienkhuyenmai.setEnabled(false);
         btnthemsanpham.setEnabled(false);
         txtbarcoe.requestFocus();
+        btnChoThanhToan.setEnabled(false);
+        btnhuy.setEnabled(false);
+        btnxoaSanPham.setEnabled(false);
 //        initWebcam();
     }
 // Hiện thị sản phẩm lên bảng sản phẩm
@@ -199,7 +202,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.getCbbTenKM(ftnow.format(now), ftnow.format(now))) {
             cbbkhuyenmai.addItem(khuyenMai_BanHangModel.getTenKM());
         }
-
+        
     }
 
     // cập nhật tiền đc khuyến mại
@@ -212,7 +215,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txttienkhuyenmai.setText(formatter.format(Dis));
         int tienkhuyenmai = Integer.parseInt(Order) - Dis;
         txtthanhtien.setText(formatter.format(tienkhuyenmai));
-
+        
     }
 // Xóa dữ liệu trên bảng giỏ hàng.
 
@@ -246,8 +249,10 @@ public class Menu2 extends javax.swing.JInternalFrame {
         cbbkhuyenmai.setSelectedIndex(0);
         bang = (DefaultTableModel) tableGioHang.getModel();
         bang.setNumRows(0);
+        btnChoThanhToan.setEnabled(false);
+        btnhuy.setEnabled(false);
     }
-
+    
     private String getTensp(String barcode) {
         for (SanPham_BanhangModel sp : banHangITF.getSPbarcode(txtbarcoe.getText())) {
             if (sp.getBarcode().equals(barcode)) {
@@ -256,66 +261,66 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-
+    
     private void Barcode(int soluong) {
         bang = (DefaultTableModel) tableGioHang.getModel();
         banHangITF.getAllGioHang(null, txtbarcoe.getText()).forEach(gh -> {
             bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getLoaiSP(), soluong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soluong});
         });
     }
-
+    
     private void XuatHoaDon() {
         Date now = new Date();
         try {
             XWPFDocument document = new XWPFDocument();
             FileOutputStream out = new FileOutputStream(new File("src/FileInHoaDon/" + txtmaHoaDon.getText() + ".docx"));
-
+            
             XWPFParagraph paragraph = document.createParagraph();
             XWPFRun run = paragraph.createRun();
             paragraph.setAlignment(ParagraphAlignment.CENTER);
             run.setText("CỬA HÀNG BÁN GIÀY RUNING");
             run.setFontSize(20);
             run.setBold(true);
-
+            
             XWPFParagraph paragraph2 = document.createParagraph();
             XWPFRun run2 = paragraph2.createRun();
             paragraph2.setAlignment(ParagraphAlignment.CENTER);
             run2.setText("ĐC: Phố Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Hà Nội");
-
+            
             XWPFParagraph paragraph3 = document.createParagraph();
             XWPFRun run3 = paragraph3.createRun();
             paragraph3.setAlignment(ParagraphAlignment.CENTER);
             run3.setText("ĐT: 0862.008.304");
             run3.setTextPosition(50);
-
+            
             XWPFParagraph paragraph4 = document.createParagraph();
             XWPFRun run4 = paragraph4.createRun();
             paragraph4.setAlignment(ParagraphAlignment.CENTER);
             run4.setText("HÓA ĐƠN BÁN HÀNG");
             run4.setFontSize(30);
             run4.setBold(true);
-
+            
             XWPFParagraph paragraph5 = document.createParagraph();
             XWPFRun run5 = paragraph5.createRun();
             run5.setText("Khách hàng: ");
-
+            
             XWPFParagraph paragraph6 = document.createParagraph();
             XWPFRun run6 = paragraph6.createRun();
             run6.setText("Địa chỉ: ");
-
+            
             XWPFParagraph paragraph7 = document.createParagraph();
             XWPFRun run7 = paragraph7.createRun();
             run7.setText("SĐT: ");
-
+            
             XWPFParagraph paragraph8 = document.createParagraph();
             XWPFRun run8 = paragraph8.createRun();
             run8.setText("Ngày lập: " + ftnow.format(now));
             run8.setTextPosition(20);
-
+            
             XWPFTable table = document.createTable(tableGioHang.getRowCount() + 2, 6);
             table.setWidth(50000);
             table.setCellMargins(ERROR, 320, ABORT, 320);
-
+            
             XWPFTableRow row = table.getRow(0);
             XWPFParagraph paragraph9 = row.getCell(0).addParagraph();
             paragraph9.setAlignment(ParagraphAlignment.CENTER);
@@ -323,7 +328,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run9.setText("STT");
             run9.setBold(true);
             run9.setTextPosition(20);
-
+            
             XWPFTableRow row2 = table.getRow(0);
             XWPFParagraph paragraph10 = row.getCell(1).addParagraph();
             paragraph10.setAlignment(ParagraphAlignment.CENTER);
@@ -331,7 +336,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run10.setText("Tên sản phẩm");
             run10.setBold(true);
             run10.setTextPosition(20);
-
+            
             XWPFTableRow row89 = table.getRow(0);
             XWPFParagraph paragraph11 = row.getCell(2).addParagraph();
             paragraph11.setAlignment(ParagraphAlignment.CENTER);
@@ -339,7 +344,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run11.setText("Loại sản phẩm");
             run11.setBold(true);
             run11.setTextPosition(20);
-
+            
             XWPFTableRow row3 = table.getRow(0);
             XWPFParagraph paragraph12 = row.getCell(3).addParagraph();
             paragraph12.setAlignment(ParagraphAlignment.CENTER);
@@ -347,7 +352,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run12.setText("Số lượng");
             run12.setBold(true);
             run12.setTextPosition(20);
-
+            
             XWPFTableRow row4 = table.getRow(0);
             XWPFParagraph paragraph13 = row.getCell(4).addParagraph();
             paragraph13.setAlignment(ParagraphAlignment.CENTER);
@@ -355,7 +360,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run13.setText("Đơn giá");
             run13.setBold(true);
             run13.setTextPosition(20);
-
+            
             XWPFTableRow row5 = table.getRow(0);
             XWPFParagraph paragraph14 = row.getCell(5).addParagraph();
             paragraph14.setAlignment(ParagraphAlignment.CENTER);
@@ -374,62 +379,62 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 table.getRow(i + 1).getCell(5).setText(tableGioHang.getValueAt(i, 5).toString() + " VNĐ");
                 tongsoluong += Integer.parseInt(soluong);
             }
-
+            
             XWPFParagraph paragraph22 = document.createParagraph();
             paragraph22.setAlignment(ParagraphAlignment.LEFT);
-
+            
             XWPFParagraph paragraph20 = document.createParagraph();
             paragraph20.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run211 = paragraph20.createRun();
             run211.setText("TỔNG CỘNG :                      " + tongsoluong + "                      " + txttongtien.getText() + " VNĐ");
             run211.setBold(true);
-
+            
             XWPFParagraph paragraph21 = document.createParagraph();
             paragraph21.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run21 = paragraph21.createRun();
             run21.setText("CHIẾT KHẤU:                       " + txtsokhuyenmai.getText() + "%                  -" + txttienkhuyenmai.getText() + " VNĐ");
             run21.setBold(true);
-
+            
             XWPFParagraph paragraph15 = document.createParagraph();
             paragraph15.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run20 = paragraph15.createRun();
             run20.setText("TỔNG TIỀN THANH TOÁN:                            " + txtthanhtien.getText() + " VNĐ");
             run20.setBold(true);
-
+            
             XWPFParagraph paragraph23 = document.createParagraph();
             paragraph23.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run23 = paragraph23.createRun();
             run23.setText("Chương trình khuyến mại : " + cbbkhuyenmai.getSelectedItem().toString());
-
+            
             XWPFParagraph paragraph24 = document.createParagraph();
             paragraph24.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run24 = paragraph24.createRun();
             run24.setText("Tiền khách đưa : " + txttienkhachdua.getText() + " VNĐ");
-
+            
             XWPFParagraph paragraph25 = document.createParagraph();
             paragraph25.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run25 = paragraph25.createRun();
             run25.setText("Tiền trả lại: " + txttienthua.getText() + " VNĐ");
-
+            
             XWPFParagraph paragraph26 = document.createParagraph();
             paragraph26.setAlignment(ParagraphAlignment.RIGHT);
             XWPFRun run26 = paragraph26.createRun();
             run26.setText("------------------------------------------------------------------------------------------------------------------------------------------");
-
+            
             XWPFParagraph paragraph18 = document.createParagraph();
             paragraph18.setAlignment(ParagraphAlignment.CENTER);
             XWPFRun run18 = paragraph18.createRun();
             run18.setText("Cảm ơn quý khách đã mua hàng!");
-
+            
             XWPFParagraph paragraph19 = document.createParagraph();
             paragraph19.setAlignment(ParagraphAlignment.CENTER);
             XWPFRun run19 = paragraph19.createRun();
             run19.setText("Hẹn gặp lại!");
-
+            
             document.write(out);
             out.close();
             document.close();
-
+            
             System.out.println("Thành công");
         } catch (Exception e) {
             e.printStackTrace();
@@ -455,6 +460,8 @@ public class Menu2 extends javax.swing.JInternalFrame {
         btnxoaSanPham = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableGioHang = new javax.swing.JTable();
+        txtbarcoe = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         btnthemsanpham = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -484,7 +491,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         lblhankm = new javax.swing.JLabel();
-        txtbarcoe = new javax.swing.JTextField();
+        btnhuy = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(0, 0));
@@ -530,9 +537,11 @@ public class Menu2 extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CbbHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(CbbHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 494, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,10 +550,10 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 .addComponent(CbbHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 660, -1));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Giỏ hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
         jPanel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -564,12 +573,28 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 "STT", "Tên SP", "Loại SP", "Số  lượng", "Đơn giá", "Thành tiền"
             }
         ));
+        tableGioHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableGioHangMouseClicked(evt);
+            }
+        });
         tableGioHang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tableGioHangKeyPressed(evt);
             }
         });
         jScrollPane1.setViewportView(tableGioHang);
+
+        txtbarcoe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtbarcoeKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtbarcoeKeyTyped(evt);
+            }
+        });
+
+        jLabel10.setText("Bar code:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -578,10 +603,13 @@ public class Menu2 extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(btnxoaSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(txtbarcoe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -590,11 +618,14 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnxoaSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnxoaSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtbarcoe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addContainerGap())
         );
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 660, -1));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
         jPanel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -611,7 +642,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã SP", "Tên SP", "Loại SP", "Hãng", "Chất liệu", "Kích cỡ", "Màu sắc", "Đế", "Số lượng", "Giá bán", "BarCode"
+                "Mã SP", "Tên SP", "Loại SP", "Hãng", "Chất liệu", "Kích cỡ", "Màu sắc", "Đế", "Số lượng", "Giá bán"
             }
         ));
         jScrollPane2.setViewportView(tableSanPham);
@@ -639,7 +670,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                         .addComponent(btnthemsanpham)
                         .addGap(27, 27, 27)
                         .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 564, Short.MAX_VALUE)))
+                        .addGap(0, 394, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -654,21 +685,23 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 .addGap(13, 13, 13))
         );
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 1050, 240));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 880, 240));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel4.setText("Mã HD:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 52, -1));
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Mã Hóa Đơn:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 120, -1));
 
         txtmaHoaDon.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtmaHoaDon.setForeground(new java.awt.Color(255, 0, 51));
         txtmaHoaDon.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtmaHoaDon.setDisabledTextColor(new java.awt.Color(255, 0, 51));
-        jPanel2.add(txtmaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 160, -1));
+        jPanel2.add(txtmaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 190, 30));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Chương trình GG:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, -1, -1));
 
         cbbkhuyenmai.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         cbbkhuyenmai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn Khuyến mại" }));
@@ -677,11 +710,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 cbbkhuyenmaiActionPerformed(evt);
             }
         });
-        jPanel2.add(cbbkhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, 160, -1));
+        jPanel2.add(cbbkhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 50, 190, 40));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Tổng cộng: ");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, 76, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 110, 100, 30));
 
         txttongtien.setBackground(new java.awt.Color(255, 255, 255));
         txttongtien.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -689,45 +723,54 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txttongtien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txttongtien.setText("0");
         txttongtien.setDisabledTextColor(new java.awt.Color(255, 0, 51));
-        jPanel2.add(txttongtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 90, 160, -1));
+        jPanel2.add(txttongtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 110, 190, 30));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Chiết khấu:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 120, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, -1, 40));
 
         txtsokhuyenmai.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtsokhuyenmai.setText("0");
         txtsokhuyenmai.setDisabledTextColor(new java.awt.Color(255, 0, 51));
-        jPanel2.add(txtsokhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 120, 35, -1));
+        txtsokhuyenmai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsokhuyenmaiActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtsokhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 150, 35, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("%");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 120, 18, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 150, 18, -1));
 
         txttienkhuyenmai.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txttienkhuyenmai.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txttienkhuyenmai.setText("0");
         txttienkhuyenmai.setDisabledTextColor(new java.awt.Color(255, 0, 51));
-        jPanel2.add(txttienkhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 120, 90, -1));
+        jPanel2.add(txttienkhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 150, 130, -1));
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Thành tiền:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 150, 73, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 100, 30));
 
         txtthanhtien.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtthanhtien.setForeground(new java.awt.Color(255, 0, 51));
         txtthanhtien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtthanhtien.setText("0");
         txtthanhtien.setDisabledTextColor(new java.awt.Color(255, 0, 51));
-        jPanel2.add(txtthanhtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 150, 160, -1));
+        jPanel2.add(txtthanhtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 180, 190, 30));
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Tiền khách đưa:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 190, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 220, -1, 30));
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Tiền trả lại:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 250, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, -1, 20));
 
         txttienkhachdua.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txttienkhachdua.setForeground(new java.awt.Color(51, 51, 255));
@@ -738,7 +781,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 txttienkhachduaCaretUpdate(evt);
             }
         });
-        jPanel2.add(txttienkhachdua, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 180, 160, -1));
+        jPanel2.add(txttienkhachdua, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 220, 190, 30));
 
         txttienthua.setBackground(new java.awt.Color(255, 255, 255));
         txttienthua.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -746,7 +789,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txttienthua.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txttienthua.setText("0");
         txttienthua.setDisabledTextColor(new java.awt.Color(255, 0, 51));
-        jPanel2.add(txttienthua, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 250, 160, -1));
+        jPanel2.add(txttienthua, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 280, 190, -1));
 
         btnthanhtoan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnthanhtoan.setText("Thanh Toán");
@@ -755,7 +798,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 btnthanhtoanActionPerformed(evt);
             }
         });
-        jPanel2.add(btnthanhtoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 310, 140, 60));
+        jPanel2.add(btnthanhtoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 560, 160, 60));
 
         btnTaoHoaDon.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnTaoHoaDon.setText("Tạo hóa đơn");
@@ -764,7 +807,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 btnTaoHoaDonActionPerformed(evt);
             }
         });
-        jPanel2.add(btnTaoHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 130, 30));
+        jPanel2.add(btnTaoHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 380, 160, 40));
 
         btnChoThanhToan.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnChoThanhToan.setText("Chờ thanh toán");
@@ -773,40 +816,45 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 btnChoThanhToanActionPerformed(evt);
             }
         });
-        jPanel2.add(btnChoThanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 130, 30));
+        jPanel2.add(btnChoThanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 440, 160, 40));
 
-        lblthongbao.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblthongbao.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblthongbao.setForeground(new java.awt.Color(255, 0, 51));
-        jPanel2.add(lblthongbao, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 210, 240, 30));
+        jPanel2.add(lblthongbao, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 250, 240, 30));
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Khách hàng: ");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, -1, -1));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 280, 120, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, -1, -1));
 
+        jTextField1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 310, 150, 40));
+
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton1.setText("+");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 280, 40, 40));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 310, 40, 40));
 
+        lblhankm.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblhankm.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(lblhankm, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 70, 160, 20));
+        jPanel2.add(lblhankm, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, 160, 20));
 
-        txtbarcoe.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtbarcoeKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtbarcoeKeyTyped(evt);
+        btnhuy.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnhuy.setText("Hủy Hóa Đơn");
+        btnhuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhuyActionPerformed(evt);
             }
         });
-        jPanel2.add(txtbarcoe, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 150, -1));
+        jPanel2.add(btnhuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 500, 160, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -845,6 +893,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         LoadTableGioHang(sl);
         TinhTongTien();
         txtthanhtien.setText(txttongtien.getText());
+        btnxoaSanPham.setEnabled(true);
     }//GEN-LAST:event_btnthemsanphamActionPerformed
 
     private void txttimkiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txttimkiemCaretUpdate
@@ -910,7 +959,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         String tongtien = txtthanhtien.getText().replaceAll(",", "");
         tienthua = Integer.parseInt(txttienkhachdua.getText()) - Integer.parseInt(tongtien);
         txttienthua.setText(formatter.format(tienthua));
-
+        
         if (tienthua < 0) {
             lblthongbao.setText("Khách hàng chưa đưa đủ tiền.");
             btnthanhtoan.setEnabled(false);
@@ -984,10 +1033,15 @@ public class Menu2 extends javax.swing.JInternalFrame {
         updatetienKM();
         if (TrangThaiGH == "Chờ thanh toán" || TrangThaiGH == "Đang chờ") {
             btnthemsanpham.setEnabled(true);
+            btnhuy.setEnabled(true);
+            btnChoThanhToan.setEnabled(true);
         } else if (TrangThaiGH == "Đã thanh toán") {
             btnthemsanpham.setEnabled(false);
             btnthanhtoan.setEnabled(false);
+            btnhuy.setEnabled(false);
+            btnChoThanhToan.setEnabled(false);
         }
+        btnxoaSanPham.setEnabled(false);
     }//GEN-LAST:event_tableHoaDonMouseClicked
 
     private void cbbkhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbkhuyenmaiActionPerformed
@@ -1034,15 +1088,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
     private void txtbarcoeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbarcoeKeyPressed
         // TODO add your handling code here:
-
+        int Line = tableGioHang.getRowCount();
+        String tenSP = getTensp(txtbarcoe.getText());
+//        String soluong = JOptionPane.showInputDialog(this, "Mời bạn nhập số lượng sản phẩm");
+        int sl = 1;
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            int Line = tableGioHang.getRowCount();
-            String tenSP = getTensp(txtbarcoe.getText());
-            JOptionPane.showMessageDialog(this, tenSP);
-            String soluong = JOptionPane.showInputDialog(this, "Mời bạn nhập số lượng sản phẩm");
-            int sl = Integer.parseInt(soluong);
             for (int i = 0; i < Line; i++) {
-                JOptionPane.showMessageDialog(this, tenSP);
                 if (tableGioHang.getValueAt(i, 1).equals(tenSP)) {
                     int quanCu = (int) tableGioHang.getValueAt(i, 3);
                     int quanMoi = sl;
@@ -1068,37 +1119,66 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
     private void tableGioHangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableGioHangKeyPressed
         // TODO add your handling code here:
+        int row = tableGioHang.getSelectedRow();
+        int Line = tableGioHang.getRowCount();
+        
+        String tensp = tableGioHang.getValueAt(row, 1).toString();
+        
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            int row = tableGioHang.getSelectedRow();
-            int Line = tableGioHang.getRowCount();
+
+//            for (int i = 0; i < Line; i++) {
+//                if (tableGioHang.getValueAt(i, 1).equals(tensp)) {
+//                    bang.removeRow(i);
+//                    int soLuong = sl;
+//                    sl = soLuong;
+//                    break;
+//                }
+//            }
+//            LoadTableGioHang(sl);
             String soluong = tableGioHang.getValueAt(row, 3).toString();
-            String tensp = tableGioHang.getValueAt(row, 1).toString();
+            String dongia = tableGioHang.getValueAt(row, 4).toString();
+            int dg = Integer.parseInt(dongia);
             int sl = Integer.parseInt(soluong);
-            for (int i = 0; i < Line; i++) {
-                if (tableGioHang.getValueAt(i, 1).equals(tensp)) {
-                    bang.removeRow(i);
-                    int soLuong = sl;
-                    sl = soLuong;
-                    break;
-                }
-            }
-            LoadTableGioHang(sl);
+            tableGioHang.setValueAt(dg * sl, tableGioHang.getSelectedRow(), 5);
+            JOptionPane.showMessageDialog(this, sl * dg);
             TinhTongTien();
             txtthanhtien.setText(txttongtien.getText());
         }
     }//GEN-LAST:event_tableGioHangKeyPressed
+
+    private void btnhuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhuyActionPerformed
+        // TODO add your handling code here:
+        String maHd = txtmaHoaDon.getText();
+        int TrangThai = 3;
+        banHangITF.updateTrangThaiHoaDon(TrangThai, maHd);
+        LoadTableHoaDon();
+        LoadTableSanPham();
+        Clearform();
+        JOptionPane.showMessageDialog(this, "Hủy hóa đơn thành công.");
+    }//GEN-LAST:event_btnhuyActionPerformed
+
+    private void txtsokhuyenmaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsokhuyenmaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtsokhuyenmaiActionPerformed
+
+    private void tableGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableGioHangMouseClicked
+        // TODO add your handling code here:
+        btnxoaSanPham.setEnabled(true);
+    }//GEN-LAST:event_tableGioHangMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CbbHoaDon;
     private javax.swing.JButton btnChoThanhToan;
     private javax.swing.JButton btnTaoHoaDon;
+    private javax.swing.JButton btnhuy;
     private javax.swing.JButton btnthanhtoan;
     private javax.swing.JButton btnthemsanpham;
     private javax.swing.JButton btnxoaSanPham;
     private javax.swing.JComboBox<String> cbbkhuyenmai;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
