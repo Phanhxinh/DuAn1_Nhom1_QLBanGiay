@@ -107,6 +107,8 @@ public class Menu5 extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        dsngaykt = new com.toedter.calendar.JDateChooser();
+        dsngaybd = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -117,8 +119,6 @@ public class Menu5 extends javax.swing.JInternalFrame {
         txtten = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtmota = new javax.swing.JTextArea();
-        dsngaybd = new com.toedter.calendar.JDateChooser();
-        dsngaykt = new com.toedter.calendar.JDateChooser();
         btthem = new javax.swing.JButton();
         btsua = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -131,10 +131,10 @@ public class Menu5 extends javax.swing.JInternalFrame {
         table = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        dstu = new com.toedter.calendar.JDateChooser();
-        dsden = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
         btloc = new javax.swing.JButton();
+        dstu = new com.toedter.calendar.JDateChooser();
+        dsden = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1100, 690));
@@ -142,6 +142,14 @@ public class Menu5 extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1100, 690));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        dsngaykt.setDate(new java.util.Date(1669125429000L));
+        dsngaykt.setDateFormatString("yyyy/MM/dd");
+        jPanel1.add(dsngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 230, -1));
+
+        dsngaybd.setDate(new java.util.Date(1669125429000L));
+        dsngaybd.setDateFormatString("yyyy/MM/dd");
+        jPanel1.add(dsngaybd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 230, -1));
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Tên khuyến mại");
@@ -179,16 +187,6 @@ public class Menu5 extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(txtmota);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 227, 230, -1));
-
-        dsngaybd.setForeground(new java.awt.Color(0, 0, 0));
-        dsngaybd.setDate(new java.util.Date(1669125429000L));
-        dsngaybd.setDateFormatString("yyyy/MM/dd");
-        jPanel1.add(dsngaybd, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 150, 230, -1));
-
-        dsngaykt.setForeground(new java.awt.Color(0, 0, 0));
-        dsngaykt.setDate(new java.util.Date(1669125429000L));
-        dsngaykt.setDateFormatString("yyyy/MM/dd");
-        jPanel1.add(dsngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 187, 230, -1));
 
         btthem.setForeground(new java.awt.Color(0, 0, 0));
         btthem.setText("Thêm");
@@ -296,14 +294,6 @@ public class Menu5 extends javax.swing.JInternalFrame {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Từ");
 
-        dstu.setForeground(new java.awt.Color(0, 0, 0));
-        dstu.setDate(new java.util.Date(1669125429000L));
-        dstu.setDateFormatString("yyyy/MM/dd");
-
-        dsden.setForeground(new java.awt.Color(0, 0, 0));
-        dsden.setDate(new java.util.Date(1669125429000L));
-        dsden.setDateFormatString("yyyy/MM/dd");
-
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Đến");
 
@@ -315,39 +305,38 @@ public class Menu5 extends javax.swing.JInternalFrame {
             }
         });
 
+        dstu.setDate(new java.util.Date(1669125429000L));
+        dstu.setDateFormatString("yyyy/MM/dd");
+
+        dsden.setDate(new java.util.Date(1669125429000L));
+        dsden.setDateFormatString("yyyy/MM/dd");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btloc)
-                .addGap(160, 160, 160))
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(46, 46, 46)
-                        .addComponent(dstu, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(38, 38, 38)
-                        .addComponent(dsden, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dstu, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dsden, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btloc))
+                .addGap(52, 52, 52))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10)
                     .addComponent(dstu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel9))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9)
                     .addComponent(dsden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btloc)
