@@ -37,7 +37,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     public BanHangITF banHangITF = new BanHangIML();
     public DefaultTableModel bang;
     private NumberFormat formatter = new DecimalFormat("#,###");
-    SimpleDateFormat ftnow = new SimpleDateFormat("yyyy/MM/dd");
+    SimpleDateFormat ftnow = new SimpleDateFormat("dd/MM/yyyy");
 
     /**
      * Creates new form Menu1

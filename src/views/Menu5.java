@@ -144,11 +144,11 @@ public class Menu5 extends javax.swing.JInternalFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dsngaykt.setDate(new java.util.Date(1669125429000L));
-        dsngaykt.setDateFormatString("yyyy/MM/dd");
+        dsngaykt.setDateFormatString("dd/MM/yyyy");
         jPanel1.add(dsngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 230, -1));
 
         dsngaybd.setDate(new java.util.Date(1669125429000L));
-        dsngaybd.setDateFormatString("yyyy/MM/dd");
+        dsngaybd.setDateFormatString("dd/MM/yyyy");
         jPanel1.add(dsngaybd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 230, -1));
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
