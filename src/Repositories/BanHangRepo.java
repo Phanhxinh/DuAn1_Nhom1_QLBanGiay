@@ -56,6 +56,26 @@ public class BanHangRepo {
         return list;
     }
 
+    public ArrayList<SanPham_BanhangModel> getSPbarcode(String Barcode) {
+        ArrayList list = new ArrayList<SanPham_BanhangModel>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select b.TenSP,a.BarCode from ChiTietSP a join SanPham b on a.IdSanPham=b.Id where BarCode=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, Barcode);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String tenSP = rs.getString("TenSP");
+                String barcode = rs.getString("BarCode");
+                SanPham_BanhangModel spbm = new SanPham_BanhangModel(null, tenSP, null, null, null, null, null, null, null, null, barcode);
+                list.add(spbm);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 //     tìm kiếm sản phẩm 
     public ArrayList<SanPham_BanhangModel> FindTen(String ten) {
         ArrayList list = new ArrayList<SanPham_BanhangModel>();
@@ -436,5 +456,5 @@ public class BanHangRepo {
         }
     }
 // xóa khỏi giỏ hàng
-    
+
 }
