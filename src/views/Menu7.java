@@ -321,6 +321,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
 
         cbbTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang làm", "Đã nghỉ" }));
 
+        txtNgaySinh.setDate(new java.util.Date(1669125429000L));
         txtNgaySinh.setDateFormatString("yyyy/MM/dd");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

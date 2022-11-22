@@ -181,10 +181,12 @@ public class Menu5 extends javax.swing.JInternalFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 227, 230, -1));
 
         dsngaybd.setForeground(new java.awt.Color(0, 0, 0));
+        dsngaybd.setDate(new java.util.Date(1669125429000L));
         dsngaybd.setDateFormatString("yyyy/MM/dd");
         jPanel1.add(dsngaybd, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 150, 230, -1));
 
         dsngaykt.setForeground(new java.awt.Color(0, 0, 0));
+        dsngaykt.setDate(new java.util.Date(1669125429000L));
         dsngaykt.setDateFormatString("yyyy/MM/dd");
         jPanel1.add(dsngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 187, 230, -1));
 
@@ -295,9 +297,11 @@ public class Menu5 extends javax.swing.JInternalFrame {
         jLabel10.setText("Từ");
 
         dstu.setForeground(new java.awt.Color(0, 0, 0));
+        dstu.setDate(new java.util.Date(1669125429000L));
         dstu.setDateFormatString("yyyy/MM/dd");
 
         dsden.setForeground(new java.awt.Color(0, 0, 0));
+        dsden.setDate(new java.util.Date(1669125429000L));
         dsden.setDateFormatString("yyyy/MM/dd");
 
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
