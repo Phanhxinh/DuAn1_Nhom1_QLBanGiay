@@ -47,7 +47,7 @@ private SanPhamIML IMLSame;
     String ma = txtMa.getText().trim();
     String ten = txtTen.getText().trim();
         
-SanPham_SanPhamModel M3  = new SanPham_SanPhamModel(ma, ten);
+SanPham_SanPhamModel M3  = new SanPham_SanPhamModel(ma, ten,null);
         return M3;
     }
     

@@ -16,4 +16,5 @@ public interface TheLoaiITF {
     public void insert(TheLoai_SanPhamModel tl);
     public void update(String ma,TheLoai_SanPhamModel tl);
     public void delete(String ma);
+    ArrayList<TheLoai_SanPhamModel> CbxTheLoai();
 }

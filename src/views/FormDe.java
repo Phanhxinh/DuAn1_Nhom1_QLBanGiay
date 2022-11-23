@@ -46,7 +46,7 @@ private DeIML IMLSame;
      String chatlieu = txtcl.getText().trim();
       String docao = txtdc.getText().trim();
         
-    De_SanPhamModel M3  = new De_SanPhamModel( ma, ten, chatlieu, docao);
+    De_SanPhamModel M3  = new De_SanPhamModel( ma, ten, chatlieu, docao,null);
         return M3;
     }
       public boolean ktDieuKien() {

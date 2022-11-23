@@ -17,38 +17,38 @@ import java.util.ArrayList;
  *
  * @author CQTRUONG
  */
-public class ChatLieuRepo implements ChatLieuITF{
+public class ChatLieuRepo implements ChatLieuITF {
 
     @Override
     public ArrayList<ChatLieu_SanPhamModel> All() {
-             ArrayList<ChatLieu_SanPhamModel> listcl = new ArrayList<ChatLieu_SanPhamModel>();
-try {
+        ArrayList<ChatLieu_SanPhamModel> listcl = new ArrayList<ChatLieu_SanPhamModel>();
+        try {
             Connection conn = jdbcUtils.getConnection();
             String puery = "SELECT * FROM ChatLieu";
-            
+
             PreparedStatement ps = conn.prepareStatement(puery);
             ps.execute();
-            
+
             ResultSet rs = ps.getResultSet();
-            
-            while(rs.next() == true){
-               
+
+            while (rs.next() == true) {
+
                 String ma = rs.getString("MaCL");
                 String ten = rs.getString("TenCL");
-                
-                ChatLieu_SanPhamModel cl = new ChatLieu_SanPhamModel(ma, ten);
+
+                ChatLieu_SanPhamModel cl = new ChatLieu_SanPhamModel(ma, ten, null);
                 listcl.add(cl);
             }
         } catch (Exception ex) {
-            
+
         }
         return listcl;
-        
+
     }
 
     @Override
     public void insert(ChatLieu_SanPhamModel cl) {
-try {
+        try {
             Connection conn = jdbcUtils.getConnection();
             String sql = "insert into ChatLieu "
                     + "(MaCL,TenCL)"
@@ -57,7 +57,7 @@ try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, cl.getMaCL());
             ps.setString(2, cl.getTenCL());
-            
+
             ps.execute();
 
         } catch (Exception ex) {
@@ -67,39 +67,58 @@ try {
 
     @Override
     public void update(String ma, ChatLieu_SanPhamModel cl) {
- try {
+        try {
             Connection conn = jdbcUtils.getConnection();
             String sql = "UPDATE ChatLieu set "
                     + "TenCL = ? WHERE MaCL = ?";
 
             PreparedStatement ps = conn.prepareStatement(sql);
-          
+
             ps.setString(1, cl.getTenCL());
             ps.setString(2, ma);
-            
+
             ps.execute();
 
         } catch (Exception ex) {
             ex.printStackTrace();
-        }    
+        }
     }
 
     @Override
     public void delete(String ma) {
-try {
+        try {
             Connection conn = jdbcUtils.getConnection();
             String sql = "DELETE ChatLieu "
                     + "  WHERE MaCL = ?";
 
             PreparedStatement ps = conn.prepareStatement(sql);
-          
-            
+
             ps.setString(1, ma);
-            
+
             ps.execute();
 
         } catch (Exception ex) {
             ex.printStackTrace();
-        }    }
-    
+        }
+    }
+
+    public ArrayList<ChatLieu_SanPhamModel> CbxChatLieu() {
+        ArrayList<ChatLieu_SanPhamModel> list = new ArrayList<>();
+        try {
+            Connection con = jdbcUtils.getConnection();
+            String sql = "select id,tencl from ChatLieu";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ChatLieu_SanPhamModel cl = new ChatLieu_SanPhamModel();
+                cl.setId(rs.getString("id"));
+                cl.setTenCL(rs.getString("tencl"));
+                list.add(cl);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 }

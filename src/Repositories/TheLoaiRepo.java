@@ -38,7 +38,7 @@ public class TheLoaiRepo implements TheLoaiITF {
                 String ma = rs.getString("MaTL");
                 String ten = rs.getString("TenTL");
 
-                TheLoai_SanPhamModel same = new TheLoai_SanPhamModel( ma, ten);
+                TheLoai_SanPhamModel same = new TheLoai_SanPhamModel( ma, ten,null);
                 listsame.add(same);
             }
         } catch (Exception ex) {
@@ -101,5 +101,24 @@ public class TheLoaiRepo implements TheLoaiITF {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+    
+     public ArrayList<TheLoai_SanPhamModel> CbxTheLoai() {
+        ArrayList<TheLoai_SanPhamModel> list = new ArrayList<>();
+        try {
+            Connection con = jdbcUtils.getConnection();
+            String sql = "select id,tentl from TheLoai";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                TheLoai_SanPhamModel tl = new TheLoai_SanPhamModel();
+                tl.setId(rs.getString("id"));
+                tl.setTenTL(rs.getString("tentl"));
+                list.add(tl);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

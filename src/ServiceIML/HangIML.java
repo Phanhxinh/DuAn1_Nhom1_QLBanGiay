@@ -34,4 +34,8 @@ public class HangIML implements HangITF{
     public void delete(String ma) {
     this.Reposame.delete(ma);    }
     
+    @Override
+    public ArrayList<Hang_SanPhamModel> CbxHang() {
+        return Reposame.CbxHang();
+    }
 }

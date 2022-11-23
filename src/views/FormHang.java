@@ -47,7 +47,7 @@ private HangIML IMLSame;
     String ma = txtMa.getText().trim();
     String ten = txtTen.getText().trim();
         
-    Hang_SanPhamModel M3  = new Hang_SanPhamModel( ma, ten);
+    Hang_SanPhamModel M3  = new Hang_SanPhamModel( ma, ten,null);
         return M3;
     }
      public boolean ktDieuKien() {

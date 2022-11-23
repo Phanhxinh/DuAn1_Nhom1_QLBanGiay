@@ -5,17 +5,17 @@
 package ServiceIML;
 
 import DomainModel.De_SanPhamModel;
-import ITFService.DeITF;
 import Repositories.ChatLieuRepo;
 import Repositories.DeRepo;
 
 import java.util.ArrayList;
+import ITFService.DEITF;
 
 /**
  *
  * @author CQTRUONG
  */
-public class DeIML implements DeITF{
+public class DeIML implements DEITF{
  public DeRepo Reposame;
     
     public DeIML() {
@@ -39,6 +39,11 @@ public class DeIML implements DeITF{
     @Override
     public void delete(String ma) {
         this.Reposame.delete(ma);
+    }
+    
+    @Override
+    public ArrayList<De_SanPhamModel> CbxDe() {
+        return Reposame.CbxDe();
     }
     
 }

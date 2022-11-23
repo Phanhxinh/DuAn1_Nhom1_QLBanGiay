@@ -38,5 +38,8 @@ public class KichCoIML implements KichCoITF{
     public void delete(String ma) {
         this.kcRepo.delete(ma);
     }
-    
+    @Override
+    public ArrayList<KichCo_SanPhamModel> CbxKichCo() {
+        return kcRepo.CbxKichCo();
+    }
 }

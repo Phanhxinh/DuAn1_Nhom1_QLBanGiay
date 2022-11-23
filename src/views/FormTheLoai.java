@@ -46,7 +46,7 @@ private TheLoaiIML IMLSame;
     String ma = txtMa.getText().trim();
     String ten = txtTen.getText().trim();
         
-    TheLoai_SanPhamModel M3  = new TheLoai_SanPhamModel( ma, ten);
+    TheLoai_SanPhamModel M3  = new TheLoai_SanPhamModel( ma, ten,null);
         return M3;
     }
     

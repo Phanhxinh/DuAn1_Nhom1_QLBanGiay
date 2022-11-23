@@ -36,7 +36,7 @@ public class HangRepo implements HangITF{
                 String ma = rs.getString("MaHang");
                 String ten = rs.getString("TenHang");
 
-                Hang_SanPhamModel same = new Hang_SanPhamModel( ma, ten);
+                Hang_SanPhamModel same = new Hang_SanPhamModel( ma, ten,null);
                 listsame.add(same);
             }
         } catch (Exception ex) {
@@ -96,6 +96,25 @@ public class HangRepo implements HangITF{
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }    }
+    } 
+    public ArrayList<Hang_SanPhamModel> CbxHang() {
+        ArrayList<Hang_SanPhamModel> list = new ArrayList<>();
+        try {
+            Connection con = jdbcUtils.getConnection();
+            String sql = "select id,tenhang from Hang";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Hang_SanPhamModel hang = new Hang_SanPhamModel();
+                hang.setId(rs.getString("id"));
+                hang.setTen(rs.getString("tenhang"));
+                list.add(hang);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+}
     
 

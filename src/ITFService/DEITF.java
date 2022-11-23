@@ -10,9 +10,10 @@ import DomainModel.De_SanPhamModel;
  *
  * @author CQTRUONG
  */
-public interface DeITF {
+public interface DEITF {
       public ArrayList<De_SanPhamModel> All();
     public void insert(De_SanPhamModel de);
     public void update(String ma,De_SanPhamModel de);
     public void delete(String ma);
+    ArrayList<De_SanPhamModel> CbxDe();
 }

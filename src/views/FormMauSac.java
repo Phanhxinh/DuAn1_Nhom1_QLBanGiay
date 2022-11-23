@@ -46,7 +46,7 @@ private MauSacIML MSiML;
     String ma = txtMa.getText().trim();
     String ten = txtTen.getText().trim();
         
-    MauSac_SanphamModel  M3  = new MauSac_SanphamModel( ma, ten);
+    MauSac_SanphamModel  M3  = new MauSac_SanphamModel( ma, ten,null);
         return M3;
     }
      public boolean ktDieuKien() {

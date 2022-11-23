@@ -16,4 +16,5 @@ public interface KichCoITF {
     public void insert(KichCo_SanPhamModel kc);
     public void update(String ma,KichCo_SanPhamModel kc);
     public void delete(String ma);
+    ArrayList<KichCo_SanPhamModel> CbxKichCo();
 }
