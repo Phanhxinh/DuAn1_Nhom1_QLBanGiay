@@ -10,18 +10,14 @@ package DomainModel;
  */
 public class KichCo_SanPhamModel {
     private String MaKC,tenKC;
-    private String id;
 
     public KichCo_SanPhamModel() {
     }
 
-    public KichCo_SanPhamModel(String MaKC, String tenKC, String id) {
+    public KichCo_SanPhamModel(String MaKC, String tenKC) {
         this.MaKC = MaKC;
         this.tenKC = tenKC;
-        this.id = id;
     }
-
-    
 
     public String getMaKC() {
         return MaKC;
@@ -39,16 +35,6 @@ public class KichCo_SanPhamModel {
         this.tenKC = tenKC;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String toString(){
-        return tenKC;
-    }
+    
     
 }

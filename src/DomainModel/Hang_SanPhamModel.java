@@ -12,26 +12,14 @@ public class Hang_SanPhamModel {
        
        private String ma;
        private String ten;
-       private String id;
 
     public Hang_SanPhamModel() {
     }
 
-    public Hang_SanPhamModel(String ma, String ten, String id) {
+    public Hang_SanPhamModel(String ma, String ten) {
         this.ma = ma;
         this.ten = ten;
-        this.id = id;
     }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    
 
     public String getMa() {
         return ma;
@@ -49,9 +37,7 @@ public class Hang_SanPhamModel {
         this.ten = ten;
     }
 
-    public String toString(){
-        return ten;
-    }
+   
        
        
 }

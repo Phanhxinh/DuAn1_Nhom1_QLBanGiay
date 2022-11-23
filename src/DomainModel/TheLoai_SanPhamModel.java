@@ -10,25 +10,14 @@ package DomainModel;
  */
 public class TheLoai_SanPhamModel {
     private String MaTL,tenTL;
-    private String id;
 
     public TheLoai_SanPhamModel() {
     }
 
-    public TheLoai_SanPhamModel(String MaTL, String tenTL, String id) {
+    public TheLoai_SanPhamModel(String MaTL, String tenTL) {
         this.MaTL = MaTL;
         this.tenTL = tenTL;
-        this.id = id;
     }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
 
     public String getMaTL() {
         return MaTL;
@@ -44,10 +33,6 @@ public class TheLoai_SanPhamModel {
 
     public void setTenTL(String tenTL) {
         this.tenTL = tenTL;
-    }
-    
-    public String toString(){
-        return tenTL;
     }
 
     

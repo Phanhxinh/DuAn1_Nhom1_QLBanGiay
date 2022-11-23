@@ -46,7 +46,7 @@ private TheLoaiIML IMLSame;
     String ma = txtMa.getText().trim();
     String ten = txtTen.getText().trim();
         
-    TheLoai_SanPhamModel M3  = new TheLoai_SanPhamModel(ma, ten,null);
+    TheLoai_SanPhamModel M3  = new TheLoai_SanPhamModel( ma, ten);
         return M3;
     }
     
@@ -276,14 +276,6 @@ private TheLoaiIML IMLSame;
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FormTheLoai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

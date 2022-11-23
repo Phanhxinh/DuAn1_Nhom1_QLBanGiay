@@ -39,10 +39,5 @@ public class ChatLieuIML implements ChatLieuITF{
     public void delete(String ma) {
         this.Reposame.delete(ma);
     }
-
-    @Override
-    public ArrayList<ChatLieu_SanPhamModel> CbxChatLieu() {
-        return Reposame.CbxChatLieu();
-    }
     
 }

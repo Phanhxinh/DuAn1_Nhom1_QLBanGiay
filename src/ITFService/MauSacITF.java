@@ -16,5 +16,4 @@ public interface MauSacITF {
     public void insert(MauSac_SanphamModel ms);
     public void update(String ma,MauSac_SanphamModel ms);
     public void delete(String ma);
-    ArrayList<MauSac_SanphamModel> CbxMauSac();
 }

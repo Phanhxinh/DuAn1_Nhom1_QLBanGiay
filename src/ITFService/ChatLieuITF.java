@@ -16,5 +16,4 @@ public interface ChatLieuITF {
     public void insert(ChatLieu_SanPhamModel cl);
     public void update(String ma,ChatLieu_SanPhamModel cl);
     public void delete(String ma);
-    ArrayList<ChatLieu_SanPhamModel> CbxChatLieu();
 }

@@ -36,7 +36,7 @@ public class MauSacRepo implements MauSacITF{
                 String ma = rs.getString("MaMS");
                 String ten = rs.getString("TenMS");
                 
-                MauSac_SanphamModel ms = new MauSac_SanphamModel(ma, ten,null);
+                MauSac_SanphamModel ms = new MauSac_SanphamModel(ma, ten);
                 listMS.add(ms);
             }
         } catch (Exception ex) {
@@ -103,22 +103,5 @@ public class MauSacRepo implements MauSacITF{
             ex.printStackTrace();
         }
     }
-    public ArrayList<MauSac_SanphamModel> CbxMauSac() {
-        ArrayList<MauSac_SanphamModel> list = new ArrayList<>();
-        try {
-            Connection con = jdbcUtils.getConnection();
-            String sql = "select id,tenms from MauSac";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                MauSac_SanphamModel ms = new MauSac_SanphamModel();
-                ms.setId(rs.getString("id"));
-                ms.setTenMS(rs.getString("tenms"));
-                list.add(ms);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
+    
 }

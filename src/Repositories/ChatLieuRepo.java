@@ -36,7 +36,7 @@ try {
                 String ma = rs.getString("MaCL");
                 String ten = rs.getString("TenCL");
                 
-                ChatLieu_SanPhamModel cl = new ChatLieu_SanPhamModel(ma, ten,null);
+                ChatLieu_SanPhamModel cl = new ChatLieu_SanPhamModel(ma, ten);
                 listcl.add(cl);
             }
         } catch (Exception ex) {
@@ -101,23 +101,5 @@ try {
         } catch (Exception ex) {
             ex.printStackTrace();
         }    }
-    public ArrayList<ChatLieu_SanPhamModel> CbxChatLieu() {
-        ArrayList<ChatLieu_SanPhamModel> list = new ArrayList<>();
-        try {
-            Connection con = jdbcUtils.getConnection();
-            String sql = "select id,tencl from ChatLieu";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                ChatLieu_SanPhamModel cl = new ChatLieu_SanPhamModel();
-                cl.setId(rs.getString("id"));
-                cl.setTenCL(rs.getString("tencl"));
-                list.add(cl);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
     
 }

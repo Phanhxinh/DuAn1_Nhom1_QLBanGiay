@@ -45,7 +45,7 @@ private KichCoIML KCiML;
     String ma = txtMa.getText().trim();
     String ten = txtTen.getText().trim();
         
-    KichCo_SanPhamModel  M3  = new KichCo_SanPhamModel(ma, ten,null);
+    KichCo_SanPhamModel  M3  = new KichCo_SanPhamModel(ma, ten);
         return M3;
     }
      public boolean ktDieuKien() {
@@ -274,8 +274,6 @@ private KichCoIML KCiML;
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FormKichCo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

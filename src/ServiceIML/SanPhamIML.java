@@ -41,9 +41,4 @@ public class SanPhamIML implements SanPhamITF {
         this.Reposame.delete(ma);
     }
 
-    @Override
-    public ArrayList<SanPham_SanPhamModel> CbxSanPham() {
-        return Reposame.CbxSanPham();
-    }
-
 }

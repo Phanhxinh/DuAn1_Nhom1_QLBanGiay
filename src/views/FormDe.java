@@ -46,7 +46,7 @@ private DeIML IMLSame;
      String chatlieu = txtcl.getText().trim();
       String docao = txtdc.getText().trim();
         
-    De_SanPhamModel M3  = new De_SanPhamModel( ma, ten, chatlieu, docao,null);
+    De_SanPhamModel M3  = new De_SanPhamModel( ma, ten, chatlieu, docao);
         return M3;
     }
       public boolean ktDieuKien() {
@@ -341,7 +341,6 @@ private DeIML IMLSame;
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FormDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

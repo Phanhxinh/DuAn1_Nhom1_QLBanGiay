@@ -47,7 +47,7 @@ private HangIML IMLSame;
     String ma = txtMa.getText().trim();
     String ten = txtTen.getText().trim();
         
-    Hang_SanPhamModel M3  = new Hang_SanPhamModel(ma,ten,null);
+    Hang_SanPhamModel M3  = new Hang_SanPhamModel( ma, ten);
         return M3;
     }
      public boolean ktDieuKien() {
@@ -277,22 +277,6 @@ private HangIML IMLSame;
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FormHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

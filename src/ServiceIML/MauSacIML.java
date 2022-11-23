@@ -40,10 +40,5 @@ public class MauSacIML implements MauSacITF {
     public void delete(String ma) {
         this.mauSacRepo.delete(ma);
     }
-
-    @Override
-    public ArrayList<MauSac_SanphamModel> CbxMauSac() {
-        return mauSacRepo.CbxMauSac();
-    }
     
 }

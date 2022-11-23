@@ -36,7 +36,7 @@ try {
                 String ma = rs.getString("MaKC");
                 String ten = rs.getString("TenKC");
                 
-                KichCo_SanPhamModel kc = new KichCo_SanPhamModel(ma, ten,null);
+                KichCo_SanPhamModel kc = new KichCo_SanPhamModel(ma, ten);
                 listMS.add(kc);
             }
         } catch (Exception ex) {
@@ -103,22 +103,5 @@ try {
             ex.printStackTrace();
         }
 }
-    public ArrayList<KichCo_SanPhamModel> CbxKichCo() {
-        ArrayList<KichCo_SanPhamModel> list = new ArrayList<>();
-        try {
-            Connection con = jdbcUtils.getConnection();
-            String sql = "select id,tenkc from KichCo";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                KichCo_SanPhamModel kc = new KichCo_SanPhamModel();
-                kc.setId(rs.getString("id"));
-                kc.setTenKC(rs.getString("tenkc"));
-                list.add(kc);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
+    
 }

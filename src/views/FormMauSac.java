@@ -46,7 +46,7 @@ private MauSacIML MSiML;
     String ma = txtMa.getText().trim();
     String ten = txtTen.getText().trim();
         
-    MauSac_SanphamModel  M3  = new MauSac_SanphamModel(ma, ten,null);
+    MauSac_SanphamModel  M3  = new MauSac_SanphamModel( ma, ten);
         return M3;
     }
      public boolean ktDieuKien() {
@@ -275,7 +275,6 @@ private MauSacIML MSiML;
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FormMauSac.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
