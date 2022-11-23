@@ -40,5 +40,10 @@ public class DeIML implements DeITF{
     public void delete(String ma) {
         this.Reposame.delete(ma);
     }
+
+    @Override
+    public ArrayList<De_SanPhamModel> CbxDe() {
+        return Reposame.CbxDe();
+    }
     
 }

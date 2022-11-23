@@ -15,4 +15,5 @@ public interface DeITF {
     public void insert(De_SanPhamModel de);
     public void update(String ma,De_SanPhamModel de);
     public void delete(String ma);
+    ArrayList<De_SanPhamModel> CbxDe();
 }

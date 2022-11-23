@@ -38,7 +38,7 @@ public class DeRepo implements DeITF {
                 String chatlieu = rs.getString("ChatLieu");
                 String docao = rs.getString("DoCao");
 
-                De_SanPhamModel same = new De_SanPhamModel( ma, ten, chatlieu, docao);
+                De_SanPhamModel same = new De_SanPhamModel( ma, ten, chatlieu, docao,null);
                 listsame.add(same);
             }
         } catch (Exception ex) {
@@ -106,7 +106,25 @@ try {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-        }    }    
+        }    }  
+    public ArrayList<De_SanPhamModel> CbxDe() {
+        ArrayList<De_SanPhamModel> list = new ArrayList<>();
+        try {
+            Connection con = jdbcUtils.getConnection();
+            String sql = "select id,tende from De";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                De_SanPhamModel hang = new De_SanPhamModel();
+                hang.setId(rs.getString("id"));
+                hang.setTenDe(rs.getString("tende"));
+                list.add(hang);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
 }
 

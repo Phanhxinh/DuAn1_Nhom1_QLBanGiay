@@ -10,15 +10,25 @@ package DomainModel;
  */
 public class ChatLieu_SanPhamModel {
     private String MaCL,tenCL;
-
+    private String id;
     public ChatLieu_SanPhamModel() {
         
     }
 
-    public ChatLieu_SanPhamModel(String MaCL, String tenCL) {
+    public ChatLieu_SanPhamModel(String MaCL, String tenCL, String id) {
         this.MaCL = MaCL;
         this.tenCL = tenCL;
+        this.id = id;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 
     public String getMaCL() {
         return MaCL;
@@ -34,6 +44,10 @@ public class ChatLieu_SanPhamModel {
 
     public void setTenCL(String tenCL) {
         this.tenCL = tenCL;
+    }
+    
+    public String toString(){
+        return tenCL;
     }
 }
    

@@ -47,7 +47,7 @@ private SanPhamIML IMLSame;
     String ma = txtMa.getText().trim();
     String ten = txtTen.getText().trim();
         
-SanPham_SanPhamModel M3  = new SanPham_SanPhamModel(ma, ten);
+SanPham_SanPhamModel M3  = new SanPham_SanPhamModel(ma, ten,null);
         return M3;
     }
     
@@ -275,6 +275,38 @@ SanPham_SanPhamModel M3  = new SanPham_SanPhamModel(ma, ten);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FormSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

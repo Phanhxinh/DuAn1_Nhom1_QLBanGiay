@@ -37,5 +37,10 @@ public class TheLoaiIML implements TheLoaiITF{
     public void delete(String ma) {
         this.Reposame.delete(ma);
     }
+
+    @Override
+    public ArrayList<TheLoai_SanPhamModel> CbxTheLoai() {
+        return Reposame.CbxTheLoai();
+    }
     
 }

@@ -17,4 +17,5 @@ public interface HangITF {
     public void insert(Hang_SanPhamModel hang);
     public void update(String ma,Hang_SanPhamModel hang);
     public void delete(String ma);
+    ArrayList<Hang_SanPhamModel> CbxHang();
 }

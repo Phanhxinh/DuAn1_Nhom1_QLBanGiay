@@ -37,7 +37,7 @@ public class SanPhamRepo implements SanPhamITF{
                 String ma = rs.getString("MaSP");
                 String ten = rs.getString("TenSP");
 
-               SanPham_SanPhamModel same = new SanPham_SanPhamModel( ma, ten);
+                SanPham_SanPhamModel same = new SanPham_SanPhamModel(ma, ten,null);
                 listsame.add(same);
             }
         } catch (Exception ex) {
@@ -98,6 +98,25 @@ try {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+    
+    public ArrayList<SanPham_SanPhamModel> CbxSanPham() {
+        ArrayList<SanPham_SanPhamModel> list = new ArrayList<>();
+        try {
+            Connection con = jdbcUtils.getConnection();
+            String sql = "select id,tensp from SanPham";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                SanPham_SanPhamModel sp = new SanPham_SanPhamModel();
+                sp.setId(rs.getString("id"));
+                sp.setTen(rs.getString("tensp"));
+                list.add(sp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
   

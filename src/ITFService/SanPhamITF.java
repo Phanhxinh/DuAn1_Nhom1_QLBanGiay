@@ -17,4 +17,5 @@ public interface SanPhamITF {
     public void insert(SanPham_SanPhamModel sp);
     public void update(String ma,SanPham_SanPhamModel sp);
     public void delete(String ma);
+    ArrayList<SanPham_SanPhamModel> CbxSanPham();
 }

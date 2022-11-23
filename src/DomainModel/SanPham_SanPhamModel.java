@@ -9,15 +9,26 @@ package DomainModel;
  * @author CQTRUONG
  */
 public class SanPham_SanPhamModel {
-      private String Ma,ten;
+    private String Ma,ten;
+    private String id;
 
     public SanPham_SanPhamModel() {
     }
 
-    public SanPham_SanPhamModel(String Ma, String ten) {
+    public SanPham_SanPhamModel(String Ma, String ten, String id) {
         this.Ma = Ma;
         this.ten = ten;
+        this.id = id;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 
     public String getMa() {
         return Ma;
@@ -33,6 +44,10 @@ public class SanPham_SanPhamModel {
 
     public void setTen(String ten) {
         this.ten = ten;
+    }
+    
+    public String toString(){
+        return ten;
     }
 
    

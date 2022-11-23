@@ -10,14 +10,17 @@ package DomainModel;
  */
 public class MauSac_SanphamModel {
     private String MaMS,tenMS;
-
+    private String id;
     public MauSac_SanphamModel() {
     }
 
-    public MauSac_SanphamModel(String MaMS, String tenMS) {
+    public MauSac_SanphamModel(String MaMS, String tenMS, String id) {
         this.MaMS = MaMS;
         this.tenMS = tenMS;
+        this.id = id;
     }
+
+    
 
     public String getMaMS() {
         return MaMS;
@@ -34,6 +37,18 @@ public class MauSac_SanphamModel {
     public void setTenMS(String tenMS) {
         this.tenMS = tenMS;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    public String toString(){
+        return tenMS;
+    }
+    
 
     
 }
