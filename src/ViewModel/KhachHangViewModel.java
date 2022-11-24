@@ -9,6 +9,7 @@ package ViewModel;
  * @author Hong Phong
  */
 public class KhachHangViewModel {
+    private String id;
     private String maKh ;
     private String tenKh ;
     private String ngaySinh;
@@ -19,13 +20,22 @@ public class KhachHangViewModel {
     public KhachHangViewModel() {
     }
 
-    public KhachHangViewModel(String maKh, String tenKh, String ngaySinh, String sdt, String Email, String diachi) {
+    public KhachHangViewModel(String id, String maKh, String tenKh, String ngaySinh, String sdt, String Email, String diachi) {
+        this.id = id;
         this.maKh = maKh;
         this.tenKh = tenKh;
         this.ngaySinh = ngaySinh;
         this.sdt = sdt;
         this.Email = Email;
         this.diachi = diachi;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getMaKh() {
@@ -75,6 +85,8 @@ public class KhachHangViewModel {
     public void setDiachi(String diachi) {
         this.diachi = diachi;
     }
+
+ 
     
      @Override
     public String toString() {
