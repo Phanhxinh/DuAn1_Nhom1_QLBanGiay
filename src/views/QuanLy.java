@@ -12,6 +12,7 @@ import java.awt.Color;
  */
 public class QuanLy extends javax.swing.JFrame {
 //d
+
     /**
      * Creates new form QuanLy
      */
@@ -22,7 +23,7 @@ public class QuanLy extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
         DefaultColor = new Color(246, 168, 193);
-        ClickeColor = new Color(200,187,240);
+        ClickeColor = new Color(200, 187, 240);
 
         menu1.setBackground(DefaultColor);
         menu2.setBackground(DefaultColor);
@@ -538,6 +539,7 @@ public class QuanLy extends javax.swing.JFrame {
 
     private void menu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu2MouseClicked
         // TODO add your handling code here:
+
         Menu2 mn2 = new Menu2();
         jDesktopPanel.removeAll();
         jDesktopPanel.add(mn2).setVisible(true);

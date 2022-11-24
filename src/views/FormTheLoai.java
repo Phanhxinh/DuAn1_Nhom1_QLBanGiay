@@ -24,6 +24,7 @@ private TheLoaiIML IMLSame;
         initComponents();
         this.IMLSame = new TheLoaiIML();
         loatble();
+         this.setLocationRelativeTo(null);
     }
 
     public void loatble(){

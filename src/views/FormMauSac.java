@@ -22,6 +22,7 @@ private MauSacIML MSiML;
         initComponents();
         this.MSiML = new MauSacIML();
         loatble();
+         this.setLocationRelativeTo(null);
     }
 
     public void loatble(){

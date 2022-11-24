@@ -22,6 +22,7 @@ private DeIML IMLSame;
         initComponents();
          this.IMLSame = new DeIML();
         loatble();
+         this.setLocationRelativeTo(null);
     }
    public void loatble(){
         DefaultTableModel dmt  = (DefaultTableModel) tb1.getModel();

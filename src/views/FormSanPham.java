@@ -25,6 +25,7 @@ private SanPhamIML IMLSame;
         initComponents();
         this.IMLSame = new SanPhamIML();
         loatble();
+         this.setLocationRelativeTo(null);
     }
 
     public void loatble(){

@@ -488,8 +488,8 @@ public class Menu2 extends javax.swing.JInternalFrame {
         btnChoThanhToan = new javax.swing.JButton();
         lblthongbao = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtKhachMuaHang = new javax.swing.JTextField();
+        ThemKH = new javax.swing.JButton();
         lblhankm = new javax.swing.JLabel();
         btnhuy = new javax.swing.JButton();
 
@@ -827,12 +827,17 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jLabel9.setText("Khách hàng: ");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 310, 150, 40));
+        txtKhachMuaHang.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jPanel2.add(txtKhachMuaHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 310, 140, 40));
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton1.setText("+");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 310, 40, 40));
+        ThemKH.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        ThemKH.setText("+");
+        ThemKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ThemKHActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ThemKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 310, 40, 40));
 
         lblhankm.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblhankm.setForeground(new java.awt.Color(0, 0, 0));
@@ -1166,9 +1171,16 @@ public class Menu2 extends javax.swing.JInternalFrame {
         btnxoaSanPham.setEnabled(true);
     }//GEN-LAST:event_tableGioHangMouseClicked
 
+    private void ThemKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemKHActionPerformed
+        // TODO add your handling code here:
+        new KhachHangView().setVisible(true);
+//        this.dispose();
+    }//GEN-LAST:event_ThemKHActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CbbHoaDon;
+    private javax.swing.JButton ThemKH;
     private javax.swing.JButton btnChoThanhToan;
     private javax.swing.JButton btnTaoHoaDon;
     private javax.swing.JButton btnhuy;
@@ -1176,7 +1188,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnthemsanpham;
     private javax.swing.JButton btnxoaSanPham;
     private javax.swing.JComboBox<String> cbbkhuyenmai;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -1194,12 +1205,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblhankm;
     private javax.swing.JLabel lblthongbao;
     private javax.swing.JTable tableGioHang;
     private javax.swing.JTable tableHoaDon;
     private javax.swing.JTable tableSanPham;
+    private javax.swing.JTextField txtKhachMuaHang;
     private javax.swing.JTextField txtbarcoe;
     private javax.swing.JTextField txtmaHoaDon;
     private javax.swing.JTextField txtsokhuyenmai;

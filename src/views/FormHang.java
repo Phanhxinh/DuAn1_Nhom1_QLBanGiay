@@ -25,6 +25,7 @@ private HangIML IMLSame;
         initComponents();
         this.IMLSame = new HangIML();
         loatble();
+         this.setLocationRelativeTo(null);
     }
 
     public void loatble(){

@@ -23,6 +23,7 @@ private KichCoIML KCiML;
         initComponents();
         this.KCiML = new KichCoIML();
         loatble();
+         this.setLocationRelativeTo(null);
     }
 
     public void loatble(){
