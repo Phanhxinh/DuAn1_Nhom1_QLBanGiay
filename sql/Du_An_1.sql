@@ -165,3 +165,5 @@ ALTER TABLE ChiTietSP ADD FOREIGN KEY(IdChatLieu) REFERENCES ChatLieu(Id)
 ALTER TABLE ChiTietSP ADD FOREIGN KEY(IdHang) REFERENCES Hang(Id)
 --ChiTietSP - De
 ALTER TABLE ChiTietSP ADD FOREIGN KEY(IdDe) REFERENCES De(Id)
+
+select  s.MaSP,s.TenSP,c.GiaBan* h.SoLuong from HoaDonChiTiet h join ChiTietSP c on h.IdChiTietSP = c.Id join SanPham s on s.Id = c.IdSanPham

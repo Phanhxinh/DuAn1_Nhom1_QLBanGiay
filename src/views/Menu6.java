@@ -5,7 +5,13 @@
 package views;
 
 
+import DomainModel.Thongke_Model;
+import ITFService.ThongKeITF;
+import Repositories.ThongKeRepo;
+import ServiceIML.ThongKeIML;
+import java.util.ArrayList;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,12 +22,25 @@ public class Menu6 extends javax.swing.JInternalFrame {
     /**
      * Creates new form Menu1
      */
+    public ThongKeITF tkITF = new ThongKeIML();
+    private ThongKeRepo tkrp = new ThongKeRepo();
+
+
     public Menu6() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
+
         
+    }
+    private void LoadTableTK(){
+        DefaultTableModel bang = (DefaultTableModel) tbl_thongKe.getModel();
+        this.tkrp.getall();
+        bang.setRowCount(0);
+        for (Thongke_Model sp : this.tkrp.getall()) {
+            bang.addRow(new Object[]{sp.getMa(), sp.getTen(), sp.getSoLuong(), sp.getTT()});
+        }
     }
 
     /**
@@ -328,6 +347,11 @@ public class Menu6 extends javax.swing.JInternalFrame {
         DateStart1.setDateFormatString("yyyy/MM/dd");
 
         btXuat.setText("Xuất TK");
+        btXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXuatActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel10.setText("Doanh Thu - Sản Phẩm");
@@ -420,6 +444,11 @@ public class Menu6 extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXuatActionPerformed
+        // TODO add your handling code here:
+        LoadTableTK();
+    }//GEN-LAST:event_btXuatActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
