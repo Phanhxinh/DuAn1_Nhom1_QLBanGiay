@@ -10,18 +10,21 @@ public class Thongke_Model {
     private int soLuong;
     private int TrangThai;
     private int soBan;
-    private float gia;
-    private float tong = soLuong* gia;
+    private String tong;
 
     public Thongke_Model() {
     }
 
-    public Thongke_Model(String ma, String ten, int soLuong, int TrangThai) {
+    public Thongke_Model(String ma, String ten, int soLuong, int TrangTha, String tong) {
         this.ma = ma;
         this.ten = ten;
         this.soLuong = soLuong;
         this.TrangThai = TrangThai;
+        this.tong = tong;
     }
+
+    
+   
 
     public String getMa() {
         return ma;
@@ -63,19 +66,11 @@ public class Thongke_Model {
         this.soBan = soBan;
     }
 
-    public float getGia() {
-        return gia;
-    }
-
-    public void setGia(float gia) {
-        this.gia = gia;
-    }
-
-    public float getTong() {
+    public String getTong() {
         return tong;
     }
 
-    public void setTong(float tong) {
+    public void setTong(String tong) {
         this.tong = tong;
     }
 
