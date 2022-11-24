@@ -67,9 +67,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
     }
 
-//    public Menu2(String ten) {
-//        txtKhachMuaHang.setText("fhgfhgf");
-//    }
 // Hiện thị sản phẩm lên bảng sản phẩm
 
     private void LoadTableSanPham() {

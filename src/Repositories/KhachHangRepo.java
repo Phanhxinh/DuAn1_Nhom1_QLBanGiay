@@ -54,8 +54,9 @@ public class KhachHangRepo {
             while (rs.next()) {
                 String id = rs.getString("Id");
                 String makh = rs.getString("MaKH");
-                String tenkh=rs.getString("TenKH");
-                listkh.add(new KhachHangViewModel(id, makh, tenkh, null, null, null, null));
+                String tenkh = rs.getString("TenKH");
+                String sdt = rs.getString("SDT");
+                listkh.add(new KhachHangViewModel(id, makh, tenkh, null, sdt, null, null));
             }
         } catch (Exception e) {
             e.printStackTrace();

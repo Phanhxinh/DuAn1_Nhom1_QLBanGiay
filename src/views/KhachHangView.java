@@ -326,7 +326,7 @@ public class KhachHangView extends javax.swing.JFrame {
     private void btnchonkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnchonkhActionPerformed
         List<KhachHangViewModel> list = khitf.GetId(txtmaKh3.getText());
         for (KhachHangViewModel x : list) {
-            Menu2.txtKhachMuaHang.setText(x.getTenKh());
+            Menu2.txtKhachMuaHang.setText(x.getSdt());
         }
     }//GEN-LAST:event_btnchonkhActionPerformed
 
