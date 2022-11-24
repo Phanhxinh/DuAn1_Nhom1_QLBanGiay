@@ -16,6 +16,13 @@ public class ThongKeIML implements ThongKeITF{
     public ArrayList<Thongke_Model> getall() {
         return tkrp.getall();
     }
+
+    @Override
+    public ArrayList<Thongke_Model> tong() {
+        
+        return tkrp.tong();
+        
+    }
     
     
 }

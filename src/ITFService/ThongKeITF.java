@@ -10,4 +10,6 @@ import java.util.ArrayList;
  */
 public interface ThongKeITF {
     ArrayList<Thongke_Model>getall();
+    
+    ArrayList<Thongke_Model> tong();
 }
