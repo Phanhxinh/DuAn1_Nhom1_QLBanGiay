@@ -14,6 +14,8 @@ import java.util.ArrayList;
 public interface HoadonITF {
 
     ArrayList<HoaDonView> getall();
-    
+
     ArrayList<HoaDonView> FindMaNV(String ten);
+
+    ArrayList<HoaDonView> LocNgay(String ngayBD, String ngayKT);
 }
