@@ -138,7 +138,12 @@ public class KhachHangView extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         btnchonkh = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel19.setText("Mã khách hàng");
 
@@ -323,8 +328,15 @@ public class KhachHangView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFindCaretUpdate
 
     private void btnchonkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnchonkhActionPerformed
-
+        List<KhachHangViewModel> list = khitf.GetId(txtmaKh3.getText());
+        for (KhachHangViewModel x : list) {
+            Menu2.txtKhachMuaHang.setText(x.getSdt());
+        }
     }//GEN-LAST:event_btnchonkhActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

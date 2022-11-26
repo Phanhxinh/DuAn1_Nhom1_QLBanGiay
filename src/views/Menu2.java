@@ -11,6 +11,7 @@ import DomainModel.KhuyenMai_BanHangModel;
 import DomainModel.SanPham_BanhangModel;
 import ITFService.BanHangITF;
 import ServiceIML.BanHangIML;
+import ViewModel.KhachHangViewModel;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -33,7 +34,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
  * @author DELL
  */
 public class Menu2 extends javax.swing.JInternalFrame {
-    
+
     public BanHangITF banHangITF = new BanHangIML();
     public DefaultTableModel bang;
     private NumberFormat formatter = new DecimalFormat("#,###");
@@ -42,6 +43,8 @@ public class Menu2 extends javax.swing.JInternalFrame {
     /**
      * Creates new form Menu1
      */
+    private String tenNV;
+
     public Menu2() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -62,10 +65,10 @@ public class Menu2 extends javax.swing.JInternalFrame {
         btnChoThanhToan.setEnabled(false);
         btnhuy.setEnabled(false);
         btnxoaSanPham.setEnabled(false);
-//        initWebcam();
-    }
-// Hiện thị sản phẩm lên bảng sản phẩm
 
+    }
+
+// Hiện thị sản phẩm lên bảng sản phẩm
     private void LoadTableSanPham() {
         DefaultTableModel bang = (DefaultTableModel) tableSanPham.getModel();
         bang.setRowCount(0);
@@ -202,7 +205,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.getCbbTenKM(ftnow.format(now), ftnow.format(now))) {
             cbbkhuyenmai.addItem(khuyenMai_BanHangModel.getTenKM());
         }
-        
+
     }
 
     // cập nhật tiền đc khuyến mại
@@ -215,7 +218,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txttienkhuyenmai.setText(formatter.format(Dis));
         int tienkhuyenmai = Integer.parseInt(Order) - Dis;
         txtthanhtien.setText(formatter.format(tienkhuyenmai));
-        
+
     }
 // Xóa dữ liệu trên bảng giỏ hàng.
 
@@ -252,7 +255,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         btnChoThanhToan.setEnabled(false);
         btnhuy.setEnabled(false);
     }
-    
+
     private String getTensp(String barcode) {
         for (SanPham_BanhangModel sp : banHangITF.getSPbarcode(txtbarcoe.getText())) {
             if (sp.getBarcode().equals(barcode)) {
@@ -261,66 +264,66 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-    
+
     private void Barcode(int soluong) {
         bang = (DefaultTableModel) tableGioHang.getModel();
         banHangITF.getAllGioHang(null, txtbarcoe.getText()).forEach(gh -> {
             bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getLoaiSP(), soluong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soluong});
         });
     }
-    
+
     private void XuatHoaDon() {
         Date now = new Date();
         try {
             XWPFDocument document = new XWPFDocument();
             FileOutputStream out = new FileOutputStream(new File("src/FileInHoaDon/" + txtmaHoaDon.getText() + ".docx"));
-            
+
             XWPFParagraph paragraph = document.createParagraph();
             XWPFRun run = paragraph.createRun();
             paragraph.setAlignment(ParagraphAlignment.CENTER);
             run.setText("CỬA HÀNG BÁN GIÀY RUNING");
             run.setFontSize(20);
             run.setBold(true);
-            
+
             XWPFParagraph paragraph2 = document.createParagraph();
             XWPFRun run2 = paragraph2.createRun();
             paragraph2.setAlignment(ParagraphAlignment.CENTER);
             run2.setText("ĐC: Phố Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Hà Nội");
-            
+
             XWPFParagraph paragraph3 = document.createParagraph();
             XWPFRun run3 = paragraph3.createRun();
             paragraph3.setAlignment(ParagraphAlignment.CENTER);
             run3.setText("ĐT: 0862.008.304");
             run3.setTextPosition(50);
-            
+
             XWPFParagraph paragraph4 = document.createParagraph();
             XWPFRun run4 = paragraph4.createRun();
             paragraph4.setAlignment(ParagraphAlignment.CENTER);
             run4.setText("HÓA ĐƠN BÁN HÀNG");
             run4.setFontSize(30);
             run4.setBold(true);
-            
+
             XWPFParagraph paragraph5 = document.createParagraph();
             XWPFRun run5 = paragraph5.createRun();
             run5.setText("Khách hàng: ");
-            
+
             XWPFParagraph paragraph6 = document.createParagraph();
             XWPFRun run6 = paragraph6.createRun();
             run6.setText("Địa chỉ: ");
-            
+
             XWPFParagraph paragraph7 = document.createParagraph();
             XWPFRun run7 = paragraph7.createRun();
             run7.setText("SĐT: ");
-            
+
             XWPFParagraph paragraph8 = document.createParagraph();
             XWPFRun run8 = paragraph8.createRun();
             run8.setText("Ngày lập: " + ftnow.format(now));
             run8.setTextPosition(20);
-            
+
             XWPFTable table = document.createTable(tableGioHang.getRowCount() + 2, 6);
             table.setWidth(50000);
             table.setCellMargins(ERROR, 320, ABORT, 320);
-            
+
             XWPFTableRow row = table.getRow(0);
             XWPFParagraph paragraph9 = row.getCell(0).addParagraph();
             paragraph9.setAlignment(ParagraphAlignment.CENTER);
@@ -328,7 +331,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run9.setText("STT");
             run9.setBold(true);
             run9.setTextPosition(20);
-            
+
             XWPFTableRow row2 = table.getRow(0);
             XWPFParagraph paragraph10 = row.getCell(1).addParagraph();
             paragraph10.setAlignment(ParagraphAlignment.CENTER);
@@ -336,7 +339,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run10.setText("Tên sản phẩm");
             run10.setBold(true);
             run10.setTextPosition(20);
-            
+
             XWPFTableRow row89 = table.getRow(0);
             XWPFParagraph paragraph11 = row.getCell(2).addParagraph();
             paragraph11.setAlignment(ParagraphAlignment.CENTER);
@@ -344,7 +347,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run11.setText("Loại sản phẩm");
             run11.setBold(true);
             run11.setTextPosition(20);
-            
+
             XWPFTableRow row3 = table.getRow(0);
             XWPFParagraph paragraph12 = row.getCell(3).addParagraph();
             paragraph12.setAlignment(ParagraphAlignment.CENTER);
@@ -352,7 +355,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run12.setText("Số lượng");
             run12.setBold(true);
             run12.setTextPosition(20);
-            
+
             XWPFTableRow row4 = table.getRow(0);
             XWPFParagraph paragraph13 = row.getCell(4).addParagraph();
             paragraph13.setAlignment(ParagraphAlignment.CENTER);
@@ -360,7 +363,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run13.setText("Đơn giá");
             run13.setBold(true);
             run13.setTextPosition(20);
-            
+
             XWPFTableRow row5 = table.getRow(0);
             XWPFParagraph paragraph14 = row.getCell(5).addParagraph();
             paragraph14.setAlignment(ParagraphAlignment.CENTER);
@@ -379,62 +382,62 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 table.getRow(i + 1).getCell(5).setText(tableGioHang.getValueAt(i, 5).toString() + " VNĐ");
                 tongsoluong += Integer.parseInt(soluong);
             }
-            
+
             XWPFParagraph paragraph22 = document.createParagraph();
             paragraph22.setAlignment(ParagraphAlignment.LEFT);
-            
+
             XWPFParagraph paragraph20 = document.createParagraph();
             paragraph20.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run211 = paragraph20.createRun();
             run211.setText("TỔNG CỘNG :                      " + tongsoluong + "                      " + txttongtien.getText() + " VNĐ");
             run211.setBold(true);
-            
+
             XWPFParagraph paragraph21 = document.createParagraph();
             paragraph21.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run21 = paragraph21.createRun();
             run21.setText("CHIẾT KHẤU:                       " + txtsokhuyenmai.getText() + "%                  -" + txttienkhuyenmai.getText() + " VNĐ");
             run21.setBold(true);
-            
+
             XWPFParagraph paragraph15 = document.createParagraph();
             paragraph15.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run20 = paragraph15.createRun();
             run20.setText("TỔNG TIỀN THANH TOÁN:                            " + txtthanhtien.getText() + " VNĐ");
             run20.setBold(true);
-            
+
             XWPFParagraph paragraph23 = document.createParagraph();
             paragraph23.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run23 = paragraph23.createRun();
             run23.setText("Chương trình khuyến mại : " + cbbkhuyenmai.getSelectedItem().toString());
-            
+
             XWPFParagraph paragraph24 = document.createParagraph();
             paragraph24.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run24 = paragraph24.createRun();
             run24.setText("Tiền khách đưa : " + txttienkhachdua.getText() + " VNĐ");
-            
+
             XWPFParagraph paragraph25 = document.createParagraph();
             paragraph25.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run25 = paragraph25.createRun();
             run25.setText("Tiền trả lại: " + txttienthua.getText() + " VNĐ");
-            
+
             XWPFParagraph paragraph26 = document.createParagraph();
             paragraph26.setAlignment(ParagraphAlignment.RIGHT);
             XWPFRun run26 = paragraph26.createRun();
             run26.setText("------------------------------------------------------------------------------------------------------------------------------------------");
-            
+
             XWPFParagraph paragraph18 = document.createParagraph();
             paragraph18.setAlignment(ParagraphAlignment.CENTER);
             XWPFRun run18 = paragraph18.createRun();
             run18.setText("Cảm ơn quý khách đã mua hàng!");
-            
+
             XWPFParagraph paragraph19 = document.createParagraph();
             paragraph19.setAlignment(ParagraphAlignment.CENTER);
             XWPFRun run19 = paragraph19.createRun();
             run19.setText("Hẹn gặp lại!");
-            
+
             document.write(out);
             out.close();
             document.close();
-            
+
             System.out.println("Thành công");
         } catch (Exception e) {
             e.printStackTrace();
@@ -906,7 +909,14 @@ public class Menu2 extends javax.swing.JInternalFrame {
         Findten(txttimkiem.getText());
         updatetienKM();
     }//GEN-LAST:event_txttimkiemCaretUpdate
-
+//    private String getSDTtoID(String sdt) {
+//        for (KhachHangViewModel kh : banHangITF.getIDKH(sdt)) {
+//            if (kh.getSdt().toString().equals(sdt)) {
+//                return kh.getId();
+//            }
+//        }
+//        return null;
+//    }
     private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
         // TODO add your handling code here:
         int count = 0;
@@ -925,10 +935,16 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
         String MaHD = txtmaHoaDon.getText();
         int TrangThai = 1;
-        banHangITF.insertHoaDon("0cae54b6-951d-4b56-a767-66dded7bd4c3", "e0112873-f33e-48c4-bee0-5afb5f2b9fb2", null, MaHD, TrangThai);
+        String idKH = "";
+        String sdtKH = txtKhachMuaHang.getText();
+        for (KhachHangViewModel kh : banHangITF.getIDKH(sdtKH)) {
+            idKH += kh.getId();
+        }
+        banHangITF.insertHoaDon(idKH, "e0112873-f33e-48c4-bee0-5afb5f2b9fb2", null, MaHD, TrangThai);
         this.LoadTableHoaDon();
         JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công.");
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
+
 
     private void CbbHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbbHoaDonActionPerformed
         // TODO add your handling code here:
@@ -964,7 +980,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         String tongtien = txtthanhtien.getText().replaceAll(",", "");
         tienthua = Integer.parseInt(txttienkhachdua.getText()) - Integer.parseInt(tongtien);
         txttienthua.setText(formatter.format(tienthua));
-        
+
         if (tienthua < 0) {
             lblthongbao.setText("Khách hàng chưa đưa đủ tiền.");
             btnthanhtoan.setEnabled(false);
@@ -1126,9 +1142,9 @@ public class Menu2 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int row = tableGioHang.getSelectedRow();
         int Line = tableGioHang.getRowCount();
-        
+
         String tensp = tableGioHang.getValueAt(row, 1).toString();
-        
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
 //            for (int i = 0; i < Line; i++) {
@@ -1210,7 +1226,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JTable tableGioHang;
     private javax.swing.JTable tableHoaDon;
     private javax.swing.JTable tableSanPham;
-    private javax.swing.JTextField txtKhachMuaHang;
+    public static javax.swing.JTextField txtKhachMuaHang;
     private javax.swing.JTextField txtbarcoe;
     private javax.swing.JTextField txtmaHoaDon;
     private javax.swing.JTextField txtsokhuyenmai;

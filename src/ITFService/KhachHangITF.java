@@ -9,8 +9,14 @@ import ViewModel.KhachHangViewModel;
 import java.util.List;
 
 public interface KhachHangITF {
-     List<KhachHangViewModel>  getListKh();
+
+    List<KhachHangViewModel> getListKh();
+
     void Add(KhachHang kh);
-    void Update(String ma , KhachHang kh);
+
+    void Update(String ma, KhachHang kh);
+
     List<KhachHangViewModel> FindKh(String makh);
+    
+    List<KhachHangViewModel> GetId(String ten);
 }

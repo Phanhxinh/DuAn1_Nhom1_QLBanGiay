@@ -11,6 +11,7 @@ import DomainModel.KhuyenMai_BanHangModel;
 import DomainModel.SanPham_BanhangModel;
 import ITFService.BanHangITF;
 import Repositories.BanHangRepo;
+import ViewModel.KhachHangViewModel;
 import java.util.ArrayList;
 
 /**
@@ -118,6 +119,11 @@ public class BanHangIML implements BanHangITF {
     @Override
     public ArrayList<SanPham_BanhangModel> getSPbarcode(String Barcode) {
         return banHangRepo.getSPbarcode(Barcode);
+    }
+
+    @Override
+    public ArrayList<KhachHangViewModel> getIDKH(String sdt) {
+        return banHangRepo.getIDKH(sdt);
     }
 
 }

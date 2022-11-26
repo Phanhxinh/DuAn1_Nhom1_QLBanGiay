@@ -9,10 +9,12 @@ import DomainModel.GioHang_BanHangModel;
 import DomainModel.HoaDonModel;
 import DomainModel.HoaDon_BanHangModel;
 import DomainModel.KhuyenMai_BanHangModel;
+import ViewModel.KhachHangViewModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import views.KhachHangView;
 
 /**
  *
@@ -455,6 +457,24 @@ public class BanHangRepo {
             e.printStackTrace();
         }
     }
-// xóa khỏi giỏ hàng
+
+    public ArrayList<KhachHangViewModel> getIDKH(String Sdt) {
+        ArrayList list = new ArrayList<KhachHangViewModel>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select * from KhachHang where SDT=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, Sdt);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String idKH = rs.getString("Id");
+                String sdt = rs.getString("SDT");
+                list.add(new KhachHangViewModel(idKH, null, null, null, sdt, null, null));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
 }

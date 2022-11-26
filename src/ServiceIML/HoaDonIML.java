@@ -27,4 +27,9 @@ public class HoaDonIML implements HoadonITF {
         return hoaDonRepo.FindMaNV(ten);
     }
 
+    @Override
+    public ArrayList<HoaDonView> LocNgay(String ngayBD, String ngayKT) {
+        return hoaDonRepo.LocNgay(ngayBD, ngayKT);
+    }
+
 }

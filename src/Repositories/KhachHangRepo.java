@@ -23,18 +23,40 @@ public class KhachHangRepo {
         List<KhachHangViewModel> listkh = new ArrayList<>();
         try {
             Connection conn = jdbcUtils.getConnection();
-            String sql = "select MaKH,TenKH, NgaySinh,SDT,Email,DiaChi  from KhachHang";
+            String sql = "select Id,MaKH,TenKH, NgaySinh,SDT,Email,DiaChi  from KhachHang";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 KhachHangViewModel khvm = new KhachHangViewModel();
-                khvm.setMaKh(rs.getString(1));
-                khvm.setTenKh(rs.getString(2));
-                khvm.setNgaySinh(rs.getString(3));
-                khvm.setSdt(rs.getString(4));
-                khvm.setEmail(rs.getString(5));
-                khvm.setDiachi(rs.getString(6));
+                khvm.setId(rs.getString(1));
+                khvm.setMaKh(rs.getString(2));
+                khvm.setTenKh(rs.getString(3));
+                khvm.setNgaySinh(rs.getString(4));
+                khvm.setSdt(rs.getString(5));
+                khvm.setEmail(rs.getString(6));
+                khvm.setDiachi(rs.getString(7));
                 listkh.add(khvm);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listkh;
+    }
+
+    public List<KhachHangViewModel> GetId(String ma) {
+        List<KhachHangViewModel> listkh = new ArrayList<>();
+        try {
+            Connection conn = jdbcUtils.getConnection();
+            String sql = "select Id,MaKH,TenKH,NgaySinh,SDT,Email,DiaChi  from KhachHang where MaKH=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, ma);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString("Id");
+                String makh = rs.getString("MaKH");
+                String tenkh = rs.getString("TenKH");
+                String sdt = rs.getString("SDT");
+                listkh.add(new KhachHangViewModel(id, makh, tenkh, null, sdt, null, null));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -103,7 +125,7 @@ public class KhachHangRepo {
 
         try {
             Connection conn = jdbcUtils.getConnection();
-            String sql = "select MaKH,TenKH, NgaySinh,SDT,Email,DiaChi  from KhachHang where MaKh = '"+makh+"'";
+            String sql = "select MaKH,TenKH, NgaySinh,SDT,Email,DiaChi  from KhachHang where TenKH like N'%" + makh + "%'";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

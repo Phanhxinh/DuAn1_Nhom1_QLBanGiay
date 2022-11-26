@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 public class ValidateForm {
     public static final String POPUP_HEADER = "Thông báo";
 
-    public static final String EMAIL_PATTERN = "^[a-zA-Z][a-zA-Z0-9]+@[fpt]+(\\\\.[a-zA-Z]+){1,3}$";
+    public static final String EMAIL_PATTERN = "^[a-zA-Z][a-zA-Z0-9]+@[fpt]+(\\.[a-zA-Z]+){1,3}$";
     
     public static final String PASS_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{6,10}$";
 
@@ -28,7 +28,7 @@ public class ValidateForm {
     }
     
     public static boolean validatePass(String MatKhau) {
-        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Pattern pattern = Pattern.compile(PASS_REGEX);
         Matcher matcher = pattern.matcher(MatKhau);
         return matcher.matches();
     }
