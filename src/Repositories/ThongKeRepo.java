@@ -34,10 +34,58 @@ public class ThongKeRepo {
         ArrayList<Thongke_Model> list = new ArrayList<>();
         try {
             Connection conn = Connections.jdbcUtils.getConnection();
-            String sql="select  h.SoLuong * c.GiaBan as Tong from HoaDonChiTiet h "
-                    + "join ChiTietSP c on h.IdChiTietSP = c.Id  "
-                    + "join SanPham s on s.Id = c.IdSanPham  "
-                    + "join HoaDon d on h.IdHoaDon =d.Id";
+            String sql="select sum(SoLuong*DonGia) as Tong from HoaDonChiTiet ";
+            PreparedStatement ps =conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                String tong = rs.getString("Tong");
+
+                Thongke_Model tk = new Thongke_Model(null, null, 0, 0, tong);
+                list.add(tk);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    public ArrayList<Thongke_Model> tongNgay(){
+        ArrayList<Thongke_Model> list = new ArrayList<>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql="select sum(SoLuong*DonGia) as Tong from HoaDonChiTiet ";
+            PreparedStatement ps =conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                String tong = rs.getString("Tong");
+
+                Thongke_Model tk = new Thongke_Model(null, null, 0, 0, tong);
+                list.add(tk);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    public ArrayList<Thongke_Model> tongThang(){
+        ArrayList<Thongke_Model> list = new ArrayList<>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql="select sum(SoLuong*DonGia) as Tong from HoaDonChiTiet ";
+            PreparedStatement ps =conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                String tong = rs.getString("Tong");
+
+                Thongke_Model tk = new Thongke_Model(null, null, 0, 0, tong);
+                list.add(tk);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    public ArrayList<Thongke_Model> tongTuyChon(){
+        ArrayList<Thongke_Model> list = new ArrayList<>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql="select sum(SoLuong*DonGia) as Tong from HoaDonChiTiet ";
             PreparedStatement ps =conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){

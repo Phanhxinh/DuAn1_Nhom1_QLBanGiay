@@ -32,6 +32,9 @@ public class Menu6 extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         loadTk();
+        loadTN();
+        loadTT();
+        loadTTC();
 
         
     }
@@ -48,6 +51,22 @@ public class Menu6 extends javax.swing.JInternalFrame {
           lb_1.setText(sp.getTong()+ " đ");
         }
     }
+    private void loadTN(){
+        for (Thongke_Model sp : this.tkrp.tongNgay()) {
+          lb_2.setText(sp.getTong()+ " đ");
+        }
+    }
+    private void loadTT(){
+        for (Thongke_Model sp : this.tkrp.tongThang()) {
+          lb_3.setText(sp.getTong()+ " đ");
+        }
+    }
+    private void loadTTC(){
+        for (Thongke_Model sp : this.tkrp.tongTuyChon()) {
+          lb_4.setText(sp.getTong()+ " đ");
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,10 +84,13 @@ public class Menu6 extends javax.swing.JInternalFrame {
         lb_1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        lb_2 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
+        lb_3 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
+        lb_4 = new javax.swing.JLabel();
         DateStart2 = new com.toedter.calendar.JDateChooser();
         DateStart3 = new com.toedter.calendar.JDateChooser();
         btnChon = new javax.swing.JButton();
@@ -118,19 +140,23 @@ public class Menu6 extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(lb_1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                    .addContainerGap(89, Short.MAX_VALUE)
+                    .addComponent(lb_1)
+                    .addGap(88, 88, 88)))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(lb_1)
-                .addGap(121, 121, 121))
+                .addGap(164, 164, 164))
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGap(68, 68, 68)
+                    .addComponent(lb_1)
+                    .addContainerGap(111, Short.MAX_VALUE)))
         );
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -138,6 +164,9 @@ public class Menu6 extends javax.swing.JInternalFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("7 Ngày");
+
+        lb_2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lb_2.setText("jLabel16");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -147,13 +176,19 @@ public class Menu6 extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(lb_2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(155, 155, 155))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lb_2)
+                .addGap(118, 118, 118))
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -161,6 +196,9 @@ public class Menu6 extends javax.swing.JInternalFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Tháng");
+
+        lb_3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lb_3.setText("jLabel17");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -170,13 +208,19 @@ public class Menu6 extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(lb_3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(156, 156, 156))
+                .addGap(18, 18, 18)
+                .addComponent(lb_3)
+                .addGap(113, 113, 113))
         );
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -184,6 +228,9 @@ public class Menu6 extends javax.swing.JInternalFrame {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Tùy Chọn");
+
+        lb_4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lb_4.setText("jLabel15");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -193,13 +240,19 @@ public class Menu6 extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_4)
+                .addGap(87, 87, 87))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(155, 155, 155))
+                .addGap(18, 18, 18)
+                .addComponent(lb_4)
+                .addGap(112, 112, 112))
         );
 
         DateStart2.setDateFormatString("yyyy/MM/dd");
@@ -503,6 +556,9 @@ public class Menu6 extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb_1;
+    private javax.swing.JLabel lb_2;
+    private javax.swing.JLabel lb_3;
+    private javax.swing.JLabel lb_4;
     private javax.swing.JTable tbl_thongKe;
     // End of variables declaration//GEN-END:variables
 }

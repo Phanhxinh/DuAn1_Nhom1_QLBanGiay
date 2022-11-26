@@ -23,6 +23,21 @@ public class ThongKeIML implements ThongKeITF{
         return tkrp.tong();
         
     }
+
+    @Override
+    public ArrayList<Thongke_Model> tongNgay() {
+        return tkrp.tongNgay();
+    }
+
+    @Override
+    public ArrayList<Thongke_Model> tongThang() {
+        return tkrp.tongThang();
+    }
+
+    @Override
+    public ArrayList<Thongke_Model> tongTuyChon() {
+        return tkrp.tongTuyChon();
+    }
     
     
 }
