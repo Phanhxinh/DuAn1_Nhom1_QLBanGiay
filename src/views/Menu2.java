@@ -116,7 +116,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         int row = tableSanPham.getSelectedRow();
         String barcode = tableSanPham.getValueAt(row, 10).toString();
         for (GioHang_BanHangModel gh : banHangITF.getAllGioHang(null, barcode)) {
-            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getSize(), gh.getMauSac(), soLuong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soLuong, gh.getLoaiSP()});
+            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getSize(), gh.getMauSac(), soLuong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soLuong, gh.getBarcode()});
         }
     }
 // Hiển thị hóa đơn lên bảng hóa đơn
@@ -400,9 +400,9 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run21.setText("CHIẾT KHẤU:                       " + txtsokhuyenmai.getText() + "%                  -" + txttienkhuyenmai.getText() + " VNĐ");
             run21.setBold(true);
 
-            XWPFParagraph paragraph16 = document.createParagraph();
-            paragraph16.setAlignment(ParagraphAlignment.LEFT);
-            XWPFRun run20 = paragraph15.createRun();
+            XWPFParagraph paragraph200 = document.createParagraph();
+            paragraph200.setAlignment(ParagraphAlignment.LEFT);
+            XWPFRun run20 = paragraph200.createRun();
             run20.setText("TỔNG TIỀN THANH TOÁN:                            " + txtthanhtien.getText() + " VNĐ");
             run20.setBold(true);
 
@@ -1048,7 +1048,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
         bang = (DefaultTableModel) tableGioHang.getModel();
         for (GioHang_BanHangModel ghbhm : banHangITF.MouesClickTableHoaDon(idHd)) {
-            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getLoaiSP(), ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getThanhTien()});
+            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getSize(),ghbhm.getMauSac(),ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getThanhTien(), ghbhm.getBarcode()});
         }
         String tenKM = MaHDtoTenKM(maHD);
         for (int i = 0; i < cbbkhuyenmai.getItemCount(); i++) {
@@ -1146,26 +1146,13 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private void tableGioHangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableGioHangKeyPressed
         // TODO add your handling code here:
         int row = tableGioHang.getSelectedRow();
-        int Line = tableGioHang.getRowCount();
-
-        String tensp = tableGioHang.getValueAt(row, 1).toString();
-
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
-//            for (int i = 0; i < Line; i++) {
-//                if (tableGioHang.getValueAt(i, 1).equals(tensp)) {
-//                    bang.removeRow(i);
-//                    int soLuong = sl;
-//                    sl = soLuong;
-//                    break;
-//                }
-//            }
-//            LoadTableGioHang(sl);
-            String soluong = tableGioHang.getValueAt(row, 3).toString();
-            String dongia = tableGioHang.getValueAt(row, 4).toString();
+            String soluong = tableGioHang.getValueAt(row, 4).toString();
+            String dongia = tableGioHang.getValueAt(row, 5).toString();
             int dg = Integer.parseInt(dongia);
             int sl = Integer.parseInt(soluong);
-            tableGioHang.setValueAt(dg * sl, tableGioHang.getSelectedRow(), 5);
+            tableGioHang.setValueAt(dg * sl, tableGioHang.getSelectedRow(), 6);
             JOptionPane.showMessageDialog(this, sl * dg);
             TinhTongTien();
             txtthanhtien.setText(txttongtien.getText());

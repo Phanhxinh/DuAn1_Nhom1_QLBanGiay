@@ -134,7 +134,7 @@ public class BanHangRepo {
                 String kichCo = rs.getString("TenKC");
                 String mauSac = rs.getString("TenMS");
                 String giaBan = rs.getString("GiaBan");
-                GioHang_BanHangModel ghbhm = new GioHang_BanHangModel(tenSp, barCode, kichCo, mauSac, 0, giaBan, null);
+                GioHang_BanHangModel ghbhm = new GioHang_BanHangModel(tenSp, null, kichCo, mauSac, 0, giaBan, null, barCode);
                 list.add(ghbhm);
             }
         } catch (Exception e) {
@@ -278,7 +278,8 @@ public class BanHangRepo {
             while (rs.next()) {
                 String id = rs.getString("Id");
                 String tenSP = rs.getString("TenSP");
-                SanPham_BanhangModel sanPham_BanhangModel = new SanPham_BanhangModel(id, tenSP, null, null, null, null, null, null, null, null, null);
+                String barcode = rs.getString("BarCode");
+                SanPham_BanhangModel sanPham_BanhangModel = new SanPham_BanhangModel(id, tenSP, null, null, null, null, null, null, null, null, barcode);
                 list.add(sanPham_BanhangModel);
             }
         } catch (Exception e) {
@@ -405,7 +406,7 @@ public class BanHangRepo {
         ArrayList list = new ArrayList<SanPham_BanhangModel>();
         try {
             Connection conn = Connections.jdbcUtils.getConnection();
-            String sql = "select b.TenSP,c.TenTL,a.GiaBan,c.TenTL,e.TenKC,f.TenMS,d.SoLuong,a.GiaBan,d.DonGia from "
+            String sql = "select b.TenSP,c.TenTL,a.GiaBan,c.TenTL,e.TenKC,f.TenMS,d.SoLuong,a.GiaBan,d.DonGia,a.BarCode from "
                     + "ChiTietSP a join SanPham b on a.IdSanPham=b.Id "
                     + "join TheLoai c on a.IdLoaiSP=c.Id "
                     + "join HoaDonChiTiet d on a.Id=d.IdChiTietSP "
@@ -423,7 +424,8 @@ public class BanHangRepo {
                 String giaBan = rs.getString("GiaBan");
                 int soLuong = rs.getInt("SoLuong");
                 String thanhtien = rs.getString("DonGia");
-                GioHang_BanHangModel ghbhm = new GioHang_BanHangModel(tenSp, tenTL, kichCo, mauSac, soLuong, giaBan, thanhtien);
+                String barcode = rs.getString("BarCode");
+                GioHang_BanHangModel ghbhm = new GioHang_BanHangModel(tenSp, tenTL, kichCo, mauSac, soLuong, giaBan, thanhtien, barcode);
                 list.add(ghbhm);
             }
         } catch (Exception e) {

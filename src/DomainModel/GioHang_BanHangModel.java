@@ -11,24 +11,26 @@ package DomainModel;
 public class GioHang_BanHangModel {
 
     private String TenSP;
-    private String Barcode;
+    private String LoaiSP;
     private String size;
     private String MauSac;
     private int SoLuong;
     private String DonGia;
     private String ThanhTien;
+    private String Barcode;
 
     public GioHang_BanHangModel() {
     }
 
-    public GioHang_BanHangModel(String TenSP, String Barcode, String size, String MauSac, int SoLuong, String DonGia, String ThanhTien) {
+    public GioHang_BanHangModel(String TenSP, String LoaiSP, String size, String MauSac, int SoLuong, String DonGia, String ThanhTien, String Barcode) {
         this.TenSP = TenSP;
-        this.Barcode = Barcode;
+        this.LoaiSP = LoaiSP;
         this.size = size;
         this.MauSac = MauSac;
         this.SoLuong = SoLuong;
         this.DonGia = DonGia;
         this.ThanhTien = ThanhTien;
+        this.Barcode = Barcode;
     }
 
     public String getTenSP() {
@@ -40,11 +42,11 @@ public class GioHang_BanHangModel {
     }
 
     public String getLoaiSP() {
-        return Barcode;
+        return LoaiSP;
     }
 
-    public void setLoaiSP(String Barcode) {
-        this.Barcode = Barcode;
+    public void setLoaiSP(String LoaiSP) {
+        this.LoaiSP = LoaiSP;
     }
 
     public String getSize() {
@@ -85,6 +87,14 @@ public class GioHang_BanHangModel {
 
     public void setThanhTien(String ThanhTien) {
         this.ThanhTien = ThanhTien;
+    }
+
+    public String getBarcode() {
+        return Barcode;
+    }
+
+    public void setBarcode(String Barcode) {
+        this.Barcode = Barcode;
     }
 
 }
