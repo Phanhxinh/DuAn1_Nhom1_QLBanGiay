@@ -179,7 +179,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
             for (SanPham_BanhangModel sanPham_BanhangModel : banHangITF.TenSPToId(barcode)) {
                 idChiTietSP += sanPham_BanhangModel.getIdChiTietSP();
             }
-            JOptionPane.showMessageDialog(this, idChiTietSP);
             for (HoaDonModel hoaDonModel : banHangITF.MaHDToIdHD(MaHD)) {
                 idHoaDon += hoaDonModel;
             }
@@ -1153,7 +1152,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
             int dg = Integer.parseInt(dongia);
             int sl = Integer.parseInt(soluong);
             tableGioHang.setValueAt(dg * sl, tableGioHang.getSelectedRow(), 6);
-            JOptionPane.showMessageDialog(this, sl * dg);
             TinhTongTien();
             txtthanhtien.setText(txttongtien.getText());
         }
