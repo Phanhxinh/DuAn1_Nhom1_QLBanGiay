@@ -11,7 +11,9 @@ package DomainModel;
 public class GioHang_BanHangModel {
 
     private String TenSP;
-    private String LoaiSP;
+    private String Barcode;
+    private String size;
+    private String MauSac;
     private int SoLuong;
     private String DonGia;
     private String ThanhTien;
@@ -19,9 +21,11 @@ public class GioHang_BanHangModel {
     public GioHang_BanHangModel() {
     }
 
-    public GioHang_BanHangModel(String TenSP, String LoaiSP, int SoLuong, String DonGia, String ThanhTien) {
+    public GioHang_BanHangModel(String TenSP, String Barcode, String size, String MauSac, int SoLuong, String DonGia, String ThanhTien) {
         this.TenSP = TenSP;
-        this.LoaiSP = LoaiSP;
+        this.Barcode = Barcode;
+        this.size = size;
+        this.MauSac = MauSac;
         this.SoLuong = SoLuong;
         this.DonGia = DonGia;
         this.ThanhTien = ThanhTien;
@@ -36,11 +40,27 @@ public class GioHang_BanHangModel {
     }
 
     public String getLoaiSP() {
-        return LoaiSP;
+        return Barcode;
     }
 
-    public void setLoaiSP(String LoaiSP) {
-        this.LoaiSP = LoaiSP;
+    public void setLoaiSP(String Barcode) {
+        this.Barcode = Barcode;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getMauSac() {
+        return MauSac;
+    }
+
+    public void setMauSac(String MauSac) {
+        this.MauSac = MauSac;
     }
 
     public int getSoLuong() {
@@ -66,5 +86,5 @@ public class GioHang_BanHangModel {
     public void setThanhTien(String ThanhTien) {
         this.ThanhTien = ThanhTien;
     }
-    
+
 }

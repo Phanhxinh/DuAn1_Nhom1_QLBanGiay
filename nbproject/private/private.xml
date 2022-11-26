@@ -3,17 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/nguye/OneDrive/Máy%20tính/DuAn1_Nhom1_QLBanGiay/src/views/Menu2.java</file>
-            <file>file:/C:/Users/nguye/OneDrive/Máy%20tính/DuAn1_Nhom1_QLBanGiay/src/views/FormHang.java</file>
-            <file>file:/C:/Users/nguye/OneDrive/Máy%20tính/DuAn1_Nhom1_QLBanGiay/src/Repositories/ThongKeRepo.java</file>
-            <file>file:/C:/Users/nguye/OneDrive/Máy%20tính/DuAn1_Nhom1_QLBanGiay/src/ITFService/ThongKeITF.java</file>
-            <file>file:/C:/Users/nguye/OneDrive/Máy%20tính/DuAn1_Nhom1_QLBanGiay/src/views/QuanLy.java</file>
-            <file>file:/C:/Users/nguye/OneDrive/Máy%20tính/DuAn1_Nhom1_QLBanGiay/src/views/Menu6.java</file>
-            <file>file:/C:/Users/nguye/OneDrive/Máy%20tính/DuAn1_Nhom1_QLBanGiay/src/ServiceIML/ThongKeIML.java</file>
-            <file>file:/C:/Users/nguye/OneDrive/Máy%20tính/DuAn1_Nhom1_QLBanGiay/src/views/Menu3.java</file>
-            <file>file:/C:/Users/nguye/OneDrive/Máy%20tính/DuAn1_Nhom1_QLBanGiay/src/ITFService/BanHangITF.java</file>
-            <file>file:/C:/Users/nguye/OneDrive/Máy%20tính/DuAn1_Nhom1_QLBanGiay/src/Repositories/BanHangRepo.java</file>
-            <file>file:/C:/Users/nguye/OneDrive/Máy%20tính/DuAn1_Nhom1_QLBanGiay/src/views/Menu4.java</file>
+            <file>file:/D:/DuAn1/DuAn1_Nhom1_QLBanGiay/src/views/Menu2.java</file>
+            <file>file:/D:/DuAn1/DuAn1_Nhom1_QLBanGiay/src/views/QuanLy.java</file>
+            <file>file:/D:/DuAn1/DuAn1_Nhom1_QLBanGiay/src/Repositories/BanHangRepo.java</file>
+            <file>file:/D:/DuAn1/DuAn1_Nhom1_QLBanGiay/src/DomainModel/GioHang_BanHangModel.java</file>
+            <file>file:/D:/DuAn1/DuAn1_Nhom1_QLBanGiay/src/Connections/jdbcUtils.java</file>
         </group>
     </open-files>
 </project-private>

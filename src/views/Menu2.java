@@ -114,9 +114,9 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private void LoadTableGioHang(int soLuong) {
         bang = (DefaultTableModel) tableGioHang.getModel();
         int row = tableSanPham.getSelectedRow();
-        String tenSP = tableSanPham.getValueAt(row, 1).toString();
-        for (GioHang_BanHangModel gh : banHangITF.getAllGioHang(tenSP, null)) {
-            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getLoaiSP(), soLuong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soLuong});
+        String barcode = tableSanPham.getValueAt(row, 10).toString();
+        for (GioHang_BanHangModel gh : banHangITF.getAllGioHang(null, barcode)) {
+            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getSize(), gh.getMauSac(), soLuong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soLuong, gh.getLoaiSP()});
         }
     }
 // Hiển thị hóa đơn lên bảng hóa đơn
@@ -161,7 +161,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         int tien, tongtien = 0;
         int row = tableGioHang.getRowCount();
         for (int i = 0; i < row; i++) {
-            tien = Integer.parseInt(tableGioHang.getValueAt(i, 5).toString());
+            tien = Integer.parseInt(tableGioHang.getValueAt(i, 6).toString());
             tongtien += tien;
         }
         txttongtien.setText(formatter.format(tongtien));
@@ -171,21 +171,22 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private void InsertHoaDonChiTiet() {
         int row = tableGioHang.getRowCount();
         for (int i = 0; i < row; i++) {
-            String TenSP = tableGioHang.getValueAt(i, 1).toString();
+            String barcode = tableGioHang.getValueAt(i, 7).toString();
             String MaHD = txtmaHoaDon.getText();
             String idChiTietSP = "";
             String idHoaDon = "";
             String idKM = "";
-            for (SanPham_BanhangModel sanPham_BanhangModel : banHangITF.TenSPToId(TenSP)) {
-                idChiTietSP += sanPham_BanhangModel;
+            for (SanPham_BanhangModel sanPham_BanhangModel : banHangITF.TenSPToId(barcode)) {
+                idChiTietSP += sanPham_BanhangModel.getIdChiTietSP();
             }
+            JOptionPane.showMessageDialog(this, idChiTietSP);
             for (HoaDonModel hoaDonModel : banHangITF.MaHDToIdHD(MaHD)) {
                 idHoaDon += hoaDonModel;
             }
             for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.TenKMtoIdKM(cbbkhuyenmai.getSelectedItem().toString())) {
                 idKM += khuyenMai_BanHangModel;
             }
-            String soLuong = tableGioHang.getValueAt(i, 3).toString();
+            String soLuong = tableGioHang.getValueAt(i, 4).toString();
             String donGia = tableGioHang.getValueAt(i, 5).toString();
             if (cbbkhuyenmai.getSelectedIndex() != 0) {
                 banHangITF.insertHoaDonChiTiet(idHoaDon, idChiTietSP, idKM, Integer.parseInt(soLuong), donGia);
@@ -256,19 +257,10 @@ public class Menu2 extends javax.swing.JInternalFrame {
         btnhuy.setEnabled(false);
     }
 
-    private String getTensp(String barcode) {
-        for (SanPham_BanhangModel sp : banHangITF.getSPbarcode(txtbarcoe.getText())) {
-            if (sp.getBarcode().equals(barcode)) {
-                return sp.getTenSP();
-            }
-        }
-        return null;
-    }
-
     private void Barcode(int soluong) {
         bang = (DefaultTableModel) tableGioHang.getModel();
         banHangITF.getAllGioHang(null, txtbarcoe.getText()).forEach(gh -> {
-            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getLoaiSP(), soluong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soluong});
+            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getSize(), gh.getMauSac(), soluong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soluong, gh.getLoaiSP()});
         });
     }
 
@@ -320,9 +312,9 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run8.setText("Ngày lập: " + ftnow.format(now));
             run8.setTextPosition(20);
 
-            XWPFTable table = document.createTable(tableGioHang.getRowCount() + 2, 6);
+            XWPFTable table = document.createTable(tableGioHang.getRowCount() + 2, 7);
             table.setWidth(50000);
-            table.setCellMargins(ERROR, 320, ABORT, 320);
+            table.setCellMargins(ERROR, 300, ABORT, 300);
 
             XWPFTableRow row = table.getRow(0);
             XWPFParagraph paragraph9 = row.getCell(0).addParagraph();
@@ -344,7 +336,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             XWPFParagraph paragraph11 = row.getCell(2).addParagraph();
             paragraph11.setAlignment(ParagraphAlignment.CENTER);
             XWPFRun run11 = paragraph11.createRun();
-            run11.setText("Loại sản phẩm");
+            run11.setText("Kích cỡ");
             run11.setBold(true);
             run11.setTextPosition(20);
 
@@ -352,7 +344,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             XWPFParagraph paragraph12 = row.getCell(3).addParagraph();
             paragraph12.setAlignment(ParagraphAlignment.CENTER);
             XWPFRun run12 = paragraph12.createRun();
-            run12.setText("Số lượng");
+            run12.setText("Màu sắc");
             run12.setBold(true);
             run12.setTextPosition(20);
 
@@ -360,7 +352,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             XWPFParagraph paragraph13 = row.getCell(4).addParagraph();
             paragraph13.setAlignment(ParagraphAlignment.CENTER);
             XWPFRun run13 = paragraph13.createRun();
-            run13.setText("Đơn giá");
+            run13.setText("Số lượng");
             run13.setBold(true);
             run13.setTextPosition(20);
 
@@ -368,18 +360,28 @@ public class Menu2 extends javax.swing.JInternalFrame {
             XWPFParagraph paragraph14 = row.getCell(5).addParagraph();
             paragraph14.setAlignment(ParagraphAlignment.CENTER);
             XWPFRun run14 = paragraph14.createRun();
-            run14.setText("Thành tiền");
+            run14.setText("Đơn giá");
             run14.setBold(true);
             run14.setTextPosition(20);
+
+            XWPFTableRow row6 = table.getRow(0);
+            XWPFParagraph paragraph15 = row.getCell(6).addParagraph();
+            paragraph14.setAlignment(ParagraphAlignment.CENTER);
+            XWPFRun run15 = paragraph15.createRun();
+            run15.setText("Thành tiền");
+            run15.setBold(true);
+            run15.setTextPosition(20);
+
             int tongsoluong = 0;
             for (int i = 0; i < tableGioHang.getRowCount(); i++) {
-                String soluong = tableGioHang.getValueAt(i, 3).toString();
+                String soluong = tableGioHang.getValueAt(i, 4).toString();
                 table.getRow(i + 1).getCell(0).setText(tableGioHang.getValueAt(i, 0).toString());
                 table.getRow(i + 1).getCell(1).setText(tableGioHang.getValueAt(i, 1).toString());
                 table.getRow(i + 1).getCell(2).setText(tableGioHang.getValueAt(i, 2).toString());
-                table.getRow(i + 1).getCell(3).setText(soluong);
-                table.getRow(i + 1).getCell(4).setText(tableGioHang.getValueAt(i, 4).toString() + " VNĐ");
+                table.getRow(i + 1).getCell(3).setText(tableGioHang.getValueAt(i, 3).toString());
+                table.getRow(i + 1).getCell(4).setText(soluong);
                 table.getRow(i + 1).getCell(5).setText(tableGioHang.getValueAt(i, 5).toString() + " VNĐ");
+                table.getRow(i + 1).getCell(6).setText(tableGioHang.getValueAt(i, 6).toString() + " VNĐ");
                 tongsoluong += Integer.parseInt(soluong);
             }
 
@@ -398,8 +400,8 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run21.setText("CHIẾT KHẤU:                       " + txtsokhuyenmai.getText() + "%                  -" + txttienkhuyenmai.getText() + " VNĐ");
             run21.setBold(true);
 
-            XWPFParagraph paragraph15 = document.createParagraph();
-            paragraph15.setAlignment(ParagraphAlignment.LEFT);
+            XWPFParagraph paragraph16 = document.createParagraph();
+            paragraph16.setAlignment(ParagraphAlignment.LEFT);
             XWPFRun run20 = paragraph15.createRun();
             run20.setText("TỔNG TIỀN THANH TOÁN:                            " + txtthanhtien.getText() + " VNĐ");
             run20.setBold(true);
@@ -573,7 +575,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "STT", "Tên SP", "Loại SP", "Số  lượng", "Đơn giá", "Thành tiền"
+                "STT", "Tên SP", "Size", "Màu sắc", "Số  lượng", "Đơn giá", "Thành tiền", "Barcode"
             }
         ));
         tableGioHang.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -645,7 +647,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã SP", "Tên SP", "Loại SP", "Hãng", "Chất liệu", "Kích cỡ", "Màu sắc", "Đế", "Số lượng", "Giá bán"
+                "Mã SP", "Tên SP", "Loại SP", "Hãng", "Chất liệu", "Kích cỡ", "Màu sắc", "Đế", "Số lượng", "Giá bán", "Barcode"
             }
         ));
         jScrollPane2.setViewportView(tableSanPham);
@@ -880,12 +882,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int Line = tableGioHang.getRowCount();
         int row = tableSanPham.getSelectedRow();
-        String tenSP = tableSanPham.getValueAt(row, 1).toString();
+        String barcode = tableSanPham.getValueAt(row, 10).toString();
         String soluong = JOptionPane.showInputDialog(this, "Mời bạn nhập số lượng sản phẩm");
         int sl = Integer.parseInt(soluong);
         for (int i = 0; i < Line; i++) {
-            if (tableGioHang.getValueAt(i, 1).equals(tenSP)) {
-                int quanCu = (int) tableGioHang.getValueAt(i, 3);
+            if (tableGioHang.getValueAt(i, 7).equals(barcode)) {
+                int quanCu = (int) tableGioHang.getValueAt(i, 4);
                 int quanMoi = sl;
                 int quanCuVaMoi = quanCu + quanMoi;
                 sl = quanCuVaMoi;
@@ -919,6 +921,10 @@ public class Menu2 extends javax.swing.JInternalFrame {
 //    }
     private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
         // TODO add your handling code here:
+        if(txtKhachMuaHang.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Mời bạn nhập thông tin khách hàng!");
+            return;
+        }
         int count = 0;
         count = tableHoaDon.getRowCount();
         String chuoi1 = "";
@@ -1110,13 +1116,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private void txtbarcoeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbarcoeKeyPressed
         // TODO add your handling code here:
         int Line = tableGioHang.getRowCount();
-        String tenSP = getTensp(txtbarcoe.getText());
-//        String soluong = JOptionPane.showInputDialog(this, "Mời bạn nhập số lượng sản phẩm");
+        String bacode = txtbarcoe.getText();
         int sl = 1;
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             for (int i = 0; i < Line; i++) {
-                if (tableGioHang.getValueAt(i, 1).equals(tenSP)) {
-                    int quanCu = (int) tableGioHang.getValueAt(i, 3);
+                if (tableGioHang.getValueAt(i, 7).equals(bacode)) {
+                    int quanCu = (int) tableGioHang.getValueAt(i, 4);
                     int quanMoi = sl;
                     int quanCuVaMoi = quanCu + quanMoi;
                     sl = quanCuVaMoi;
