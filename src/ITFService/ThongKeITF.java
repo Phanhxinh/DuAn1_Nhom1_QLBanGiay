@@ -16,4 +16,11 @@ public interface ThongKeITF {
     ArrayList<Thongke_Model> tongNgay();
     ArrayList<Thongke_Model> tongThang();
     ArrayList<Thongke_Model> tongTuyChon();
+    
+    ArrayList<Thongke_Model> ban();
+    ArrayList<Thongke_Model> banNgay();
+    ArrayList<Thongke_Model> banThang();
+    ArrayList<Thongke_Model> banTuyChon();
+    
+    
 }

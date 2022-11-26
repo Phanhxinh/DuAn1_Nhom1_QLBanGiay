@@ -35,6 +35,10 @@ public class Menu6 extends javax.swing.JInternalFrame {
         loadTN();
         loadTT();
         loadTTC();
+        loadB();
+        loadBN();
+        loadBT();
+        loadBTC();
 
         
     }
@@ -66,6 +70,27 @@ public class Menu6 extends javax.swing.JInternalFrame {
           lb_4.setText(sp.getTong()+ " đ");
         }
     }
+    
+    private void loadB(){
+        for (Thongke_Model sp : this.tkrp.ban()) {
+          sb_1.setText(sp.getTong());
+        }
+    }
+    private void loadBN(){
+        for (Thongke_Model sp : this.tkrp.banNgay()) {
+          sb_2.setText(sp.getTong());
+        }
+    }
+    private void loadBT(){
+        for (Thongke_Model sp : this.tkrp.banThang()) {
+          sb_3.setText(sp.getTong());
+        }
+    }
+    private void loadBTC(){
+        for (Thongke_Model sp : this.tkrp.banTuyChon()) {
+          sb_4.setText(sp.getTong());
+        }
+    }
 
 
     /**
@@ -82,15 +107,23 @@ public class Menu6 extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         lb_1 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        sb_1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         lb_2 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        sb_2 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         lb_3 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        sb_3 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         lb_4 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        sb_4 = new javax.swing.JLabel();
         DateStart2 = new com.toedter.calendar.JDateChooser();
         DateStart3 = new com.toedter.calendar.JDateChooser();
         btnChon = new javax.swing.JButton();
@@ -132,14 +165,24 @@ public class Menu6 extends javax.swing.JInternalFrame {
         lb_1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lb_1.setText("jLabel15");
 
+        jLabel15.setText("Số Lượng bán");
+
+        sb_1.setText("jLabel19");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(sb_1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                     .addContainerGap(89, Short.MAX_VALUE)
@@ -151,7 +194,11 @@ public class Menu6 extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(164, 164, 164))
+                .addGap(71, 71, 71)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(sb_1))
+                .addGap(77, 77, 77))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGap(68, 68, 68)
@@ -168,18 +215,33 @@ public class Menu6 extends javax.swing.JInternalFrame {
         lb_2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lb_2.setText("jLabel16");
 
+        jLabel17.setText("Số Lượng bán");
+
+        sb_2.setText("jLabel20");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(lb_2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(lb_2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(sb_2)
+                .addGap(46, 46, 46))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGap(58, 58, 58)
+                    .addComponent(jLabel17)
+                    .addContainerGap(111, Short.MAX_VALUE)))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +250,14 @@ public class Menu6 extends javax.swing.JInternalFrame {
                 .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lb_2)
-                .addGap(118, 118, 118))
+                .addGap(29, 29, 29)
+                .addComponent(sb_2)
+                .addGap(73, 73, 73))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                    .addContainerGap(114, Short.MAX_VALUE)
+                    .addComponent(jLabel17)
+                    .addGap(74, 74, 74)))
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -200,18 +269,31 @@ public class Menu6 extends javax.swing.JInternalFrame {
         lb_3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lb_3.setText("jLabel17");
 
+        jLabel16.setText("Số Lượng bán");
+
+        sb_3.setText("jLabel21");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(lb_3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(85, 85, 85)
+                                .addComponent(lb_3))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(jLabel16)
+                                .addGap(18, 18, 18)
+                                .addComponent(sb_3)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +302,11 @@ public class Menu6 extends javax.swing.JInternalFrame {
                 .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(lb_3)
-                .addGap(113, 113, 113))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(sb_3))
+                .addGap(79, 79, 79))
         );
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -232,18 +318,28 @@ public class Menu6 extends javax.swing.JInternalFrame {
         lb_4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lb_4.setText("jLabel15");
 
+        jLabel18.setText("Số Lượng bán");
+
+        sb_4.setText("jLabel22");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lb_4)
                 .addGap(87, 87, 87))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel18)
+                .addGap(18, 18, 18)
+                .addComponent(sb_4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,7 +348,11 @@ public class Menu6 extends javax.swing.JInternalFrame {
                 .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(lb_4)
-                .addGap(112, 112, 112))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(sb_4))
+                .addGap(78, 78, 78))
         );
 
         DateStart2.setDateFormatString("yyyy/MM/dd");
@@ -276,7 +376,7 @@ public class Menu6 extends javax.swing.JInternalFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -538,6 +638,10 @@ public class Menu6 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -559,6 +663,10 @@ public class Menu6 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lb_2;
     private javax.swing.JLabel lb_3;
     private javax.swing.JLabel lb_4;
+    private javax.swing.JLabel sb_1;
+    private javax.swing.JLabel sb_2;
+    private javax.swing.JLabel sb_3;
+    private javax.swing.JLabel sb_4;
     private javax.swing.JTable tbl_thongKe;
     // End of variables declaration//GEN-END:variables
 }

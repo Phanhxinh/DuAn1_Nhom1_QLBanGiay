@@ -98,4 +98,74 @@ public class ThongKeRepo {
         }
         return list;
     }
+    
+    
+    public ArrayList<Thongke_Model> ban(){
+        ArrayList<Thongke_Model> list = new ArrayList<>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql="select sum(SoLuong) as Tong from HoaDonChiTiet ";
+            PreparedStatement ps =conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                String tong = rs.getString("Tong");
+
+                Thongke_Model tk = new Thongke_Model(null, null, 0, 0, tong);
+                list.add(tk);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    public ArrayList<Thongke_Model> banNgay(){
+        ArrayList<Thongke_Model> list = new ArrayList<>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql="select sum(SoLuong) as Tong from HoaDonChiTiet ";
+            PreparedStatement ps =conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                String tong = rs.getString("Tong");
+
+                Thongke_Model tk = new Thongke_Model(null, null, 0, 0, tong);
+                list.add(tk);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    public ArrayList<Thongke_Model> banThang(){
+        ArrayList<Thongke_Model> list = new ArrayList<>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql="select sum(SoLuong) as Tong from HoaDonChiTiet ";
+            PreparedStatement ps =conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                String tong = rs.getString("Tong");
+
+                Thongke_Model tk = new Thongke_Model(null, null, 0, 0, tong);
+                list.add(tk);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+    public ArrayList<Thongke_Model> banTuyChon(){
+        ArrayList<Thongke_Model> list = new ArrayList<>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql="select sum(SoLuong) as Tong from HoaDonChiTiet ";
+            PreparedStatement ps =conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                String tong = rs.getString("Tong");
+
+                Thongke_Model tk = new Thongke_Model(null, null, 0, 0, tong);
+                list.add(tk);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
 }

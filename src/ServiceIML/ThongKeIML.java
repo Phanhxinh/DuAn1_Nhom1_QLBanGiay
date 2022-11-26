@@ -38,6 +38,26 @@ public class ThongKeIML implements ThongKeITF{
     public ArrayList<Thongke_Model> tongTuyChon() {
         return tkrp.tongTuyChon();
     }
+
+    @Override
+    public ArrayList<Thongke_Model> ban() {
+        return tkrp.ban();
+    }
+
+    @Override
+    public ArrayList<Thongke_Model> banNgay() {
+        return tkrp.banNgay();
+    }
+
+    @Override
+    public ArrayList<Thongke_Model> banThang() {
+        return tkrp.banThang();
+    }
+
+    @Override
+    public ArrayList<Thongke_Model> banTuyChon() {
+        return tkrp.banTuyChon();
+    }
     
     
 }
