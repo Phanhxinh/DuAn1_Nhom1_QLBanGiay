@@ -11,6 +11,7 @@ import DomainModel.KhuyenMai_BanHangModel;
 import DomainModel.SanPham_BanhangModel;
 import ITFService.BanHangITF;
 import ServiceIML.BanHangIML;
+import ViewModel.KhachHangViewModel;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -68,7 +69,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
     }
 
 // Hiện thị sản phẩm lên bảng sản phẩm
-
     private void LoadTableSanPham() {
         DefaultTableModel bang = (DefaultTableModel) tableSanPham.getModel();
         bang.setRowCount(0);
@@ -909,7 +909,14 @@ public class Menu2 extends javax.swing.JInternalFrame {
         Findten(txttimkiem.getText());
         updatetienKM();
     }//GEN-LAST:event_txttimkiemCaretUpdate
-
+//    private String getSDTtoID(String sdt) {
+//        for (KhachHangViewModel kh : banHangITF.getIDKH(sdt)) {
+//            if (kh.getSdt().toString().equals(sdt)) {
+//                return kh.getId();
+//            }
+//        }
+//        return null;
+//    }
     private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
         // TODO add your handling code here:
         int count = 0;
@@ -928,10 +935,16 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
         String MaHD = txtmaHoaDon.getText();
         int TrangThai = 1;
-        banHangITF.insertHoaDon("0cae54b6-951d-4b56-a767-66dded7bd4c3", "e0112873-f33e-48c4-bee0-5afb5f2b9fb2", null, MaHD, TrangThai);
+        String idKH = "";
+        String sdtKH = txtKhachMuaHang.getText();
+        for (KhachHangViewModel kh : banHangITF.getIDKH(sdtKH)) {
+            idKH += kh.getId();
+        }
+        banHangITF.insertHoaDon(idKH, "e0112873-f33e-48c4-bee0-5afb5f2b9fb2", null, MaHD, TrangThai);
         this.LoadTableHoaDon();
         JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công.");
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
+
 
     private void CbbHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbbHoaDonActionPerformed
         // TODO add your handling code here:

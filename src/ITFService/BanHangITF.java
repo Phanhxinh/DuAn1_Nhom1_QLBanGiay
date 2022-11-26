@@ -9,6 +9,7 @@ import DomainModel.HoaDonModel;
 import DomainModel.HoaDon_BanHangModel;
 import DomainModel.KhuyenMai_BanHangModel;
 import DomainModel.SanPham_BanhangModel;
+import ViewModel.KhachHangViewModel;
 import java.util.ArrayList;
 
 /**
@@ -56,4 +57,6 @@ public interface BanHangITF {
     void updateIdKm(String Idkm, String mahd);
 
     ArrayList<SanPham_BanhangModel> getSPbarcode(String Barcode);
+    
+    ArrayList<KhachHangViewModel> getIDKH(String sdt);
 }
