@@ -13,7 +13,7 @@ import views.QuanLy;
  */
 public class main {
     public static void main(String[] args) {
-        QuanLy login=new QuanLy();
-        login.setVisible(true);
+      Login login = new Login();
+      login.setVisible(true);
     }
 }

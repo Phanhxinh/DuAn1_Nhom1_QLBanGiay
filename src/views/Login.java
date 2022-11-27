@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import Connections.ValidateForm;
 
 /**
  *
@@ -18,8 +19,7 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-      NhanVien nv = new NhanVien();
-    QuanLy ql = new QuanLy();
+     
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -137,12 +137,19 @@ public class Login extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String pass = String.valueOf(txtpass.getPassword());
         
+        boolean isValidEmail = ValidateForm.validateEmail(email);
+        boolean isValidPass = ValidateForm.validatePass(pass);
+        
         if(email.isBlank() || pass.isBlank()){
             JOptionPane.showMessageDialog(this, "Thông tin nhập không thể để trống hoặc khoảng trắng");
-        } else {
+        } 
+        
+         else {
             PreparedStatement ps = null;
             PreparedStatement ps1 = null;
             Connection conn = null;
+            
+            
              try {
                 conn = Connections.jdbcUtils.getConnection();
                 String sql = " select * from [login]  where Email = ? and MatKhau = ? and Ma = 'CV01'";
@@ -162,12 +169,12 @@ public class Login extends javax.swing.JFrame {
                 if(rs.next()){
                     JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
                     this.dispose();
-                    ql.setVisible(true);
+                  new QuanLy(rs.getString("TenNV"), rs.getString("Ten")).setVisible(true);
                     
                 } else if (rs1.next()){
                     JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
                     this.dispose();
-                    nv.setVisible(true);
+                    new NhanVien(rs1.getString("TenNV"), rs1.getString("Ten")).setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(this, "Thông tin tài khoản không chính xác");
                     txtEmail.setText("");

@@ -16,14 +16,14 @@ public class NhanVien extends javax.swing.JFrame {
      * Creates new form QuanLy
      */
     Color DefaultColor, ClickeColor;
-
-    public NhanVien() {
+Login lg = new Login();
+    public NhanVien(String tennv , String chucvu) {
         initComponents();
         this.setLocationRelativeTo(null);
 
         DefaultColor = new Color(246, 168, 193);
         ClickeColor = new Color(200,187,240);
-
+        txtName.setText(tennv + " - "+ chucvu);
         menu1.setBackground(DefaultColor);
         menu2.setBackground(DefaultColor);
         menu3.setBackground(DefaultColor);
@@ -48,6 +48,7 @@ public class NhanVien extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        txtName = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         menu1 = new javax.swing.JPanel();
@@ -72,6 +73,9 @@ public class NhanVien extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtName.setText("jLabel2");
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 430, 70));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/close (2).png"))); // NOI18N
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -316,6 +320,11 @@ public class NhanVien extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logout.png"))); // NOI18N
         jLabel12.setText(" Đăng Xuất");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout menu9Layout = new javax.swing.GroupLayout(menu9);
         menu9.setLayout(menu9Layout);
@@ -334,7 +343,7 @@ public class NhanVien extends javax.swing.JFrame {
         jPanel1.add(menu9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, -1, -1));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Screenshot 2022-11-14 192103 (1).png"))); // NOI18N
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, -30, -1, 210));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, 210));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -495,41 +504,15 @@ public class NhanVien extends javax.swing.JFrame {
         jDesktopPanel.add(mn8).setVisible(true);
     }//GEN-LAST:event_menu8MouseClicked
 
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+   lg.setVisible(true); 
+   this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel12MouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new NhanVien().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPanel;
@@ -551,5 +534,6 @@ public class NhanVien extends javax.swing.JFrame {
     private javax.swing.JPanel menu5;
     private javax.swing.JPanel menu8;
     private javax.swing.JPanel menu9;
+    private javax.swing.JLabel txtName;
     // End of variables declaration//GEN-END:variables
 }

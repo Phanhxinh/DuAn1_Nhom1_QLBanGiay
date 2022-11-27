@@ -17,14 +17,14 @@ public class QuanLy extends javax.swing.JFrame {
      * Creates new form QuanLy
      */
     Color DefaultColor, ClickeColor;
-
-    public QuanLy() {
+Login lg = new Login();
+    public QuanLy(String tennv, String chucvu) {
         initComponents();
         this.setLocationRelativeTo(null);
 
         DefaultColor = new Color(246, 168, 193);
         ClickeColor = new Color(200, 187, 240);
-
+txtName.setText(tennv +" - "+chucvu);
         menu1.setBackground(DefaultColor);
         menu2.setBackground(DefaultColor);
         menu3.setBackground(DefaultColor);
@@ -51,6 +51,8 @@ public class QuanLy extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        txtName = new javax.swing.JLabel();
+        jlabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         menu1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -71,7 +73,6 @@ public class QuanLy extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         menu9 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -86,6 +87,12 @@ public class QuanLy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 20, -1, -1));
+
+        txtName.setText("Tên nhân viên là : ");
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 500, 50));
+
+        jlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Screenshot 2022-11-14 192103 (1).png"))); // NOI18N
+        jPanel1.add(jlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1170, 210));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logo-giay(32) (1).jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 180));
@@ -391,6 +398,11 @@ public class QuanLy extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logout.png"))); // NOI18N
         jLabel12.setText(" Đăng Xuất");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout menu9Layout = new javax.swing.GroupLayout(menu9);
         menu9.setLayout(menu9Layout);
@@ -407,9 +419,6 @@ public class QuanLy extends javax.swing.JFrame {
         );
 
         jPanel1.add(menu9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, -1, -1));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Screenshot 2022-11-14 192103 (1).png"))); // NOI18N
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, -30, -1, 210));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -525,11 +534,6 @@ public class QuanLy extends javax.swing.JFrame {
 
     }//GEN-LAST:event_menu7MousePressed
 
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jLabel10MouseClicked
-
     private void menu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu1MouseClicked
         // TODO add your handling code here:
         Menu1 mn1 = new Menu1();
@@ -620,40 +624,20 @@ public class QuanLy extends javax.swing.JFrame {
 
     }//GEN-LAST:event_menu9MousePressed
 
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        lg.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel12MouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(QuanLy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(QuanLy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(QuanLy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(QuanLy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new QuanLy().setVisible(true);
-            }
-        });
-    }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPanel;
@@ -661,7 +645,6 @@ public class QuanLy extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -670,6 +653,7 @@ public class QuanLy extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jlabel;
     private javax.swing.JPanel menu1;
     private javax.swing.JPanel menu2;
     private javax.swing.JPanel menu3;
@@ -679,5 +663,6 @@ public class QuanLy extends javax.swing.JFrame {
     private javax.swing.JPanel menu7;
     private javax.swing.JPanel menu8;
     private javax.swing.JPanel menu9;
+    private javax.swing.JLabel txtName;
     // End of variables declaration//GEN-END:variables
 }
