@@ -75,7 +75,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         int tien, tongtien = 0;
         int row = tablegiohang.getRowCount();
         for (int i = 0; i < row; i++) {
-            tien = Integer.parseInt(tablegiohang.getValueAt(i, 5).toString());
+            tien = Integer.parseInt(tablegiohang.getValueAt(i, 7).toString());
             tongtien += tien;
         }
         lbltongcong.setText(formatter.format(tongtien));
@@ -201,7 +201,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "STT", "Tên SP", "Loại SP", "Số Lượng", "Đơn Giá", "Thành Tiền"
+                "STT", "Tên SP", "Loại SP", "Size", "Màu sắc", "Số Lượng", "Đơn Giá", "Thành Tiền"
             }
         ));
         jScrollPane2.setViewportView(tablegiohang);
@@ -401,7 +401,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         }
         bang = (DefaultTableModel) tablegiohang.getModel();
         for (GioHang_BanHangModel ghbhm : banHangITF.MouesClickTableHoaDon(idHd)) {
-            bang.addRow(new Object[]{tablegiohang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getLoaiSP(), ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getThanhTien()});
+            bang.addRow(new Object[]{tablegiohang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getLoaiSP(),ghbhm.getSize(),ghbhm.getMauSac(), ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getThanhTien()});
         }
         String tenKM = MaHDtoTenKM(maHD);
         lblchuongtrinhkm.setText(tenKM);

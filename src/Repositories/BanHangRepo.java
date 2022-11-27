@@ -119,18 +119,22 @@ public class BanHangRepo {
         ArrayList list = new ArrayList<SanPham_BanhangModel>();
         try {
             Connection conn = Connections.jdbcUtils.getConnection();
-            String sql = "select b.TenSP,c.TenTL,a.GiaBan from ChiTietSP a "
-                    + "join SanPham b on a.IdSanPham=b.Id "
-                    + "join TheLoai c on a.IdLoaiSP=c.Id where TenSP=? or a.BarCode=?";
+            String sql = "select b.TenSP,a.BarCode,d.TenMS,e.TenKC,a.GiaBan from ChiTietSP a"
+                    + " join SanPham b on a.IdSanPham=b.Id "
+                    + "join TheLoai c on a.IdLoaiSP=c.Id "
+                    + "join MauSac d on a.IdMauSac=d.Id"
+                    + " join KichCo e on a.IdKichCo=e.Id where TenSP=? or a.BarCode=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ten);
             ps.setString(2, barcode);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 String tenSp = rs.getString("TenSP");
-                String tenTL = rs.getString("TenTL");
+                String barCode = rs.getString("BarCode");
+                String kichCo = rs.getString("TenKC");
+                String mauSac = rs.getString("TenMS");
                 String giaBan = rs.getString("GiaBan");
-                GioHang_BanHangModel ghbhm = new GioHang_BanHangModel(tenSp, tenTL, 0, giaBan, null);
+                GioHang_BanHangModel ghbhm = new GioHang_BanHangModel(tenSp, null, kichCo, mauSac, 0, giaBan, null, barCode);
                 list.add(ghbhm);
             }
         } catch (Exception e) {
@@ -267,14 +271,15 @@ public class BanHangRepo {
         ArrayList list = new ArrayList<HoaDon_BanHangModel>();
         try {
             Connection conn = Connections.jdbcUtils.getConnection();
-            String sql = "select a.Id,b.TenSP from ChiTietSP a join SanPham b on a.IdSanPham=b.Id where TenSP=?";
+            String sql = "select a.Id,b.TenSP,a.BarCode from ChiTietSP a join SanPham b on a.IdSanPham=b.Id where BarCode=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, TenSP);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 String id = rs.getString("Id");
                 String tenSP = rs.getString("TenSP");
-                SanPham_BanhangModel sanPham_BanhangModel = new SanPham_BanhangModel(id, tenSP, null, null, null, null, null, null, null, null, null);
+                String barcode = rs.getString("BarCode");
+                SanPham_BanhangModel sanPham_BanhangModel = new SanPham_BanhangModel(id, tenSP, null, null, null, null, null, null, null, null, barcode);
                 list.add(sanPham_BanhangModel);
             }
         } catch (Exception e) {
@@ -401,10 +406,12 @@ public class BanHangRepo {
         ArrayList list = new ArrayList<SanPham_BanhangModel>();
         try {
             Connection conn = Connections.jdbcUtils.getConnection();
-            String sql = "select b.TenSP,c.TenTL,a.GiaBan,c.TenTL,d.SoLuong,a.GiaBan,d.DonGia from ChiTietSP a "
-                    + "join SanPham b on a.IdSanPham=b.Id"
-                    + " join TheLoai c on a.IdLoaiSP=c.Id "
+            String sql = "select b.TenSP,c.TenTL,a.GiaBan,c.TenTL,e.TenKC,f.TenMS,d.SoLuong,a.GiaBan,d.DonGia,a.BarCode from "
+                    + "ChiTietSP a join SanPham b on a.IdSanPham=b.Id "
+                    + "join TheLoai c on a.IdLoaiSP=c.Id "
                     + "join HoaDonChiTiet d on a.Id=d.IdChiTietSP "
+                    + "join KichCo e on a.IdKichCo=e.Id"
+                    + " join MauSac f on a.IdMauSac =f.Id "
                     + "where d.IdHoaDon=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, MaHD);
@@ -412,10 +419,13 @@ public class BanHangRepo {
             while (rs.next()) {
                 String tenSp = rs.getString("TenSP");
                 String tenTL = rs.getString("TenTL");
+                String kichCo = rs.getString("TenKC");
+                String mauSac = rs.getString("TenMS");
                 String giaBan = rs.getString("GiaBan");
                 int soLuong = rs.getInt("SoLuong");
-                String donGia = rs.getString("DonGia");
-                GioHang_BanHangModel ghbhm = new GioHang_BanHangModel(tenSp, tenTL, soLuong, giaBan, donGia);
+                String thanhtien = rs.getString("DonGia");
+                String barcode = rs.getString("BarCode");
+                GioHang_BanHangModel ghbhm = new GioHang_BanHangModel(tenSp, tenTL, kichCo, mauSac, soLuong, giaBan, thanhtien, barcode);
                 list.add(ghbhm);
             }
         } catch (Exception e) {
