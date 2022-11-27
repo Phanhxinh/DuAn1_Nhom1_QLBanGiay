@@ -940,7 +940,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         for (KhachHangViewModel kh : banHangITF.getIDKH(sdtKH)) {
             idKH += kh.getId();
         }
-        banHangITF.insertHoaDon(idKH, "e0112873-f33e-48c4-bee0-5afb5f2b9fb2", null, MaHD, TrangThai);
+        banHangITF.insertHoaDon(idKH, "b8855928-093d-44b7-80a8-15401cd5d94e", null, MaHD, TrangThai);
         this.LoadTableHoaDon();
         JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công.");
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed

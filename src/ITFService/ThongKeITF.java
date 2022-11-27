@@ -21,6 +21,7 @@ public interface ThongKeITF {
     ArrayList<Thongke_Model> banNgay();
     ArrayList<Thongke_Model> banThang();
     ArrayList<Thongke_Model> banTuyChon();
+    ArrayList<Thongke_Model> LocNgay(String ngayBD, String ngayKT);
     
     
 }

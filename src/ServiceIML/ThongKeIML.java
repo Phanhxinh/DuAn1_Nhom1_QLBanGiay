@@ -58,6 +58,11 @@ public class ThongKeIML implements ThongKeITF{
     public ArrayList<Thongke_Model> banTuyChon() {
         return tkrp.banTuyChon();
     }
+
+    @Override
+    public ArrayList<Thongke_Model> LocNgay(String ngayBD, String ngayKT) {
+        return tkrp.LocNgay(ngayBD, ngayKT);
+    }
     
     
 }

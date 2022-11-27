@@ -9,16 +9,17 @@ public class Thongke_Model {
     private String ten;
     private int soLuong;
     private int TrangThai;
-    private int soBan;
+    private String NgayTao;
     private String tong;
 
     public Thongke_Model() {
     }
 
-    public Thongke_Model(String ma, String ten, int soLuong, int TrangTha, String tong) {
+    public Thongke_Model(String ma, String ten, int soLuong,String NgayTao, int TrangTha, String tong) {
         this.ma = ma;
         this.ten = ten;
         this.soLuong = soLuong;
+        this.NgayTao = NgayTao;
         this.TrangThai = TrangThai;
         this.tong = tong;
     }
@@ -58,13 +59,14 @@ public class Thongke_Model {
         this.TrangThai = TrangThai;
     }
 
-    public int getSoBan() {
-        return soBan;
+    public String getNgayTao() {
+        return NgayTao;
     }
 
-    public void setSoBan(int soBan) {
-        this.soBan = soBan;
+    public void setNgayTao(String NgayTao) {
+        this.NgayTao = NgayTao;
     }
+
 
     public String getTong() {
         return tong;
@@ -78,11 +80,16 @@ public class Thongke_Model {
     
 
     public String getTT(){
-        if (TrangThai == 0) {
-            return "Hết";
-        }else{
-            return "Đang bán";
+        if (TrangThai == 1) {
+            return "Đang chờ";
+        } else if (TrangThai == 0) {
+            return "Đã thanh toán";
+        } else if (TrangThai == 2) {
+            return "Chờ thanh toán";
+        } else if (TrangThai == 3) {
+            return "Đã hủy";
         }
+        return null;
     }
     
 }
