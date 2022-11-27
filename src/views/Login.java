@@ -19,13 +19,12 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-     
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-      
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,62 +135,59 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String email = txtEmail.getText();
         String pass = String.valueOf(txtpass.getPassword());
-        
+
         boolean isValidEmail = ValidateForm.validateEmail(email);
         boolean isValidPass = ValidateForm.validatePass(pass);
-        
-        if(email.isBlank() || pass.isBlank()){
+
+        if (email.isBlank() || pass.isBlank()) {
             JOptionPane.showMessageDialog(this, "Thông tin nhập không thể để trống hoặc khoảng trắng");
-        } 
-        
-         else {
+        } else {
             PreparedStatement ps = null;
             PreparedStatement ps1 = null;
             Connection conn = null;
-            
-            
-             try {
+
+            try {
                 conn = Connections.jdbcUtils.getConnection();
                 String sql = " select * from [login]  where Email = ? and MatKhau = ? and Ma = 'CV01'";
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, email);
-                ps.setString(2, pass );
-                
+                ps.setString(2, pass);
+
                 ResultSet rs = ps.executeQuery();
-                
+
                 String sql1 = " select * from [login]  where Email = ? and MatKhau = ? and Ma = 'CV02'";
                 ps1 = conn.prepareStatement(sql1);
                 ps1.setString(1, email);
-                ps1.setString(2, pass );
-                
+                ps1.setString(2, pass);
+
                 ResultSet rs1 = ps1.executeQuery();
-                
-                if(rs.next()){
+
+                if (rs.next()) {
                     JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
                     this.dispose();
-                  new QuanLy(rs.getString("TenNV"), rs.getString("Ten")).setVisible(true);
-                    
-                } else if (rs1.next()){
+                    new QuanLy(rs.getString("MaNV"), rs.getString("TenNV"), rs.getString("Ten")).setVisible(true);
+
+                } else if (rs1.next()) {
                     JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
                     this.dispose();
-                    new NhanVien(rs1.getString("TenNV"), rs1.getString("Ten")).setVisible(true);
+                    new NhanVien(rs1.getString("MaNV"), rs1.getString("TenNV"), rs1.getString("Ten")).setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(this, "Thông tin tài khoản không chính xác");
                     txtEmail.setText("");
                     txtpass.setText("");
                 }
-                
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
-            System.exit(0);
-                    
+        System.exit(0);
+
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void btnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyPressed

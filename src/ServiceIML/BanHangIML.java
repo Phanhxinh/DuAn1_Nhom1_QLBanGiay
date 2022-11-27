@@ -8,6 +8,7 @@ import DomainModel.GioHang_BanHangModel;
 import DomainModel.HoaDonModel;
 import DomainModel.HoaDon_BanHangModel;
 import DomainModel.KhuyenMai_BanHangModel;
+import DomainModel.NhanVien;
 import DomainModel.SanPham_BanhangModel;
 import ITFService.BanHangITF;
 import Repositories.BanHangRepo;
@@ -124,6 +125,11 @@ public class BanHangIML implements BanHangITF {
     @Override
     public ArrayList<KhachHangViewModel> getIDKH(String sdt) {
         return banHangRepo.getIDKH(sdt);
+    }
+
+    @Override
+    public ArrayList<NhanVien> getMaNVtoID(String manv) {
+        return banHangRepo.getManvtoID(manv);
     }
 
 }

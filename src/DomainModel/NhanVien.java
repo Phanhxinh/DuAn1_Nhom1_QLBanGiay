@@ -5,13 +5,12 @@
  */
 package DomainModel;
 
-
-
 /**
  *
  * @author BachTN
  */
 public class NhanVien {
+
     private String id;
     private String maNv;
     private String hoTen;
@@ -42,8 +41,6 @@ public class NhanVien {
         this.idCV = idCV;
         this.trangThai = trangThai;
     }
-
-    
 
     public String getId() {
         return id;
@@ -143,8 +140,7 @@ public class NhanVien {
 
     @Override
     public String toString() {
-        return "NhanVien{" + "id=" + id + ", maNv=" + maNv + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", ngaySinh=" + ngaySinh + ", anhNv=" + anhNv + ", sdt=" + sdt + ", email=" + email + ", matKhau=" + matKhau + ", idCV=" + idCV + ", trangThai=" + trangThai + '}';
+        return id;
     }
 
-    
 }

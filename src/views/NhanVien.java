@@ -17,7 +17,7 @@ public class NhanVien extends javax.swing.JFrame {
      */
     Color DefaultColor, ClickeColor;
 Login lg = new Login();
-    public NhanVien(String tennv , String chucvu) {
+    public NhanVien(String manv,String tennv , String chucvu) {
         initComponents();
         this.setLocationRelativeTo(null);
 

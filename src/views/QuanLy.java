@@ -17,14 +17,16 @@ public class QuanLy extends javax.swing.JFrame {
      * Creates new form QuanLy
      */
     Color DefaultColor, ClickeColor;
-Login lg = new Login();
-    public QuanLy(String tennv, String chucvu) {
+    Login lg = new Login();
+
+    public QuanLy(String manv, String tennv, String chucvu) {
         initComponents();
         this.setLocationRelativeTo(null);
 
         DefaultColor = new Color(246, 168, 193);
         ClickeColor = new Color(200, 187, 240);
-txtName.setText(tennv +" - "+chucvu);
+        lblmanv.setText(manv);
+        txtName.setText(tennv + " - " + chucvu);
         menu1.setBackground(DefaultColor);
         menu2.setBackground(DefaultColor);
         menu3.setBackground(DefaultColor);
@@ -50,6 +52,7 @@ txtName.setText(tennv +" - "+chucvu);
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        lblmanv = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtName = new javax.swing.JLabel();
         jlabel = new javax.swing.JLabel();
@@ -80,6 +83,9 @@ txtName.setText(tennv +" - "+chucvu);
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblmanv.setText("Manv");
+        jPanel1.add(lblmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 60, 30));
+
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/close (2).png"))); // NOI18N
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -89,10 +95,10 @@ txtName.setText(tennv +" - "+chucvu);
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 20, -1, -1));
 
         txtName.setText("Tên nhân viên là : ");
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 500, 50));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 270, 30));
 
         jlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Screenshot 2022-11-14 192103 (1).png"))); // NOI18N
-        jPanel1.add(jlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1170, 210));
+        jPanel1.add(jlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1170, 180));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logo-giay(32) (1).jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 180));
@@ -424,7 +430,9 @@ txtName.setText(tennv +" - "+chucvu);
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -637,7 +645,6 @@ txtName.setText(tennv +" - "+chucvu);
     /**
      * @param args the command line arguments
      */
- 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPanel;
@@ -654,6 +661,7 @@ txtName.setText(tennv +" - "+chucvu);
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlabel;
+    public static javax.swing.JLabel lblmanv;
     private javax.swing.JPanel menu1;
     private javax.swing.JPanel menu2;
     private javax.swing.JPanel menu3;
@@ -663,6 +671,6 @@ txtName.setText(tennv +" - "+chucvu);
     private javax.swing.JPanel menu7;
     private javax.swing.JPanel menu8;
     private javax.swing.JPanel menu9;
-    private javax.swing.JLabel txtName;
+    public static javax.swing.JLabel txtName;
     // End of variables declaration//GEN-END:variables
 }

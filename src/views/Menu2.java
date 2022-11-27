@@ -6,6 +6,7 @@ package views;
 
 import DomainModel.GioHang_BanHangModel;
 import DomainModel.HoaDonModel;
+import DomainModel.NhanVien;
 import DomainModel.HoaDon_BanHangModel;
 import DomainModel.KhuyenMai_BanHangModel;
 import DomainModel.SanPham_BanhangModel;
@@ -65,7 +66,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
         btnChoThanhToan.setEnabled(false);
         btnhuy.setEnabled(false);
         btnxoaSanPham.setEnabled(false);
-
     }
 
 // Hiện thị sản phẩm lên bảng sản phẩm
@@ -811,7 +811,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 btnTaoHoaDonActionPerformed(evt);
             }
         });
-        jPanel2.add(btnTaoHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 380, 160, 40));
+        jPanel2.add(btnTaoHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 410, 160, 40));
 
         btnChoThanhToan.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnChoThanhToan.setText("Chờ thanh toán");
@@ -820,7 +820,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 btnChoThanhToanActionPerformed(evt);
             }
         });
-        jPanel2.add(btnChoThanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 440, 160, 40));
+        jPanel2.add(btnChoThanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 460, 160, 40));
 
         lblthongbao.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblthongbao.setForeground(new java.awt.Color(255, 0, 51));
@@ -854,7 +854,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 btnhuyActionPerformed(evt);
             }
         });
-        jPanel2.add(btnhuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 500, 160, 40));
+        jPanel2.add(btnhuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 510, 160, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -920,7 +920,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
 //    }
     private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
         // TODO add your handling code here:
-        if(txtKhachMuaHang.getText().isEmpty()){
+        if (txtKhachMuaHang.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Mời bạn nhập thông tin khách hàng!");
             return;
         }
@@ -945,7 +945,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
         for (KhachHangViewModel kh : banHangITF.getIDKH(sdtKH)) {
             idKH += kh.getId();
         }
-        banHangITF.insertHoaDon(idKH, "b8855928-093d-44b7-80a8-15401cd5d94e", null, MaHD, TrangThai);
+        String manv = QuanLy.lblmanv.getText();
+        String idNV = "";
+        for (NhanVien nv : banHangITF.getMaNVtoID(manv)) {
+            idNV += nv.getId();
+        }
+        banHangITF.insertHoaDon(idKH, idNV, null, MaHD, TrangThai);
         this.LoadTableHoaDon();
         JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công.");
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
@@ -1047,7 +1052,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
         bang = (DefaultTableModel) tableGioHang.getModel();
         for (GioHang_BanHangModel ghbhm : banHangITF.MouesClickTableHoaDon(idHd)) {
-            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getSize(),ghbhm.getMauSac(),ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getThanhTien(), ghbhm.getBarcode()});
+            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getSize(), ghbhm.getMauSac(), ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getThanhTien(), ghbhm.getBarcode()});
         }
         String tenKM = MaHDtoTenKM(maHD);
         for (int i = 0; i < cbbkhuyenmai.getItemCount(); i++) {

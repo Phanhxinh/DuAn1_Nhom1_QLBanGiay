@@ -10,11 +10,12 @@ import DomainModel.HoaDonModel;
 import DomainModel.HoaDon_BanHangModel;
 import DomainModel.KhuyenMai_BanHangModel;
 import ViewModel.KhachHangViewModel;
+import ViewModel.NhanVienViewModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import views.KhachHangView;
+import DomainModel.NhanVien;
 
 /**
  *
@@ -57,7 +58,7 @@ public class BanHangRepo {
         }
         return list;
     }
-
+    
     public ArrayList<SanPham_BanhangModel> getSPbarcode(String Barcode) {
         ArrayList list = new ArrayList<SanPham_BanhangModel>();
         try {
@@ -114,7 +115,7 @@ public class BanHangRepo {
         }
         return list;
     }
-
+    
     public ArrayList<GioHang_BanHangModel> getAllGioHang(String ten, String barcode) {
         ArrayList list = new ArrayList<SanPham_BanhangModel>();
         try {
@@ -336,7 +337,7 @@ public class BanHangRepo {
             e.printStackTrace();
         }
     }
-
+    
     public ArrayList<KhuyenMai_BanHangModel> getCbbTenKM(String NgayBD, String NgayKT) {
         ArrayList list = new ArrayList<HoaDonModel>();
         try {
@@ -467,7 +468,7 @@ public class BanHangRepo {
             e.printStackTrace();
         }
     }
-
+    
     public ArrayList<KhachHangViewModel> getIDKH(String Sdt) {
         ArrayList list = new ArrayList<KhachHangViewModel>();
         try {
@@ -486,5 +487,24 @@ public class BanHangRepo {
         }
         return list;
     }
-
+    
+    public ArrayList<NhanVien> getManvtoID(String Manv) {
+        ArrayList<NhanVien> list = new ArrayList<>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select * from NhanVien where MaNV=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, Manv);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String manv = rs.getString("MaNV");
+                String id = rs.getString("Id");
+                NhanVien nv = new NhanVien(id, manv, null, null, null, null, null, null, null, null, null, 0);
+                list.add(nv);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
