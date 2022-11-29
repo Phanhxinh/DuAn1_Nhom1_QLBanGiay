@@ -63,7 +63,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txttienkhuyenmai.setEnabled(false);
         btnthemsanpham.setEnabled(false);
         txtbarcoe.requestFocus();
-        btnChoThanhToan.setEnabled(false);
         btnhuy.setEnabled(false);
         btnxoaSanPham.setEnabled(false);
     }
@@ -148,7 +147,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     }
 //lọc hóa đơn chờ thanh toán
 
-    private void LoadTableHoaDonDangChoThanhToan() {
+    private void LoadTableHoaDonDaHuy() {
         bang = (DefaultTableModel) tableHoaDon.getModel();
         bang.setRowCount(0);
         for (HoaDon_BanHangModel hd : banHangITF.getHoaDonDangChoThanhToan()) {
@@ -252,7 +251,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
         cbbkhuyenmai.setSelectedIndex(0);
         bang = (DefaultTableModel) tableGioHang.getModel();
         bang.setNumRows(0);
-        btnChoThanhToan.setEnabled(false);
         btnhuy.setEnabled(false);
     }
 
@@ -489,7 +487,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txttienthua = new javax.swing.JTextField();
         btnthanhtoan = new javax.swing.JButton();
         btnTaoHoaDon = new javax.swing.JButton();
-        btnChoThanhToan = new javax.swing.JButton();
         lblthongbao = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtKhachMuaHang = new javax.swing.JTextField();
@@ -691,7 +688,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 880, 240));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Mã Hóa Đơn:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 120, -1));
@@ -811,16 +808,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 btnTaoHoaDonActionPerformed(evt);
             }
         });
-        jPanel2.add(btnTaoHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 410, 160, 40));
-
-        btnChoThanhToan.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnChoThanhToan.setText("Chờ thanh toán");
-        btnChoThanhToan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChoThanhToanActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnChoThanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 460, 160, 40));
+        jPanel2.add(btnTaoHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 460, 160, 40));
 
         lblthongbao.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblthongbao.setForeground(new java.awt.Color(255, 0, 51));
@@ -832,7 +820,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, -1, -1));
 
         txtKhachMuaHang.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jPanel2.add(txtKhachMuaHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 310, 140, 40));
+        jPanel2.add(txtKhachMuaHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 320, 140, 30));
 
         ThemKH.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         ThemKH.setText("+");
@@ -965,7 +953,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         } else if (CbbHoaDon.getSelectedIndex() == 2) {
             LoadTableHoaDonDangCho();
         } else if (CbbHoaDon.getSelectedIndex() == 3) {
-            LoadTableHoaDonDangChoThanhToan();
+            LoadTableHoaDonDaHuy();
         }
     }//GEN-LAST:event_CbbHoaDonActionPerformed
 
@@ -1026,14 +1014,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
             this.XuatHoaDon();
             Clearform();
             JOptionPane.showMessageDialog(this, "Thanh toán thành công.");
-        } else if (trangThai == "Chờ thanh toán") {
-            String maHd = txtmaHoaDon.getText();
-            int TrangThai = 0;
-            banHangITF.updateTrangThaiHoaDon(TrangThai, maHd);
-            LoadTableHoaDon();
-            LoadTableSanPham();
-            Clearform();
-            JOptionPane.showMessageDialog(this, "Thanh toán thành công.");
         }
         //
     }//GEN-LAST:event_btnthanhtoanActionPerformed
@@ -1052,7 +1032,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
         bang = (DefaultTableModel) tableGioHang.getModel();
         for (GioHang_BanHangModel ghbhm : banHangITF.MouesClickTableHoaDon(idHd)) {
-            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getSize(), ghbhm.getMauSac(), ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getThanhTien(), ghbhm.getBarcode()});
+            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getSize(), ghbhm.getMauSac(), ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getSoLuong() * Integer.parseInt(ghbhm.getDonGia()), ghbhm.getBarcode()});
         }
         String tenKM = MaHDtoTenKM(maHD);
         for (int i = 0; i < cbbkhuyenmai.getItemCount(); i++) {
@@ -1062,15 +1042,13 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
         TinhTongTien();
         updatetienKM();
-        if (TrangThaiGH == "Chờ thanh toán" || TrangThaiGH == "Đang chờ") {
+        if (TrangThaiGH == "Đang chờ") {
             btnthemsanpham.setEnabled(true);
             btnhuy.setEnabled(true);
-            btnChoThanhToan.setEnabled(true);
         } else if (TrangThaiGH == "Đã thanh toán") {
             btnthemsanpham.setEnabled(false);
             btnthanhtoan.setEnabled(false);
             btnhuy.setEnabled(false);
-            btnChoThanhToan.setEnabled(false);
         }
         btnxoaSanPham.setEnabled(false);
     }//GEN-LAST:event_tableHoaDonMouseClicked
@@ -1088,26 +1066,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
             updatetienKM();
         }
     }//GEN-LAST:event_cbbkhuyenmaiActionPerformed
-
-    private void btnChoThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChoThanhToanActionPerformed
-        // TODO add your handling code here:
-        String maHd = txtmaHoaDon.getText();
-        int TrangThai = 2;
-        banHangITF.updateTrangThaiHoaDon(TrangThai, maHd);
-        InsertHoaDonChiTiet();
-        String idKM = "";
-        for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.TenKMtoIdKM(cbbkhuyenmai.getSelectedItem().toString())) {
-            idKM += khuyenMai_BanHangModel;
-        }
-        if (cbbkhuyenmai.getSelectedIndex() != 0) {
-            banHangITF.updateIdKm(idKM, maHd);
-        }
-        btnthemsanpham.setEnabled(false);
-        LoadTableHoaDon();
-        LoadTableSanPham();
-        Clearform();
-        JOptionPane.showMessageDialog(this, "Chờ thanh toán thành công.");
-    }//GEN-LAST:event_btnChoThanhToanActionPerformed
 
     private void btnxoaSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaSanPhamActionPerformed
         // TODO add your handling code here:
@@ -1165,7 +1123,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private void btnhuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhuyActionPerformed
         // TODO add your handling code here:
         String maHd = txtmaHoaDon.getText();
-        int TrangThai = 3;
+        int TrangThai = 2;
         banHangITF.updateTrangThaiHoaDon(TrangThai, maHd);
         LoadTableHoaDon();
         LoadTableSanPham();
@@ -1192,7 +1150,6 @@ public class Menu2 extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CbbHoaDon;
     private javax.swing.JButton ThemKH;
-    private javax.swing.JButton btnChoThanhToan;
     private javax.swing.JButton btnTaoHoaDon;
     private javax.swing.JButton btnhuy;
     private javax.swing.JButton btnthanhtoan;

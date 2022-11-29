@@ -136,9 +136,6 @@ public class Login extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String pass = String.valueOf(txtpass.getPassword());
 
-        boolean isValidEmail = ValidateForm.validateEmail(email);
-        boolean isValidPass = ValidateForm.validatePass(pass);
-
         if (email.isBlank() || pass.isBlank()) {
             JOptionPane.showMessageDialog(this, "Thông tin nhập không thể để trống hoặc khoảng trắng");
         } else {

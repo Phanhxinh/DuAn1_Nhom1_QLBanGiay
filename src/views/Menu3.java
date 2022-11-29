@@ -401,7 +401,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         }
         bang = (DefaultTableModel) tablegiohang.getModel();
         for (GioHang_BanHangModel ghbhm : banHangITF.MouesClickTableHoaDon(idHd)) {
-            bang.addRow(new Object[]{tablegiohang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getLoaiSP(),ghbhm.getSize(),ghbhm.getMauSac(), ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getThanhTien()});
+            bang.addRow(new Object[]{tablegiohang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getLoaiSP(),ghbhm.getSize(),ghbhm.getMauSac(), ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getSoLuong()*Integer.parseInt( ghbhm.getDonGia())});
         }
         String tenKM = MaHDtoTenKM(maHD);
         lblchuongtrinhkm.setText(tenKM);

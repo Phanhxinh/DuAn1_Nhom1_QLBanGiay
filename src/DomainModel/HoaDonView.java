@@ -73,8 +73,6 @@ public class HoaDonView {
         } else if (TrangThai == 0) {
             return "Đã thanh toán";
         } else if (TrangThai == 2) {
-            return "Chờ thanh toán";
-        } else if (TrangThai == 3) {
             return "Đã hủy";
         }
         return null;
