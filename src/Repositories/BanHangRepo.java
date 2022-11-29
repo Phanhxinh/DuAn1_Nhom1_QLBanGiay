@@ -58,7 +58,7 @@ public class BanHangRepo {
         }
         return list;
     }
-    
+
     public ArrayList<SanPham_BanhangModel> getSPbarcode(String Barcode) {
         ArrayList list = new ArrayList<SanPham_BanhangModel>();
         try {
@@ -115,7 +115,7 @@ public class BanHangRepo {
         }
         return list;
     }
-    
+
     public ArrayList<GioHang_BanHangModel> getAllGioHang(String ten, String barcode) {
         ArrayList list = new ArrayList<SanPham_BanhangModel>();
         try {
@@ -337,7 +337,7 @@ public class BanHangRepo {
             e.printStackTrace();
         }
     }
-    
+
     public ArrayList<KhuyenMai_BanHangModel> getCbbTenKM(String NgayBD, String NgayKT) {
         ArrayList list = new ArrayList<HoaDonModel>();
         try {
@@ -468,8 +468,9 @@ public class BanHangRepo {
             e.printStackTrace();
         }
     }
-    
-    public ArrayList<KhachHangViewModel> getIDKH(String Sdt) {
+
+    // lấy  idkh, tên kh, địa chỉ kh từ số điện thoại
+    public ArrayList<KhachHangViewModel> getID_Ten_DiaChiKH(String Sdt) {
         ArrayList list = new ArrayList<KhachHangViewModel>();
         try {
             Connection conn = Connections.jdbcUtils.getConnection();
@@ -480,14 +481,17 @@ public class BanHangRepo {
             while (rs.next()) {
                 String idKH = rs.getString("Id");
                 String sdt = rs.getString("SDT");
-                list.add(new KhachHangViewModel(idKH, null, null, null, sdt, null, null));
+                String tenkh = rs.getString("TenKH");
+                String Dichi = rs.getString("DiaChi");
+                list.add(new KhachHangViewModel(idKH, null, tenkh, null, sdt, null, Dichi));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
     }
-    
+
+    // lấy id nhân viên từ mã nhân viên
     public ArrayList<NhanVien> getManvtoID(String Manv) {
         ArrayList<NhanVien> list = new ArrayList<>();
         try {
@@ -501,6 +505,25 @@ public class BanHangRepo {
                 String id = rs.getString("Id");
                 NhanVien nv = new NhanVien(id, manv, null, null, null, null, null, null, null, null, null, 0);
                 list.add(nv);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    // lấy sdtkh từ mã hóa đơn
+    public ArrayList<KhachHangViewModel> getSdtKH(String MaHD) {
+        ArrayList<KhachHangViewModel> list = new ArrayList<>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select a.MaHD,b.SDT from HoaDon a join KhachHang b on a.IdKH=b.Id where a.MaHD=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, MaHD);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String sdt = rs.getString("SDT");
+                list.add(new KhachHangViewModel(null, null, null, null, sdt, null, null));
             }
         } catch (Exception e) {
             e.printStackTrace();

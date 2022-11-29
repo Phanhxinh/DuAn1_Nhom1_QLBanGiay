@@ -88,7 +88,7 @@ SanPham_SanPhamModel M3  = new SanPham_SanPhamModel(ma, ten,null);
         btnXoa = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setText("Mã");
 

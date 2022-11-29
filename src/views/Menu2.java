@@ -261,6 +261,24 @@ public class Menu2 extends javax.swing.JInternalFrame {
         });
     }
 
+    private String getTenKH(String sdt) {
+        for (KhachHangViewModel khvm : banHangITF.getID_Ten_DiaChiKH(sdt)) {
+            if (khvm.getSdt().toString().equals(sdt)) {
+                return khvm.getTenKh();
+            }
+        }
+        return null;
+    }
+
+    private String getDiaChiKH(String sdt) {
+        for (KhachHangViewModel khvm : banHangITF.getID_Ten_DiaChiKH(sdt)) {
+            if (khvm.getSdt().toString().equals(sdt)) {
+                return khvm.getDiachi();
+            }
+        }
+        return null;
+    }
+
     private void XuatHoaDon() {
         Date now = new Date();
         try {
@@ -270,7 +288,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             XWPFParagraph paragraph = document.createParagraph();
             XWPFRun run = paragraph.createRun();
             paragraph.setAlignment(ParagraphAlignment.CENTER);
-            run.setText("CỬA HÀNG BÁN GIÀY RUNING");
+            run.setText("CỬA HÀNG BÁN GIÀY RUNNING");
             run.setFontSize(20);
             run.setBold(true);
 
@@ -294,15 +312,15 @@ public class Menu2 extends javax.swing.JInternalFrame {
 
             XWPFParagraph paragraph5 = document.createParagraph();
             XWPFRun run5 = paragraph5.createRun();
-            run5.setText("Khách hàng: ");
+            run5.setText("Khách hàng:  " + getTenKH(txtKhachMuaHang.getText()));
 
             XWPFParagraph paragraph6 = document.createParagraph();
             XWPFRun run6 = paragraph6.createRun();
-            run6.setText("Địa chỉ: ");
+            run6.setText("Địa chỉ:          " + getDiaChiKH(txtKhachMuaHang.getText()));
 
             XWPFParagraph paragraph7 = document.createParagraph();
             XWPFRun run7 = paragraph7.createRun();
-            run7.setText("SĐT: ");
+            run7.setText("SĐT:                " + txtKhachMuaHang.getText());
 
             XWPFParagraph paragraph8 = document.createParagraph();
             XWPFRun run8 = paragraph8.createRun();
@@ -869,6 +887,10 @@ public class Menu2 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int Line = tableGioHang.getRowCount();
         int row = tableSanPham.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn sản phẩm ");
+            return;
+        }
         String barcode = tableSanPham.getValueAt(row, 10).toString();
         String soluong = JOptionPane.showInputDialog(this, "Mời bạn nhập số lượng sản phẩm");
         int sl = Integer.parseInt(soluong);
@@ -927,10 +949,16 @@ public class Menu2 extends javax.swing.JInternalFrame {
             txtmaHoaDon.setText("HD" + (chuoi2 + 1));
         }
         String MaHD = txtmaHoaDon.getText();
+        for (HoaDon_BanHangModel hdbhm : banHangITF.getAllHoaDon()) {
+            if (MaHD.equals(hdbhm.getMaHD().toString())) {
+                JOptionPane.showMessageDialog(this, "Lỗi !mã hóa đơn trùng, vui lòng chọn dòng cuối cùng.");
+                return;
+            }
+        }
         int TrangThai = 1;
         String idKH = "";
         String sdtKH = txtKhachMuaHang.getText();
-        for (KhachHangViewModel kh : banHangITF.getIDKH(sdtKH)) {
+        for (KhachHangViewModel kh : banHangITF.getID_Ten_DiaChiKH(sdtKH)) {
             idKH += kh.getId();
         }
         String manv = QuanLy.lblmanv.getText();
@@ -1040,6 +1068,11 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 cbbkhuyenmai.setSelectedIndex(i);
             }
         }
+        String sdtKH = "";
+        for (KhachHangViewModel khvm : banHangITF.getSdtKH(maHD)) {
+            sdtKH += khvm.getSdt();
+        }
+        txtKhachMuaHang.setText(sdtKH);
         TinhTongTien();
         updatetienKM();
         if (TrangThaiGH == "Đang chờ") {
@@ -1070,6 +1103,10 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private void btnxoaSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaSanPhamActionPerformed
         // TODO add your handling code here:
         int row = tableGioHang.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn dòng cần xóa");
+            return;
+        }
         bang.removeRow(row);
         TinhTongTien();
         txtthanhtien.setText(txttongtien.getText());

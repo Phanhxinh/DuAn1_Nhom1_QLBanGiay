@@ -59,7 +59,9 @@ public interface BanHangITF {
 
     ArrayList<SanPham_BanhangModel> getSPbarcode(String Barcode);
 
-    ArrayList<KhachHangViewModel> getIDKH(String sdt);
+    ArrayList<KhachHangViewModel> getID_Ten_DiaChiKH(String sdt);
 
     ArrayList<NhanVien> getMaNVtoID(String manv);
+    
+    ArrayList<KhachHangViewModel> getSdtKH(String MaHD);
 }

@@ -123,13 +123,18 @@ public class BanHangIML implements BanHangITF {
     }
 
     @Override
-    public ArrayList<KhachHangViewModel> getIDKH(String sdt) {
-        return banHangRepo.getIDKH(sdt);
+    public ArrayList<KhachHangViewModel> getID_Ten_DiaChiKH(String sdt) {
+        return banHangRepo.getID_Ten_DiaChiKH(sdt);
     }
 
     @Override
     public ArrayList<NhanVien> getMaNVtoID(String manv) {
         return banHangRepo.getManvtoID(manv);
+    }
+
+    @Override
+    public ArrayList<KhachHangViewModel> getSdtKH(String MaHD) {
+        return banHangRepo.getSdtKH(MaHD);
     }
 
 }
