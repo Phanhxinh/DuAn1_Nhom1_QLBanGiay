@@ -6,6 +6,7 @@ package ITFService;
 
 import DomainModel.KhachHang;
 import ViewModel.KhachHangViewModel;
+import ViewModel.LsugdViewModel;
 import java.util.List;
 
 public interface KhachHangITF {
@@ -17,6 +18,8 @@ public interface KhachHangITF {
     void Update(String ma, KhachHang kh);
 
     List<KhachHangViewModel> FindKh(String makh);
+    
+    List<LsugdViewModel> GetLsu(String sdt);
     
     List<KhachHangViewModel> GetId(String ten);
 }

@@ -8,6 +8,7 @@ import Connections.jdbcUtils;
 import DomainModel.KhachHang;
 import ViewModel.KhachHangViewModel;
 import ViewModel.NhanVienViewModel;
+import ViewModel.LsugdViewModel;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.Date;
@@ -42,7 +43,33 @@ public class KhachHangRepo {
         }
         return listkh;
     }
-
+  
+    public List<LsugdViewModel> Getlsu(String sdt){
+        List<LsugdViewModel> listlsu = new ArrayList<>();
+        try {
+             Connection conn = jdbcUtils.getConnection();
+             String sql = "select * from [history] where SDT = ?";
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ps.setString(1, sdt);
+             ResultSet rs = ps.executeQuery();
+             while(rs.next()){
+               LsugdViewModel lsgd = new LsugdViewModel();
+               lsgd.setTenkh(rs.getString(1));
+               lsgd.setSDT(rs.getString(2));
+               lsgd.setNgayTT(rs.getString(3));
+               lsgd.setTenSP(rs.getString(4));
+               lsgd.setSluong(rs.getString(5));
+               lsgd.setGIaBan(rs.getString(6));
+               lsgd.setThanhtien(rs.getString(7));
+               lsgd.setTrangthai(rs.getString(8));
+              
+               listlsu.add(lsgd);
+             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listlsu;
+    }
     public List<KhachHangViewModel> GetId(String ma) {
         List<KhachHangViewModel> listkh = new ArrayList<>();
         try {
@@ -120,12 +147,12 @@ public class KhachHangRepo {
         return isExist;
     }
 
-    public List<KhachHangViewModel> FindKh(String makh) {
+        public List<KhachHangViewModel> FindKh(String makh) {
         List<KhachHangViewModel> listkh = new ArrayList<>();
 
         try {
             Connection conn = jdbcUtils.getConnection();
-            String sql = "select MaKH,TenKH, NgaySinh,SDT,Email,DiaChi  from KhachHang where TenKH like N'%" + makh + "%'";
+            String sql = "select MaKH,TenKH, NgaySinh,SDT,Email,DiaChi  from KhachHang where TenKH like N'%"+makh+"%'";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

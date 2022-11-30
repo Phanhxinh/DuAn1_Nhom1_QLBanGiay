@@ -8,6 +8,7 @@ import Connections.ValidateForm;
 import DomainModel.KhachHang;
 import ITFService.KhachHangITF;
 import ViewModel.KhachHangViewModel;
+import ViewModel.LsugdViewModel;
 import java.util.List;
 import Repositories.KhachHangRepo;
 
@@ -19,7 +20,7 @@ public class KhachHangIML implements KhachHangITF {
     public List<KhachHangViewModel> getListKh() {
         return khrepo.getListKh();
     }
-
+   
     @Override
     public void Add(KhachHang kh) {
         boolean isExists = khrepo.isExits(kh.getMaKh());
@@ -88,10 +89,15 @@ public class KhachHangIML implements KhachHangITF {
     public List<KhachHangViewModel> FindKh(String makh) {
         return khrepo.FindKh(makh);
     }
-
+    
     @Override
     public List<KhachHangViewModel> GetId(String ten) {
         return khrepo.GetId(ten);
+    }
+
+    @Override
+    public List<LsugdViewModel> GetLsu(String sdt) {
+        return khrepo.Getlsu(sdt);
     }
 
 }
