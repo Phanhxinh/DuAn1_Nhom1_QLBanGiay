@@ -306,7 +306,7 @@
                     <Column editable="true" title="Size" type="java.lang.Object"/>
                     <Column editable="true" title="M&#xe0;u s&#x1eaf;c" type="java.lang.Object"/>
                     <Column editable="true" title="S&#x1ed1; L&#x1b0;&#x1ee3;ng" type="java.lang.Object"/>
-                    <Column editable="true" title="&#x110;&#x1a1;n Gi&#xe1;" type="java.lang.Object"/>
+                    <Column editable="true" title="Gi&#xe1; B&#xe1;n" type="java.lang.Object"/>
                     <Column editable="true" title="Th&#xe0;nh Ti&#x1ec1;n" type="java.lang.Object"/>
                   </Table>
                 </Property>

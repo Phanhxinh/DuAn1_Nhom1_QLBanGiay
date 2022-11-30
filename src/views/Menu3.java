@@ -201,7 +201,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "STT", "Tên SP", "Loại SP", "Size", "Màu sắc", "Số Lượng", "Đơn Giá", "Thành Tiền"
+                "STT", "Tên SP", "Loại SP", "Size", "Màu sắc", "Số Lượng", "Giá Bán", "Thành Tiền"
             }
         ));
         jScrollPane2.setViewportView(tablegiohang);

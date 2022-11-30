@@ -185,11 +185,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 idKM += khuyenMai_BanHangModel;
             }
             String soLuong = tableGioHang.getValueAt(i, 4).toString();
-            String donGia = tableGioHang.getValueAt(i, 5).toString();
+            String GiaBan = tableGioHang.getValueAt(i, 5).toString();
+            int DonGia = Integer.parseInt(soLuong) * Integer.parseInt(GiaBan);
             if (cbbkhuyenmai.getSelectedIndex() != 0) {
-                banHangITF.insertHoaDonChiTiet(idHoaDon, idChiTietSP, idKM, Integer.parseInt(soLuong), donGia);
+                banHangITF.insertHoaDonChiTiet(idHoaDon, idChiTietSP, idKM, Integer.parseInt(soLuong), String.valueOf(DonGia));
             } else {
-                banHangITF.insertHoaDonChiTiet(idHoaDon, idChiTietSP, null, Integer.parseInt(soLuong), donGia);
+                banHangITF.insertHoaDonChiTiet(idHoaDon, idChiTietSP, null, Integer.parseInt(soLuong), String.valueOf(DonGia));
             }
             banHangITF.updateSoLuongSanPham(Integer.parseInt(soLuong), idChiTietSP);
         }
