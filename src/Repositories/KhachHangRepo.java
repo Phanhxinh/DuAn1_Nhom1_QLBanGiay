@@ -48,7 +48,7 @@ public class KhachHangRepo {
         List<LsugdViewModel> listlsu = new ArrayList<>();
         try {
              Connection conn = jdbcUtils.getConnection();
-             String sql = "select * from [history] where SDT = ?";
+             String sql = "select * from [history] where SDT = ? order by NgayThanhToan desc";
              PreparedStatement ps = conn.prepareStatement(sql);
              ps.setString(1, sdt);
              ResultSet rs = ps.executeQuery();

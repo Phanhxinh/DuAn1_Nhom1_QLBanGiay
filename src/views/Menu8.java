@@ -430,7 +430,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
         tbllsu.setRowCount(0);
         for (LsugdViewModel x : list) {
             Object[] row = new Object[]{x.getTenkh(),x.getSDT(),x.getNgayTT(),x.getTenSP(),x.getSluong(),x.getGIaBan(),x.getThanhtien(),
-           
+           x.getTrangthai().equals('0')?"Đã hủy ": "Đã thanh toán"
             };
             tbllsu.addRow(row);
         }
