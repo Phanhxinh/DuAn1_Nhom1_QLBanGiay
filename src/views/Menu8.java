@@ -10,11 +10,12 @@ import ITFService.KhachHangITF;
 import ServiceIML.KhachHangIML;
 import ViewModel.KhachHangViewModel;
 import ViewModel.LsugdViewModel;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -47,7 +48,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
     public void clearF() {
         txtDiaChi.setText("");
         txtEmail.setText("");
-        txtNgaysinh.setText("");
+        txtNgaySinh.setDate(null);
         txtSdt.setText("");
         txtTenKh.setText("");
         txtmaKh.setText("");
@@ -57,7 +58,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
         KhachHang kh = new KhachHang();
         kh.setMaKh(txtmaKh.getText());
         kh.setTenKh(txtTenKh.getText());
-        kh.setNgaySinh(txtNgaysinh.getText());
+        kh.setNgaySinh(sdf.format(txtNgaySinh.getDate()));
         kh.setSdt(txtSdt.getText());
         kh.setEmail(txtEmail.getText());
         kh.setDiachi(txtDiaChi.getText());
@@ -75,7 +76,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
         KhachHang kh = new KhachHang();
         kh.setMaKh(txtmaKh.getText());
         kh.setTenKh(txtTenKh.getText());
-        kh.setNgaySinh(txtNgaysinh.getText());
+        kh.setNgaySinh(sdf.format(txtNgaySinh.getDate()));
         kh.setSdt(txtSdt.getText());
         kh.setEmail(txtEmail.getText());
         kh.setDiachi(txtDiaChi.getText());
@@ -94,7 +95,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
         DefaultTableModel tblModel = (DefaultTableModel) tblKhang.getModel();
         txtmaKh.setText(tblModel.getValueAt(i, 0).toString());
         txtTenKh.setText(tblModel.getValueAt(i, 1).toString());
-        txtNgaysinh.setText(tblModel.getValueAt(i, 2).toString());
+        txtNgaySinh.setDateFormatString(tblModel.getValueAt(i, 2).toString());
         txtSdt.setText(tblModel.getValueAt(i, 3).toString()) ;
         sdt = txtSdt.getText();
         txtEmail.setText(tblModel.getValueAt(i, 4).toString());
@@ -131,7 +132,6 @@ public class Menu8 extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         txtmaKh = new javax.swing.JTextField();
         txtSdt = new javax.swing.JTextField();
-        txtNgaysinh = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtTenKh = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
@@ -139,6 +139,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
         btnUpdate = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDiaChi = new javax.swing.JTextArea();
+        txtNgaySinh = new com.toedter.calendar.JDateChooser();
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
@@ -211,6 +212,9 @@ public class Menu8 extends javax.swing.JInternalFrame {
         txtDiaChi.setRows(5);
         jScrollPane2.setViewportView(txtDiaChi);
 
+        txtNgaySinh.setDate(new java.util.Date(1669125429000L));
+        txtNgaySinh.setDateFormatString("dd/MM/yyyy");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -223,10 +227,10 @@ public class Menu8 extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel3))
                         .addGap(4, 4, 4)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNgaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtmaKh, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtmaKh, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jLabel5))
                 .addGap(87, 87, 87)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -260,11 +264,12 @@ public class Menu8 extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtTenKh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtNgaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4)
+                        .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -467,7 +472,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea txtDiaChi;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFind;
-    private javax.swing.JTextField txtNgaysinh;
+    private com.toedter.calendar.JDateChooser txtNgaySinh;
     private javax.swing.JTextField txtSdt;
     private javax.swing.JTextField txtTenKh;
     private javax.swing.JTextField txtmaKh;
