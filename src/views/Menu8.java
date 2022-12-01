@@ -24,8 +24,9 @@ import java.util.Date;
 public class Menu8 extends javax.swing.JInternalFrame {
 
     private final KhachHangITF khitf = new KhachHangIML();
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-  private String sdt;
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+    private String sdt;
+
     public Menu8() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -80,7 +81,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
         kh.setSdt(txtSdt.getText());
         kh.setEmail(txtEmail.getText());
         kh.setDiachi(txtDiaChi.getText());
-        
+
         try {
             khitf.Update(txtmaKh.getText(), kh);
             loaddata();
@@ -89,21 +90,26 @@ public class Menu8 extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
-    
-    public void selectRow(int i){
-        KhachHang kh = new KhachHang();
-        DefaultTableModel tblModel = (DefaultTableModel) tblKhang.getModel();
-        txtmaKh.setText(tblModel.getValueAt(i, 0).toString());
-        txtTenKh.setText(tblModel.getValueAt(i, 1).toString());
-        txtNgaySinh.setDateFormatString(tblModel.getValueAt(i, 2).toString());
-        txtSdt.setText(tblModel.getValueAt(i, 3).toString()) ;
-        sdt = txtSdt.getText();
-        txtEmail.setText(tblModel.getValueAt(i, 4).toString());
-        txtDiaChi.setText(tblModel.getValueAt(i, 5).toString());
-        
+
+    public void selectRow(int i) {
+        try {
+            KhachHang kh = new KhachHang();
+            DefaultTableModel tblModel = (DefaultTableModel) tblKhang.getModel();
+            Date ngaySinh = sdf.parse(tblModel.getValueAt(i, 2).toString());
+            txtmaKh.setText(tblModel.getValueAt(i, 0).toString());
+            txtTenKh.setText(tblModel.getValueAt(i, 1).toString());
+            txtNgaySinh.setDate(ngaySinh);
+            txtSdt.setText(tblModel.getValueAt(i, 3).toString());
+            sdt = txtSdt.getText();
+            txtEmail.setText(tblModel.getValueAt(i, 4).toString());
+            txtDiaChi.setText(tblModel.getValueAt(i, 5).toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-    
-    public void FindKh (String makh){
+
+    public void FindKh(String makh) {
         DefaultTableModel tblModel = (DefaultTableModel) tblKhang.getModel();
         tblModel.setRowCount(0);
         List<KhachHangViewModel> list = khitf.FindKh(makh);
@@ -424,7 +430,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-      Update();
+        Update();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void tblKhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhangMouseClicked
@@ -434,12 +440,12 @@ public class Menu8 extends javax.swing.JInternalFrame {
         DefaultTableModel tbllsu = (DefaultTableModel) tblH.getModel();
         tbllsu.setRowCount(0);
         for (LsugdViewModel x : list) {
-            Object[] row = new Object[]{x.getTenkh(),x.getSDT(),x.getNgayTT(),x.getTenSP(),x.getSluong(),x.getGIaBan(),x.getThanhtien(),
-           x.getTrangthai().equals('0')?"Đã hủy ": "Đã thanh toán"
+            Object[] row = new Object[]{x.getTenkh(), x.getSDT(), x.getNgayTT(), x.getTenSP(), x.getSluong(), x.getGIaBan(), x.getThanhtien(),
+                x.getTrangthai().equals('0') ? "Đã hủy " : "Đã thanh toán"
             };
             tbllsu.addRow(row);
         }
-                
+
     }//GEN-LAST:event_tblKhangMouseClicked
 
     private void txtFindCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtFindCaretUpdate

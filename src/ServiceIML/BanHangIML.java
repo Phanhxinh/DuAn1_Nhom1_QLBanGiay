@@ -137,4 +137,9 @@ public class BanHangIML implements BanHangITF {
         return banHangRepo.getSdtKH(MaHD);
     }
 
+    @Override
+    public void updatesoLuongHuy(String soluong, String barcode) {
+        banHangRepo.updatesoLuongHuy(soluong, barcode);
+    }
+
 }

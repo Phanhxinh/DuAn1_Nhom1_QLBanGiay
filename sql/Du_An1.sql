@@ -175,6 +175,14 @@ as
  select*from [login]
 
 
+create view [history]
+as
+select e.TenKH,e.SDT,d.NgayThanhToan, a.TenSP , c.SoLuong , b.GiaBan , c.SoLuong * b.GiaBan as 'ThanhTien' , d.TrangThai
+from SanPham a join ChiTietSP b on a.Id=b.IdSanPham join HoaDonChiTiet c on b.Id=c.IdChiTietSP
+join HoaDon d on c.IdHoaDon=d.Id join KhachHang e on e.Id=d.IdKH
+select * from [history]
+
+
 
 
 

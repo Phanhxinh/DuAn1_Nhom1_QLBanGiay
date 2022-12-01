@@ -64,4 +64,6 @@ public interface BanHangITF {
     ArrayList<NhanVien> getMaNVtoID(String manv);
     
     ArrayList<KhachHangViewModel> getSdtKH(String MaHD);
+    
+    void updatesoLuongHuy(String soluong, String barcode) ;
 }

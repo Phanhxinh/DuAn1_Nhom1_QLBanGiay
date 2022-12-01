@@ -10,7 +10,6 @@ import DomainModel.HoaDonModel;
 import DomainModel.HoaDon_BanHangModel;
 import DomainModel.KhuyenMai_BanHangModel;
 import ViewModel.KhachHangViewModel;
-import ViewModel.NhanVienViewModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -328,7 +327,7 @@ public class BanHangRepo {
     public void updateTrangThaiHoaDon(int TrangThai, String MaHD) {
         try {
             Connection conn = Connections.jdbcUtils.getConnection();
-            String sql = "update HoaDon set TrangThai=? where MaHD=?	";
+            String sql = "update HoaDon set TrangThai=? where MaHD=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, TrangThai);
             ps.setString(2, MaHD);
@@ -529,5 +528,19 @@ public class BanHangRepo {
             e.printStackTrace();
         }
         return list;
+    }
+
+    // update số lượng sản phẩm khi hóa đơn hủy
+    public void updatesoLuongHuy(String soluong, String barcode) {
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "update ChiTietSP set SoLuong+=? where BarCode=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, soluong);
+            ps.setString(2, barcode);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+
     }
 }

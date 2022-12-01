@@ -9,6 +9,7 @@ import ITFService.KhachHangITF;
 import ServiceIML.KhachHangIML;
 import ViewModel.KhachHangViewModel;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class KhachHangView extends javax.swing.JFrame {
 
     private final KhachHangITF khitf = new KhachHangIML();
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
     /**
      * Creates new form KhachHangView
@@ -87,15 +88,19 @@ public class KhachHangView extends javax.swing.JFrame {
     }
 
     public void selectRow(int i) {
-        KhachHang kh = new KhachHang();
-        DefaultTableModel tblModel = (DefaultTableModel) tblKhang.getModel();
-        txtmaKh3.setText(tblModel.getValueAt(i, 0).toString());
-        txtTenKh3.setText(tblModel.getValueAt(i, 1).toString());
-        txtNgaySinh.setDateFormatString(tblModel.getValueAt(i, 2).toString());
-        txtSdt3.setText(tblModel.getValueAt(i, 3).toString());
-        txtEmail3.setText(tblModel.getValueAt(i, 4).toString());
-        txtDiaChi3.setText(tblModel.getValueAt(i, 5).toString());
-
+        try {
+            KhachHang kh = new KhachHang();
+            DefaultTableModel tblModel = (DefaultTableModel) tblKhang.getModel();
+            Date ngaySinh = sdf.parse(tblModel.getValueAt(i, 2).toString());
+            txtmaKh3.setText(tblModel.getValueAt(i, 0).toString());
+            txtTenKh3.setText(tblModel.getValueAt(i, 1).toString());
+            txtNgaySinh.setDate(ngaySinh);
+            txtSdt3.setText(tblModel.getValueAt(i, 3).toString());
+            txtEmail3.setText(tblModel.getValueAt(i, 4).toString());
+            txtDiaChi3.setText(tblModel.getValueAt(i, 5).toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void FindKh(String makh) {

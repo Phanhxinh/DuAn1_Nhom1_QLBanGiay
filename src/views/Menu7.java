@@ -31,32 +31,35 @@ import views.FormChucVu;
  * @author DELL
  */
 public class Menu7 extends javax.swing.JInternalFrame {
-    private final NhanVienITF nvitf= new NhanVienIML();
-    private final ChucVuITF cvitf= new ChucVuIML();
+
+    private final NhanVienITF nvitf = new NhanVienIML();
+    private final ChucVuITF cvitf = new ChucVuIML();
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
     /**
      * Creates new form Menu1
      */
     public Menu7() {
         initComponents();
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         loadData();
         CbxChucVu();
     }
-    public void loadData(){
+
+    public void loadData() {
         DefaultTableModel tblModel = (DefaultTableModel) tblNhanVien.getModel();
         tblModel.setRowCount(0);
-        List<NhanVienViewModel> list=nvitf.getListNV();
-        for(NhanVienViewModel ctnv : list ){
-            Object[] row = new Object[]{ctnv.getMaNv(),ctnv.getHoTen(),ctnv.getGioiTinh(),ctnv.getNgaySinh(),ctnv.getEmail(),ctnv.getDiaChi(),ctnv.getMatKhau(),ctnv.getSdt(),ctnv.getChucVu(),ctnv.getTrangThai() == 0 ? "Đang làm" : "Nghỉ làm" ,ctnv.getAnh()};
+        List<NhanVienViewModel> list = nvitf.getListNV();
+        for (NhanVienViewModel ctnv : list) {
+            Object[] row = new Object[]{ctnv.getMaNv(), ctnv.getHoTen(), ctnv.getGioiTinh(), ctnv.getNgaySinh(), ctnv.getEmail(), ctnv.getDiaChi(), ctnv.getMatKhau(), ctnv.getSdt(), ctnv.getChucVu(), ctnv.getTrangThai() == 0 ? "Đang làm" : "Nghỉ làm", ctnv.getAnh()};
             tblModel.addRow(row);
         }
-        
+
     }
-    
-    public void clearForm(){
+
+    public void clearForm() {
         txtManv.setText("");
         txtHotennv.setText("");
         gruopGioiTinh.clearSelection();
@@ -65,13 +68,14 @@ public class Menu7 extends javax.swing.JInternalFrame {
         txtSdt.setText("");
         txtMatKhau.setText("");
     }
-    
+
     private void CbxChucVu() {
         cbxChucVu.removeAllItems();
-        for (ChucVu chucVu : cvitf.CbxChucVu()){
+        for (ChucVu chucVu : cvitf.CbxChucVu()) {
             cbxChucVu.addItem(String.valueOf(chucVu));
         }
     }
+
     private String getIdChucVu(String ten) {
         for (ChucVu chucVu : cvitf.CbxChucVu()) {
             if (chucVu.getTenCV().equals(ten)) {
@@ -81,8 +85,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
         return null;
     }
 
-    
-    public void add(){
+    public void add() {
         NhanVien nv = new NhanVien();
         nv.setMaNv(txtManv.getText());
         nv.setHoTen(txtHotennv.getText());
@@ -100,21 +103,21 @@ public class Menu7 extends javax.swing.JInternalFrame {
         String TenChucVu = cbxChucVu.getSelectedItem().toString();
         nv.setIdCV(getIdChucVu(TenChucVu));
         int TrangThai;
-        if(cbbTrangThai.getSelectedIndex()==0){
-            TrangThai=0;
-        }else{
-            TrangThai=1;
+        if (cbbTrangThai.getSelectedIndex() == 0) {
+            TrangThai = 0;
+        } else {
+            TrangThai = 1;
         }
         try {
             nvitf.Add(nv);
             loadData();
             JOptionPane.showMessageDialog(this, "Thêm thành công");
         } catch (RuntimeException re) {
-            JOptionPane.showMessageDialog(this, re.getMessage());              
+            JOptionPane.showMessageDialog(this, re.getMessage());
         }
     }
-    
-    public void Update(){
+
+    public void Update() {
         NhanVien nv = new NhanVien();
         nv.setMaNv(txtManv.getText());
         nv.setHoTen(txtHotennv.getText());
@@ -132,67 +135,70 @@ public class Menu7 extends javax.swing.JInternalFrame {
         String TenChucVu = cbxChucVu.getSelectedItem().toString();
         nv.setIdCV(getIdChucVu(TenChucVu));
         int TrangThai;
-        if(cbbTrangThai.getSelectedIndex()==0){
-            TrangThai=0;
-        }else{
-            TrangThai=1;
+        if (cbbTrangThai.getSelectedIndex() == 0) {
+            TrangThai = 0;
+        } else {
+            TrangThai = 1;
         }
         try {
-            nvitf.Update(txtManv.getText(),nv);
+            nvitf.Update(txtManv.getText(), nv);
             loadData();
             JOptionPane.showMessageDialog(this, "Sửa thành công");
         } catch (RuntimeException re) {
-            JOptionPane.showMessageDialog(this, re.getMessage());              
+            JOptionPane.showMessageDialog(this, re.getMessage());
         }
     }
-        
-    
-    public void selectRow(int i){
-        NhanVien nv = new NhanVien();
-        DefaultTableModel tblModel=(DefaultTableModel) tblNhanVien.getModel();
-        txtManv.setText(tblModel.getValueAt(i, 0).toString());
-        txtHotennv.setText(tblModel.getValueAt(i,1).toString());
-        System.out.println(tblModel.getValueAt(i, 2));
-        if (tblModel.getValueAt(i, 2).equals("Nam")) {
-            rdoNam.setSelected(true);
-        } else {
-            rdoNu.setSelected(true);
+
+    public void selectRow(int i) {
+        try {
+            NhanVien nv = new NhanVien();
+            DefaultTableModel tblModel = (DefaultTableModel) tblNhanVien.getModel();
+            txtManv.setText(tblModel.getValueAt(i, 0).toString());
+            txtHotennv.setText(tblModel.getValueAt(i, 1).toString());
+            System.out.println(tblModel.getValueAt(i, 2));
+            if (tblModel.getValueAt(i, 2).equals("Nam")) {
+                rdoNam.setSelected(true);
+            } else {
+                rdoNu.setSelected(true);
+            }
+            Date NgaySinh = sdf.parse(tblModel.getValueAt(i, 3).toString());
+            txtNgaySinh.setDate(NgaySinh);
+            txtEmail.setText(tblModel.getValueAt(i, 4).toString());
+            txtDiachi.setText(tblModel.getValueAt(i, 5).toString());
+            txtMatKhau.setText(tblModel.getValueAt(i, 6).toString());
+            txtSdt.setText(tblModel.getValueAt(i, 7).toString());
+            cbxChucVu.setSelectedItem(tblModel.getValueAt(i, 8).toString());
+            cbbTrangThai.setSelectedItem(tblModel.getValueAt(i, 9).toString());
+            String path = tblModel.getValueAt(i, 10).toString();
+            // Tạo file từ đường dẫn ảnh
+            File file = new File(path);
+            int imgW = lblImgNv.getWidth();
+            int imgH = lblImgNv.getHeight();
+            // Tạo file ảnh tư file ở trên
+            Image img = new ImageIcon(file.getAbsolutePath())
+                    .getImage()
+                    .getScaledInstance(imgW, imgH, Image.SCALE_DEFAULT);
+            ImageIcon icon = new ImageIcon(img);
+            lblImgNv.setIcon(icon);
+            lblImgNv.setHorizontalAlignment(JLabel.CENTER);
+            lblImgNv.setVerticalAlignment(JLabel.CENTER);
+            lblImgNv.setName(file.getAbsolutePath());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        txtNgaySinh.setDateFormatString(tblModel.getValueAt(i, 3).toString());
-        txtEmail.setText(tblModel.getValueAt(i, 4).toString());
-        txtDiachi.setText(tblModel.getValueAt(i, 5).toString());
-        txtMatKhau.setText(tblModel.getValueAt(i, 6).toString());
-        txtSdt.setText(tblModel.getValueAt(i, 7).toString());
-        cbxChucVu.setSelectedItem(tblModel.getValueAt(i, 8).toString());
-        cbbTrangThai.setSelectedItem(tblModel.getValueAt(i, 9).toString());
-        String path = tblModel.getValueAt(i, 10).toString();
-        // Tạo file từ đường dẫn ảnh
-        File file = new File(path);
-        int imgW = lblImgNv.getWidth();
-        int imgH = lblImgNv.getHeight();
-        // Tạo file ảnh tư file ở trên
-        Image img = new ImageIcon(file.getAbsolutePath())
-                .getImage()
-                .getScaledInstance(imgW, imgH, Image.SCALE_DEFAULT);
-        ImageIcon icon = new ImageIcon(img);
-        lblImgNv.setIcon(icon);
-        lblImgNv.setHorizontalAlignment(JLabel.CENTER);
-        lblImgNv.setVerticalAlignment(JLabel.CENTER);
-        lblImgNv.setName(file.getAbsolutePath());
-        
     }
-    
-    public void FindNhanVien(String manv,String tennv){
+
+    public void FindNhanVien(String manv, String tennv) {
         DefaultTableModel tblModel = (DefaultTableModel) tblNhanVien.getModel();
         tblModel.setRowCount(0);
-        List<NhanVienViewModel> list=nvitf.FindNhanVien(manv);
-        for(NhanVienViewModel ctnv : list ){
-            Object[] row = new Object[]{ctnv.getMaNv(),ctnv.getHoTen(),ctnv.getGioiTinh(),ctnv.getNgaySinh(),ctnv.getEmail(),ctnv.getDiaChi(),ctnv.getMatKhau(),ctnv.getSdt(),ctnv.getChucVu(),ctnv.getTrangThai() == 0 ? "Đang làm" : "Nghỉ làm" ,ctnv.getAnh()};
+        List<NhanVienViewModel> list = nvitf.FindNhanVien(manv);
+        for (NhanVienViewModel ctnv : list) {
+            Object[] row = new Object[]{ctnv.getMaNv(), ctnv.getHoTen(), ctnv.getGioiTinh(), ctnv.getNgaySinh(), ctnv.getEmail(), ctnv.getDiaChi(), ctnv.getMatKhau(), ctnv.getSdt(), ctnv.getChucVu(), ctnv.getTrangThai() == 0 ? "Đang làm" : "Nghỉ làm", ctnv.getAnh()};
             tblModel.addRow(row);
         }
-        
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -525,9 +531,9 @@ public class Menu7 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFormChucVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormChucVuActionPerformed
-          FormChucVu fcv=new FormChucVu();
-          fcv.setVisible(true);
-          
+        FormChucVu fcv = new FormChucVu();
+        fcv.setVisible(true);
+
     }//GEN-LAST:event_btnFormChucVuActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -540,7 +546,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
 
     private void lblImgNvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImgNvMouseClicked
         JFileChooser fileChooser = new JFileChooser("images");
-        
+
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             // Khởi tạo file với giá trị = file đã chọn ở khung chọn file

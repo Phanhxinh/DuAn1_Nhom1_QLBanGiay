@@ -280,6 +280,15 @@ public class Menu2 extends javax.swing.JInternalFrame {
         return null;
     }
 
+    private void CapNhapSoLuongHDHUY() {
+        int row = tableGioHang.getRowCount();
+        for (int i = 0; i < row; i++) {
+            String soLuong = tableGioHang.getValueAt(i, 4).toString();
+            String barcode = tableGioHang.getValueAt(i, 7).toString();
+            banHangITF.updatesoLuongHuy(soLuong, barcode);
+        }
+    }
+
     private void XuatHoaDon() {
         Date now = new Date();
         try {
@@ -1082,7 +1091,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         } else if (TrangThaiGH == "Đã thanh toán") {
             btnthemsanpham.setEnabled(false);
             btnthanhtoan.setEnabled(false);
-            btnhuy.setEnabled(false);
+            btnhuy.setEnabled(true);
         }
         btnxoaSanPham.setEnabled(false);
     }//GEN-LAST:event_tableHoaDonMouseClicked
@@ -1163,6 +1172,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         String maHd = txtmaHoaDon.getText();
         int TrangThai = 2;
         banHangITF.updateTrangThaiHoaDon(TrangThai, maHd);
+        CapNhapSoLuongHDHUY();
         LoadTableHoaDon();
         LoadTableSanPham();
         Clearform();
