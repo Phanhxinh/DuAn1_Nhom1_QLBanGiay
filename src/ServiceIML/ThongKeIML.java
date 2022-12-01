@@ -9,18 +9,18 @@ import java.util.ArrayList;
  *
  * @author Enmazr
  */
-public class ThongKeIML implements ThongKeITF{
+public class ThongKeIML implements ThongKeITF {
+
     private ThongKeRepo tkrp = new ThongKeRepo();
-     @Override
+
+    @Override
     public ArrayList<Thongke_Model> getall() {
         return tkrp.getall();
     }
 
     @Override
     public ArrayList<Thongke_Model> tongTatCa() {
-        
         return tkrp.tongTatCa();
-        
     }
 
     @Override
@@ -110,6 +110,11 @@ public class ThongKeIML implements ThongKeITF{
 
     @Override
     public ArrayList<Thongke_Model> NhanVienXSNam() {
-        return  tkrp.NhanVienXSNam();
+        return tkrp.NhanVienXSNam();
+    }
+
+    @Override
+    public ArrayList<Thongke_Model> getMoneyMonTh(int thang) {
+        return tkrp.getMoneyMonTh(thang);
     }
 }
