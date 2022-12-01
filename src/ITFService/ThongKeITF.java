@@ -9,7 +9,8 @@ import java.util.ArrayList;
  * @author Enmazr
  */
 public interface ThongKeITF {
-    ArrayList<Thongke_Model>getall();
+
+   ArrayList<Thongke_Model>getall();
     
     //Thống kê tất cả
     ArrayList<Thongke_Model> tongTatCa();
@@ -35,6 +36,9 @@ public interface ThongKeITF {
     ArrayList<Thongke_Model> SanPhamNam();
     ArrayList<Thongke_Model> KhachHangNam();
 
-    
+    //thống kê nhân viên
+    ArrayList<Thongke_Model>NhanVienXS();
+    ArrayList<Thongke_Model>NhanVienXSThang();
+    ArrayList<Thongke_Model>NhanVienXSNam();
     
 }

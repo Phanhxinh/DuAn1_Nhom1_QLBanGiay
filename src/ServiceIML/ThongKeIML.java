@@ -97,4 +97,19 @@ public class ThongKeIML implements ThongKeITF{
     public ArrayList<Thongke_Model> KhachHangNam() {
         return tkrp.KhachHangNam();
     }
+
+    @Override
+    public ArrayList<Thongke_Model> NhanVienXS() {
+        return tkrp.NhanVienXS();
+    }
+
+    @Override
+    public ArrayList<Thongke_Model> NhanVienXSThang() {
+        return tkrp.NhanVienXSThang();
+    }
+
+    @Override
+    public ArrayList<Thongke_Model> NhanVienXSNam() {
+        return  tkrp.NhanVienXSNam();
+    }
 }
