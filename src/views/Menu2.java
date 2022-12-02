@@ -532,8 +532,9 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(1100, 690));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
-        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 0, 51), 3, true), "Hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel4.setForeground(new java.awt.Color(0, 0, 0));
 
         CbbHoaDon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Đã thanh toán", "Đang chờ", "Chờ thanh toán" }));
         CbbHoaDon.addActionListener(new java.awt.event.ActionListener() {
@@ -569,7 +570,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane3)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(CbbHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 494, Short.MAX_VALUE)))
+                        .addGap(0, 452, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -582,11 +583,13 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 660, -1));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 620, -1));
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Giỏ hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Giỏ hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel5.setForeground(new java.awt.Color(255, 255, 255));
 
+        btnxoaSanPham.setForeground(new java.awt.Color(255, 255, 255));
         btnxoaSanPham.setText("Xóa");
         btnxoaSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -623,6 +626,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Bar code:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -632,7 +636,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(btnxoaSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -654,9 +658,10 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 660, -1));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 620, -1));
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel6.setForeground(new java.awt.Color(255, 255, 255));
 
         btnthemsanpham.setText("Thêm sản phẩm");
@@ -699,14 +704,14 @@ public class Menu2 extends javax.swing.JInternalFrame {
                         .addComponent(btnthemsanpham)
                         .addGap(27, 27, 27)
                         .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 394, Short.MAX_VALUE)))
+                        .addGap(0, 322, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -714,24 +719,26 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 .addGap(13, 13, 13))
         );
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 880, 240));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 810, 240));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Mã Hóa Đơn:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 120, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 150, 20));
 
+        txtmaHoaDon.setBackground(new java.awt.Color(153, 153, 153));
         txtmaHoaDon.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtmaHoaDon.setForeground(new java.awt.Color(255, 0, 51));
         txtmaHoaDon.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtmaHoaDon.setDisabledTextColor(new java.awt.Color(255, 0, 51));
-        jPanel2.add(txtmaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 190, 30));
+        jPanel2.add(txtmaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 280, 30));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Chương trình GG:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 190, -1));
 
+        cbbkhuyenmai.setBackground(new java.awt.Color(153, 153, 153));
         cbbkhuyenmai.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         cbbkhuyenmai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn Khuyến mại" }));
         cbbkhuyenmai.addActionListener(new java.awt.event.ActionListener() {
@@ -739,12 +746,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 cbbkhuyenmaiActionPerformed(evt);
             }
         });
-        jPanel2.add(cbbkhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 50, 190, 40));
+        jPanel2.add(cbbkhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, 230, 30));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Tổng cộng: ");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 110, 100, 30));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 130, 40));
 
         txttongtien.setBackground(new java.awt.Color(255, 255, 255));
         txttongtien.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -752,13 +759,14 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txttongtien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txttongtien.setText("0");
         txttongtien.setDisabledTextColor(new java.awt.Color(255, 0, 51));
-        jPanel2.add(txttongtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 110, 190, 30));
+        jPanel2.add(txttongtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, 290, 30));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Chiết khấu:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, -1, 40));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 130, 20));
 
+        txtsokhuyenmai.setBackground(new java.awt.Color(153, 153, 153));
         txtsokhuyenmai.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtsokhuyenmai.setText("0");
         txtsokhuyenmai.setDisabledTextColor(new java.awt.Color(255, 0, 51));
@@ -767,40 +775,44 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 txtsokhuyenmaiActionPerformed(evt);
             }
         });
-        jPanel2.add(txtsokhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 150, 35, -1));
+        jPanel2.add(txtsokhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 140, 40, 30));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("%");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 150, 18, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 150, 18, -1));
 
+        txttienkhuyenmai.setBackground(new java.awt.Color(153, 153, 153));
         txttienkhuyenmai.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txttienkhuyenmai.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txttienkhuyenmai.setText("0");
         txttienkhuyenmai.setDisabledTextColor(new java.awt.Color(255, 0, 51));
-        jPanel2.add(txttienkhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 150, 130, -1));
+        jPanel2.add(txttienkhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 143, 220, 30));
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Thành tiền:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, 100, 30));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 130, 20));
 
+        txtthanhtien.setBackground(new java.awt.Color(153, 153, 153));
         txtthanhtien.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtthanhtien.setForeground(new java.awt.Color(255, 0, 51));
         txtthanhtien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtthanhtien.setText("0");
         txtthanhtien.setDisabledTextColor(new java.awt.Color(255, 0, 51));
-        jPanel2.add(txtthanhtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 180, 190, 30));
+        jPanel2.add(txtthanhtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 180, 290, 30));
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Tiền khách đưa:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 220, -1, 30));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 170, 40));
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Tiền trả lại:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, -1, 20));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 130, 20));
 
+        txttienkhachdua.setBackground(new java.awt.Color(153, 153, 153));
         txttienkhachdua.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txttienkhachdua.setForeground(new java.awt.Color(51, 51, 255));
         txttienkhachdua.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -810,7 +822,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 txttienkhachduaCaretUpdate(evt);
             }
         });
-        jPanel2.add(txttienkhachdua, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 220, 190, 30));
+        jPanel2.add(txttienkhachdua, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 220, 250, 30));
 
         txttienthua.setBackground(new java.awt.Color(255, 255, 255));
         txttienthua.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -818,37 +830,42 @@ public class Menu2 extends javax.swing.JInternalFrame {
         txttienthua.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txttienthua.setText("0");
         txttienthua.setDisabledTextColor(new java.awt.Color(255, 0, 51));
-        jPanel2.add(txttienthua, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 280, 190, -1));
+        jPanel2.add(txttienthua, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, 290, 30));
 
+        btnthanhtoan.setBackground(new java.awt.Color(51, 51, 51));
         btnthanhtoan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnthanhtoan.setForeground(new java.awt.Color(255, 255, 255));
         btnthanhtoan.setText("Thanh Toán");
         btnthanhtoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnthanhtoanActionPerformed(evt);
             }
         });
-        jPanel2.add(btnthanhtoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 560, 160, 60));
+        jPanel2.add(btnthanhtoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, 190, 60));
 
+        btnTaoHoaDon.setBackground(new java.awt.Color(51, 51, 51));
         btnTaoHoaDon.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnTaoHoaDon.setForeground(new java.awt.Color(255, 255, 255));
         btnTaoHoaDon.setText("Tạo hóa đơn");
         btnTaoHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTaoHoaDonActionPerformed(evt);
             }
         });
-        jPanel2.add(btnTaoHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 460, 160, 40));
+        jPanel2.add(btnTaoHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 400, 190, 40));
 
         lblthongbao.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblthongbao.setForeground(new java.awt.Color(255, 0, 51));
         jPanel2.add(lblthongbao, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 250, 240, 30));
 
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Khách hàng: ");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, 140, -1));
 
+        txtKhachMuaHang.setBackground(new java.awt.Color(153, 153, 153));
         txtKhachMuaHang.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jPanel2.add(txtKhachMuaHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 320, 140, 30));
+        jPanel2.add(txtKhachMuaHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 330, 220, 30));
 
         ThemKH.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         ThemKH.setText("+");
@@ -857,29 +874,30 @@ public class Menu2 extends javax.swing.JInternalFrame {
                 ThemKHActionPerformed(evt);
             }
         });
-        jPanel2.add(ThemKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 310, 40, 40));
+        jPanel2.add(ThemKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 330, 40, 30));
 
         lblhankm.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblhankm.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(lblhankm, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, 160, 20));
+        jPanel2.add(lblhankm, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 80, 160, 20));
 
+        btnhuy.setBackground(new java.awt.Color(51, 51, 51));
         btnhuy.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnhuy.setForeground(new java.awt.Color(255, 255, 255));
         btnhuy.setText("Hủy Hóa Đơn");
         btnhuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnhuyActionPerformed(evt);
             }
         });
-        jPanel2.add(btnhuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 510, 160, 40));
+        jPanel2.add(btnhuy, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 460, 190, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1141, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

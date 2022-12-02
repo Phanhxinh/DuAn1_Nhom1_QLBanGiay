@@ -23,8 +23,8 @@ public class QuanLy extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
 
-        DefaultColor = new Color(246, 168, 193);
-        ClickeColor = new Color(200, 187, 240);
+        DefaultColor = new Color(51,51,51);
+        ClickeColor = new Color(102,102,102);
         lblmanv.setText(manv);
         txtName.setText(tennv + " - " + chucvu);
         menu1.setBackground(DefaultColor);
@@ -52,11 +52,8 @@ public class QuanLy extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblmanv = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtName = new javax.swing.JLabel();
-        jlabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         menu1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jDesktopPanel = new javax.swing.JDesktopPane();
@@ -76,15 +73,15 @@ public class QuanLy extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         menu9 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lblmanv = new javax.swing.JLabel();
+        jlabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblmanv.setText("Manv");
-        jPanel1.add(lblmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 60, 30));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/close (2).png"))); // NOI18N
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,17 +91,12 @@ public class QuanLy extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 20, -1, -1));
 
-        txtName.setText("Tên nhân viên là : ");
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 270, 30));
+        txtName.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
+        txtName.setForeground(new java.awt.Color(255, 255, 255));
+        txtName.setText("Tên : ");
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 270, 30));
 
-        jlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Screenshot 2022-11-14 192103 (1).png"))); // NOI18N
-        jPanel1.add(jlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1170, 180));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logo-giay(32) (1).jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 180));
-
-        menu1.setBackground(new java.awt.Color(246, 168, 193));
-        menu1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
+        menu1.setBackground(new java.awt.Color(51, 51, 51));
         menu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menu1MouseClicked(evt);
@@ -126,14 +118,14 @@ public class QuanLy extends javax.swing.JFrame {
             .addGroup(menu1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel4)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         menu1Layout.setVerticalGroup(
             menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel1.add(menu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 190, 60));
+        jPanel1.add(menu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 190, 60));
 
         jDesktopPanel.setBackground(new java.awt.Color(255, 255, 255));
         jDesktopPanel.setPreferredSize(new java.awt.Dimension(1100, 690));
@@ -142,17 +134,16 @@ public class QuanLy extends javax.swing.JFrame {
         jDesktopPanel.setLayout(jDesktopPanelLayout);
         jDesktopPanelLayout.setHorizontalGroup(
             jDesktopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
+            .addGap(0, 1070, Short.MAX_VALUE)
         );
         jDesktopPanelLayout.setVerticalGroup(
             jDesktopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 630, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jDesktopPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 1080, 630));
+        jPanel1.add(jDesktopPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 1070, 630));
 
-        menu2.setBackground(new java.awt.Color(246, 168, 193));
-        menu2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
+        menu2.setBackground(new java.awt.Color(51, 51, 51));
         menu2.setPreferredSize(new java.awt.Dimension(190, 60));
         menu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -175,17 +166,16 @@ public class QuanLy extends javax.swing.JFrame {
             .addGroup(menu2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel5)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         menu2Layout.setVerticalGroup(
             menu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel1.add(menu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, -1, -1));
+        jPanel1.add(menu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, -1, -1));
 
-        menu3.setBackground(new java.awt.Color(246, 168, 193));
-        menu3.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
+        menu3.setBackground(new java.awt.Color(51, 51, 51));
         menu3.setPreferredSize(new java.awt.Dimension(190, 60));
         menu3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -208,17 +198,16 @@ public class QuanLy extends javax.swing.JFrame {
             .addGroup(menu3Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         menu3Layout.setVerticalGroup(
             menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel1.add(menu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
+        jPanel1.add(menu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
 
-        menu4.setBackground(new java.awt.Color(246, 168, 193));
-        menu4.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
+        menu4.setBackground(new java.awt.Color(51, 51, 51));
         menu4.setPreferredSize(new java.awt.Dimension(190, 60));
         menu4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -241,17 +230,16 @@ public class QuanLy extends javax.swing.JFrame {
             .addGroup(menu4Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel3)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         menu4Layout.setVerticalGroup(
             menu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel1.add(menu4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, -1, -1));
+        jPanel1.add(menu4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, -1));
 
-        menu5.setBackground(new java.awt.Color(246, 168, 193));
-        menu5.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
+        menu5.setBackground(new java.awt.Color(51, 51, 51));
         menu5.setPreferredSize(new java.awt.Dimension(190, 60));
         menu5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -272,7 +260,7 @@ public class QuanLy extends javax.swing.JFrame {
         menu5Layout.setHorizontalGroup(
             menu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu5Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(17, 17, 17))
         );
@@ -280,14 +268,13 @@ public class QuanLy extends javax.swing.JFrame {
             menu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel1.add(menu5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, -1, -1));
+        jPanel1.add(menu5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, -1, -1));
 
-        menu6.setBackground(new java.awt.Color(246, 168, 193));
-        menu6.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
+        menu6.setBackground(new java.awt.Color(51, 51, 51));
         menu6.setPreferredSize(new java.awt.Dimension(190, 60));
         menu6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -310,20 +297,19 @@ public class QuanLy extends javax.swing.JFrame {
             .addGroup(menu6Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         menu6Layout.setVerticalGroup(
             menu6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel1.add(menu6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, -1, -1));
+        jPanel1.add(menu6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, -1, -1));
 
-        menu7.setBackground(new java.awt.Color(246, 168, 193));
-        menu7.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
+        menu7.setBackground(new java.awt.Color(51, 51, 51));
         menu7.setForeground(new java.awt.Color(255, 255, 255));
         menu7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -346,17 +332,16 @@ public class QuanLy extends javax.swing.JFrame {
             .addGroup(menu7Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel9)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         menu7Layout.setVerticalGroup(
             menu7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel1.add(menu7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 190, -1));
+        jPanel1.add(menu7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 190, -1));
 
-        menu8.setBackground(new java.awt.Color(246, 168, 193));
-        menu8.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
+        menu8.setBackground(new java.awt.Color(51, 51, 51));
         menu8.setForeground(new java.awt.Color(255, 255, 255));
         menu8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -379,21 +364,23 @@ public class QuanLy extends javax.swing.JFrame {
             .addGroup(menu8Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel11)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         menu8Layout.setVerticalGroup(
             menu8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel1.add(menu8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 190, -1));
+        jPanel1.add(menu8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 190, -1));
 
-        menu9.setBackground(new java.awt.Color(246, 168, 193));
-        menu9.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(113, 89, 61)));
+        menu9.setBackground(new java.awt.Color(51, 51, 51));
         menu9.setForeground(new java.awt.Color(255, 255, 255));
         menu9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menu9MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                menu9MouseEntered(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 menu9MousePressed(evt);
@@ -417,28 +404,47 @@ public class QuanLy extends javax.swing.JFrame {
             .addGroup(menu9Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel12)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         menu9Layout.setVerticalGroup(
             menu9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
         );
 
-        jPanel1.add(menu9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 750, -1, -1));
+        jPanel1.add(menu9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 650, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 190, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 190, 630));
+
+        lblmanv.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
+        lblmanv.setForeground(new java.awt.Color(255, 255, 255));
+        lblmanv.setText("Mã : ");
+        jPanel1.add(lblmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 80, 30));
+
+        jlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/URBAN OUTFIT.png"))); // NOI18N
+        jPanel1.add(jlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1270, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -614,9 +620,7 @@ public class QuanLy extends javax.swing.JFrame {
 
     private void menu9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu9MouseClicked
         // TODO add your handling code here:
-        Menu9 mn9 = new Menu9();
         jDesktopPanel.removeAll();
-        jDesktopPanel.add(mn9).setVisible(true);
     }//GEN-LAST:event_menu9MouseClicked
 
     private void menu9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu9MousePressed
@@ -642,13 +646,46 @@ public class QuanLy extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel12MouseClicked
 
+    private void menu9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu9MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu9MouseEntered
+  public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Login().setVisible(true);
+            }
+        });
+    }
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPanel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -660,6 +697,7 @@ public class QuanLy extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel jlabel;
     public static javax.swing.JLabel lblmanv;
     private javax.swing.JPanel menu1;

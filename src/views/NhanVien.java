@@ -468,9 +468,7 @@ Login lg = new Login();
 
     private void menu9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu9MouseClicked
         // TODO add your handling code here:
-        Menu9 mn9 = new Menu9();
         jDesktopPanel.removeAll();
-        jDesktopPanel.add(mn9).setVisible(true);
     }//GEN-LAST:event_menu9MouseClicked
 
     private void menu9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu9MousePressed
