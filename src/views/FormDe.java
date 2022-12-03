@@ -21,11 +21,11 @@ private DeIML IMLSame;
     public FormDe() {
         initComponents();
          this.IMLSame = new DeIML();
-        loatble();
+         loatble();
          this.setLocationRelativeTo(null);
     }
    public void loatble(){
-        DefaultTableModel dmt  = (DefaultTableModel) tb1.getModel();
+        DefaultTableModel dmt  = (DefaultTableModel)tb1.getModel();
         dmt.setRowCount(0);
         
         for (De_SanPhamModel same : this.IMLSame.All()) {
@@ -91,7 +91,6 @@ private DeIML IMLSame;
         txtdc = new javax.swing.JTextField();
         btnthem = new javax.swing.JButton();
         btnsua = new javax.swing.JButton();
-        btnxoa = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb1 = new javax.swing.JTable();
@@ -100,16 +99,22 @@ private DeIML IMLSame;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Đế");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 32, -1));
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Độ cao");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 46, -1));
+
+        txtma.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(txtma, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 60, 200, -1));
 
+        txtten.setForeground(new java.awt.Color(0, 0, 0));
         txtten.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txttenActionPerformed(evt);
@@ -117,6 +122,7 @@ private DeIML IMLSame;
         });
         jPanel1.add(txtten, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 100, 200, -1));
 
+        txtcl.setForeground(new java.awt.Color(0, 0, 0));
         txtcl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtclActionPerformed(evt);
@@ -124,6 +130,7 @@ private DeIML IMLSame;
         });
         jPanel1.add(txtcl, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 140, 190, -1));
 
+        txtdc.setForeground(new java.awt.Color(0, 0, 0));
         txtdc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtdcActionPerformed(evt);
@@ -131,32 +138,33 @@ private DeIML IMLSame;
         });
         jPanel1.add(txtdc, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 180, 190, -1));
 
+        btnthem.setBackground(new java.awt.Color(153, 0, 51));
+        btnthem.setForeground(new java.awt.Color(255, 255, 255));
+        btnthem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/add.png"))); // NOI18N
         btnthem.setText("Thêm");
         btnthem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnthemActionPerformed(evt);
             }
         });
-        jPanel1.add(btnthem, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
+        jPanel1.add(btnthem, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, -1, -1));
 
+        btnsua.setBackground(new java.awt.Color(153, 0, 51));
+        btnsua.setForeground(new java.awt.Color(255, 255, 255));
+        btnsua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Sửa.png"))); // NOI18N
         btnsua.setText("Sửa");
         btnsua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsuaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnsua, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
+        jPanel1.add(btnsua, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 90, -1));
 
-        btnxoa.setText("Xóa");
-        btnxoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnxoaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnxoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
-
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Mã");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 46, -1));
+
+        jScrollPane1.setForeground(new java.awt.Color(0, 0, 0));
 
         tb1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -178,9 +186,11 @@ private DeIML IMLSame;
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 360, 93));
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Tên");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 46, -1));
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Chất liệu");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
@@ -241,35 +251,45 @@ private DeIML IMLSame;
  }   // TODO add your handling code here:
     }//GEN-LAST:event_btnthemActionPerformed
 
+.toString();
+          String dcao  = tb1.getValueAt(row, 3).toString();
+        
+      
+        this.txtma.setText(ma);
+        this.txtten.setText(ten);
+         this.txtcl.setText(cl);
+          this.txtdc.setText(dcao);
+        
+        // TODO add your handling code here:
+    }                                
+
+    private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {                                        
+ if(ktDieuKien()){
+        De_SanPhamModel same = this.getFromdate();
+        this.IMLSame.insert(same);
+        if(same == null){
+            return;
+        } 
+        
+        JOptionPane.showMessageDialog(this, "Thêm thành công ");
+        loatble();
+ }   // TODO add your handling code here:
+    }                                       
+
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
 
- int row = tb1.getSelectedRow();
-        
+        int row = tb1.getSelectedRow();
+
         if(row == -1){
             JOptionPane.showMessageDialog(this, "Vui lòng nhập");
         }
         De_SanPhamModel Same = this.getFromdate();
-       
-      
+
         this.IMLSame.update(Same.getMaDe(), Same);
         JOptionPane.showMessageDialog(this, "Sửa thành công");
         loatble();
-                // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnsuaActionPerformed
-
-    private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
-
- int row = tb1.getSelectedRow();
-        
-        if(row == -1){
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập");
-        }
-        De_SanPhamModel ms = this.getFromdate();
-       
-        this.IMLSame.delete(ms.getMaDe());
-        JOptionPane.showMessageDialog(this, "Xóa thành công");
-        loatble();        // TODO add your handling code here:
-    }//GEN-LAST:event_btnxoaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,7 +329,6 @@ private DeIML IMLSame;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnsua;
     private javax.swing.JButton btnthem;
-    private javax.swing.JButton btnxoa;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

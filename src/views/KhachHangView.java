@@ -170,18 +170,24 @@ public class KhachHangView extends javax.swing.JFrame {
         jLabel24.setForeground(new java.awt.Color(0, 0, 0));
         jLabel24.setText("Địa chỉ");
 
+        txtmaKh3.setBackground(new java.awt.Color(255, 255, 255));
         txtmaKh3.setForeground(new java.awt.Color(0, 0, 0));
 
+        txtSdt3.setBackground(new java.awt.Color(255, 255, 255));
         txtSdt3.setForeground(new java.awt.Color(0, 0, 0));
 
+        txtEmail3.setBackground(new java.awt.Color(255, 255, 255));
         txtEmail3.setForeground(new java.awt.Color(0, 0, 0));
 
+        txtDiaChi3.setBackground(new java.awt.Color(255, 255, 255));
         txtDiaChi3.setForeground(new java.awt.Color(0, 0, 0));
 
+        txtTenKh3.setBackground(new java.awt.Color(255, 255, 255));
         txtTenKh3.setForeground(new java.awt.Color(0, 0, 0));
 
         btnThem3.setBackground(new java.awt.Color(51, 0, 51));
         btnThem3.setForeground(new java.awt.Color(255, 255, 255));
+        btnThem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/add.png"))); // NOI18N
         btnThem3.setText("Thêm");
         btnThem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,6 +197,7 @@ public class KhachHangView extends javax.swing.JFrame {
 
         btnUpdate.setBackground(new java.awt.Color(51, 0, 51));
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Sửa.png"))); // NOI18N
         btnUpdate.setText("Cập nhật");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,6 +223,7 @@ public class KhachHangView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblKhang);
 
+        txtFind.setBackground(new java.awt.Color(255, 255, 255));
         txtFind.setForeground(new java.awt.Color(0, 0, 0));
         txtFind.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
@@ -224,10 +232,11 @@ public class KhachHangView extends javax.swing.JFrame {
         });
 
         jLabel27.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel27.setText("Tên khách hàng: ");
+        jLabel27.setText("Tìm kiếm");
 
         btnchonkh.setBackground(new java.awt.Color(51, 0, 51));
         btnchonkh.setForeground(new java.awt.Color(255, 255, 255));
+        btnchonkh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/multiple-users-silhouette.png"))); // NOI18N
         btnchonkh.setText("Chọn khách hàng");
         btnchonkh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,6 +244,7 @@ public class KhachHangView extends javax.swing.JFrame {
             }
         });
 
+        txtNgaySinh.setBackground(new java.awt.Color(255, 255, 255));
         txtNgaySinh.setDate(new java.util.Date(1669125429000L));
         txtNgaySinh.setDateFormatString("dd/MM/yyyy");
 
@@ -263,12 +273,16 @@ public class KhachHangView extends javax.swing.JFrame {
                     .addComponent(txtSdt3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                     .addComponent(txtEmail3)
                     .addComponent(txtDiaChi3))
-                .addGap(34, 34, 34)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnThem3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnchonkh, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnThem3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnUpdate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnchonkh, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
