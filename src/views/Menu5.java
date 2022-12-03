@@ -21,9 +21,10 @@ import javax.swing.table.DefaultTableModel;
  * @author DELL
  */
 public class Menu5 extends javax.swing.JInternalFrame {
-    
+
     private KhuyenMaiIF khuyenMaiIF = new KhuyenMaiIML();
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat fnow = new SimpleDateFormat("yyyy/MM/dd");
 
     /**
      * Creates new form Menu1
@@ -34,9 +35,9 @@ public class Menu5 extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         this.LoatTable();
-        
+
     }
-    
+
     public void LoatTable() {
         DefaultTableModel dtm = (DefaultTableModel) table.getModel();
         this.khuyenMaiIF.all();
@@ -45,7 +46,7 @@ public class Menu5 extends javax.swing.JInternalFrame {
             dtm.addRow(new Object[]{khuyenMaiModel.getMa(), khuyenMaiModel.getTen(), khuyenMaiModel.getKhuyenmai(), khuyenMaiModel.getNgaybd(), khuyenMaiModel.getNgaykt(), khuyenMaiModel.getMota()});
         }
     }
-    
+
     public void Find(String ten) {
         DefaultTableModel dtm = (DefaultTableModel) table.getModel();
         this.khuyenMaiIF.all();
@@ -54,25 +55,25 @@ public class Menu5 extends javax.swing.JInternalFrame {
             dtm.addRow(new Object[]{khuyenMaiModel.getMa(), khuyenMaiModel.getTen(), khuyenMaiModel.getKhuyenmai(), khuyenMaiModel.getNgaybd(), khuyenMaiModel.getNgaykt(), khuyenMaiModel.getMota()});
         }
     }
-    
+
     public void Findtt(String ngaybd, String ngaykt) {
         DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-        this.khuyenMaiIF.all();
+//        this.khuyenMaiIF.all();
         dtm.setRowCount(0);
         for (KhuyenMaiModel khuyenMaiModel : this.khuyenMaiIF.Findtt(ngaybd, ngaykt)) {
             dtm.addRow(new Object[]{khuyenMaiModel.getMa(), khuyenMaiModel.getTen(), khuyenMaiModel.getKhuyenmai(), khuyenMaiModel.getNgaybd(), khuyenMaiModel.getNgaykt(), khuyenMaiModel.getMota()});
         }
     }
-    
+
     public void Findttkt(String ngaybd, String ngaykt) {
         DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-        this.khuyenMaiIF.all();
+//        this.khuyenMaiIF.all();
         dtm.setRowCount(0);
         for (KhuyenMaiModel khuyenMaiModel : this.khuyenMaiIF.Findttkt(ngaybd, ngaykt)) {
             dtm.addRow(new Object[]{khuyenMaiModel.getMa(), khuyenMaiModel.getTen(), khuyenMaiModel.getKhuyenmai(), khuyenMaiModel.getNgaybd(), khuyenMaiModel.getNgaykt(), khuyenMaiModel.getMota()});
         }
     }
-    
+
     public KhuyenMaiModel GetFromData() {
         String ma = txtma.getText();
         String ten = txtten.getText();
@@ -80,21 +81,21 @@ public class Menu5 extends javax.swing.JInternalFrame {
         String ngaybd = sdf.format(dsngaybd.getDate());
         String ngaykt = sdf.format(dsngaykt.getDate());
         String mota = txtmota.getText();
-        
+
         if (ma.trim().length() == 0
                 || ten.trim().length() == 0
                 || khuyenmai.trim().length() == 0
                 || mota.trim().length() == 0) {
-            
+
         }
-        if(!txtkhuyenmai.getText().matches("^[1-9]?[0-9]{1}$|^100$")){
+        if (!txtkhuyenmai.getText().matches("^[1-9]?[0-9]{1}$|^100$")) {
             JOptionPane.showMessageDialog(this, "Khuyến mại từ 1% đến 100% .");
             return null;
         }
-        
+
         KhuyenMaiModel khuyenMaiModel = new KhuyenMaiModel(ma, ten, khuyenmai, ngaybd, ngaykt, mota);
         return khuyenMaiModel;
-        
+
     }
 
     /**
@@ -145,11 +146,11 @@ public class Menu5 extends javax.swing.JInternalFrame {
 
         dsngaykt.setDate(new java.util.Date(1669125429000L));
         dsngaykt.setDateFormatString("dd/MM/yyyy");
-        jPanel1.add(dsngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 130, 30));
+        jPanel1.add(dsngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 130, 30));
 
         dsngaybd.setDate(new java.util.Date(1669125429000L));
         dsngaybd.setDateFormatString("dd/MM/yyyy");
-        jPanel1.add(dsngaybd, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 140, 30));
+        jPanel1.add(dsngaybd, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 140, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -164,7 +165,7 @@ public class Menu5 extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Ngày bắt đầu:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 100, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 100, 20));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -174,7 +175,7 @@ public class Menu5 extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Ngày kết thúc: ");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 100, 20));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 100, 20));
 
         txtma.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtma.setForeground(new java.awt.Color(0, 0, 0));
@@ -247,7 +248,7 @@ public class Menu5 extends javax.swing.JInternalFrame {
 
         cbtrangthai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbtrangthai.setForeground(new java.awt.Color(0, 0, 0));
-        cbtrangthai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngưng hoạt động", "Vẫn hoạt động" }));
+        cbtrangthai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Vẫn hoạt động", "Ngưng hoạt động" }));
         cbtrangthai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbtrangthaiActionPerformed(evt);
@@ -397,9 +398,9 @@ public class Menu5 extends javax.swing.JInternalFrame {
         if (khuyenMaiModel == null) {
             return;
         }
-        String ma=txtma.getText();
-        for(KhuyenMaiModel km: khuyenMaiIF.all()){
-            if(km.getMa().equals(ma)){
+        String ma = txtma.getText();
+        for (KhuyenMaiModel km : khuyenMaiIF.all()) {
+            if (km.getMa().equals(ma)) {
                 JOptionPane.showMessageDialog(this, "Mã khuyến mại đã tồn tại.");
                 return;
             }
@@ -441,9 +442,12 @@ public class Menu5 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         Date now = new Date();
         if (cbtrangthai.getSelectedIndex() == 0) {
-            Findttkt(sdf.format(now), sdf.format(now));
+            LoatTable();
         } else if (cbtrangthai.getSelectedIndex() == 1) {
             Findtt(sdf.format(now), sdf.format(now));
+        } else if (cbtrangthai.getSelectedIndex() == 2) {
+            Findttkt(sdf.format(now), sdf.format(now));
+
         }
 
     }//GEN-LAST:event_cbtrangthaiActionPerformed

@@ -341,7 +341,7 @@ public class BanHangRepo {
         ArrayList list = new ArrayList<HoaDonModel>();
         try {
             Connection conn = Connections.jdbcUtils.getConnection();
-            String sql = "select * from KhuyenMai where NgayBD<=? and NgayKT>=?";
+            String sql = "select * from KhuyenMai where CONVERT(varchar(20),NgayBD,103)<=? and CONVERT(varchar(20),NgayKT,103)>=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, NgayBD);
             ps.setString(2, NgayKT);

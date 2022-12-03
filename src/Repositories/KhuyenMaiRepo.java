@@ -81,13 +81,7 @@ public class KhuyenMaiRepo {
         ArrayList<KhuyenMaiModel> list = new ArrayList<>();
         try {
             Connection conn = jdbcUtils.getConnection();
-            String query = "SELECT [MaKM]\n"
-                    + "      ,[TenKM]\n"
-                    + "      ,[GiamGia]\n"
-                    + "      ,[NgayBD]\n"
-                    + "      ,[NgayKT]\n"
-                    + "      ,[MoTa]\n"
-                    + "  FROM [dbo].[KhuyenMai] where NgayBD<=? and NgayKT>=?";
+            String query = "select * from KhuyenMai where CONVERT(varchar(20),NgayBD,103) <= ? and CONVERT(varchar(20),NgayKT,103) >= ?";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, ngaybd);
             ps.setString(2, ngaykt);
@@ -108,8 +102,8 @@ public class KhuyenMaiRepo {
         }
         return list;
     }
-    
-        public ArrayList<KhuyenMaiModel> Findttkt(String ngaybd, String ngaykt) {
+
+    public ArrayList<KhuyenMaiModel> Findttkt(String ngaybd, String ngaykt) {
         ArrayList<KhuyenMaiModel> list = new ArrayList<>();
         try {
             Connection conn = jdbcUtils.getConnection();
@@ -119,7 +113,7 @@ public class KhuyenMaiRepo {
                     + "      ,[NgayBD]\n"
                     + "      ,[NgayKT]\n"
                     + "      ,[MoTa]\n"
-                    + "  FROM [dbo].[KhuyenMai] where NgayBD<=? and NgayKT<=?";
+                    + "  FROM [dbo].[KhuyenMai] where CONVERT(varchar(20),NgayBD,103)>=? and CONVERT(varchar(20),NgayKT,103)>=?";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, ngaybd);
             ps.setString(2, ngaykt);
