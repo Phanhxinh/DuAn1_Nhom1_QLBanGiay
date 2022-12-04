@@ -440,7 +440,7 @@ public class Menu6 extends javax.swing.JInternalFrame {
         buttonGroup2.add(rbt_nvTuan);
         rbt_nvTuan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         rbt_nvTuan.setSelected(true);
-        rbt_nvTuan.setText("Tuần");
+        rbt_nvTuan.setText("Tuần hiện tại");
         rbt_nvTuan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbt_nvTuanActionPerformed(evt);
@@ -449,7 +449,7 @@ public class Menu6 extends javax.swing.JInternalFrame {
 
         buttonGroup2.add(rbt_nvThang);
         rbt_nvThang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rbt_nvThang.setText("Tháng");
+        rbt_nvThang.setText("Tháng hiện tại");
         rbt_nvThang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbt_nvThangActionPerformed(evt);
@@ -458,7 +458,7 @@ public class Menu6 extends javax.swing.JInternalFrame {
 
         buttonGroup2.add(rbt_nvNam);
         rbt_nvNam.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rbt_nvNam.setText("Năm");
+        rbt_nvNam.setText("Năm hiện tại");
         rbt_nvNam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbt_nvNamActionPerformed(evt);
@@ -526,24 +526,24 @@ public class Menu6 extends javax.swing.JInternalFrame {
         buttonGroup1.add(rbt_Thang);
         rbt_Thang.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         rbt_Thang.setForeground(new java.awt.Color(0, 0, 0));
-        rbt_Thang.setText("Tháng");
+        rbt_Thang.setText("Tháng hiện tại");
         rbt_Thang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbt_ThangActionPerformed(evt);
             }
         });
-        jPanel1.add(rbt_Thang, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 74, -1));
+        jPanel1.add(rbt_Thang, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 130, -1));
 
         buttonGroup1.add(rbt_Nam);
         rbt_Nam.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         rbt_Nam.setForeground(new java.awt.Color(0, 0, 0));
-        rbt_Nam.setText("Năm");
+        rbt_Nam.setText("Năm hiện tại");
         rbt_Nam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbt_NamActionPerformed(evt);
             }
         });
-        jPanel1.add(rbt_Nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 71, -1));
+        jPanel1.add(rbt_Nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 120, -1));
 
         btnbieudo.setBackground(new java.awt.Color(0, 0, 0));
         btnbieudo.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N

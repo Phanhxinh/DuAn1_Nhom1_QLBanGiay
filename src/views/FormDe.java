@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views;
+
 import DomainModel.De_SanPhamModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,43 +15,45 @@ import ServiceIML.DeIML;
  * @author CQTRUONG
  */
 public class FormDe extends javax.swing.JFrame {
-private DeIML IMLSame;
+
+    private DeIML IMLSame;
+
     /**
      * Creates new form FormDe
      */
     public FormDe() {
         initComponents();
-         this.IMLSame = new DeIML();
-         loatble();
-         this.setLocationRelativeTo(null);
+        this.IMLSame = new DeIML();
+        loatble();
+        this.setLocationRelativeTo(null);
     }
-   public void loatble(){
-        DefaultTableModel dmt  = (DefaultTableModel)tb1.getModel();
+
+    public void loatble() {
+        DefaultTableModel dmt = (DefaultTableModel) tb1.getModel();
         dmt.setRowCount(0);
-        
+
         for (De_SanPhamModel same : this.IMLSame.All()) {
-              Object[] row ={
-              
-              same.getMaDe(),
-              same.getTenDe(),
-               same.getChatLieu(),
-                same.getDoCao(),
-             
-            };
+            Object[] row = {
+                same.getMaDe(),
+                same.getTenDe(),
+                same.getChatLieu(),
+                same.getDoCao(),};
             dmt.addRow(row);
         }
     }
-     public De_SanPhamModel getFromdate(){
-   
-    String ma = txtma.getText().trim();
-    String ten = txtten.getText().trim();
-     String chatlieu = txtcl.getText().trim();
-      String docao = txtdc.getText().trim();
-        
-    De_SanPhamModel M3  = new De_SanPhamModel( ma, ten, chatlieu, docao,null);
+
+    public De_SanPhamModel getFromdate() {
+
+        String ma = txtma.getText().trim();
+        String ten = txtten.getText().trim();
+        String chatlieu = txtcl.getText().trim();
+        String docao = txtdc.getText().trim();
+
+        De_SanPhamModel M3 = new De_SanPhamModel(ma, ten, chatlieu, docao, null);
         return M3;
     }
-      public boolean ktDieuKien() {
+
+    public boolean ktDieuKien() {
 //        if (txtchitietMauSac.getText().isEmpty()) {
 //            JOptionPane.showMessageDialog(this, "ID không được để trống!!");
 //            return false;
@@ -63,16 +66,17 @@ private DeIML IMLSame;
             JOptionPane.showMessageDialog(this, "Tên không được để trống !!");
             return false;
         }
-         if (txtcl.getText().equalsIgnoreCase("")) {
+        if (txtcl.getText().equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(this, "Chất liệu  không được để trống !!");
             return false;
         }
-          if (txtdc.getText().equalsIgnoreCase("")) {
+        if (txtdc.getText().equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(this, "Độ cao không được để trống !!");
             return false;
         }
         return true;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -198,7 +202,7 @@ private DeIML IMLSame;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,49 +225,56 @@ private DeIML IMLSame;
     }//GEN-LAST:event_txtdcActionPerformed
 
     private void tb1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb1MouseClicked
-   int row = tb1.getSelectedRow();
-        
-       
-        String ma  = tb1.getValueAt(row, 0).toString();
-        String ten  = tb1.getValueAt(row, 1).toString();
-         String cl = tb1.getValueAt(row, 2).toString();
-          String dcao  = tb1.getValueAt(row, 3).toString();
-        
-      
+        int row = tb1.getSelectedRow();
+
+        String ma = tb1.getValueAt(row, 0).toString();
+        String ten = tb1.getValueAt(row, 1).toString();
+        String cl = tb1.getValueAt(row, 2).toString();
+        String dcao = tb1.getValueAt(row, 3).toString();
+
         this.txtma.setText(ma);
         this.txtten.setText(ten);
-         this.txtcl.setText(cl);
-          this.txtdc.setText(dcao);
-        
+        this.txtcl.setText(cl);
+        this.txtdc.setText(dcao);
+
         // TODO add your handling code here:
     }//GEN-LAST:event_tb1MouseClicked
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
- if(ktDieuKien()){
-        De_SanPhamModel same = this.getFromdate();
-        this.IMLSame.insert(same);
-        if(same == null){
-            return;
-        } 
-        
-        JOptionPane.showMessageDialog(this, "Thêm thành công ");
-        loatble();
- }   // TODO add your handling code here:
+        if (ktDieuKien()) {
+            De_SanPhamModel same = this.getFromdate();
+            this.IMLSame.insert(same);
+            if (same == null) {
+                return;
+            }
+
+            JOptionPane.showMessageDialog(this, "Thêm thành công ");
+            loatble();
+        }   // TODO add your handling code here:
     }//GEN-LAST:event_btnthemActionPerformed
+    .toString();
+    String dcao = tb1.getValueAt(row, 3).toString();
 
-.toString();
-          String dcao  = tb1.getValueAt(row, 3).toString();
-        
-      
-        this.txtma.setText(ma);
-        this.txtten.setText(ten);
-         this.txtcl.setText(cl);
-          this.txtdc.setText(dcao);
-        
-        // TODO add your handling code here:
-    }                                
+     
 
-    private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    this.txtma.setText (ma);
+
+     
+
+    this.txtten.setText (ten);
+
+     
+
+    this.txtcl.setText (cl);
+
+     
+
+    this.txtdc.setText (dcao);
+
+    // TODO add your handling code here:
+}
+
+private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {                                        
  if(ktDieuKien()){
         De_SanPhamModel same = this.getFromdate();
         this.IMLSame.insert(same);
@@ -305,16 +316,28 @@ private DeIML IMLSame;
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormDe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDe.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FormDe.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FormDe.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FormDe.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

@@ -142,4 +142,9 @@ public class BanHangIML implements BanHangITF {
         banHangRepo.updatesoLuongHuy(soluong, barcode);
     }
 
+    @Override
+    public ArrayList<HoaDon_BanHangModel> TimMaHoaDon(String ma) {
+        return banHangRepo.TimMaHoaDon(ma);
+    }
+
 }
