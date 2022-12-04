@@ -4,7 +4,6 @@
  */
 package views;
 
-
 import DomainModel.ChatLieu_SanPhamModel;
 import DomainModel.ChiTietSPModel;
 import DomainModel.De_SanPhamModel;
@@ -44,20 +43,22 @@ import javax.swing.JFileChooser;
  * @author DELL
  */
 public class Menu4 extends javax.swing.JInternalFrame {
-    private final ChiTietSpITF ctspitf=new ChiTietSPIML();
-    private final SanPhamITF spitf=new SanPhamIML();
-    private final KichCoITF kcitf=new KichCoIML();
-    private final TheLoaiITF tlitf=new TheLoaiIML();
-    private final HangITF hangitf=new HangIML();
-    private final DEITF deitf=new DeIML();
-    private final MauSacITF mauitf=new MauSacIML();
-    private final ChatLieuITF clitf=new ChatLieuIML();
+
+    private final ChiTietSpITF ctspitf = new ChiTietSPIML();
+    private final SanPhamITF spitf = new SanPhamIML();
+    private final KichCoITF kcitf = new KichCoIML();
+    private final TheLoaiITF tlitf = new TheLoaiIML();
+    private final HangITF hangitf = new HangIML();
+    private final DEITF deitf = new DeIML();
+    private final MauSacITF mauitf = new MauSacIML();
+    private final ChatLieuITF clitf = new ChatLieuIML();
+
     /**
      * Creates new form Menu1
      */
     public Menu4() {
         initComponents();
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         loadData();
@@ -68,53 +69,53 @@ public class Menu4 extends javax.swing.JInternalFrame {
         CbxTheLoai();
         CbxChatLieu();
         CbxDe();
-        
+
     }
-    
-    public void loadData(){
+
+    public void loadData() {
         DefaultTableModel tblModel = (DefaultTableModel) tblChitietsp.getModel();
         tblModel.setRowCount(0);
-        List<ChiTietSPModel> list=ctspitf.getListCTSP();
-        for(ChiTietSPModel ctsp : list ){
-            Object[] row = new Object[]{ctsp.getId(),ctsp.getIdSP(),ctsp.getIdSize(),ctsp.getIdMau(),ctsp.getIdLoaiSP(),ctsp.getIdChatLieu(),ctsp.getIdHang(),ctsp.getIdDE(),ctsp.getGiaNhap(),ctsp.getGiaBan(),ctsp.getSoLuong(),ctsp.getBarCode(),ctsp.getMoTa(),ctsp.getTrangThai() == 0 ? "Còn bán" : "Không còn bán" ,ctsp.getAnh()};
+        List<ChiTietSPModel> list = ctspitf.getListCTSP();
+        for (ChiTietSPModel ctsp : list) {
+            Object[] row = new Object[]{ctsp.getId(), ctsp.getIdSP(), ctsp.getIdSize(), ctsp.getIdMau(), ctsp.getIdLoaiSP(), ctsp.getIdChatLieu(), ctsp.getIdHang(), ctsp.getIdDE(), ctsp.getGiaNhap(), ctsp.getGiaBan(), ctsp.getSoLuong(), ctsp.getBarCode(), ctsp.getMoTa(), ctsp.getTrangThai() == 0 ? "Còn bán" : "Không còn bán", ctsp.getAnh()};
             tblModel.addRow(row);
         }
-        
+
     }
-    
-    public void ConHang(){
+
+    public void ConHang() {
         DefaultTableModel tblModel = (DefaultTableModel) tblChitietsp.getModel();
         tblModel.setRowCount(0);
-        List<ChiTietSPModel> list=ctspitf.getListCTSP();
-        for(ChiTietSPModel ctsp : list ){
-            if(ctsp.getSoLuong()>0){
-            Object[] row = new Object[]{ctsp.getId(),ctsp.getIdSP(),ctsp.getIdSize(),ctsp.getIdMau(),ctsp.getIdLoaiSP(),ctsp.getIdChatLieu(),ctsp.getIdHang(),ctsp.getIdDE(),ctsp.getGiaNhap(),ctsp.getGiaBan(),ctsp.getSoLuong(),ctsp.getBarCode(),ctsp.getMoTa(),ctsp.getTrangThai() == 0 ? "Còn bán" : "Không còn bán" ,ctsp.getAnh()};
-            tblModel.addRow(row);
+        List<ChiTietSPModel> list = ctspitf.getListCTSP();
+        for (ChiTietSPModel ctsp : list) {
+            if (ctsp.getSoLuong() > 0) {
+                Object[] row = new Object[]{ctsp.getId(), ctsp.getIdSP(), ctsp.getIdSize(), ctsp.getIdMau(), ctsp.getIdLoaiSP(), ctsp.getIdChatLieu(), ctsp.getIdHang(), ctsp.getIdDE(), ctsp.getGiaNhap(), ctsp.getGiaBan(), ctsp.getSoLuong(), ctsp.getBarCode(), ctsp.getMoTa(), ctsp.getTrangThai() == 0 ? "Còn bán" : "Không còn bán", ctsp.getAnh()};
+                tblModel.addRow(row);
             }
         }
-        
+
     }
-    
-    public void HetHang(){
+
+    public void HetHang() {
         DefaultTableModel tblModel = (DefaultTableModel) tblChitietsp.getModel();
         tblModel.setRowCount(0);
-        List<ChiTietSPModel> list=ctspitf.getListCTSP();
-        for(ChiTietSPModel ctsp : list ){
-            if(ctsp.getSoLuong()==0){
-            Object[] row = new Object[]{ctsp.getId(),ctsp.getIdSP(),ctsp.getIdSize(),ctsp.getIdMau(),ctsp.getIdLoaiSP(),ctsp.getIdChatLieu(),ctsp.getIdHang(),ctsp.getIdDE(),ctsp.getGiaNhap(),ctsp.getGiaBan(),ctsp.getSoLuong(),ctsp.getBarCode(),ctsp.getMoTa(),ctsp.getTrangThai() == 0 ? "Còn bán" : "Không còn bán" ,ctsp.getAnh()};
-            tblModel.addRow(row);
+        List<ChiTietSPModel> list = ctspitf.getListCTSP();
+        for (ChiTietSPModel ctsp : list) {
+            if (ctsp.getSoLuong() == 0) {
+                Object[] row = new Object[]{ctsp.getId(), ctsp.getIdSP(), ctsp.getIdSize(), ctsp.getIdMau(), ctsp.getIdLoaiSP(), ctsp.getIdChatLieu(), ctsp.getIdHang(), ctsp.getIdDE(), ctsp.getGiaNhap(), ctsp.getGiaBan(), ctsp.getSoLuong(), ctsp.getBarCode(), ctsp.getMoTa(), ctsp.getTrangThai() == 0 ? "Còn bán" : "Không còn bán", ctsp.getAnh()};
+                tblModel.addRow(row);
             }
         }
-        
+
     }
-    
-    
+
     private void CbxSanPham() {
         cbxTenSp.removeAllItems();
-        for (SanPham_SanPhamModel sp : spitf.CbxSanPham()){
+        for (SanPham_SanPhamModel sp : spitf.CbxSanPham()) {
             cbxTenSp.addItem(String.valueOf(sp));
         }
     }
+
     private String getIdSanPham(String ten) {
         for (SanPham_SanPhamModel sp : spitf.CbxSanPham()) {
             if (sp.getTen().equals(ten)) {
@@ -123,13 +124,14 @@ public class Menu4 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-    
+
     private void CbxKickCo() {
         cbxSize.removeAllItems();
-        for (KichCo_SanPhamModel kc : kcitf.CbxKichCo()){
+        for (KichCo_SanPhamModel kc : kcitf.CbxKichCo()) {
             cbxSize.addItem(String.valueOf(kc));
         }
     }
+
     private String getIdKichCo(String tenkc) {
         for (KichCo_SanPhamModel kc : kcitf.CbxKichCo()) {
             if (kc.getTenKC().equals(tenkc)) {
@@ -138,13 +140,14 @@ public class Menu4 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-    
+
     private void CbxMauSac() {
         cbxMau.removeAllItems();
-        for (MauSac_SanphamModel ms : mauitf.CbxMauSac()){
+        for (MauSac_SanphamModel ms : mauitf.CbxMauSac()) {
             cbxMau.addItem(String.valueOf(ms));
         }
     }
+
     private String getIdMauSac(String tenms) {
         for (MauSac_SanphamModel ms : mauitf.CbxMauSac()) {
             if (ms.getTenMS().equals(tenms)) {
@@ -153,13 +156,14 @@ public class Menu4 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-    
+
     private void CbxHang() {
         cbxHang.removeAllItems();
-        for (Hang_SanPhamModel hang : hangitf.CbxHang()){
+        for (Hang_SanPhamModel hang : hangitf.CbxHang()) {
             cbxHang.addItem(String.valueOf(hang));
         }
     }
+
     private String getIdHang(String tenHang) {
         for (Hang_SanPhamModel hang : hangitf.CbxHang()) {
             if (hang.getTen().equals(tenHang)) {
@@ -168,13 +172,14 @@ public class Menu4 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-    
+
     private void CbxTheLoai() {
         cbxLoaiSp.removeAllItems();
-        for (TheLoai_SanPhamModel tl : tlitf.CbxTheLoai()){
+        for (TheLoai_SanPhamModel tl : tlitf.CbxTheLoai()) {
             cbxLoaiSp.addItem(String.valueOf(tl));
         }
     }
+
     private String getIdTheLoai(String TenTL) {
         for (TheLoai_SanPhamModel tl : tlitf.CbxTheLoai()) {
             if (tl.getTenTL().equals(TenTL)) {
@@ -183,13 +188,14 @@ public class Menu4 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-    
+
     private void CbxChatLieu() {
         cbxChatLieu.removeAllItems();
-        for (ChatLieu_SanPhamModel tl : clitf.CbxChatLieu()){
+        for (ChatLieu_SanPhamModel tl : clitf.CbxChatLieu()) {
             cbxChatLieu.addItem(String.valueOf(tl));
         }
     }
+
     private String getIdChatLieu(String TenCl) {
         for (ChatLieu_SanPhamModel tl : clitf.CbxChatLieu()) {
             if (tl.getTenCL().equals(TenCl)) {
@@ -198,13 +204,14 @@ public class Menu4 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-    
+
     private void CbxDe() {
         cbxDe.removeAllItems();
-        for (De_SanPhamModel tl : deitf.CbxDe()){
+        for (De_SanPhamModel tl : deitf.CbxDe()) {
             cbxDe.addItem(String.valueOf(tl));
         }
     }
+
     private String getIdDe(String TenDe) {
         for (De_SanPhamModel de : deitf.CbxDe()) {
             if (de.getTenDe().equals(TenDe)) {
@@ -213,22 +220,22 @@ public class Menu4 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-    
-    public void add(){
+
+    public void add() {
         ChiTietSPModel ctsp = new ChiTietSPModel();
-        String TenSanPham=cbxTenSp.getSelectedItem().toString();
+        String TenSanPham = cbxTenSp.getSelectedItem().toString();
         ctsp.setIdSP(getIdSanPham(TenSanPham));
-        String Size=cbxSize.getSelectedItem().toString();
+        String Size = cbxSize.getSelectedItem().toString();
         ctsp.setIdSize(getIdKichCo(Size));
-        String MauSac=cbxMau.getSelectedItem().toString();
+        String MauSac = cbxMau.getSelectedItem().toString();
         ctsp.setIdMau(getIdMauSac(MauSac));
-        String Loai=cbxLoaiSp.getSelectedItem().toString();
+        String Loai = cbxLoaiSp.getSelectedItem().toString();
         ctsp.setIdLoaiSP(getIdTheLoai(Loai));
-        String ChatLieu=cbxChatLieu.getSelectedItem().toString();
+        String ChatLieu = cbxChatLieu.getSelectedItem().toString();
         ctsp.setIdChatLieu(getIdChatLieu(ChatLieu));
-        String Hang=cbxHang.getSelectedItem().toString();
+        String Hang = cbxHang.getSelectedItem().toString();
         ctsp.setIdHang(getIdHang(Hang));
-        String De=cbxDe.getSelectedItem().toString();
+        String De = cbxDe.getSelectedItem().toString();
         ctsp.setIdDE(getIdDe(De));
         ctsp.setGiaNhap(Integer.parseInt(txtGiaNhap.getText()));
         ctsp.setGiaBan(Integer.parseInt(txtGiaBan.getText()));
@@ -237,36 +244,36 @@ public class Menu4 extends javax.swing.JInternalFrame {
         ctsp.setMoTa(txtMoTa.getText());
         ctsp.setAnh(lblAnhSp.getName());
         int TrangThai;
-        if(cbxTrangThai.getSelectedIndex()==0){
-            TrangThai=0;
-        }else{
-            TrangThai=1;
+        if (cbxTrangThai.getSelectedIndex() == 0) {
+            TrangThai = 0;
+        } else {
+            TrangThai = 1;
         }
         ctsp.setTrangThai(TrangThai);
         try {
-            
+
             ctspitf.Add(ctsp);
             loadData();
             JOptionPane.showMessageDialog(this, "Thêm thành công");
-            
+
         } catch (RuntimeException re) {
-            JOptionPane.showMessageDialog(this, "Lỗi");              
+            JOptionPane.showMessageDialog(this, "Lỗi");
         }
     }
-    
-    public void Update(){
+
+    public void Update() {
         ChiTietSPModel ctsp = new ChiTietSPModel();
-        String Size=cbxSize.getSelectedItem().toString();
+        String Size = cbxSize.getSelectedItem().toString();
         ctsp.setIdSize(getIdKichCo(Size));
-        String MauSac=cbxMau.getSelectedItem().toString();
+        String MauSac = cbxMau.getSelectedItem().toString();
         ctsp.setIdMau(getIdMauSac(MauSac));
-        String Loai=cbxLoaiSp.getSelectedItem().toString();
+        String Loai = cbxLoaiSp.getSelectedItem().toString();
         ctsp.setIdLoaiSP(getIdTheLoai(Loai));
-        String ChatLieu=cbxChatLieu.getSelectedItem().toString();
+        String ChatLieu = cbxChatLieu.getSelectedItem().toString();
         ctsp.setIdChatLieu(getIdChatLieu(ChatLieu));
-        String Hang=cbxHang.getSelectedItem().toString();
+        String Hang = cbxHang.getSelectedItem().toString();
         ctsp.setIdHang(getIdHang(Hang));
-        String De=cbxDe.getSelectedItem().toString();
+        String De = cbxDe.getSelectedItem().toString();
         ctsp.setIdDE(getIdDe(De));
         ctsp.setGiaNhap(Integer.parseInt(txtGiaNhap.getText()));
         ctsp.setGiaBan(Integer.parseInt(txtGiaBan.getText()));
@@ -275,36 +282,36 @@ public class Menu4 extends javax.swing.JInternalFrame {
         ctsp.setMoTa(txtMoTa.getText());
         ctsp.setAnh(lblAnhSp.getName());
         int TrangThai;
-        if(cbxTrangThai.getSelectedIndex()==0){
-            TrangThai=0;
-        }else{
-            TrangThai=1;
+        if (cbxTrangThai.getSelectedIndex() == 0) {
+            TrangThai = 0;
+        } else {
+            TrangThai = 1;
         }
         ctsp.setTrangThai(TrangThai);
-        String id=txtId.getText();
+        String id = txtId.getText();
         try {
-            
-            ctspitf.Update(id,ctsp);
+
+            ctspitf.Update(id, ctsp);
             loadData();
-            JOptionPane.showMessageDialog(this, " thành công");   
-            
+            JOptionPane.showMessageDialog(this, " thành công");
+
         } catch (RuntimeException re) {
-            JOptionPane.showMessageDialog(this, "Lỗi");              
+            JOptionPane.showMessageDialog(this, "Lỗi");
         }
     }
-    
-    public void selectRow(int i){
+
+    public void selectRow(int i) {
         ChiTietSPModel ctsp = new ChiTietSPModel();
-        DefaultTableModel tblModel=(DefaultTableModel) tblChitietsp.getModel();
-        
+        DefaultTableModel tblModel = (DefaultTableModel) tblChitietsp.getModel();
+
         txtId.setText(tblModel.getValueAt(i, 0).toString());
         cbxTenSp.setSelectedItem(tblModel.getValueAt(i, 1).toString());
-        cbxSize.setSelectedItem(tblModel.getValueAt(i, 2).toString()); 
-        cbxMau.setSelectedItem(tblModel.getValueAt(i, 3).toString()); 
-        cbxLoaiSp.setSelectedItem(tblModel.getValueAt(i, 4).toString()); 
-        cbxChatLieu.setSelectedItem(tblModel.getValueAt(i, 5).toString()); 
-        cbxHang.setSelectedItem(tblModel.getValueAt(i, 6).toString()); 
-        cbxDe.setSelectedItem(tblModel.getValueAt(i, 7).toString()); 
+        cbxSize.setSelectedItem(tblModel.getValueAt(i, 2).toString());
+        cbxMau.setSelectedItem(tblModel.getValueAt(i, 3).toString());
+        cbxLoaiSp.setSelectedItem(tblModel.getValueAt(i, 4).toString());
+        cbxChatLieu.setSelectedItem(tblModel.getValueAt(i, 5).toString());
+        cbxHang.setSelectedItem(tblModel.getValueAt(i, 6).toString());
+        cbxDe.setSelectedItem(tblModel.getValueAt(i, 7).toString());
         txtGiaNhap.setText(tblModel.getValueAt(i, 8).toString());
         txtGiaBan.setText(tblModel.getValueAt(i, 9).toString());
         txtSoLuong.setText(tblModel.getValueAt(i, 10).toString());
@@ -325,7 +332,7 @@ public class Menu4 extends javax.swing.JInternalFrame {
         lblAnhSp.setHorizontalAlignment(JLabel.CENTER);
         lblAnhSp.setVerticalAlignment(JLabel.CENTER);
         lblAnhSp.setName(file.getAbsolutePath());
-        
+
     }
 
     /**
@@ -698,11 +705,11 @@ public class Menu4 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTimKiemCaretUpdate
 
     private void cbxSoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSoLuongActionPerformed
-        if(cbxSoLuong.getSelectedIndex()==0){
+        if (cbxSoLuong.getSelectedIndex() == 0) {
             loadData();
-        }else if(cbxSoLuong.getSelectedIndex()==1){
+        } else if (cbxSoLuong.getSelectedIndex() == 1) {
             ConHang();
-        }else if(cbxSoLuong.getSelectedIndex()==2){
+        } else if (cbxSoLuong.getSelectedIndex() == 2) {
             HetHang();
         }
     }//GEN-LAST:event_cbxSoLuongActionPerformed
@@ -743,37 +750,37 @@ public class Menu4 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        FormSanPham fsp=new FormSanPham();
+        FormSanPham fsp = new FormSanPham();
         fsp.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        FormKichCo fkc=new FormKichCo();
+        FormKichCo fkc = new FormKichCo();
         fkc.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        FormMauSac fkc=new FormMauSac();
+        FormMauSac fkc = new FormMauSac();
         fkc.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        FormTheLoai ftl=new FormTheLoai();
+        FormTheLoai ftl = new FormTheLoai();
         ftl.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        FormDe fde=new FormDe();
+        FormDe fde = new FormDe();
         fde.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        FormChatLieu fcl=new FormChatLieu();
+        FormChatLieu fcl = new FormChatLieu();
         fcl.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        FormHang fhang=new FormHang();
+        FormHang fhang = new FormHang();
         fhang.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 

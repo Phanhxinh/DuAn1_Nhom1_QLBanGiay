@@ -376,6 +376,7 @@ public class KhachHangView extends javax.swing.JFrame {
         for (KhachHangViewModel x : list) {
             Menu2.txtKhachMuaHang.setText(x.getSdt());
         }
+        JOptionPane.showMessageDialog(this, "Chọn khách hàng thành công!");
     }//GEN-LAST:event_btnchonkhActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

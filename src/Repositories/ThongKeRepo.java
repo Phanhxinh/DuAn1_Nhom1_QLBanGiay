@@ -176,7 +176,7 @@ public class ThongKeRepo {
         try {
             Connection conn = Connections.jdbcUtils.getConnection();
             String sql = "select COUNT(DISTINCT IdKH) as Tong from HoaDon "
-                    + "where NgayThanhToan= convert(Date,getdate(),103) where TrangThai=0";
+                    + "where NgayThanhToan= convert(Date,getdate(),103) and TrangThai=0";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

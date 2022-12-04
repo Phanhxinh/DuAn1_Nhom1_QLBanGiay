@@ -18,4 +18,8 @@ public interface HoadonITF {
     ArrayList<HoaDonView> FindMaNV(String ten);
 
     ArrayList<HoaDonView> LocNgay(String ngayBD, String ngayKT);
+
+    ArrayList<HoaDonView> TrangThaiTT();
+
+    ArrayList<HoaDonView> TrangThaiHuy();
 }

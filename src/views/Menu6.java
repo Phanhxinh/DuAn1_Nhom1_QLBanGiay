@@ -211,7 +211,6 @@ public class Menu6 extends javax.swing.JInternalFrame {
         }
     }
 
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -274,9 +273,10 @@ public class Menu6 extends javax.swing.JInternalFrame {
         lb_tong.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel9.add(lb_tong, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 170, 90));
 
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 0, 51));
         jLabel9.setText("VNĐ");
-        jPanel9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, 35));
+        jPanel9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 60, 30));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 242, 169));
 

@@ -84,4 +84,48 @@ public class HoaDonRepo {
         }
         return list;
     }
+    
+        public ArrayList<HoaDonView> TrangThaiTT() {
+        ArrayList<HoaDonView> list = new ArrayList<>();
+        try {
+            Connection conn = jdbcUtils.getConnection();
+            String sql = "select a.MaHD,b.TenNV,c.TenKH,a.NgayTao,a.TrangThai from HoaDon a join NhanVien b on a.IdNV=b.Id join KhachHang c on a.IdKH=c.Id where a.TrangThai=0 order by a.MaHD asc";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.execute();
+            ResultSet rs = ps.getResultSet();
+            while (rs.next() == true) {
+                String maHD = rs.getString("MaHD");
+                String tenNV = rs.getString("TenNV");
+                String tenKH = rs.getString("TenKH");
+                String ngayTao = rs.getString("NgayTao");
+                int trangThai = rs.getInt("TrangThai");
+                list.add(new HoaDonView(maHD, tenNV, tenKH, ngayTao, trangThai));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+        
+            public ArrayList<HoaDonView> TrangThaiHuy() {
+        ArrayList<HoaDonView> list = new ArrayList<>();
+        try {
+            Connection conn = jdbcUtils.getConnection();
+            String sql = "select a.MaHD,b.TenNV,c.TenKH,a.NgayTao,a.TrangThai from HoaDon a join NhanVien b on a.IdNV=b.Id join KhachHang c on a.IdKH=c.Id where a.TrangThai=2 order by a.MaHD asc";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.execute();
+            ResultSet rs = ps.getResultSet();
+            while (rs.next() == true) {
+                String maHD = rs.getString("MaHD");
+                String tenNV = rs.getString("TenNV");
+                String tenKH = rs.getString("TenKH");
+                String ngayTao = rs.getString("NgayTao");
+                int trangThai = rs.getInt("TrangThai");
+                list.add(new HoaDonView(maHD, tenNV, tenKH, ngayTao, trangThai));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

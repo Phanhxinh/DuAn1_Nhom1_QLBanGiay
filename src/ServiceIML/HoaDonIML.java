@@ -32,4 +32,14 @@ public class HoaDonIML implements HoadonITF {
         return hoaDonRepo.LocNgay(ngayBD, ngayKT);
     }
 
+    @Override
+    public ArrayList<HoaDonView> TrangThaiTT() {
+        return hoaDonRepo.TrangThaiTT();
+    }
+
+    @Override
+    public ArrayList<HoaDonView> TrangThaiHuy() {
+        return hoaDonRepo.TrangThaiHuy();
+    }
+
 }

@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  * @author DELL
  */
 public class Menu3 extends javax.swing.JInternalFrame {
-    
+
     private HoadonITF hoadonITF = new HoaDonIML();
     DefaultTableModel bang;
     private BanHangITF banHangITF = new BanHangIML();
@@ -46,7 +46,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         ui.setNorthPane(null);
         LoadTableHoaDon();
     }
-    
+
     private void LoadTableHoaDon() {
         DefaultTableModel bang = (DefaultTableModel) tablehoadon.getModel();
         bang.setRowCount(0);
@@ -54,7 +54,23 @@ public class Menu3 extends javax.swing.JInternalFrame {
             bang.addRow(new Object[]{tablehoadon.getRowCount() + 1, hdv.getMaHD(), hdv.getTenNV(), hdv.getTenKH(), hdv.getNgayTao(), hdv.trangThai()});
         }
     }
-    
+
+    private void LoadTableHoaDonH() {
+        DefaultTableModel bang = (DefaultTableModel) tablehoadon.getModel();
+        bang.setRowCount(0);
+        for (HoaDonView hdv : hoadonITF.TrangThaiHuy()) {
+            bang.addRow(new Object[]{tablehoadon.getRowCount() + 1, hdv.getMaHD(), hdv.getTenNV(), hdv.getTenKH(), hdv.getNgayTao(), hdv.trangThai()});
+        }
+    }
+
+    private void LoadTableHoaDonDTH() {
+        DefaultTableModel bang = (DefaultTableModel) tablehoadon.getModel();
+        bang.setRowCount(0);
+        for (HoaDonView hdv : hoadonITF.TrangThaiTT()) {
+            bang.addRow(new Object[]{tablehoadon.getRowCount() + 1, hdv.getMaHD(), hdv.getTenNV(), hdv.getTenKH(), hdv.getNgayTao(), hdv.trangThai()});
+        }
+    }
+
     private void LocNgay(String ngayBD, String ngayKT) {
         DefaultTableModel bang = (DefaultTableModel) tablehoadon.getModel();
         bang.setRowCount(0);
@@ -62,7 +78,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
             bang.addRow(new Object[]{tablehoadon.getRowCount() + 1, hdv.getMaHD(), hdv.getTenNV(), hdv.getTenKH(), hdv.getNgayTao(), hdv.trangThai()});
         }
     }
-    
+
     private void FinmaHD(String ten) {
         DefaultTableModel bang = (DefaultTableModel) tablehoadon.getModel();
         bang.setRowCount(0);
@@ -70,13 +86,13 @@ public class Menu3 extends javax.swing.JInternalFrame {
             bang.addRow(new Object[]{tablehoadon.getRowCount() + 1, hdv.getMaHD(), hdv.getTenNV(), hdv.getTenKH(), hdv.getNgayTao(), hdv.trangThai()});
         }
     }
-    
+
     private void ClearAlltableGioHang() {
         bang = (DefaultTableModel) tablegiohang.getModel();
         bang.getDataVector().removeAllElements();
         revalidate();
     }
-    
+
     private void TinhTongTien() {
         int tien, tongtien = 0;
         int row = tablegiohang.getRowCount();
@@ -86,7 +102,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         }
         lbltongcong.setText(formatter.format(tongtien));
     }
-    
+
     private String MaHDtoTenKM(String MaHD) {
         for (HoaDonModel hdm : banHangITF.MouseClickKM()) {
             if (MaHD.equals(hdm.getMaHD().toString())) {
@@ -95,7 +111,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-    
+
     private void updatetienKM() {
         int Dis;
         NumberFormat formatter = new DecimalFormat("#,###");
@@ -105,7 +121,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         lbltienkm.setText(formatter.format(Dis));
         int tienkhuyenmai = Integer.parseInt(Order) - Dis;
         lblthanhtien.setText(formatter.format(tienkhuyenmai));
-        
+
     }
 
     /**
@@ -132,7 +148,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         lblmahd = new javax.swing.JTextField();
         lblchuongtrinhkm = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbbtrangthai = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         ngaybd = new com.toedter.calendar.JDateChooser();
         ngaykt = new com.toedter.calendar.JDateChooser();
@@ -228,13 +244,13 @@ public class Menu3 extends javax.swing.JInternalFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Phân Loại", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbbtrangthai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Đã thanh toán", "Đã hủy" }));
+        cbbtrangthai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbbtrangthaiActionPerformed(evt);
             }
         });
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 190, 30));
+        jPanel2.add(cbbtrangthai, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 190, 30));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -389,7 +405,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         }
         bang = (DefaultTableModel) tablegiohang.getModel();
         for (GioHang_BanHangModel ghbhm : banHangITF.MouesClickTableHoaDon(idHd)) {
-            bang.addRow(new Object[]{tablegiohang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getLoaiSP(),ghbhm.getSize(),ghbhm.getMauSac(), ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getSoLuong()*Integer.parseInt( ghbhm.getDonGia())});
+            bang.addRow(new Object[]{tablegiohang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getLoaiSP(), ghbhm.getSize(), ghbhm.getMauSac(), ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getSoLuong() * Integer.parseInt(ghbhm.getDonGia())});
         }
         String tenKM = MaHDtoTenKM(maHD);
         lblchuongtrinhkm.setText(tenKM);
@@ -415,14 +431,21 @@ public class Menu3 extends javax.swing.JInternalFrame {
         LocNgay(ngaybd, ngaykt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbbtrangthaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbtrangthaiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        if (cbbtrangthai.getSelectedIndex() == 0) {
+            LoadTableHoaDon();
+        } else if (cbbtrangthai.getSelectedIndex() == 1) {
+            LoadTableHoaDonDTH();
+        } else if (cbbtrangthai.getSelectedIndex() == 2) {
+            LoadTableHoaDonH();
+        }
+    }//GEN-LAST:event_cbbtrangthaiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbbtrangthai;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
