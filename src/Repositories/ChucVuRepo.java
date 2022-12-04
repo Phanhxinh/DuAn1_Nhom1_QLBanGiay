@@ -80,7 +80,7 @@ public class ChucVuRepo {
         try {
             Connection con = jdbcUtils.getConnection();
             String sql = "update [ChucVu] set ten=?"
-                    + "where ma =?";
+                    + " where ma =?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, cv.getTenCV());
             ps.setString(2, cv.getMaCV());

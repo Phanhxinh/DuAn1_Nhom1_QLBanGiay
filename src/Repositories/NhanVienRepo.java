@@ -52,12 +52,12 @@ public class NhanVienRepo {
         }
         return listNv;
     }
-    
+
     public void Add(NhanVien nv) {
         try {
             Connection con = jdbcUtils.getConnection();
             String sql = "insert into NhanVien (manv,tennv,anh,gioitinh,ngaysinh,email,diachi,matkhau,sdt,idcv,trangthai) values (?,?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement ps = con.prepareStatement(sql);            
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, nv.getMaNv());
             ps.setString(2, nv.getHoTen());
             ps.setString(3, nv.getAnhNv());
@@ -74,7 +74,7 @@ public class NhanVienRepo {
             Logger.getLogger(NhanVienRepo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void Update(String ma, NhanVien nv) {
         try {
             Connection con = jdbcUtils.getConnection();
@@ -102,17 +102,17 @@ public class NhanVienRepo {
             ps.setString(10, nv.getIdCV());
             ps.setString(11, ma);
             ps.executeUpdate();
-            
+
         } catch (Exception ex) {
             Logger.getLogger(NhanVienRepo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public boolean isExists(String MaNv) {
         boolean isExists = false;
         try {
             Connection con = jdbcUtils.getConnection();
-            
+
             String query = "select manv,tennv,gioitinh,ngaysinh,email,diachi,matkhau,sdt,ten,trangthai,anh from NhanVien join ChucVu on ChucVu.id=NhanVien.idCV WHERE MaNv = '" + MaNv + "'";
             // Tạo câu truy vấn
             Statement st = con.createStatement();
@@ -125,12 +125,12 @@ public class NhanVienRepo {
         }
         return isExists;
     }
-    
+
     public List<NhanVienViewModel> FindNhanVien(String manv) {
         List<NhanVienViewModel> listNv = new ArrayList<>();
         try {
             Connection con = jdbcUtils.getConnection();
-            String sql = "select manv,tennv,gioitinh,ngaysinh,email,diachi,matkhau,sdt,ten,trangthai,anh from NhanVien join ChucVu on ChucVu.id=NhanVien.idCV WHERE manv='" + manv + "'";
+            String sql = "select manv,tennv,gioitinh,ngaysinh,email,diachi,matkhau,sdt,ten,trangthai,anh from NhanVien join ChucVu on ChucVu.id=NhanVien.idCV WHERE manv like'%" + manv + "%'";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -153,7 +153,7 @@ public class NhanVienRepo {
         }
         return listNv;
     }
-    
+
     public List<NhanVienViewModel> TrangThai(int so) {
         List<NhanVienViewModel> listNv = new ArrayList<>();
         try {
@@ -182,5 +182,5 @@ public class NhanVienRepo {
         }
         return listNv;
     }
-    
+
 }
