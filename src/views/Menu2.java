@@ -115,7 +115,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         int row = tableSanPham.getSelectedRow();
         String barcode = tableSanPham.getValueAt(row, 10).toString();
         for (GioHang_BanHangModel gh : banHangITF.getAllGioHang(null, barcode)) {
-            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getSize(), gh.getMauSac(), soLuong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soLuong, gh.getBarcode()});
+            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getSize(), gh.getMauSac(), soLuong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soLuong,gh.getBarcode()});
         }
     }
 // Hiển thị hóa đơn lên bảng hóa đơn
@@ -258,7 +258,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private void Barcode(int soluong) {
         bang = (DefaultTableModel) tableGioHang.getModel();
         banHangITF.getAllGioHang(null, txtbarcoe.getText()).forEach(gh -> {
-            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getSize(), gh.getMauSac(), soluong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soluong, gh.getLoaiSP()});
+            bang.addRow(new Object[]{tableGioHang.getRowCount() + 1, gh.getTenSP(), gh.getSize(), gh.getMauSac(), soluong, gh.getDonGia(), Integer.parseInt(gh.getDonGia()) * soluong,gh.getBarcode()});
         });
     }
 
