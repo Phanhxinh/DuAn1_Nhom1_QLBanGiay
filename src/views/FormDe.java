@@ -252,40 +252,9 @@ public class FormDe extends javax.swing.JFrame {
             loatble();
         }   // TODO add your handling code here:
     }//GEN-LAST:event_btnthemActionPerformed
-    .toString();
-    String dcao = tb1.getValueAt(row, 3).toString();
+    
 
-     
-
-    this.txtma.setText (ma);
-
-     
-
-    this.txtten.setText (ten);
-
-     
-
-    this.txtcl.setText (cl);
-
-     
-
-    this.txtdc.setText (dcao);
-
-    // TODO add your handling code here:
-}
-
-private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {                                        
- if(ktDieuKien()){
-        De_SanPhamModel same = this.getFromdate();
-        this.IMLSame.insert(same);
-        if(same == null){
-            return;
-        } 
-        
-        JOptionPane.showMessageDialog(this, "Thêm thành công ");
-        loatble();
- }   // TODO add your handling code here:
-    }                                       
+                                      
 
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
 
@@ -320,22 +289,34 @@ private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {
 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormDe.class  
+            java.util.logging.Logger.getLogger(FormDe
+
+.class  
+
 
 .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
 } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormDe.class  
+            java.util.logging.Logger.getLogger(FormDe
+
+.class  
+
 
 .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
 } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormDe.class  
+            java.util.logging.Logger.getLogger(FormDe
+
+.class  
+
 
 .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
 } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormDe.class  
+            java.util.logging.Logger.getLogger(FormDe
+
+.class  
+
 
 .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
