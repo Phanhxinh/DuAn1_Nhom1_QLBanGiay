@@ -259,7 +259,7 @@ public class Menu6 extends javax.swing.JInternalFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1270, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel9.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel9.setBackground(new java.awt.Color(51, 204, 255));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -269,18 +269,18 @@ public class Menu6 extends javax.swing.JInternalFrame {
         jPanel9.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 150, 40));
 
         lb_tong.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
-        lb_tong.setForeground(new java.awt.Color(255, 0, 51));
+        lb_tong.setForeground(new java.awt.Color(255, 255, 255));
         lb_tong.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel9.add(lb_tong, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 170, 90));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("VNĐ");
         jPanel9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 60, 30));
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 242, 169));
 
-        jPanel10.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel10.setBackground(new java.awt.Color(255, 153, 153));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -288,7 +288,7 @@ public class Menu6 extends javax.swing.JInternalFrame {
         jLabel1.setText("Số Hóa Đơn");
 
         lb_HoaDon.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
-        lb_HoaDon.setForeground(new java.awt.Color(255, 0, 51));
+        lb_HoaDon.setForeground(new java.awt.Color(255, 255, 255));
         lb_HoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -315,7 +315,7 @@ public class Menu6 extends javax.swing.JInternalFrame {
 
         jPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 260, -1));
 
-        jPanel11.setBackground(new java.awt.Color(51, 204, 0));
+        jPanel11.setBackground(new java.awt.Color(153, 255, 153));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -323,7 +323,7 @@ public class Menu6 extends javax.swing.JInternalFrame {
         jLabel2.setText("Số Sản Phẩm");
 
         lb_SanPham.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
-        lb_SanPham.setForeground(new java.awt.Color(255, 0, 51));
+        lb_SanPham.setForeground(new java.awt.Color(255, 255, 255));
         lb_SanPham.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -350,7 +350,7 @@ public class Menu6 extends javax.swing.JInternalFrame {
 
         jPanel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 60, -1, -1));
 
-        jPanel12.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel12.setBackground(new java.awt.Color(255, 153, 102));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -358,7 +358,7 @@ public class Menu6 extends javax.swing.JInternalFrame {
         jLabel4.setText("Số Khách Hàng");
 
         lb_KhachHang.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
-        lb_KhachHang.setForeground(new java.awt.Color(255, 0, 51));
+        lb_KhachHang.setForeground(new java.awt.Color(255, 255, 255));
         lb_KhachHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -420,7 +420,7 @@ public class Menu6 extends javax.swing.JInternalFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Sản phẩm bán", jPanel14);
+        jTabbedPane1.addTab("Lịch sử sản phẩm bán", jPanel14);
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
 
