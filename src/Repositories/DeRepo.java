@@ -74,7 +74,7 @@ try {
 try {
             Connection conn = jdbcUtils.getConnection();
             String sql = "UPDATE De set "
-                    + "TenDe = ? ChatLieu = ? DoCao= ? WHERE MaDe = ?";
+                    + "TenDe = ? ,ChatLieu = ?, DoCao= ? WHERE MaDe = ?";
 
             PreparedStatement ps = conn.prepareStatement(sql);
           
