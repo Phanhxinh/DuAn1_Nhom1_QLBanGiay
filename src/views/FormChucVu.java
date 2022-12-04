@@ -102,38 +102,47 @@ public class FormChucVu extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Chức vụ");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 135, -1, -1));
+
+        txtMacv.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(txtMacv, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 63, 243, 34));
+
+        txtTenCv.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(txtTenCv, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 115, 243, 36));
 
         btnThem.setBackground(new java.awt.Color(0, 102, 102));
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/add.png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
-        jPanel1.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 90, 30));
+        jPanel1.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 90, 40));
 
         btnSua.setBackground(new java.awt.Color(0, 102, 102));
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Sửa.png"))); // NOI18N
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 170, 90, 28));
+        jPanel1.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 170, 90, 40));
 
         btnXoa.setBackground(new java.awt.Color(0, 102, 102));
         btnXoa.setForeground(new java.awt.Color(255, 255, 255));
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/delete-button.png"))); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 170, 100, 30));
+        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 170, 100, -1));
+
+        jScrollPane1.setForeground(new java.awt.Color(0, 0, 0));
 
         tblCv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -159,13 +168,13 @@ public class FormChucVu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

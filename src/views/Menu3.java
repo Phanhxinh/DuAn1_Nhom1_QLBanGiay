@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  * @author DELL
  */
 public class Menu3 extends javax.swing.JInternalFrame {
-    
+
     private HoadonITF hoadonITF = new HoaDonIML();
     DefaultTableModel bang;
     private BanHangITF banHangITF = new BanHangIML();
@@ -46,7 +46,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         ui.setNorthPane(null);
         LoadTableHoaDon();
     }
-    
+
     private void LoadTableHoaDon() {
         DefaultTableModel bang = (DefaultTableModel) tablehoadon.getModel();
         bang.setRowCount(0);
@@ -54,7 +54,23 @@ public class Menu3 extends javax.swing.JInternalFrame {
             bang.addRow(new Object[]{tablehoadon.getRowCount() + 1, hdv.getMaHD(), hdv.getTenNV(), hdv.getTenKH(), hdv.getNgayTao(), hdv.trangThai()});
         }
     }
-    
+
+    private void LoadTableHoaDonH() {
+        DefaultTableModel bang = (DefaultTableModel) tablehoadon.getModel();
+        bang.setRowCount(0);
+        for (HoaDonView hdv : hoadonITF.TrangThaiHuy()) {
+            bang.addRow(new Object[]{tablehoadon.getRowCount() + 1, hdv.getMaHD(), hdv.getTenNV(), hdv.getTenKH(), hdv.getNgayTao(), hdv.trangThai()});
+        }
+    }
+
+    private void LoadTableHoaDonDTH() {
+        DefaultTableModel bang = (DefaultTableModel) tablehoadon.getModel();
+        bang.setRowCount(0);
+        for (HoaDonView hdv : hoadonITF.TrangThaiTT()) {
+            bang.addRow(new Object[]{tablehoadon.getRowCount() + 1, hdv.getMaHD(), hdv.getTenNV(), hdv.getTenKH(), hdv.getNgayTao(), hdv.trangThai()});
+        }
+    }
+
     private void LocNgay(String ngayBD, String ngayKT) {
         DefaultTableModel bang = (DefaultTableModel) tablehoadon.getModel();
         bang.setRowCount(0);
@@ -62,7 +78,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
             bang.addRow(new Object[]{tablehoadon.getRowCount() + 1, hdv.getMaHD(), hdv.getTenNV(), hdv.getTenKH(), hdv.getNgayTao(), hdv.trangThai()});
         }
     }
-    
+
     private void FinmaHD(String ten) {
         DefaultTableModel bang = (DefaultTableModel) tablehoadon.getModel();
         bang.setRowCount(0);
@@ -70,13 +86,13 @@ public class Menu3 extends javax.swing.JInternalFrame {
             bang.addRow(new Object[]{tablehoadon.getRowCount() + 1, hdv.getMaHD(), hdv.getTenNV(), hdv.getTenKH(), hdv.getNgayTao(), hdv.trangThai()});
         }
     }
-    
+
     private void ClearAlltableGioHang() {
         bang = (DefaultTableModel) tablegiohang.getModel();
         bang.getDataVector().removeAllElements();
         revalidate();
     }
-    
+
     private void TinhTongTien() {
         int tien, tongtien = 0;
         int row = tablegiohang.getRowCount();
@@ -86,7 +102,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         }
         lbltongcong.setText(formatter.format(tongtien));
     }
-    
+
     private String MaHDtoTenKM(String MaHD) {
         for (HoaDonModel hdm : banHangITF.MouseClickKM()) {
             if (MaHD.equals(hdm.getMaHD().toString())) {
@@ -95,7 +111,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-    
+
     private void updatetienKM() {
         int Dis;
         NumberFormat formatter = new DecimalFormat("#,###");
@@ -105,7 +121,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         lbltienkm.setText(formatter.format(Dis));
         int tienkhuyenmai = Integer.parseInt(Order) - Dis;
         lblthanhtien.setText(formatter.format(tienkhuyenmai));
-        
+
     }
 
     /**
@@ -132,7 +148,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         lblmahd = new javax.swing.JTextField();
         lblchuongtrinhkm = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbbtrangthai = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         ngaybd = new com.toedter.calendar.JDateChooser();
         ngaykt = new com.toedter.calendar.JDateChooser();
@@ -144,17 +160,17 @@ public class Menu3 extends javax.swing.JInternalFrame {
         lbltienkm = new javax.swing.JTextField();
         lblthanhtien = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablehoadon = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablegiohang = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablehoadon = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1100, 690));
+        setPreferredSize(new java.awt.Dimension(1270, 570));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1100, 690));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1270, 570));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txttim.setBackground(new java.awt.Color(255, 255, 255));
@@ -164,133 +180,169 @@ public class Menu3 extends javax.swing.JInternalFrame {
                 txttimCaretUpdate(evt);
             }
         });
-        jPanel1.add(txttim, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 319, 30));
+        jPanel1.add(txttim, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 240, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Tìm mã HD:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 16, 87, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 87, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Mã HD :");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 78, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 78, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Tổng cộng: ");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 109, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 109, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Chiếu khấu:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 80, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 80, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Thành tiền:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 80, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 80, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Chương trình KM: ");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 167, -1));
+        jLabel8.setText("Khuyến mại: ");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 90, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("%");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 20, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 20, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 0, 51));
         jLabel9.setText("VND");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 45, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 30, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 0, 51));
         jLabel10.setText("VND");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 45, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 45, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 0, 51));
         jLabel11.setText("VND");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 45, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 45, -1));
 
         lblmahd.setBackground(new java.awt.Color(255, 255, 255));
         lblmahd.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(lblmahd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 320, 30));
+        jPanel1.add(lblmahd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 240, 30));
 
         lblchuongtrinhkm.setBackground(new java.awt.Color(255, 255, 255));
         lblchuongtrinhkm.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(lblchuongtrinhkm, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 320, 30));
+        jPanel1.add(lblchuongtrinhkm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 240, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Phân Loại", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbbtrangthai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Đã thanh toán", "Đã hủy" }));
+        cbbtrangthai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbbtrangthaiActionPerformed(evt);
             }
         });
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 140, 30));
+        jPanel2.add(cbbtrangthai, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 190, 30));
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/lọc.png"))); // NOI18N
         jButton1.setText("Lọc");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 150, 30));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 100, 40));
 
         ngaybd.setDate(new java.util.Date(1669125429000L));
         ngaybd.setDateFormatString("dd/MM/yyyy");
-        jPanel2.add(ngaybd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 140, 30));
+        jPanel2.add(ngaybd, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 150, 30));
 
         ngaykt.setDate(new java.util.Date(1669125429000L));
         ngaykt.setDateFormatString("dd/MM/yyyy");
-        jPanel2.add(ngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 150, 30));
+        jPanel2.add(ngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 150, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Trạng thái :");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 90, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 90, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Từ ngày:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 66, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 66, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Đến ngày:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 75, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 75, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 380, 150));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 320, 230));
 
         lbltongcong.setBackground(new java.awt.Color(255, 255, 255));
         lbltongcong.setForeground(new java.awt.Color(255, 0, 51));
         lbltongcong.setText("0");
-        jPanel1.add(lbltongcong, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 222, 160, 30));
+        jPanel1.add(lbltongcong, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 180, 30));
 
         lblsokhuyenmai.setBackground(new java.awt.Color(255, 255, 255));
         lblsokhuyenmai.setForeground(new java.awt.Color(0, 0, 0));
         lblsokhuyenmai.setText("0");
-        jPanel1.add(lblsokhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 30, 30));
+        jPanel1.add(lblsokhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 30, 30));
 
         lbltienkm.setBackground(new java.awt.Color(255, 255, 255));
         lbltienkm.setForeground(new java.awt.Color(255, 0, 51));
         lbltienkm.setText("0");
-        jPanel1.add(lbltienkm, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 272, 130, 30));
+        jPanel1.add(lbltienkm, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 130, 30));
 
         lblthanhtien.setBackground(new java.awt.Color(255, 255, 255));
         lblthanhtien.setForeground(new java.awt.Color(255, 0, 51));
         lblthanhtien.setText("0");
-        jPanel1.add(lblthanhtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 322, 110, 30));
+        jPanel1.add(lblthanhtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 180, 30));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Chi Tiết Sản Phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Chi Tiết Sản Phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        tablegiohang.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "STT", "Tên SP", "Loại SP", "Size", "Màu sắc", "Số Lượng", "Giá Bán", "Thành Tiền"
+            }
+        ));
+        jScrollPane2.setViewportView(tablegiohang);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 510, 230));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Chi Tiết Hóa Đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
         tablehoadon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -307,66 +359,31 @@ public class Menu3 extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tablehoadon);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 680, 200));
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Chi Tiết Hóa Đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
-
-        tablegiohang.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "STT", "Tên SP", "Loại SP", "Size", "Màu sắc", "Số Lượng", "Giá Bán", "Thành Tiền"
-            }
-        ));
-        jScrollPane2.setViewportView(tablegiohang);
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1174, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 1030, 240));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 1200, 290));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1088, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
         );
 
         pack();
@@ -388,7 +405,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
         }
         bang = (DefaultTableModel) tablegiohang.getModel();
         for (GioHang_BanHangModel ghbhm : banHangITF.MouesClickTableHoaDon(idHd)) {
-            bang.addRow(new Object[]{tablegiohang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getLoaiSP(),ghbhm.getSize(),ghbhm.getMauSac(), ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getSoLuong()*Integer.parseInt( ghbhm.getDonGia())});
+            bang.addRow(new Object[]{tablegiohang.getRowCount() + 1, ghbhm.getTenSP(), ghbhm.getLoaiSP(), ghbhm.getSize(), ghbhm.getMauSac(), ghbhm.getSoLuong(), ghbhm.getDonGia(), ghbhm.getSoLuong() * Integer.parseInt(ghbhm.getDonGia())});
         }
         String tenKM = MaHDtoTenKM(maHD);
         lblchuongtrinhkm.setText(tenKM);
@@ -414,14 +431,21 @@ public class Menu3 extends javax.swing.JInternalFrame {
         LocNgay(ngaybd, ngaykt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbbtrangthaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbtrangthaiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        if (cbbtrangthai.getSelectedIndex() == 0) {
+            LoadTableHoaDon();
+        } else if (cbbtrangthai.getSelectedIndex() == 1) {
+            LoadTableHoaDonDTH();
+        } else if (cbbtrangthai.getSelectedIndex() == 2) {
+            LoadTableHoaDonH();
+        }
+    }//GEN-LAST:event_cbbtrangthaiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbbtrangthai;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
