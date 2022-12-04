@@ -34,22 +34,15 @@ public class KhachHangIML implements KhachHangITF {
 
         } else if (kh.getTenKh().isBlank()) {
             throw new RuntimeException("Tên không được để trống");
-        } else if (kh.getNgaySinh().isBlank()) {
-            throw new RuntimeException("Ngày sinh không được để trống");
-
         } else if (kh.getSdt().isBlank()) {
             throw new RuntimeException("Số điện thoại không được để trống");
 
         } else if (!isValidPhone) {
             throw new RuntimeException("số điện thoại phải gồm 10 số");
-        } else if (kh.getEmail().isBlank()) {
-            throw new RuntimeException("Email không thể có khoảng trắng");
         } //else if (!isValidEmail) {
         //          throw new RuntimeException("Địa chỉ email có dạng abc@fpt.edu.vn");
         //    }
-        else if (kh.getDiachi().isBlank()) {
-            throw new RuntimeException("Địa chỉ không được để trống");
-        }
+      
         khrepo.Add(kh);
     }
 
@@ -66,21 +59,11 @@ public class KhachHangIML implements KhachHangITF {
 
         } else if (kh.getTenKh().isBlank()) {
             throw new RuntimeException("Tên không được để trống");
-        } else if (kh.getNgaySinh().isBlank()) {
-            throw new RuntimeException("Ngày sinh không được để trống");
-
-        } else if (kh.getSdt().isBlank()) {
+        }  else if (kh.getSdt().isBlank()) {
             throw new RuntimeException("Số điện thoại không được để trống");
 
         } else if (!isValidPhone) {
             throw new RuntimeException("số điện thoại phải gồm 10 số");
-        } else if (kh.getEmail().isBlank()) {
-            throw new RuntimeException("Email không thể có khoảng trắng");
-        }// else if (!isValidEmail) {
-        //  throw new RuntimeException("Địa chỉ email có dạng abc@fpt.edu.vn");
-        //} 
-        else if (kh.getDiachi().isBlank()) {
-            throw new RuntimeException("Địa chỉ không được để trống");
         }
         khrepo.Update(ma, kh);
     }

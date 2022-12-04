@@ -66,4 +66,6 @@ public interface BanHangITF {
     ArrayList<KhachHangViewModel> getSdtKH(String MaHD);
     
     void updatesoLuongHuy(String soluong, String barcode) ;
+    
+    ArrayList<HoaDon_BanHangModel> TimMaHoaDon(String ma);
 }

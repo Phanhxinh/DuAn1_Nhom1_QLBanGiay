@@ -24,7 +24,7 @@ public class KhachHangRepo {
         List<KhachHangViewModel> listkh = new ArrayList<>();
         try {
             Connection conn = jdbcUtils.getConnection();
-            String sql = "select Id,MaKH,TenKH, NgaySinh,SDT,Email,DiaChi  from KhachHang";
+            String sql = "select Id,MaKH,TenKH, NgaySinh,SDT,Email,DiaChi  from KhachHang order by MaKH asc";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

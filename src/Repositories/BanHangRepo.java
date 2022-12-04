@@ -165,6 +165,27 @@ public class BanHangRepo {
         return list;
     }
 
+    public ArrayList<HoaDon_BanHangModel> TimMaHoaDon(String ma) {
+        ArrayList list = new ArrayList<HoaDon_BanHangModel>();
+        try {
+            Connection conn = Connections.jdbcUtils.getConnection();
+            String sql = "select a.MaHD,b.TenNV,a.TrangThai,a.NgayTao from HoaDon a join NhanVien b on a.IdNV=b.Id where a.MaHD like N'%" + ma + "%' order by a.MaHD asc";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String mahd = rs.getString("MaHD");
+                String tennv = rs.getString("TenNV");
+                int trangthai = rs.getInt("TrangThai");
+                String ngaytao = rs.getString("NgayTao");
+                HoaDon_BanHangModel hdbhm = new HoaDon_BanHangModel(mahd, tennv, trangthai, ngaytao);
+                list.add(hdbhm);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
     //Lọc hóa đơn thanh toán
     public ArrayList<HoaDon_BanHangModel> getHoaDonThanhToan() {
         ArrayList list = new ArrayList<HoaDon_BanHangModel>();

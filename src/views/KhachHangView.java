@@ -30,6 +30,7 @@ public class KhachHangView extends javax.swing.JFrame {
         initComponents();
         loaddata();
         this.setLocationRelativeTo(null);
+        txtmaKh3.setEnabled(false);
     }
 
     public void loaddata() {
@@ -52,6 +53,19 @@ public class KhachHangView extends javax.swing.JFrame {
     }
 
     public void Add() {
+        int count = 0;
+        count = tblKhang.getRowCount();
+        String chuoi1 = "";
+        int chuoi2 = 0;
+        chuoi1 = tblKhang.getValueAt(count - 1, 0).toString();
+        chuoi2 = Integer.parseInt(chuoi1.substring(3).toString());
+        if (chuoi2 + 1 < 10) {
+            txtmaKh3.setText("KH000" + (chuoi2 + 1));
+        } else if (chuoi2 + 1 < 100) {
+            txtmaKh3.setText("KH00" + (chuoi2 + 1));
+        } else if (chuoi2 + 1 < 1000) {
+            txtmaKh3.setText("KH" + (chuoi2 + 1));
+        }
         KhachHang kh = new KhachHang();
         kh.setMaKh(txtmaKh3.getText());
         kh.setTenKh(txtTenKh3.getText());

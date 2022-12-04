@@ -127,6 +127,14 @@ public class Menu2 extends javax.swing.JInternalFrame {
             bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
         }
     }
+
+    private void Timma(String ma) {
+        bang = (DefaultTableModel) tableHoaDon.getModel();
+        bang.setRowCount(0);
+        for (HoaDon_BanHangModel hd : banHangITF.TimMaHoaDon(ma)) {
+            bang.addRow(new Object[]{tableHoaDon.getRowCount() + 1, hd.getMaHD(), hd.getTenNV(), hd.trangThai(), hd.getNgayTao()});
+        }
+    }
 // Lọc hóa đơn đã thanh toán
 
     private void LoadTableHoaDonThanhToan() {
@@ -320,6 +328,10 @@ public class Menu2 extends javax.swing.JInternalFrame {
             run4.setFontSize(30);
             run4.setBold(true);
 
+            XWPFParagraph paragraph55 = document.createParagraph();
+            XWPFRun run55 = paragraph55.createRun();
+            run55.setText("Mã hóa đơn:  " + txtmaHoaDon.getText());
+
             XWPFParagraph paragraph5 = document.createParagraph();
             XWPFRun run5 = paragraph5.createRun();
             run5.setText("Khách hàng:  " + getTenKH(txtKhachMuaHang.getText()));
@@ -487,6 +499,8 @@ public class Menu2 extends javax.swing.JInternalFrame {
         CbbHoaDon = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableHoaDon = new javax.swing.JTable();
+        txtmatimkiem = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         btnxoaSanPham = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -572,15 +586,27 @@ public class Menu2 extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(tableHoaDon);
 
+        txtmatimkiem.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtmatimkiemCaretUpdate(evt);
+            }
+        });
+
+        jLabel11.setText("Tìm kiếm");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addComponent(CbbHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CbbHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addGap(28, 28, 28)
+                        .addComponent(txtmatimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -589,7 +615,10 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(CbbHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CbbHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtmatimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1240,6 +1269,11 @@ public class Menu2 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txttongtienActionPerformed
 
+    private void txtmatimkiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtmatimkiemCaretUpdate
+        // TODO add your handling code here:
+        Timma(txtmatimkiem.getText());
+    }//GEN-LAST:event_txtmatimkiemCaretUpdate
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CbbHoaDon;
@@ -1252,6 +1286,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbbkhuyenmai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1276,6 +1311,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField txtKhachMuaHang;
     private javax.swing.JTextField txtbarcoe;
     private javax.swing.JTextField txtmaHoaDon;
+    private javax.swing.JTextField txtmatimkiem;
     private javax.swing.JTextField txtsokhuyenmai;
     private javax.swing.JTextField txtthanhtien;
     private javax.swing.JTextField txttienkhachdua;
