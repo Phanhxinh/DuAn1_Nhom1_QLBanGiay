@@ -83,6 +83,17 @@ public class Menu4 extends javax.swing.JInternalFrame {
 
     }
 
+    public void Timten(String ten) {
+        DefaultTableModel tblModel = (DefaultTableModel) tblChitietsp.getModel();
+        tblModel.setRowCount(0);
+        List<ChiTietSPModel> list = ctspitf.TimTenSP(ten);
+        for (ChiTietSPModel ctsp : list) {
+            Object[] row = new Object[]{ctsp.getId(), ctsp.getIdSP(), ctsp.getIdSize(), ctsp.getIdMau(), ctsp.getIdLoaiSP(), ctsp.getIdChatLieu(), ctsp.getIdHang(), ctsp.getIdDE(), ctsp.getGiaNhap(), ctsp.getGiaBan(), ctsp.getSoLuong(), ctsp.getBarCode(), ctsp.getMoTa(), ctsp.getTrangThai() == 0 ? "Còn bán" : "Không còn bán", ctsp.getAnh()};
+            tblModel.addRow(row);
+        }
+
+    }
+
     public void ConHang() {
         DefaultTableModel tblModel = (DefaultTableModel) tblChitietsp.getModel();
         tblModel.setRowCount(0);
@@ -701,7 +712,7 @@ public class Menu4 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblChitietspMouseClicked
 
     private void txtTimKiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTimKiemCaretUpdate
-
+        Timten(txtTimKiem.getText());
     }//GEN-LAST:event_txtTimKiemCaretUpdate
 
     private void cbxSoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSoLuongActionPerformed

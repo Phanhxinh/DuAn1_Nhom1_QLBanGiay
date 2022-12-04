@@ -13,7 +13,12 @@ import java.util.List;
  * @author BachTN
  */
 public interface ChiTietSpITF {
+
     List<ChiTietSPModel> getListCTSP();
+
     void Add(ChiTietSPModel ctsp);
-    void Update(String id,ChiTietSPModel ctsp);
+
+    void Update(String id, ChiTietSPModel ctsp);
+
+    List<ChiTietSPModel> TimTenSP(String ten);
 }
