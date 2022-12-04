@@ -43,7 +43,7 @@ public class ChucVuRepo {
         }
         return listCv;
     }
-    
+
     public ArrayList<ChucVu> CbxChucVu() {
         ArrayList<ChucVu> list = new ArrayList<>();
         try {
@@ -62,34 +62,35 @@ public class ChucVuRepo {
         }
         return list;
     }
-    
-    public void Add(ChucVu cv){
+
+    public void Add(ChucVu cv) {
         try {
-            Connection con= jdbcUtils.getConnection();
-            String sql="insert into ChucVu (ma,ten) values (?,?)";
-            PreparedStatement ps=con.prepareStatement(sql);            
-            ps.setString(1,cv.getMaCV());
-            ps.setString(2,cv.getTenCV());
+            Connection con = jdbcUtils.getConnection();
+            String sql = "insert into ChucVu (ma,ten) values (?,?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, cv.getMaCV());
+            ps.setString(2, cv.getTenCV());
             ps.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(NhanVienRepo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void Update(ChucVu cv){
+
+    public void Update(ChucVu cv) {
         try {
-            Connection con= jdbcUtils.getConnection();
-            String sql="update [ChucVu] set ten=?"
-                + "where ma =?";
-            PreparedStatement ps=con.prepareStatement(sql);            
-            ps.setString(1,cv.getTenCV());
-            ps.setString(2,cv.getMaCV());
+            Connection con = jdbcUtils.getConnection();
+            String sql = "update [ChucVu] set ten=?"
+                    + "where ma =?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, cv.getTenCV());
+            ps.setString(2, cv.getMaCV());
             ps.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(NhanVienRepo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void Delele(ChucVu cv){ 
+
+    public void Delele(ChucVu cv) {
         Connection con;
         try {
             con = jdbcUtils.getConnection();
@@ -97,10 +98,10 @@ public class ChucVuRepo {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, cv.getMaCV());
             ps.execute();
-            
+
         } catch (Exception ex) {
             Logger.getLogger(ChucVuRepo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        
+
 }

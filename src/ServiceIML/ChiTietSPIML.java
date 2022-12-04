@@ -38,4 +38,9 @@ public class ChiTietSPIML implements ChiTietSpITF {
         return ctspRepo.TimTenSP(ten);
     }
 
+    @Override
+    public List<ChiTietSPModel> TrangThai(int so) {
+        return ctspRepo.TrangThai(so);
+    }
+
 }

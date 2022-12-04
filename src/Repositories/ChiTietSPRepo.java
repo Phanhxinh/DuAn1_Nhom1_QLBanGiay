@@ -180,4 +180,45 @@ public class ChiTietSPRepo {
             Logger.getLogger(NhanVienRepo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public List<ChiTietSPModel> TrangThai(int so) {
+        List<ChiTietSPModel> listSP = new ArrayList<>();
+        try {
+            Connection con = jdbcUtils.getConnection();
+            String sql = "select ChiTietSP.Id, SanPham.TenSP,KichCo.TenKc,MauSac.TenMS,TheLoai.TenTL,ChatLieu.TenCL,Hang.TenHang,De.TenDe,GiaNhap,GiaBan,SoLuong,BarCode,MoTa,Anh,TrangThai \n"
+                    + "from ChiTietSP \n"
+                    + "inner join SanPham on SanPham.id=ChiTietSP.IdSanPham\n"
+                    + "inner join KichCo on KichCo.id=ChiTietSP.IdKichCo\n"
+                    + "inner join MauSac on MauSac.id=ChiTietSP.IdMauSac\n"
+                    + "inner join TheLoai on TheLoai.id=ChiTietSP.IdLoaiSP\n"
+                    + "inner join ChatLieu on ChatLieu.id=ChiTietSP.IdChatLieu\n"
+                    + "inner join Hang on Hang.id=ChiTietSP.IdHang\n"
+                    + "inner join De on De.id=ChiTietSP.IdDe where TrangThai = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, so);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ChiTietSPModel ctsp = new ChiTietSPModel();
+                ctsp.setId(rs.getString(1));
+                ctsp.setIdSP(rs.getString(2));
+                ctsp.setIdSize(rs.getString(3));
+                ctsp.setIdMau(rs.getString(4));
+                ctsp.setIdLoaiSP(rs.getString(5));
+                ctsp.setIdChatLieu(rs.getString(6));
+                ctsp.setIdHang(rs.getString(7));
+                ctsp.setIdDE(rs.getString(8));
+                ctsp.setGiaNhap(rs.getInt(9));
+                ctsp.setGiaBan(rs.getInt(10));
+                ctsp.setSoLuong(rs.getInt(11));
+                ctsp.setBarCode(rs.getString(12));
+                ctsp.setMoTa(rs.getString(13));
+                ctsp.setAnh(rs.getString(14));
+                ctsp.setTrangThai(rs.getInt(15));
+                listSP.add(ctsp);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(NhanVienRepo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listSP;
+    }
 }

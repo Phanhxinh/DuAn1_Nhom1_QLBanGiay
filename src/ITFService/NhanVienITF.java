@@ -14,8 +14,14 @@ import java.util.List;
  * @author BachTN
  */
 public interface NhanVienITF {
+
     List<NhanVienViewModel> getListNV();
+
     void Add(NhanVien nv);
-    void Update(String ma,NhanVien nv);
+
+    void Update(String ma, NhanVien nv);
+
     List<NhanVienViewModel> FindNhanVien(String manv);
+
+    List<NhanVienViewModel> TrangThai(int so);
 }

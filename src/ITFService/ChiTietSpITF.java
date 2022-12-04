@@ -21,4 +21,6 @@ public interface ChiTietSpITF {
     void Update(String id, ChiTietSPModel ctsp);
 
     List<ChiTietSPModel> TimTenSP(String ten);
+
+    List<ChiTietSPModel> TrangThai(int so);
 }
