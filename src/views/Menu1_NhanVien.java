@@ -10,23 +10,22 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author DELL
  */
-public class Menu1 extends javax.swing.JInternalFrame {
+public class Menu1_NhanVien extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Menu1
      */
-    public Menu1() {
+    public Menu1_NhanVien() {
         initComponents();
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
 
-        Lb_1.setText(QuanLy.lblmanv.getText());
-        Lb_2.setText(QuanLy.txtName.getText());
-        Lb_3.setText(QuanLy.txtChucVu.getText());
+        Lb_1.setText(NhanVien.lblmanv.getText());
+        Lb_2.setText(NhanVien.txtName.getText());
+        Lb_3.setText(NhanVien.txtChucVu.getText());
     }
 //anh sáng 
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,7 +80,7 @@ public class Menu1 extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Tên Nhân Viên:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 200, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 210, -1, -1));
 
         Lb_3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Lb_3.setForeground(new java.awt.Color(0, 0, 0));

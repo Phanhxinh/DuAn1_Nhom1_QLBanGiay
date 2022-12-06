@@ -98,12 +98,12 @@ public class QuanLy extends javax.swing.JFrame {
         txtName.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtName.setForeground(new java.awt.Color(255, 255, 255));
         txtName.setText("Tên : ");
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 170, 30));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 170, 30));
 
         txtChucVu.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtChucVu.setForeground(new java.awt.Color(255, 255, 255));
         txtChucVu.setText("Chức Vụ: ");
-        jPanel1.add(txtChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 190, 30));
+        jPanel1.add(txtChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 190, 30));
 
         jDesktopPanel.setBackground(new java.awt.Color(255, 255, 255));
         jDesktopPanel.setPreferredSize(new java.awt.Dimension(1270, 570));
@@ -150,7 +150,7 @@ public class QuanLy extends javax.swing.JFrame {
         lblmanv.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         lblmanv.setForeground(new java.awt.Color(255, 255, 255));
         lblmanv.setText("Mã : ");
-        jPanel1.add(lblmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 80, 30));
+        jPanel1.add(lblmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 80, 30));
 
         jlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/URBAN OUTFIT (1).png"))); // NOI18N
         jPanel1.add(jlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, -1));

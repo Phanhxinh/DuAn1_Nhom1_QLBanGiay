@@ -38,7 +38,7 @@ public class NhanVien extends javax.swing.JFrame {
         menu8.setBackground(DefaultColor);
         menu9.setBackground(DefaultColor);
 
-        Menu1 mn1 = new Menu1();
+        Menu1_NhanVien mn1 = new Menu1_NhanVien();
         jDesktopPanel.removeAll();
         jDesktopPanel.add(mn1).setVisible(true);
     }
@@ -377,7 +377,7 @@ public class NhanVien extends javax.swing.JFrame {
         menu2.setBackground(DefaultColor);
         menu3.setBackground(DefaultColor);
 //        menu4.setBackground(DefaultColor);
-//        menu5.setBackground(DefaultColor);
+        menu5.setBackground(DefaultColor);
 //        menu6.setBackground(DefaultColor);
 //        menu7.setBackground(DefaultColor);
         menu8.setBackground(DefaultColor);
@@ -391,7 +391,7 @@ public class NhanVien extends javax.swing.JFrame {
         menu2.setBackground(ClickeColor);
         menu3.setBackground(DefaultColor);
 //        menu4.setBackground(DefaultColor);
-//        menu5.setBackground(DefaultColor);
+       menu5.setBackground(DefaultColor);
 //        menu6.setBackground(DefaultColor);
 //        menu7.setBackground(DefaultColor);
         menu8.setBackground(DefaultColor);
@@ -405,7 +405,7 @@ public class NhanVien extends javax.swing.JFrame {
         menu2.setBackground(DefaultColor);
         menu3.setBackground(ClickeColor);
 //        menu4.setBackground(DefaultColor);
-//        menu5.setBackground(DefaultColor);
+        menu5.setBackground(DefaultColor);
 //        menu6.setBackground(DefaultColor);
 //        menu7.setBackground(DefaultColor);
         menu8.setBackground(DefaultColor);
@@ -415,14 +415,14 @@ public class NhanVien extends javax.swing.JFrame {
 
     private void menu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu1MouseClicked
         // TODO add your handling code here:
-        Menu1 mn1 = new Menu1();
+        Menu1_NhanVien mn1 = new Menu1_NhanVien();
         jDesktopPanel.removeAll();
         jDesktopPanel.add(mn1).setVisible(true);
     }//GEN-LAST:event_menu1MouseClicked
 
     private void menu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu2MouseClicked
         // TODO add your handling code here:
-        Menu2 mn2 = new Menu2();
+        Menu2_NhanVien mn2 = new Menu2_NhanVien();
         jDesktopPanel.removeAll();
         jDesktopPanel.add(mn2).setVisible(true);
     }//GEN-LAST:event_menu2MouseClicked
@@ -447,7 +447,7 @@ public class NhanVien extends javax.swing.JFrame {
         menu2.setBackground(DefaultColor);
         menu3.setBackground(DefaultColor);
 //        menu4.setBackground(DefaultColor);
-//        menu5.setBackground(DefaultColor);
+        menu5.setBackground(DefaultColor);
 //        menu6.setBackground(DefaultColor);
 //        menu7.setBackground(DefaultColor);
         menu8.setBackground(ClickeColor);
@@ -465,7 +465,7 @@ public class NhanVien extends javax.swing.JFrame {
         menu2.setBackground(DefaultColor);
         menu3.setBackground(DefaultColor);
 //        menu4.setBackground(DefaultColor);
-//        menu5.setBackground(DefaultColor);
+        menu5.setBackground(DefaultColor);
 //        menu6.setBackground(DefaultColor);
 //        menu7.setBackground(DefaultColor);
         menu8.setBackground(DefaultColor);
