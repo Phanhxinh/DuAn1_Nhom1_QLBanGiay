@@ -80,6 +80,16 @@ public class Menu4 extends javax.swing.JInternalFrame {
             Object[] row = new Object[]{ctsp.getId(), ctsp.getIdSP(), ctsp.getIdSize(), ctsp.getIdMau(), ctsp.getIdLoaiSP(), ctsp.getIdChatLieu(), ctsp.getIdHang(), ctsp.getIdDE(), ctsp.getGiaNhap(), ctsp.getGiaBan(), ctsp.getSoLuong(), ctsp.getBarCode(), ctsp.getMoTa(), ctsp.getTrangThai() == 0 ? "Còn bán" : "Không còn bán", ctsp.getAnh()};
             tblModel.addRow(row);
         }
+    }
+
+    public void Timten(String ten) {
+        DefaultTableModel tblModel = (DefaultTableModel) tblChitietsp.getModel();
+        tblModel.setRowCount(0);
+        List<ChiTietSPModel> list = ctspitf.TimTenSP(ten);
+        for (ChiTietSPModel ctsp : list) {
+            Object[] row = new Object[]{ctsp.getId(), ctsp.getIdSP(), ctsp.getIdSize(), ctsp.getIdMau(), ctsp.getIdLoaiSP(), ctsp.getIdChatLieu(), ctsp.getIdHang(), ctsp.getIdDE(), ctsp.getGiaNhap(), ctsp.getGiaBan(), ctsp.getSoLuong(), ctsp.getBarCode(), ctsp.getMoTa(), ctsp.getTrangThai() == 0 ? "Còn bán" : "Không còn bán", ctsp.getAnh()};
+            tblModel.addRow(row);
+        }
 
     }
 
@@ -107,6 +117,16 @@ public class Menu4 extends javax.swing.JInternalFrame {
             }
         }
 
+    }
+    
+        public void TrangThai(int so) {
+        DefaultTableModel tblModel = (DefaultTableModel) tblChitietsp.getModel();
+        tblModel.setRowCount(0);
+        List<ChiTietSPModel> list = ctspitf.TrangThai(so);
+        for (ChiTietSPModel ctsp : list) {
+            Object[] row = new Object[]{ctsp.getId(), ctsp.getIdSP(), ctsp.getIdSize(), ctsp.getIdMau(), ctsp.getIdLoaiSP(), ctsp.getIdChatLieu(), ctsp.getIdHang(), ctsp.getIdDE(), ctsp.getGiaNhap(), ctsp.getGiaBan(), ctsp.getSoLuong(), ctsp.getBarCode(), ctsp.getMoTa(), ctsp.getTrangThai() == 0 ? "Còn bán" : "Không còn bán", ctsp.getAnh()};
+            tblModel.addRow(row);
+        }
     }
 
     private void CbxSanPham() {
@@ -391,6 +411,8 @@ public class Menu4 extends javax.swing.JInternalFrame {
         jButton7 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        cbbban = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1270, 600));
@@ -679,7 +701,19 @@ public class Menu4 extends javax.swing.JInternalFrame {
 
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Trạng thái");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 30, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, -1));
+
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Trạng thái sản lượng ");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, -1, -1));
+
+        cbbban.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Còn bán", "Ngừng bán" }));
+        cbbban.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbbanActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbbban, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 180, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -701,7 +735,7 @@ public class Menu4 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblChitietspMouseClicked
 
     private void txtTimKiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTimKiemCaretUpdate
-
+        Timten(txtTimKiem.getText());
     }//GEN-LAST:event_txtTimKiemCaretUpdate
 
     private void cbxSoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSoLuongActionPerformed
@@ -792,10 +826,22 @@ public class Menu4 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxTrangThaiActionPerformed
 
+    private void cbbbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbbanActionPerformed
+        // TODO add your handling code here:
+        if(cbbban.getSelectedIndex()==0){
+            loadData();
+        }else if(cbbban.getSelectedIndex()==1){
+            TrangThai(0);
+        }else if(cbbban.getSelectedIndex()==2){
+            TrangThai(1);
+        }
+    }//GEN-LAST:event_cbbbanActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnSua;
+    private javax.swing.JComboBox<String> cbbban;
     private javax.swing.JComboBox<String> cbxChatLieu;
     private javax.swing.JComboBox<String> cbxDe;
     private javax.swing.JComboBox<String> cbxHang;
@@ -820,6 +866,7 @@ public class Menu4 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

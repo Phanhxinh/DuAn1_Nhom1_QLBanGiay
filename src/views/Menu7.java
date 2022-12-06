@@ -31,7 +31,7 @@ import views.FormChucVu;
  * @author DELL
  */
 public class Menu7 extends javax.swing.JInternalFrame {
-
+    
     private final NhanVienITF nvitf = new NhanVienIML();
     private final ChucVuITF cvitf = new ChucVuIML();
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -47,7 +47,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
         loadData();
         CbxChucVu();
     }
-
+    
     public void loadData() {
         DefaultTableModel tblModel = (DefaultTableModel) tblNhanVien.getModel();
         tblModel.setRowCount(0);
@@ -56,9 +56,18 @@ public class Menu7 extends javax.swing.JInternalFrame {
             Object[] row = new Object[]{ctnv.getMaNv(), ctnv.getHoTen(), ctnv.getGioiTinh(), ctnv.getNgaySinh(), ctnv.getEmail(), ctnv.getDiaChi(), ctnv.getMatKhau(), ctnv.getSdt(), ctnv.getChucVu(), ctnv.getTrangThai() == 0 ? "Đang làm" : "Nghỉ làm", ctnv.getAnh()};
             tblModel.addRow(row);
         }
-
     }
-
+    
+    public void TrangThai(int so) {
+        DefaultTableModel tblModel = (DefaultTableModel) tblNhanVien.getModel();
+        tblModel.setRowCount(0);
+        List<NhanVienViewModel> list = nvitf.TrangThai(so);
+        for (NhanVienViewModel ctnv : list) {
+            Object[] row = new Object[]{ctnv.getMaNv(), ctnv.getHoTen(), ctnv.getGioiTinh(), ctnv.getNgaySinh(), ctnv.getEmail(), ctnv.getDiaChi(), ctnv.getMatKhau(), ctnv.getSdt(), ctnv.getChucVu(), ctnv.getTrangThai() == 0 ? "Đang làm" : "Nghỉ làm", ctnv.getAnh()};
+            tblModel.addRow(row);
+        }
+    }
+    
     public void clearForm() {
         txtManv.setText("");
         txtHotennv.setText("");
@@ -68,14 +77,14 @@ public class Menu7 extends javax.swing.JInternalFrame {
         txtSdt.setText("");
         txtMatKhau.setText("");
     }
-
+    
     private void CbxChucVu() {
         cbxChucVu.removeAllItems();
         for (ChucVu chucVu : cvitf.CbxChucVu()) {
             cbxChucVu.addItem(String.valueOf(chucVu));
         }
     }
-
+    
     private String getIdChucVu(String ten) {
         for (ChucVu chucVu : cvitf.CbxChucVu()) {
             if (chucVu.getTenCV().equals(ten)) {
@@ -84,7 +93,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-
+    
     public void add() {
         NhanVien nv = new NhanVien();
         nv.setMaNv(txtManv.getText());
@@ -116,7 +125,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, re.getMessage());
         }
     }
-
+    
     public void Update() {
         NhanVien nv = new NhanVien();
         nv.setMaNv(txtManv.getText());
@@ -140,6 +149,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
         } else {
             TrangThai = 1;
         }
+        nv.setTrangThai(TrangThai);
         try {
             nvitf.Update(txtManv.getText(), nv);
             loadData();
@@ -148,7 +158,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, re.getMessage());
         }
     }
-
+    
     public void selectRow(int i) {
         try {
             NhanVien nv = new NhanVien();
@@ -187,7 +197,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-
+    
     public void FindNhanVien(String manv, String tennv) {
         DefaultTableModel tblModel = (DefaultTableModel) tblNhanVien.getModel();
         tblModel.setRowCount(0);
@@ -196,7 +206,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
             Object[] row = new Object[]{ctnv.getMaNv(), ctnv.getHoTen(), ctnv.getGioiTinh(), ctnv.getNgaySinh(), ctnv.getEmail(), ctnv.getDiaChi(), ctnv.getMatKhau(), ctnv.getSdt(), ctnv.getChucVu(), ctnv.getTrangThai() == 0 ? "Đang làm" : "Nghỉ làm", ctnv.getAnh()};
             tblModel.addRow(row);
         }
-
+        
     }
 
     /**
@@ -215,6 +225,8 @@ public class Menu7 extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhanVien = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        cbbtt = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtManv = new javax.swing.JTextField();
@@ -284,6 +296,16 @@ public class Menu7 extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Tìm kiếm");
 
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Trạng thái");
+
+        cbbtt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Đang làm", "Nghỉ việc" }));
+        cbbtt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbttActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -294,7 +316,11 @@ public class Menu7 extends javax.swing.JInternalFrame {
                         .addGap(47, 47, 47)
                         .addComponent(jLabel11)
                         .addGap(45, 45, 45)
-                        .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(286, 286, 286)
+                        .addComponent(jLabel10)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbbtt, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1051, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -306,7 +332,9 @@ public class Menu7 extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(cbbtt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -523,7 +551,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
 
     private void lblImgNvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImgNvMouseClicked
         JFileChooser fileChooser = new JFileChooser("images");
-
+        
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             // Khởi tạo file với giá trị = file đã chọn ở khung chọn file
@@ -553,15 +581,28 @@ public class Menu7 extends javax.swing.JInternalFrame {
         FindNhanVien(txtFind.getText(), txtFind.getText());
     }//GEN-LAST:event_txtFindCaretUpdate
 
+    private void cbbttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbttActionPerformed
+        // TODO add your handling code here:
+        if (cbbtt.getSelectedIndex() == 0) {
+            loadData();
+        } else if (cbbtt.getSelectedIndex() == 1) {
+            TrangThai(0);
+        } else if (cbbtt.getSelectedIndex() == 2) {
+            TrangThai(1);
+        }
+    }//GEN-LAST:event_cbbttActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFormChucVu;
     private javax.swing.JComboBox<String> cbbTrangThai;
+    private javax.swing.JComboBox<String> cbbtt;
     private javax.swing.JComboBox<String> cbxChucVu;
     private javax.swing.ButtonGroup gruopGioiTinh;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;

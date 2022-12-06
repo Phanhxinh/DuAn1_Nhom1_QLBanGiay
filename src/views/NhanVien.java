@@ -5,13 +5,13 @@
 package views;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author DELL
  */
 public class NhanVien extends javax.swing.JFrame {
-//d
 
     /**
      * Creates new form QuanLy
@@ -23,8 +23,8 @@ public class NhanVien extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
 
-        DefaultColor = new Color(51,51,51);
-        ClickeColor = new Color(102,102,102);
+        DefaultColor = new Color(51, 51, 51);
+        ClickeColor = new Color(102, 102, 102);
         lblmanv.setText(manv);
         txtName.setText(tennv);
         txtChucVu.setText(chucvu);
@@ -88,7 +88,7 @@ public class NhanVien extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 20, -1, -1));
 
-        txtName.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
+        txtName.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtName.setForeground(new java.awt.Color(255, 255, 255));
         txtName.setText("Tên : ");
         jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 160, 30));
@@ -138,7 +138,7 @@ public class NhanVien extends javax.swing.JFrame {
 
         jPanel1.add(jDesktopPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 1270, 570));
 
-        lblmanv.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
+        lblmanv.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         lblmanv.setForeground(new java.awt.Color(255, 255, 255));
         lblmanv.setText("Mã : ");
         jPanel1.add(lblmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, 30));
@@ -479,13 +479,19 @@ public class NhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        lg.setVisible(true);
-        this.dispose();
+        int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn đăng suất không ?");
+        if (hoi == 0) {
+            lg.setVisible(true);
+            this.dispose();
+        } else {
+            return;
+        }
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void menu9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu9MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_menu9MouseEntered
+
 
     private void menu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu5MouseClicked
         // TODO add your handling code here:
@@ -506,7 +512,9 @@ public class NhanVien extends javax.swing.JFrame {
         menu8.setBackground(DefaultColor);
         menu9.setBackground(DefaultColor);
     }//GEN-LAST:event_menu5MousePressed
-  public static void main(String args[]) {
+
+    public static void main(String args[]) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

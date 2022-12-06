@@ -396,6 +396,8 @@ public class Menu3 extends javax.swing.JInternalFrame {
 
     private void tablehoadonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablehoadonMouseClicked
         // TODO add your handling code here:
+        lblsokhuyenmai.setText("0");
+        lbltienkm.setText("0");
         ClearAlltableGioHang();
         int row = tablehoadon.getSelectedRow();
         String maHD = tablehoadon.getValueAt(row, 1).toString();
@@ -419,6 +421,7 @@ public class Menu3 extends javax.swing.JInternalFrame {
             lblthanhtien.setText(lbltongcong.getText());
             lblsokhuyenmai.setText("0");
             lbltienkm.setText("0");
+
         } else {
             updatetienKM();
         }

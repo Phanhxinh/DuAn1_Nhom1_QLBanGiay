@@ -14,8 +14,10 @@ import java.util.List;
  *
  * @author BachTN
  */
-public class ChiTietSPIML implements ChiTietSpITF{
-    private final ChiTietSPRepo ctspRepo=new ChiTietSPRepo();
+public class ChiTietSPIML implements ChiTietSpITF {
+
+    private final ChiTietSPRepo ctspRepo = new ChiTietSPRepo();
+
     @Override
     public List<ChiTietSPModel> getListCTSP() {
         return ctspRepo.getListCTSP();
@@ -27,7 +29,18 @@ public class ChiTietSPIML implements ChiTietSpITF{
     }
 
     @Override
-    public void Update(String id,ChiTietSPModel ctsp) {
-        ctspRepo.Update(id,ctsp);
+    public void Update(String id, ChiTietSPModel ctsp) {
+        ctspRepo.Update(id, ctsp);
     }
+
+    @Override
+    public List<ChiTietSPModel> TimTenSP(String ten) {
+        return ctspRepo.TimTenSP(ten);
+    }
+
+    @Override
+    public List<ChiTietSPModel> TrangThai(int so) {
+        return ctspRepo.TrangThai(so);
+    }
+
 }

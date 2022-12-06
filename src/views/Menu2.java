@@ -562,7 +562,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 0, 51), 3, true), "Hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel4.setForeground(new java.awt.Color(0, 0, 0));
 
-        CbbHoaDon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Đã thanh toán", "Đang chờ", "Chờ thanh toán" }));
+        CbbHoaDon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Đã thanh toán", "Đang chờ", "Đã hủy" }));
         CbbHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CbbHoaDonActionPerformed(evt);
@@ -1026,7 +1026,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         } else if (chuoi2 + 1 < 100) {
             txtmaHoaDon.setText("HD00" + (chuoi2 + 1));
         } else if (chuoi2 + 1 < 1000) {
-            txtmaHoaDon.setText("HD" + (chuoi2 + 1));
+            txtmaHoaDon.setText("HD0" + (chuoi2 + 1));
         }
         String MaHD = txtmaHoaDon.getText();
         for (HoaDon_BanHangModel hdbhm : banHangITF.getAllHoaDon()) {
