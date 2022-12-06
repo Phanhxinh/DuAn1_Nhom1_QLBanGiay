@@ -26,7 +26,8 @@ public class NhanVien extends javax.swing.JFrame {
         DefaultColor = new Color(51,51,51);
         ClickeColor = new Color(102,102,102);
         lblmanv.setText(manv);
-        txtName.setText(tennv + " - " + chucvu);
+        txtName.setText(tennv);
+        txtChucVu.setText(chucvu);
         menu1.setBackground(DefaultColor);
         menu2.setBackground(DefaultColor);
         menu3.setBackground(DefaultColor);
@@ -54,6 +55,7 @@ public class NhanVien extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txtName = new javax.swing.JLabel();
+        txtChucVu = new javax.swing.JLabel();
         jDesktopPanel = new javax.swing.JDesktopPane();
         jDesktopPanel1 = new javax.swing.JDesktopPane();
         lblmanv = new javax.swing.JLabel();
@@ -69,6 +71,8 @@ public class NhanVien extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         menu1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        menu5 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -87,7 +91,12 @@ public class NhanVien extends javax.swing.JFrame {
         txtName.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
         txtName.setForeground(new java.awt.Color(255, 255, 255));
         txtName.setText("Tên : ");
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 270, 30));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 160, 30));
+
+        txtChucVu.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        txtChucVu.setForeground(new java.awt.Color(255, 255, 255));
+        txtChucVu.setText("Chức Vụ: ");
+        jPanel1.add(txtChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 190, 30));
 
         jDesktopPanel.setBackground(new java.awt.Color(255, 255, 255));
         jDesktopPanel.setPreferredSize(new java.awt.Dimension(1270, 570));
@@ -132,7 +141,7 @@ public class NhanVien extends javax.swing.JFrame {
         lblmanv.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
         lblmanv.setForeground(new java.awt.Color(255, 255, 255));
         lblmanv.setText("Mã : ");
-        jPanel1.add(lblmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 80, 30));
+        jPanel1.add(lblmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, 30));
 
         jlabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/URBAN OUTFIT (1).png"))); // NOI18N
         jPanel1.add(jlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, -1));
@@ -206,14 +215,14 @@ public class NhanVien extends javax.swing.JFrame {
             .addGroup(menu9Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel12)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         menu9Layout.setVerticalGroup(
             menu9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(menu9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, -1, -1));
+        jPanel2.add(menu9, new org.netbeans.lib.awtextra.AbsoluteConstraints(733, 0, 160, -1));
 
         menu3.setBackground(new java.awt.Color(50, 43, 43));
         menu3.setPreferredSize(new java.awt.Dimension(190, 60));
@@ -310,6 +319,41 @@ public class NhanVien extends javax.swing.JFrame {
         );
 
         jPanel2.add(menu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        menu5.setBackground(new java.awt.Color(50, 43, 43));
+        menu5.setPreferredSize(new java.awt.Dimension(190, 60));
+        menu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu5MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menu5MousePressed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/promotions.png"))); // NOI18N
+        jLabel7.setText("Khuyến Mại");
+
+        javax.swing.GroupLayout menu5Layout = new javax.swing.GroupLayout(menu5);
+        menu5.setLayout(menu5Layout);
+        menu5Layout.setHorizontalGroup(
+            menu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu5Layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(17, 17, 17))
+        );
+        menu5Layout.setVerticalGroup(
+            menu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel2.add(menu5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, 170, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 1270, 60));
 
@@ -442,6 +486,26 @@ public class NhanVien extends javax.swing.JFrame {
     private void menu9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu9MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_menu9MouseEntered
+
+    private void menu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu5MouseClicked
+        // TODO add your handling code here:
+        Menu5 mn5 = new Menu5();
+        jDesktopPanel.removeAll();
+        jDesktopPanel.add(mn5).setVisible(true);
+    }//GEN-LAST:event_menu5MouseClicked
+
+    private void menu5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu5MousePressed
+        // TODO add your handling code here:
+        menu1.setBackground(DefaultColor);
+        menu2.setBackground(DefaultColor);
+        menu3.setBackground(DefaultColor);
+//        menu4.setBackground(DefaultColor);
+        menu5.setBackground(ClickeColor);
+//        menu6.setBackground(DefaultColor);
+//        menu7.setBackground(DefaultColor);
+        menu8.setBackground(DefaultColor);
+        menu9.setBackground(DefaultColor);
+    }//GEN-LAST:event_menu5MousePressed
   public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -486,6 +550,7 @@ public class NhanVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel jlabel;
@@ -493,8 +558,10 @@ public class NhanVien extends javax.swing.JFrame {
     private javax.swing.JPanel menu1;
     private javax.swing.JPanel menu2;
     private javax.swing.JPanel menu3;
+    private javax.swing.JPanel menu5;
     private javax.swing.JPanel menu8;
     private javax.swing.JPanel menu9;
+    public static javax.swing.JLabel txtChucVu;
     public static javax.swing.JLabel txtName;
     // End of variables declaration//GEN-END:variables
 }

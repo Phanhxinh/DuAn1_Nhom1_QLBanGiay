@@ -27,7 +27,8 @@ public class QuanLy extends javax.swing.JFrame {
         DefaultColor = new Color(51, 51, 51);
         ClickeColor = new Color(102, 102, 102);
         lblmanv.setText(manv);
-        txtName.setText(tennv + " - " + chucvu);
+        txtName.setText(tennv);
+        txtChucVu.setText(chucvu);
         menu1.setBackground(DefaultColor);
         menu2.setBackground(DefaultColor);
         menu3.setBackground(DefaultColor);
@@ -55,6 +56,7 @@ public class QuanLy extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txtName = new javax.swing.JLabel();
+        txtChucVu = new javax.swing.JLabel();
         jDesktopPanel = new javax.swing.JDesktopPane();
         jDesktopPanel1 = new javax.swing.JDesktopPane();
         lblmanv = new javax.swing.JLabel();
@@ -96,7 +98,12 @@ public class QuanLy extends javax.swing.JFrame {
         txtName.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         txtName.setForeground(new java.awt.Color(255, 255, 255));
         txtName.setText("Tên : ");
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 270, 30));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 170, 30));
+
+        txtChucVu.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
+        txtChucVu.setForeground(new java.awt.Color(255, 255, 255));
+        txtChucVu.setText("Chức Vụ: ");
+        jPanel1.add(txtChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 190, 30));
 
         jDesktopPanel.setBackground(new java.awt.Color(255, 255, 255));
         jDesktopPanel.setPreferredSize(new java.awt.Dimension(1270, 570));
@@ -755,6 +762,7 @@ public class QuanLy extends javax.swing.JFrame {
     private javax.swing.JPanel menu7;
     private javax.swing.JPanel menu8;
     private javax.swing.JPanel menu9;
+    public static javax.swing.JLabel txtChucVu;
     public static javax.swing.JLabel txtName;
     // End of variables declaration//GEN-END:variables
 }
