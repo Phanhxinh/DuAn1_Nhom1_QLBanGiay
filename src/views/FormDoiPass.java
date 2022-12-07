@@ -31,6 +31,19 @@ public class FormDoiPass extends javax.swing.JFrame {
         dmk.setMk(txt_MatKhauCu.getText());
         dmk.setMKmoi(txt_MatKhauMoi.getText());
         dmk.setXNMKmoi(txt_xnMatKhauMoi.getText());
+        if(txt_Email.equals("")){
+            JOptionPane.showMessageDialog(this, "Email không được để trống");
+            return;
+        }else if(txt_MatKhauCu.equals("")){
+            JOptionPane.showMessageDialog(this, "Mật Khẩu cũ không được để trống");
+            return;
+        }else if(txt_MatKhauMoi.equals("")){
+            JOptionPane.showMessageDialog(this, "Mật Khẩu Mới không được để trống");
+            return;
+        }else if(txt_xnMatKhauMoi.equals("")){
+            JOptionPane.showMessageDialog(this, "Xác Nhận Mật Khẩu Mới không được để trống");
+            return;
+        }
         if (!txt_xnMatKhauMoi.getText().matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{6,10}$")) {
             JOptionPane.showMessageDialog(this, "Mật khẩu phải gồm 1 chữ viết hoa,số và ký tự đặc biệt");
             return;
@@ -40,19 +53,9 @@ public class FormDoiPass extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Mật Khảu mới Không trùng khớp,Hãy Nhập lại");
             return;
         }
-        dmkrp.Update(txt_Email.getText(), dmk);
+        dmkrp.Update(txt_Email.getText(), dmk); 
         JOptionPane.showMessageDialog(this, "Đổi Mật Khẩu Thành Công thành công");
-        //                if(txt_xnMatKhauMoi.getText() != txt_MatKhauMoi.getText()){
-        //                    JOptionPane.showMessageDialog(this, "Mật Khảu mới Không trùng khớp,Hãy Nhập lại");
-        //                }else {
-        //                    try {
-        //                    dmkrp.Update(txt_Email.getText(), dmk);
-        //        
-        //                    JOptionPane.showMessageDialog(this, "Đổi Mật Khẩu Thành Công thành công");
-        //                } catch (RuntimeException re) {
-        //                    JOptionPane.showMessageDialog(this, re.getMessage());
-        //                }
-        //                }
+
                     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
