@@ -89,7 +89,7 @@ public class Menu1 extends javax.swing.JInternalFrame {
 
         Lb_2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Lb_2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(Lb_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 230, 130, 20));
+        jPanel1.add(Lb_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 200, 130, 20));
 
         Lb_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Lb_1.setForeground(new java.awt.Color(0, 0, 0));

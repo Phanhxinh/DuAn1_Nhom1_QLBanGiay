@@ -88,7 +88,7 @@ public class Menu1_NhanVien extends javax.swing.JInternalFrame {
 
         Lb_2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Lb_2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(Lb_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 240, 170, 20));
+        jPanel1.add(Lb_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 210, 170, 20));
 
         Lb_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Lb_1.setForeground(new java.awt.Color(0, 0, 0));
