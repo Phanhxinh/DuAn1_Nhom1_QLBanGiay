@@ -234,10 +234,12 @@ public class Menu3 extends javax.swing.JInternalFrame {
 
         lblmahd.setBackground(new java.awt.Color(255, 255, 255));
         lblmahd.setForeground(new java.awt.Color(0, 0, 0));
+        lblmahd.setDisabledTextColor(new java.awt.Color(255, 0, 51));
         jPanel1.add(lblmahd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 240, 30));
 
         lblchuongtrinhkm.setBackground(new java.awt.Color(255, 255, 255));
         lblchuongtrinhkm.setForeground(new java.awt.Color(0, 0, 0));
+        lblchuongtrinhkm.setDisabledTextColor(new java.awt.Color(255, 0, 51));
         jPanel1.add(lblchuongtrinhkm, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 240, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -292,21 +294,25 @@ public class Menu3 extends javax.swing.JInternalFrame {
         lbltongcong.setBackground(new java.awt.Color(255, 255, 255));
         lbltongcong.setForeground(new java.awt.Color(255, 0, 51));
         lbltongcong.setText("0");
+        lbltongcong.setDisabledTextColor(new java.awt.Color(255, 0, 51));
         jPanel1.add(lbltongcong, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 180, 30));
 
         lblsokhuyenmai.setBackground(new java.awt.Color(255, 255, 255));
         lblsokhuyenmai.setForeground(new java.awt.Color(0, 0, 0));
         lblsokhuyenmai.setText("0");
+        lblsokhuyenmai.setDisabledTextColor(new java.awt.Color(255, 0, 51));
         jPanel1.add(lblsokhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 30, 30));
 
         lbltienkm.setBackground(new java.awt.Color(255, 255, 255));
         lbltienkm.setForeground(new java.awt.Color(255, 0, 51));
         lbltienkm.setText("0");
+        lbltienkm.setDisabledTextColor(new java.awt.Color(255, 0, 51));
         jPanel1.add(lbltienkm, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 130, 30));
 
         lblthanhtien.setBackground(new java.awt.Color(255, 255, 255));
         lblthanhtien.setForeground(new java.awt.Color(255, 0, 51));
         lblthanhtien.setText("0");
+        lblthanhtien.setDisabledTextColor(new java.awt.Color(255, 0, 51));
         jPanel1.add(lblthanhtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 180, 30));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
