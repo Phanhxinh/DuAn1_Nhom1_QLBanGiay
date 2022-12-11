@@ -18,7 +18,7 @@ public class ThongKeRepo {
             String sql = "select  s.MaSP,s.TenSP, h.SoLuong,d.NgayTao,d.trangThai from HoaDonChiTiet h"
                     + " join ChiTietSP c on h.IdChiTietSP = c.Id "
                     + "join SanPham s on s.Id = c.IdSanPham "
-                    + "join HoaDon d on h.IdHoaDon =d.Id order by d.NgayTao desc ";
+                    + "join HoaDon d on h.IdHoaDon =d.Id where d.TrangThai =0 order by d.NgayTao desc ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
