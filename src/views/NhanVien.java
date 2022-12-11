@@ -479,11 +479,12 @@ public class NhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn đăng suất không ?");
-        if (hoi == 0) {
+      int dialogButton = JOptionPane.showConfirmDialog (null, "Are you sure?","WARNING",JOptionPane.YES_NO_OPTION);
+        if (dialogButton == JOptionPane.YES_OPTION) {
             lg.setVisible(true);
             this.dispose();
-        } else {
+        } 
+        if(dialogButton == JOptionPane.NO_OPTION){
             return;
         }
     }//GEN-LAST:event_jLabel12MouseClicked

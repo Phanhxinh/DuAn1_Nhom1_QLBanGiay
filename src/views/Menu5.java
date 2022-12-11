@@ -97,6 +97,7 @@ public class Menu5 extends javax.swing.JInternalFrame {
         return khuyenMaiModel;
 
     }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -394,7 +395,19 @@ public class Menu5 extends javax.swing.JInternalFrame {
 
     private void btthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthemActionPerformed
         // TODO add your handling code here:
-        KhuyenMaiModel khuyenMaiModel = this.GetFromData();
+       if(txtma.getText().isBlank()){
+            
+            JOptionPane.showMessageDialog(this, "Không được để trống Mã khuyến mãi");
+            txtma.requestFocus();
+            return;
+        }
+        if(txtten.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "Không được để trống Tên khuyến mãi");
+            txtten.requestFocus();
+            return;
+        }
+        try {
+                KhuyenMaiModel khuyenMaiModel = this.GetFromData();
         if (khuyenMaiModel == null) {
             return;
         }
@@ -407,16 +420,35 @@ public class Menu5 extends javax.swing.JInternalFrame {
         }
         this.khuyenMaiIF.insert(khuyenMaiModel);
         this.LoatTable();
+        } catch (Exception e) {e.printStackTrace();
+        }
+    
     }//GEN-LAST:event_btthemActionPerformed
 
     private void btsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsuaActionPerformed
         // TODO add your handling code here:
-        KhuyenMaiModel khuyenMaiModel = this.GetFromData();
+         if(txtma.getText().isBlank()){
+            
+            JOptionPane.showMessageDialog(this, "Không được để trống Mã khuyến mãi");
+            txtma.requestFocus();
+            return;
+        }
+        if(txtten.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "Không được để trống Tên khuyến mãi");
+            txtten.requestFocus();
+            return;
+        }
+        try {
+             KhuyenMaiModel khuyenMaiModel = this.GetFromData();
         if (khuyenMaiModel == null) {
             return;
         }
         this.khuyenMaiIF.update(khuyenMaiModel.getMa(), khuyenMaiModel);
         this.LoatTable();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       
     }//GEN-LAST:event_btsuaActionPerformed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked

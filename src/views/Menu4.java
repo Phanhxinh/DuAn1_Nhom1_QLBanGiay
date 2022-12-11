@@ -36,6 +36,7 @@ import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import ITFService.DEITF;
+import java.awt.Color;
 import javax.swing.JFileChooser;
 
 /**
@@ -71,7 +72,8 @@ public class Menu4 extends javax.swing.JInternalFrame {
         CbxDe();
 
     }
-
+  
+    
     public void loadData() {
         DefaultTableModel tblModel = (DefaultTableModel) tblChitietsp.getModel();
         tblModel.setRowCount(0);
@@ -118,8 +120,8 @@ public class Menu4 extends javax.swing.JInternalFrame {
         }
 
     }
-    
-        public void TrangThai(int so) {
+
+    public void TrangThai(int so) {
         DefaultTableModel tblModel = (DefaultTableModel) tblChitietsp.getModel();
         tblModel.setRowCount(0);
         List<ChiTietSPModel> list = ctspitf.TrangThai(so);
@@ -242,75 +244,189 @@ public class Menu4 extends javax.swing.JInternalFrame {
     }
 
     public void add() {
-        ChiTietSPModel ctsp = new ChiTietSPModel();
-        String TenSanPham = cbxTenSp.getSelectedItem().toString();
-        ctsp.setIdSP(getIdSanPham(TenSanPham));
-        String Size = cbxSize.getSelectedItem().toString();
-        ctsp.setIdSize(getIdKichCo(Size));
-        String MauSac = cbxMau.getSelectedItem().toString();
-        ctsp.setIdMau(getIdMauSac(MauSac));
-        String Loai = cbxLoaiSp.getSelectedItem().toString();
-        ctsp.setIdLoaiSP(getIdTheLoai(Loai));
-        String ChatLieu = cbxChatLieu.getSelectedItem().toString();
-        ctsp.setIdChatLieu(getIdChatLieu(ChatLieu));
-        String Hang = cbxHang.getSelectedItem().toString();
-        ctsp.setIdHang(getIdHang(Hang));
-        String De = cbxDe.getSelectedItem().toString();
-        ctsp.setIdDE(getIdDe(De));
-        ctsp.setGiaNhap(Integer.parseInt(txtGiaNhap.getText()));
-        ctsp.setGiaBan(Integer.parseInt(txtGiaBan.getText()));
-        ctsp.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
-        ctsp.setBarCode(txtBarcode.getText());
-        ctsp.setMoTa(txtMoTa.getText());
-        ctsp.setAnh(lblAnhSp.getName());
-        int TrangThai;
-        if (cbxTrangThai.getSelectedIndex() == 0) {
-            TrangThai = 0;
-        } else {
-            TrangThai = 1;
-        }
-        ctsp.setTrangThai(TrangThai);
+        check();
         try {
+            ChiTietSPModel ctsp = new ChiTietSPModel();
+            String TenSanPham = cbxTenSp.getSelectedItem().toString();
+            ctsp.setIdSP(getIdSanPham(TenSanPham));
+            String Size = cbxSize.getSelectedItem().toString();
+            ctsp.setIdSize(getIdKichCo(Size));
+            String MauSac = cbxMau.getSelectedItem().toString();
+            ctsp.setIdMau(getIdMauSac(MauSac));
+            String Loai = cbxLoaiSp.getSelectedItem().toString();
+            ctsp.setIdLoaiSP(getIdTheLoai(Loai));
+            String ChatLieu = cbxChatLieu.getSelectedItem().toString();
+            ctsp.setIdChatLieu(getIdChatLieu(ChatLieu));
+            String Hang = cbxHang.getSelectedItem().toString();
+            ctsp.setIdHang(getIdHang(Hang));
+            String De = cbxDe.getSelectedItem().toString();
+            ctsp.setIdDE(getIdDe(De));
+            ctsp.setBarCode(txtBarcode.getText());
+            ctsp.setMoTa(txtMoTa.getText());
+            ctsp.setAnh(lblAnhSp.getName());
+            int TrangThai;
+            if (cbxTrangThai.getSelectedIndex() == 0) {
+                TrangThai = 0;
+            } else {
+                TrangThai = 1;
+            }
+            ctsp.setTrangThai(TrangThai);
 
+            try {
+                int gianhap = Integer.parseInt(txtGiaNhap.getText());
+                if (gianhap < 0) {
+                    JOptionPane.showMessageDialog(this, "Giá tiền nhập vào không được âm");
+                    txtGiaNhap.requestFocus();
+                    return;
+                } else {
+                    ctsp.setGiaNhap(Integer.parseInt(txtGiaNhap.getText()));
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Giá tiền nhập vào phải là số");
+                txtGiaNhap.requestFocus();
+                return;
+
+            }
+            try {
+                int giaban = Integer.parseInt(txtGiaBan.getText());
+                if (giaban < 0) {
+                    JOptionPane.showMessageDialog(this, "Số tiền nhập vào không được âm");
+                    txtGiaBan.requestFocus();
+                    return;
+                } else {
+                    ctsp.setGiaBan(Integer.parseInt(txtGiaBan.getText()));
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Giá tiền nhập vào phải là số");
+                txtGiaBan.requestFocus();
+                return;
+
+            }
+            try {
+                int soluong = Integer.parseInt(txtSoLuong.getText());
+                if (soluong < 0) {
+                    JOptionPane.showMessageDialog(this, "Số lượng nhập vào không được âm");
+                    txtSoLuong.requestFocus();
+                    return;
+                } else {
+                    ctsp.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Số lượng nhập vào phải là số");
+                txtSoLuong.requestFocus();
+                return;
+            }
             ctspitf.Add(ctsp);
             loadData();
             JOptionPane.showMessageDialog(this, "Thêm thành công");
 
         } catch (RuntimeException re) {
-            JOptionPane.showMessageDialog(this, "Lỗi");
+            JOptionPane.showMessageDialog(this, "Thêm thất bại");
         }
     }
 
-    public void Update() {
-        ChiTietSPModel ctsp = new ChiTietSPModel();
-        String Size = cbxSize.getSelectedItem().toString();
-        ctsp.setIdSize(getIdKichCo(Size));
-        String MauSac = cbxMau.getSelectedItem().toString();
-        ctsp.setIdMau(getIdMauSac(MauSac));
-        String Loai = cbxLoaiSp.getSelectedItem().toString();
-        ctsp.setIdLoaiSP(getIdTheLoai(Loai));
-        String ChatLieu = cbxChatLieu.getSelectedItem().toString();
-        ctsp.setIdChatLieu(getIdChatLieu(ChatLieu));
-        String Hang = cbxHang.getSelectedItem().toString();
-        ctsp.setIdHang(getIdHang(Hang));
-        String De = cbxDe.getSelectedItem().toString();
-        ctsp.setIdDE(getIdDe(De));
-        ctsp.setGiaNhap(Integer.parseInt(txtGiaNhap.getText()));
-        ctsp.setGiaBan(Integer.parseInt(txtGiaBan.getText()));
-        ctsp.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
-        ctsp.setBarCode(txtBarcode.getText());
-        ctsp.setMoTa(txtMoTa.getText());
-        ctsp.setAnh(lblAnhSp.getName());
-        int TrangThai;
-        if (cbxTrangThai.getSelectedIndex() == 0) {
-            TrangThai = 0;
+    public void check() {
+        if (txtGiaNhap.getText().isBlank()) {
+            txtGiaNhap.setBackground(Color.YELLOW);
+            JOptionPane.showMessageDialog(this, "Chưa nhập giá nhập hàng");
+            txtGiaNhap.requestFocus();
+            return;
         } else {
-            TrangThai = 1;
+            txtGiaNhap.setBackground(Color.WHITE);
         }
-        ctsp.setTrangThai(TrangThai);
-        String id = txtId.getText();
-        try {
+        if (txtGiaBan.getText().isBlank()) {
+            txtGiaBan.setBackground(Color.YELLOW);
+            JOptionPane.showMessageDialog(this, "Chưa nhập giá bán hàng");
+            txtGiaBan.requestFocus();
+            return;
+        } else {
+            txtGiaBan.setBackground(Color.WHITE);
+        }
+        if (txtSoLuong.getText().isBlank()) {
+            txtSoLuong.setBackground(Color.YELLOW);
+            JOptionPane.showMessageDialog(this, "Chưa nhập số lượng hàng");
+            txtSoLuong.requestFocus();
+            return;
+        } else {
+            txtSoLuong.setBackground(Color.WHITE);
+        }
 
+    }
+
+    public void Update() {
+        check();
+        try {
+            ChiTietSPModel ctsp = new ChiTietSPModel();
+            String TenSanPham = cbxTenSp.getSelectedItem().toString();
+            ctsp.setIdSP(getIdSanPham(TenSanPham));
+            String Size = cbxSize.getSelectedItem().toString();
+            ctsp.setIdSize(getIdKichCo(Size));
+            String MauSac = cbxMau.getSelectedItem().toString();
+            ctsp.setIdMau(getIdMauSac(MauSac));
+            String Loai = cbxLoaiSp.getSelectedItem().toString();
+            ctsp.setIdLoaiSP(getIdTheLoai(Loai));
+            String ChatLieu = cbxChatLieu.getSelectedItem().toString();
+            ctsp.setIdChatLieu(getIdChatLieu(ChatLieu));
+            String Hang = cbxHang.getSelectedItem().toString();
+            ctsp.setIdHang(getIdHang(Hang));
+            String De = cbxDe.getSelectedItem().toString();
+            ctsp.setIdDE(getIdDe(De));
+            ctsp.setBarCode(txtBarcode.getText());
+            ctsp.setMoTa(txtMoTa.getText());
+            ctsp.setAnh(lblAnhSp.getName());
+            int TrangThai;
+            if (cbxTrangThai.getSelectedIndex() == 0) {
+                TrangThai = 0;
+            } else {
+                TrangThai = 1;
+            }
+            ctsp.setTrangThai(TrangThai);
+
+            try {
+                int gianhap = Integer.parseInt(txtGiaNhap.getText());
+                if (gianhap < 0) {
+                    JOptionPane.showMessageDialog(this, "Giá tiền nhập vào không được âm");
+                    txtGiaNhap.requestFocus();
+                    return;
+                } else {
+                    ctsp.setGiaNhap(Integer.parseInt(txtGiaNhap.getText()));
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Giá tiền nhập vào phải là số");
+                txtGiaNhap.requestFocus();
+                return;
+
+            }
+            try {
+                int giaban = Integer.parseInt(txtGiaBan.getText());
+                if (giaban < 0) {
+                    JOptionPane.showMessageDialog(this, "Số tiền nhập vào không được âm");
+                    txtGiaBan.requestFocus();
+                    return;
+                } else {
+                    ctsp.setGiaBan(Integer.parseInt(txtGiaBan.getText()));
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Giá tiền nhập vào phải là số");
+                txtGiaBan.requestFocus();
+                return;
+
+            }
+            try {
+                int soluong = Integer.parseInt(txtSoLuong.getText());
+                if (soluong < 0) {
+                    JOptionPane.showMessageDialog(this, "Số lượng nhập vào không được âm");
+                    txtSoLuong.requestFocus();
+                    return;
+                } else {
+                    ctsp.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Số lượng nhập vào phải là số");
+                txtSoLuong.requestFocus();
+                return;
+            }
+            String id = txtId.getText();
             ctspitf.Update(id, ctsp);
             loadData();
             JOptionPane.showMessageDialog(this, " thành công");
@@ -410,6 +526,7 @@ public class Menu4 extends javax.swing.JInternalFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
+        btnRf = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         cbbban = new javax.swing.JComboBox<>();
@@ -441,7 +558,6 @@ public class Menu4 extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1220, 180));
 
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Tìm kiếm tên sản phẩm");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, 20));
 
@@ -461,7 +577,7 @@ public class Menu4 extends javax.swing.JInternalFrame {
         jPanel1.add(cbxSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 20, 220, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -474,22 +590,18 @@ public class Menu4 extends javax.swing.JInternalFrame {
         jPanel2.add(lblAnhSp, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 200, 240));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Tên sản phẩm:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Kích cỡ:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Màu sắc:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Loại sản phẩm:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, -1, 40));
 
@@ -511,12 +623,10 @@ public class Menu4 extends javax.swing.JInternalFrame {
         jPanel2.add(cbxLoaiSp, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 180, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Đế:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, -1, 20));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Giá nhập:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 30, -1, -1));
 
@@ -528,12 +638,10 @@ public class Menu4 extends javax.swing.JInternalFrame {
         jPanel2.add(txtGiaNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 50, 240, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Giá bán:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 80, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Số lượng:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 130, -1, -1));
 
@@ -549,18 +657,15 @@ public class Menu4 extends javax.swing.JInternalFrame {
         jPanel2.add(cbxDe, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 250, 30));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Mô tả:");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, -1, -1));
         jPanel2.add(txtBarcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 200, 240, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Chất liệu:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 70, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Hãng:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, -1, -1));
 
@@ -577,7 +682,6 @@ public class Menu4 extends javax.swing.JInternalFrame {
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, 260, 90));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Trạng Thái:");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 250, -1, 20));
 
@@ -614,11 +718,9 @@ public class Menu4 extends javax.swing.JInternalFrame {
         jPanel2.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 280, 100, 30));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("ID");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
 
-        txtId.setForeground(new java.awt.Color(0, 0, 0));
         txtId.setText("--");
         jPanel2.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 10, -1));
 
@@ -693,17 +795,27 @@ public class Menu4 extends javax.swing.JInternalFrame {
         jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 170, 30, 30));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Barcode:");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 180, -1, -1));
 
+        btnRf.setText("Làm mới");
+        btnRf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRfMouseClicked(evt);
+            }
+        });
+        btnRf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRfActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnRf, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, -1, -1));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 1220, 320));
 
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Trạng thái");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, -1));
 
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Trạng thái sản lượng ");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, -1, -1));
 
@@ -828,18 +940,33 @@ public class Menu4 extends javax.swing.JInternalFrame {
 
     private void cbbbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbbanActionPerformed
         // TODO add your handling code here:
-        if(cbbban.getSelectedIndex()==0){
+        if (cbbban.getSelectedIndex() == 0) {
             loadData();
-        }else if(cbbban.getSelectedIndex()==1){
+        } else if (cbbban.getSelectedIndex() == 1) {
             TrangThai(0);
-        }else if(cbbban.getSelectedIndex()==2){
+        } else if (cbbban.getSelectedIndex() == 2) {
             TrangThai(1);
         }
     }//GEN-LAST:event_cbbbanActionPerformed
 
+    private void btnRfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRfMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRfMouseClicked
+
+    private void btnRfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRfActionPerformed
+         CbxHang();
+        CbxKickCo();
+        CbxSanPham();
+        CbxMauSac();;
+        CbxTheLoai();
+        CbxChatLieu();
+        CbxDe();
+    }//GEN-LAST:event_btnRfActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnRf;
     private javax.swing.JButton btnSua;
     private javax.swing.JComboBox<String> cbbban;
     private javax.swing.JComboBox<String> cbxChatLieu;
