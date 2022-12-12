@@ -798,6 +798,7 @@ public class Menu4 extends javax.swing.JInternalFrame {
         jLabel16.setText("Barcode:");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 180, -1, -1));
 
+        btnRf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/refresh.png"))); // NOI18N
         btnRf.setText("Làm mới");
         btnRf.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -809,7 +810,7 @@ public class Menu4 extends javax.swing.JInternalFrame {
                 btnRfActionPerformed(evt);
             }
         });
-        jPanel2.add(btnRf, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, -1, -1));
+        jPanel2.add(btnRf, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 1220, 320));
 
