@@ -65,6 +65,7 @@ public class Menu2_NhanVien extends javax.swing.JInternalFrame {
         txtbarcoe.requestFocus();
         btnhuy.setEnabled(false);
         btnxoaSanPham.setEnabled(false);
+        txtbarcoe.setEnabled(false);
     }
 
 // Hiện thị sản phẩm lên bảng sản phẩm
@@ -1048,6 +1049,7 @@ public class Menu2_NhanVien extends javax.swing.JInternalFrame {
         }
         banHangITF.insertHoaDon(idKH, idNV, null, MaHD, TrangThai);
         this.LoadTableHoaDon();
+        txtbarcoe.setEnabled(true);
         JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công.");
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
 
@@ -1121,6 +1123,7 @@ public class Menu2_NhanVien extends javax.swing.JInternalFrame {
             LoadTableSanPham();
             this.XuatHoaDon();
             Clearform();
+            txtbarcoe.setEnabled(false);
             JOptionPane.showMessageDialog(this, "Thanh toán thành công.");
         }
         //
