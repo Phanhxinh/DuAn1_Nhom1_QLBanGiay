@@ -78,7 +78,7 @@ public class Menu5 extends javax.swing.JInternalFrame {
         String ma = txtma.getText();
         String ten = txtten.getText();
         String khuyenmai = txtkhuyenmai.getText();
-        String ngaybd = sdf.format(dsngaybd.getDate());
+        String ngaybd = sdf.format(dstu.getDate());
         String ngaykt = sdf.format(dsngaykt.getDate());
         String mota = txtmota.getText();
 
@@ -97,7 +97,6 @@ public class Menu5 extends javax.swing.JInternalFrame {
         return khuyenMaiModel;
 
     }
-  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -110,7 +109,6 @@ public class Menu5 extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         dsngaykt = new com.toedter.calendar.JDateChooser();
-        dsngaybd = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -135,8 +133,9 @@ public class Menu5 extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btloc = new javax.swing.JButton();
-        dstu = new com.toedter.calendar.JDateChooser();
         dsden = new com.toedter.calendar.JDateChooser();
+        dsngaybd = new com.toedter.calendar.JDateChooser();
+        dstu = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1270, 600));
@@ -149,48 +148,34 @@ public class Menu5 extends javax.swing.JInternalFrame {
         dsngaykt.setDateFormatString("dd/MM/yyyy");
         jPanel1.add(dsngaykt, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 130, 30));
 
-        dsngaybd.setDate(new java.util.Date(1669125429000L));
-        dsngaybd.setDateFormatString("dd/MM/yyyy");
-        jPanel1.add(dsngaybd, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 140, 30));
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Tên khuyến mại:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 110, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Khuyến mại:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Ngày bắt đầu:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 100, 20));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Mô tả:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, 20));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Ngày kết thúc: ");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 100, 20));
 
         txtma.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtma.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(txtma, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 290, 40));
 
         txtkhuyenmai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtkhuyenmai.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(txtkhuyenmai, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 290, 40));
 
         txtten.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtten.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(txtten, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 290, 40));
-
-        jScrollPane1.setForeground(new java.awt.Color(0, 0, 0));
 
         txtmota.setColumns(20);
         txtmota.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -224,19 +209,16 @@ public class Menu5 extends javax.swing.JInternalFrame {
         jPanel1.add(btsua, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 120, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Mã khuyến mại:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 110, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3)));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Tìm khuyến mại");
 
         txttim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txttim.setForeground(new java.awt.Color(0, 0, 0));
         txttim.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txttimCaretUpdate(evt);
@@ -244,19 +226,15 @@ public class Menu5 extends javax.swing.JInternalFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Trạng thái");
 
         cbtrangthai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbtrangthai.setForeground(new java.awt.Color(0, 0, 0));
         cbtrangthai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Vẫn hoạt động", "Ngưng hoạt động" }));
         cbtrangthai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbtrangthaiActionPerformed(evt);
             }
         });
-
-        jScrollPane2.setForeground(new java.awt.Color(0, 0, 0));
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -312,14 +290,12 @@ public class Menu5 extends javax.swing.JInternalFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 810, 530));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Phân loại", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Phân loại"));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Từ:");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Đến:");
 
         btloc.setBackground(new java.awt.Color(51, 51, 51));
@@ -333,41 +309,41 @@ public class Menu5 extends javax.swing.JInternalFrame {
             }
         });
 
-        dstu.setDate(new java.util.Date(1669125429000L));
-        dstu.setDateFormatString("yyyy/MM/dd");
-
         dsden.setDate(new java.util.Date(1669125429000L));
-        dsden.setDateFormatString("yyyy/MM/dd");
+        dsden.setDateFormatString("dd/MM/yyyy");
+
+        dsngaybd.setDate(new java.util.Date(1669125429000L));
+        dsngaybd.setDateFormatString("dd/MM/yyyy");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(dstu, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dsden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(25, 25, 25))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 124, Short.MAX_VALUE)
                 .addComponent(btloc, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(114, 114, 114))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel9))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel10)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dsngaybd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dsden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(dstu, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
+                    .addComponent(jLabel10)
+                    .addComponent(dsngaybd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9)
@@ -378,6 +354,10 @@ public class Menu5 extends javax.swing.JInternalFrame {
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 370, 180));
+
+        dstu.setDate(new java.util.Date(1669125429000L));
+        dstu.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(dstu, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 130, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -395,60 +375,61 @@ public class Menu5 extends javax.swing.JInternalFrame {
 
     private void btthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthemActionPerformed
         // TODO add your handling code here:
-       if(txtma.getText().isBlank()){
-            
+        if (txtma.getText().isBlank()) {
+
             JOptionPane.showMessageDialog(this, "Không được để trống Mã khuyến mãi");
             txtma.requestFocus();
             return;
         }
-        if(txtten.getText().isBlank()){
+        if (txtten.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Không được để trống Tên khuyến mãi");
             txtten.requestFocus();
             return;
         }
         try {
-                KhuyenMaiModel khuyenMaiModel = this.GetFromData();
-        if (khuyenMaiModel == null) {
-            return;
-        }
-        String ma = txtma.getText();
-        for (KhuyenMaiModel km : khuyenMaiIF.all()) {
-            if (km.getMa().equals(ma)) {
-                JOptionPane.showMessageDialog(this, "Mã khuyến mại đã tồn tại.");
+            KhuyenMaiModel khuyenMaiModel = this.GetFromData();
+            if (khuyenMaiModel == null) {
                 return;
             }
+            String ma = txtma.getText();
+            for (KhuyenMaiModel km : khuyenMaiIF.all()) {
+                if (km.getMa().equals(ma)) {
+                    JOptionPane.showMessageDialog(this, "Mã khuyến mại đã tồn tại.");
+                    return;
+                }
+            }
+            this.khuyenMaiIF.insert(khuyenMaiModel);
+            this.LoatTable();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        this.khuyenMaiIF.insert(khuyenMaiModel);
-        this.LoatTable();
-        } catch (Exception e) {e.printStackTrace();
-        }
-    
+
     }//GEN-LAST:event_btthemActionPerformed
 
     private void btsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btsuaActionPerformed
         // TODO add your handling code here:
-         if(txtma.getText().isBlank()){
-            
+        if (txtma.getText().isBlank()) {
+
             JOptionPane.showMessageDialog(this, "Không được để trống Mã khuyến mãi");
             txtma.requestFocus();
             return;
         }
-        if(txtten.getText().isBlank()){
+        if (txtten.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Không được để trống Tên khuyến mãi");
             txtten.requestFocus();
             return;
         }
         try {
-             KhuyenMaiModel khuyenMaiModel = this.GetFromData();
-        if (khuyenMaiModel == null) {
-            return;
-        }
-        this.khuyenMaiIF.update(khuyenMaiModel.getMa(), khuyenMaiModel);
-        this.LoatTable();
+            KhuyenMaiModel khuyenMaiModel = this.GetFromData();
+            if (khuyenMaiModel == null) {
+                return;
+            }
+            this.khuyenMaiIF.update(khuyenMaiModel.getMa(), khuyenMaiModel);
+            this.LoatTable();
         } catch (Exception e) {
             e.printStackTrace();
         }
-       
+
     }//GEN-LAST:event_btsuaActionPerformed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
@@ -462,7 +443,7 @@ public class Menu5 extends javax.swing.JInternalFrame {
             txtten.setText(table.getValueAt(row, 1).toString());
             txtkhuyenmai.setText(table.getValueAt(row, 2).toString());
             txtmota.setText(table.getValueAt(row, 5).toString());
-            dsngaybd.setDate(start);
+            dstu.setDate(start);
             dsngaykt.setDate(end);
         } catch (ParseException ex) {
             Logger.getLogger(Menu5.class.getName()).log(Level.SEVERE, null, ex);
