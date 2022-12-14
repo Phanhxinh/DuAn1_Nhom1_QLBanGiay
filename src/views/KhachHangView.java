@@ -368,7 +368,14 @@ public class KhachHangView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem3ActionPerformed
-        
+        List<KhachHangViewModel> list = khitf.getListKh();
+        String sdt = txtSdt3.getText();
+        for (KhachHangViewModel x : list) {
+            if (x.getSdt().equals(sdt)) {
+                JOptionPane.showMessageDialog(this, "Số điện thoại đã tồn tại.");
+                return;
+            }
+        }
         Add();
     }//GEN-LAST:event_btnThem3ActionPerformed
 
