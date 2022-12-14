@@ -66,14 +66,13 @@ public class Menu4 extends javax.swing.JInternalFrame {
         CbxHang();
         CbxKickCo();
         CbxSanPham();
-        CbxMauSac();;
+        CbxMauSac();
         CbxTheLoai();
         CbxChatLieu();
         CbxDe();
 
     }
-  
-    
+
     public void loadData() {
         DefaultTableModel tblModel = (DefaultTableModel) tblChitietsp.getModel();
         tblModel.setRowCount(0);
@@ -889,6 +888,14 @@ public class Menu4 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtGiaBanActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        List<ChiTietSPModel> list = ctspitf.getListCTSP();
+        String barcode = txtBarcode.getText();
+        for (ChiTietSPModel ctsp : list) {
+            if (ctsp.getBarCode().equals(barcode)) {
+                JOptionPane.showMessageDialog(this, "Barcode đã tồn tại.");
+                return;
+            }
+        }
         add();
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -955,7 +962,7 @@ public class Menu4 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRfMouseClicked
 
     private void btnRfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRfActionPerformed
-         CbxHang();
+        CbxHang();
         CbxKickCo();
         CbxSanPham();
         CbxMauSac();;

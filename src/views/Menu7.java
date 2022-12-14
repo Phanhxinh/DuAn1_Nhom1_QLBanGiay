@@ -31,7 +31,7 @@ import views.FormChucVu;
  * @author DELL
  */
 public class Menu7 extends javax.swing.JInternalFrame {
-    
+
     private final NhanVienITF nvitf = new NhanVienIML();
     private final ChucVuITF cvitf = new ChucVuIML();
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -47,7 +47,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
         loadData();
         CbxChucVu();
     }
-    
+
     public void loadData() {
         DefaultTableModel tblModel = (DefaultTableModel) tblNhanVien.getModel();
         tblModel.setRowCount(0);
@@ -57,7 +57,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
             tblModel.addRow(row);
         }
     }
-    
+
     public void TrangThai(int so) {
         DefaultTableModel tblModel = (DefaultTableModel) tblNhanVien.getModel();
         tblModel.setRowCount(0);
@@ -67,7 +67,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
             tblModel.addRow(row);
         }
     }
-    
+
     public void clearForm() {
         txtManv.setText("");
         txtHotennv.setText("");
@@ -77,14 +77,14 @@ public class Menu7 extends javax.swing.JInternalFrame {
         txtSdt.setText("");
         txtMatKhau.setText("");
     }
-    
+
     private void CbxChucVu() {
         cbxChucVu.removeAllItems();
         for (ChucVu chucVu : cvitf.CbxChucVu()) {
             cbxChucVu.addItem(String.valueOf(chucVu));
         }
     }
-    
+
     private String getIdChucVu(String ten) {
         for (ChucVu chucVu : cvitf.CbxChucVu()) {
             if (chucVu.getTenCV().equals(ten)) {
@@ -93,7 +93,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
         }
         return null;
     }
-    
+
     public void add() {
         NhanVien nv = new NhanVien();
         nv.setMaNv(txtManv.getText());
@@ -125,7 +125,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, re.getMessage());
         }
     }
-    
+
     public void Update() {
         NhanVien nv = new NhanVien();
         nv.setMaNv(txtManv.getText());
@@ -158,7 +158,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, re.getMessage());
         }
     }
-    
+
     public void selectRow(int i) {
         try {
             NhanVien nv = new NhanVien();
@@ -197,7 +197,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }
-    
+
     public void FindNhanVien(String manv, String tennv) {
         DefaultTableModel tblModel = (DefaultTableModel) tblNhanVien.getModel();
         tblModel.setRowCount(0);
@@ -206,7 +206,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
             Object[] row = new Object[]{ctnv.getMaNv(), ctnv.getHoTen(), ctnv.getGioiTinh(), ctnv.getNgaySinh(), ctnv.getEmail(), ctnv.getDiaChi(), ctnv.getMatKhau(), ctnv.getSdt(), ctnv.getChucVu(), ctnv.getTrangThai() == 0 ? "Đang làm" : "Nghỉ làm", ctnv.getAnh()};
             tblModel.addRow(row);
         }
-        
+
     }
 
     /**
@@ -542,6 +542,14 @@ public class Menu7 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnFormChucVuActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        List<NhanVienViewModel> list = nvitf.getListNV();
+        String sdt = txtSdt.getText();
+        for (NhanVienViewModel ctnv : list) {
+            if (ctnv.getSdt().equals(sdt)) {
+                JOptionPane.showMessageDialog(this, "Số điện thoại đã tồn tại.");
+                return;
+            }
+        }
         add();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -551,7 +559,7 @@ public class Menu7 extends javax.swing.JInternalFrame {
 
     private void lblImgNvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImgNvMouseClicked
         JFileChooser fileChooser = new JFileChooser("images");
-        
+
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             // Khởi tạo file với giá trị = file đã chọn ở khung chọn file

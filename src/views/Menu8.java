@@ -22,11 +22,11 @@ import java.util.Date;
  * @author DELL
  */
 public class Menu8 extends javax.swing.JInternalFrame {
-    
+
     private final KhachHangITF khitf = new KhachHangIML();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
     private String sdt;
-    
+
     public Menu8() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -35,7 +35,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
         loaddata();
         txtmaKh.setEnabled(false);
     }
-    
+
     public void loaddata() {
         DefaultTableModel tblModel = (DefaultTableModel) tblKhang.getModel();
         tblModel.setRowCount(0);
@@ -45,7 +45,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
             tblModel.addRow(row);
         }
     }
-    
+
     public void clearF() {
         txtDiaChi.setText("");
         txtEmail.setText("");
@@ -54,7 +54,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
         txtTenKh.setText("");
         txtmaKh.setText("");
     }
-    
+
     public void Add() {
         int count = 0;
         count = tblKhang.getRowCount();
@@ -76,7 +76,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
         kh.setSdt(txtSdt.getText());
         kh.setEmail(txtEmail.getText());
         kh.setDiachi(txtDiaChi.getText());
-        
+
         try {
             khitf.Add(kh);
             loaddata();
@@ -85,7 +85,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
-    
+
     public void Update() {
         KhachHang kh = new KhachHang();
         kh.setMaKh(txtmaKh.getText());
@@ -94,7 +94,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
         kh.setSdt(txtSdt.getText());
         kh.setEmail(txtEmail.getText());
         kh.setDiachi(txtDiaChi.getText());
-        
+
         try {
             khitf.Update(txtmaKh.getText(), kh);
             loaddata();
@@ -103,7 +103,7 @@ public class Menu8 extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
-    
+
     public void selectRow(int i) {
         try {
             KhachHang kh = new KhachHang();
@@ -119,9 +119,9 @@ public class Menu8 extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
-    
+
     public void FindKh(String makh) {
         DefaultTableModel tblModel = (DefaultTableModel) tblKhang.getModel();
         tblModel.setRowCount(0);
@@ -394,6 +394,14 @@ public class Menu8 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        List<KhachHangViewModel> list = khitf.getListKh();
+        String sdt = txtSdt.getText();
+        for (KhachHangViewModel x : list) {
+            if (x.getSdt().equals(sdt)) {
+                JOptionPane.showMessageDialog(this, "Số điện thoại đã tồn tại.");
+                return;
+            }
+        }
         Add();
     }//GEN-LAST:event_btnThemActionPerformed
 

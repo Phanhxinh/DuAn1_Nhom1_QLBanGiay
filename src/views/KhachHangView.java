@@ -368,6 +368,7 @@ public class KhachHangView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem3ActionPerformed
+        
         Add();
     }//GEN-LAST:event_btnThem3ActionPerformed
 
