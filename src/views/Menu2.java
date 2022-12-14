@@ -1049,7 +1049,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
         }
         banHangITF.insertHoaDon(idKH, idNV, null, MaHD, TrangThai);
         this.LoadTableHoaDon();
-        txtbarcoe.setEnabled(true);
+        
         JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công.");
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
 
@@ -1160,11 +1160,12 @@ public class Menu2 extends javax.swing.JInternalFrame {
         updatetienKM();
         if (TrangThaiGH == "Đang chờ") {
             btnthemsanpham.setEnabled(true);
-            btnhuy.setEnabled(true);
+            txtbarcoe.setEnabled(true);
         } else if (TrangThaiGH == "Đã thanh toán") {
             btnthemsanpham.setEnabled(false);
             btnthanhtoan.setEnabled(false);
             btnhuy.setEnabled(true);
+            txtbarcoe.setEnabled(false);
         }
         btnxoaSanPham.setEnabled(false);
     }//GEN-LAST:event_tableHoaDonMouseClicked
@@ -1175,6 +1176,7 @@ public class Menu2 extends javax.swing.JInternalFrame {
             txtthanhtien.setText(txttongtien.getText());
             txtsokhuyenmai.setText("0");
             txttienkhuyenmai.setText("0");
+            lblhankm.setText("");
         }
         for (KhuyenMai_BanHangModel khuyenMai_BanHangModel : banHangITF.getKhuyenMai(cbbkhuyenmai.getSelectedItem().toString())) {
             txtsokhuyenmai.setText(khuyenMai_BanHangModel.getGiamGia());

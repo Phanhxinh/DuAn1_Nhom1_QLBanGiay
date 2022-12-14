@@ -113,7 +113,7 @@ public class KhuyenMaiRepo {
                     + "      ,[NgayBD]\n"
                     + "      ,[NgayKT]\n"
                     + "      ,[MoTa]\n"
-                    + "  FROM [dbo].[KhuyenMai] where CONVERT(varchar(20),NgayBD,103)>=? and CONVERT(varchar(20),NgayKT,103)>=?";
+                    + "  FROM [dbo].[KhuyenMai] where CONVERT(varchar(20),NgayBD,103)<=? and CONVERT(varchar(20),NgayKT,103)<=?";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, ngaybd);
             ps.setString(2, ngaykt);
